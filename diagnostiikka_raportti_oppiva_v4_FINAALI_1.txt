@@ -1,0 +1,641 @@
+
+================================================================================
+          RAAMATTU-TUTKIJA v9 - DIAGNOSTIIKKA (Analyyttinen oppiminen)          
+================================================================================
+
+Esiladataan kaikki resurssit...
+Ladataan hakumallit, indeksi ja datatiedostot muistiin...
+Use pytorch device_name: cpu
+Load pretrained SentenceTransformer: TurkuNLP/sbert-cased-finnish-paraphrase
+Use pytorch device: cpu
+Kaikki resurssit ladattu onnistuneesti.
+Resurssit ladattu.
+Löytyi 5 osiota käsiteltäväksi.
+
+================================================================================
+                            Käsitellään osio 1/5: 1                             
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- 1. Alkuperäinen laadunarviointi ---
+AI Arvosana: 6/10
+AI Perustelu: Lause on jo melko hyvin kirjoitettu, mutta se voisi olla vielä ytimekkäämpi ja kieliopillisesti tarkempi. Tässä on ehdotus viimeistellyksi lauseeksi: 'Mukapuville jakeille esitetty valikoima sisältää monia merkittäviä linkkejä aiheeseen, mutta se ei ole täysin tasaisesti ja hyvin tasateltu. Esimerkiksi viitteet 1. Korinttilaiskirje 7:15 ja 2. Tessalonikalaiskirje 3:6 käsittelevät suorasti 'erottamista', mikä on läheisessä yhteydessä aiheeseen, mutta monet muut jaksot ovat enemmän tai vähemmän heijastavia. Esimerkiksi Jeremia 49:20 ja 1. Samuelin kirja 14:6 eivät ole niin suorassa yhteydessä aiheeseen kuin toiset, vaikka ne voivat sisältää merkityksellisiä ajatuksia erottamisesta lauman suojelemiseksi. Jaksot ovat monipuolisia ja tarjoavat hyvän pohjan keskustelulle aiheeseen, mutta niiden välillinen tasoa ei ole aivan siististi saavutettu.
+----------------------------------------
+
+================================================================================
+                          Parannusyritys 1/3 osiolle 1                          
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luodaan avainsanoja selitteen pohjalta...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- Parannetun haun laadunarviointi ---
+Edellinen arvosana: 6/10
+UUSI arvosana: 6/10
+TULOS: Laatu ei parantunut. ⚠️
+
+================================================================================
+                          Parannusyritys 2/3 osiolle 1                          
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luodaan avainsanoja selitteen pohjalta...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- Parannetun haun laadunarviointi ---
+Edellinen arvosana: 6/10
+UUSI arvosana: 7/10
+TULOS: Laatu parani! ✅
+Strategia ['jumalan kutsu', 'hengellinen viisaus'] tallennettu/päivitetty.
+
+================================================================================
+                          Parannusyritys 3/3 osiolle 1                          
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luodaan avainsanoja selitteen pohjalta...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- Parannetun haun laadunarviointi ---
+Edellinen arvosana: 7/10
+UUSI arvosana: 7/10
+TULOS: Laatu ei parantunut. ⚠️
+
+================================================================================
+                            Käsitellään osio 2/5: 2                             
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- 1. Alkuperäinen laadunarviointi ---
+AI Arvosana: 7/10
+AI Perustelu: Lause on jo melko hyvä, mutta se kaipaa hieman tiivistämistä ja kieliopillista tarkastusta. Tässä on ehdotus viimeistellyksi lauseeksi: 'Materiaali tarjoaa kattavan valikoiman Raamatun jaksoja harhaopetuksesta ja sen tunnistamisesta. Se korostaa erilaisten eksyttäjien menetelmiä, kuten mielistelyä ja väärennettyä profetiaa. Jakso sisältää myös ohjeita vastustamaan niitä, jotka harhaopettavat Jumalan kansaa. Vaikka osa jaksosta voi vaikuttaa epäsäännölliseltä tai aiheeseen liittymättömältä (esim. Markuksen evankeliumi 12:14), se heikentää kokonaislaatua hieman. Kokonaisuudessaan materiaali tarjoaa hyvän perustan harhaopetuksen tunnistamiselle ja vastaanottamiselle.'
+----------------------------------------
+
+================================================================================
+                          Parannusyritys 1/3 osiolle 2                          
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luodaan avainsanoja selitteen pohjalta...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'raamattu' todettiin relevantiksi.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- Parannetun haun laadunarviointi ---
+Edellinen arvosana: 7/10
+UUSI arvosana: 4/10
+TULOS: Laatu ei parantunut. ⚠️
+
+================================================================================
+                          Parannusyritys 2/3 osiolle 2                          
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luodaan avainsanoja selitteen pohjalta...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'raamattu' todettiin relevantiksi.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- Parannetun haun laadunarviointi ---
+Edellinen arvosana: 4/10
+UUSI arvosana: 6/10
+TULOS: Laatu parani! ✅
+Strategia ['varoitus', 'tunnistaminen'] tallennettu/päivitetty.
+
+================================================================================
+                          Parannusyritys 3/3 osiolle 2                          
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luodaan avainsanoja selitteen pohjalta...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'raamattu' todettiin relevantiksi.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- Parannetun haun laadunarviointi ---
+Edellinen arvosana: 6/10
+UUSI arvosana: 7/10
+TULOS: Laatu parani! ✅
+Strategia ['exytys', 'raamattu'] tallennettu/päivitetty.
+
+================================================================================
+                            Käsitellään osio 3/5: 3                             
+================================================================================
+
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'tasapaino' todettiin relevantiksi.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- 1. Alkuperäinen laadunarviointi ---
+AI Arvosana: 7/10
+AI Perustelu: Lopputulos on seuraava: Jäsenten esitellyt jakeet tarjoavat monipuolisen katseen tieteessä käsiteltyyn aiheeseen, mutta niissä ei ole tiivistelmää susien ja lampaiden erilaisesta kohtelusta. Jumalan armoa ja rakkautta koskevia vinkkejä on runsaasti, mutta merkittävää suoraa vastausta aiheeseen ei esitetty. Jakeissa mainitaan lukuisia asioita, joista monet eivät ole suoraan liitettävissä aiheeseen. Esimerkiksi Pietarin kirje 1:8 ja Roomalaiskirje 3:4 eivät sovellu käsiteltävään aiheeseen sellaisenaan. Vaikuttaa siltä, että jakeet on tarkoitettu laajempaan tietämykseen tai vihannoksiin, joista ei myöskään ole annettu yksityiskohtia aiheeseen liittyvistä suosituksista.
+----------------------------------------
+
+================================================================================
+                          Parannusyritys 1/3 osiolle 3                          
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luodaan avainsanoja selitteen pohjalta...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'tasapaino' todettiin relevantiksi.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- Parannetun haun laadunarviointi ---
+Edellinen arvosana: 7/10
+UUSI arvosana: 6/10
+TULOS: Laatu ei parantunut. ⚠️
+
+================================================================================
+                          Parannusyritys 2/3 osiolle 3                          
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luodaan avainsanoja selitteen pohjalta...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'tasapaino' todettiin relevantiksi.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- Parannetun haun laadunarviointi ---
+Edellinen arvosana: 6/10
+UUSI arvosana: 7/10
+TULOS: Laatu parani! ✅
+Strategia ['kärsivällisyys', 'kasvu'] tallennettu/päivitetty.
+
+================================================================================
+                          Parannusyritys 3/3 osiolle 3                          
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luodaan avainsanoja selitteen pohjalta...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'tasapaino' todettiin relevantiksi.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- Parannetun haun laadunarviointi ---
+Edellinen arvosana: 7/10
+UUSI arvosana: 7/10
+TULOS: Laatu ei parantunut. ⚠️
+
+================================================================================
+                            Käsitellään osio 4/5: 4                             
+================================================================================
+
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Ei.
+Strategia 'viisaus' hylättiin epärelevanttina tähän hakuun.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- 1. Alkuperäinen laadunarviointi ---
+AI Arvosana: 7/10
+AI Perustelu: Jakeet ovat hyvin läheisessä suhteessa annettuihin aiheisiin, kun otetaan huomioon niiden kyvyt ilmaista jumalan työn tunnistamisen ja hengen mukana olla olosuhteissa. Ne sisältävät arviointia erilaisille liikkeille ja toimintaliiteille sekä vahvistavat pyrkimyksen rakkauden ja aitojen periaatteiden edistämisen nuorten keskuudessa. Niissä mainitaan myös jumalan läsnäoloa ja työtä maailmassa, mutta usein vaativat enemmän nykyaikaisesta kontekstista ja kriittisestä lähestymistapausta liikkeiden arvioinnissa. Jakeet tarjoavat hyvät pohdiapisteet nuorten uskoninnon kehittämiseksi, mutta jatkuvan nykyaikaisen tarkastelun ja sopeuttamisen varten niissä ei ole samantasoista tukea.
+----------------------------------------
+
+================================================================================
+                          Parannusyritys 1/3 osiolle 4                          
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luodaan avainsanoja selitteen pohjalta...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Ei.
+Strategia 'viisaus' hylättiin epärelevanttina tähän hakuun.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- Parannetun haun laadunarviointi ---
+Edellinen arvosana: 7/10
+UUSI arvosana: 7/10
+TULOS: Laatu ei parantunut. ⚠️
+
+================================================================================
+                          Parannusyritys 2/3 osiolle 4                          
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luodaan avainsanoja selitteen pohjalta...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Ei.
+Strategia 'viisaus' hylättiin epärelevanttina tähän hakuun.
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'nuorten herätys' todettiin relevantiksi.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- Parannetun haun laadunarviointi ---
+Edellinen arvosana: 7/10
+UUSI arvosana: 6/10
+TULOS: Laatu ei parantunut. ⚠️
+
+================================================================================
+                          Parannusyritys 3/3 osiolle 4                          
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luodaan avainsanoja selitteen pohjalta...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Ei.
+Strategia 'viisaus' hylättiin epärelevanttina tähän hakuun.
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'nuorten herätys' todettiin relevantiksi.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- Parannetun haun laadunarviointi ---
+Edellinen arvosana: 6/10
+UUSI arvosana: 7/10
+TULOS: Laatu parani! ✅
+Strategia ['Nuorten uskonnon herätys', 'terve raamatuntieto-ohjelma'] tallennettu/päivitetty.
+
+================================================================================
+                            Käsitellään osio 5/5: 5                             
+================================================================================
+
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'tasapaino' todettiin relevantiksi.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- 1. Alkuperäinen laadunarviointi ---
+AI Arvosana: 7/10
+AI Perustelu: Mukamas määrä jakeita liittyy suoraan aiheeseen ja sen tavoitteisiin, kuten totuuden ja rakkauden tasapainon korostaminen. Esimerkiksi Jaakobin kirje 5:11 viittaa kärsivällisyyteen ja arman tekemiseen, mikä vastaakin aiheeseen hyvin. Sakarja 10:2 kertoo petovastausten ja valheiden vaaroista, mikä sopii eksytystä vastaan olemassa olevien valppauden osioon. Toisaalta jotkut jaksot eivät ole niin suoraan liittoutuneita aiheeseen; esimerkiksi Daniel 6:4 ja Sakarja 10:2 ovat hyvin rajoitetut sisällöllisesti ja eivät välttämättä tarjoa laajamaisia näkökulmia totuuden ja rakkauden tasapainoon. Täten ne ovat keskitasoiset jaksot, jotka täyttävät osittain aiheen tavoitteita.
+----------------------------------------
+
+================================================================================
+                          Parannusyritys 1/3 osiolle 5                          
+================================================================================
+
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luodaan avainsanoja selitteen pohjalta...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'tasapaino' todettiin relevantiksi.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Viimeistellään arvioinnin perustelua...
+Lähetetään JSON-pyyntö mallille poro-local (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- Parannetun haun laadunarviointi ---
+Edellinen arvosana: 7/10
+UUSI arvosana: 8/10
+TULOS: Laatu parani! ✅
+Avainsana 'tasapaino' on jo olemassa. Luodaan kontekstisidonnainen versio.
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Luotu uusi kontekstisidonnainen avainsana: 'rauhanvari'
+Strategia ['rakkaus', 'rauhanvari'] tallennettu/päivitetty.
+
+================================================================================
+                            DIAGNOSTIIKAN YHTEENVETO                            
+================================================================================
+
+Koko diagnostiikan ajo kesti: 1506.25 sekuntia.
+AI:n antama lopullinen keskiarvo tulosten laadulle: 7.20/10
+
+================================================================================
+                         YKSITYISKOHTAINEN JAEJAOTTELU                          
+================================================================================
+
+
+--- 1 1. Johdanto ---
+
+(Lopullinen arvosana tälle osiolle: 7/10)
+- 1. Korinttilaiskirje 7:15: "Mutta jos se, joka ei usko, eroaa, niin erotkoon; veli ja sisar eivät ole semmoisissa tapauksissa orjuutetut; sillä rauhaan on Jumala teidät kutsunut."
+- Miika 2:11: "Jos tulisi mies, joka tuulta tavoittelisi ja petollisuudessaan valhettelisi: "Minä saarnaan sinulle viinistä ja väkijuomasta", siinä olisi saarnaaja tälle kansalle."
+- 1. Korinttilaiskirje 7:21: "Jos olet kutsuttu orjana, älä siitä murehdi; mutta vaikka voisitkin päästä vapaaksi, niin ole ennemmin siinä osassasi."
+- Jaakobin kirje 1:5: "Mutta jos joltakin teistä puuttuu viisautta, anokoon sitä Jumalalta, joka antaa kaikille alttiisti ja soimaamatta, niin se hänelle annetaan."
+- Jeremia 9:2: "(9:1) Oi, jospa minulla olisi erämaassa matkamiehen yömaja, niin minä jättäisin kansani ja vaeltaisin pois heidän luotaan! Sillä he ovat kaikki avionrikkojia, ovat uskottomain joukkio."
+- 2. Kuningasten kirja 2:10: "Hän vastasi: "Pyyntösi on vaikea täyttää. Mutta jos näet, kuinka minut otetaan pois sinun tyköäsi, niin se täytetään; jollet, niin se jää täyttämättä.""
+- 2. Tessalonikalaiskirje 3:6: "Mutta Herran Jeesuksen Kristuksen nimessä me käskemme teitä, veljet, vetäytymään pois jokaisesta veljestä, joka vaeltaa kurittomasti eikä sen opetuksen mukaan, jonka olette meiltä saaneet."
+- Jeremia 49:20: "Sentähden kuulkaa Herran päätös, jonka hän on päättänyt Edomia vastaan, ja hänen aivoituksensa, jotka hän on aivoitellut Teemanin asukkaita vastaan: Totisesti, ne raastetaan pois, nuo lauman vähäiset; totisesti, niiden laidun kauhistuu niiden tähden."
+- Matteus 18:13: "Ja jos hän sen löytää, totisesti minä sanon teille: hän iloitsee enemmän siitä kuin niistä yhdeksästäkymmenestä yhdeksästä, jotka eivät olleet eksyneet."
+- 1. Samuelin kirja 14:6: "Ja Joonatan sanoi palvelijalle, joka kantoi hänen aseitansa: "Tule, menkäämme lähelle noiden ympärileikkaamattomain vartiostoa; ehkä Herra on tekevä jotakin meidän puolestamme, sillä ei mikään estä Herraa antamasta voittoa harvojen kautta yhtä hyvin kuin monien"."
+- Luukas 15:7: "Minä sanon teille: samoin on ilo taivaassa suurempi yhdestä syntisestä, joka tekee parannuksen, kuin yhdeksästäkymmenestä yhdeksästä vanhurskaasta, jotka eivät parannusta tarvitse."
+- Jesaja 63:1: "Kuka tuolla tulee Edomista, tulipunaisissa vaatteissa Bosrasta, tuo puvultansa komea, joka uljaana astelee suuressa voimassansa? "Minä, joka puhun vanhurskautta, joka olen voimallinen auttamaan.""
+- 5. Mooseksen kirja 29:19: "(18) niin että se, joka kuulee tämän valan sanat, siunaisi itseänsä sydämessään sanoen: 'Minun käy hyvin, vaikka vaellankin sydämeni paatumuksessa'. Siten hän hukuttaisi kaikki, sekä kostean että kuivan maan."
+- 1. Korinttilaiskirje 11:16: "Mutta jos joku haluaa väittää vastaan, niin tietäköön, että meillä ei ole sellaista tapaa eikä Jumalan seurakunnilla."
+- Johannes 10:16: "Minulla on myös muita lampaita, jotka eivät ole tästä lammastarhasta; myös niitä tulee minun johdattaa, ja ne saavat kuulla minun ääneni, ja on oleva yksi lauma ja yksi paimen."
+
+--- 2 2. Raamatun selkeä varoitus ---
+
+(Lopullinen arvosana tälle osiolle: 7/10)
+- Psalmit 19:9: "Herran asetukset ovat oikeat, ne ilahuttavat sydämen. Herran käskyt ovat selkeät, ne valaisevat silmät."
+- Psalmit 119:124: "Tee palvelijallesi armosi jälkeen ja opeta minulle käskysi."
+- Tiituskirje 2:10: "etteivät näpistele, vaan kaikin tavoin osoittavat vilpitöntä uskollisuutta, että he Jumalan, meidän vapahtajamme, opin kaikessa kaunistaisivat."
+- Jeremia 8:8: "Kuinka saatatte sanoa: 'Me olemme viisaita, ja meillä on Herran laki'? Totisesti! Katso, valheen työtä on tehnyt kirjanoppineiden valhekynä."
+- 2. Timoteuskirje 4:3: "Sillä aika tulee, jolloin he eivät kärsi tervettä oppia, vaan omien himojensa mukaan korvasyyhyynsä haalivat itselleen opettajia"
+- Matteus 22:16: "Ja he lähettivät hänen luoksensa opetuslapsensa herodilaisten kanssa sanomaan: "Opettaja, me tiedämme, että sinä olet totinen ja opetat Jumalan tietä totuudessa, kenestäkään välittämättä, sillä sinä et katso henkilöön."
+- 2. Timoteuskirje 2:19: "Kuitenkin Jumalan vahva perustus pysyy lujana, ja siinä on tämä sinetti: "Herra tuntee omansa", ja: "Luopukoon vääryydestä jokainen, joka Herran nimeä mainitsee"."
+- 1. Timoteuskirje 4:2: "valheenpuhujain ulkokultaisuuden vaikutuksesta, joiden omatunto on poltinraudalla merkitty"
+- Roomalaiskirje 16:18: "Sillä sellaiset eivät palvele meidän Herraamme Kristusta, vaan omaa vatsaansa, ja he pettävät suloisilla sanoilla ja kauniilla puheilla vilpittömien sydämet."
+- Kolossalaiskirje 2:7: "juurtuneina häneen ja hänessä rakentuen ja uskossa vahvistuen, niinkuin teille on opetettu; ja olkoon teidän kiitoksenne ylitsevuotavainen."
+- Efesolaiskirje 4:21: "jos muutoin olette hänestä kuulleet ja hänessä opetusta saaneet, niinkuin totuus on Jeesuksessa:"
+- 2. Timoteuskirje 4:1: "Minä vannotan sinua Jumalan ja Kristuksen Jeesuksen edessä, joka on tuomitseva eläviä ja kuolleita, sekä hänen ilmestymisensä että hänen valtakuntansa kautta:"
+- 2. Timoteuskirje 3:14: "Mutta pysy sinä siinä, minkä olet oppinut ja mistä olet varma, koska tiedät, keiltä olet sen oppinut,"
+- Roomalaiskirje 2:20: "ymmärtämättömien kasvattaja, alaikäisten opettaja, sinulla kun laissa on tiedon ja totuuden muoto:"
+- Jaakobin kirje 3:14: "Mutta jos teillä on katkera kiivaus ja riitaisuus sydämessänne, niin älkää kerskatko älkääkä valhetelko totuutta vastaan."
+
+--- 3 3. Tasapaino ja oikea asenne ---
+
+(Lopullinen arvosana tälle osiolle: 7/10)
+- Kolossalaiskirje 2:1: "Sillä minä tahdon, että te tiedätte, kuinka suuri kilvoittelu minulla on teidän tähtenne ja laodikealaisten ja kaikkien tähden, jotka eivät ole minun ruumiillisia kasvojani nähneet,"
+- Apostolien teot 15:10: "Miksi te siis nyt kiusaatte Jumalaa ja tahdotte panna opetuslasten niskaan ikeen, jota eivät meidän isämme emmekä mekään ole jaksaneet kantaa?"
+- Roomalaiskirje 8:34: "Kuka voi tuomita kadotukseen? Kristus Jeesus on se, joka on kuollut, onpa vielä herätettykin, ja hän on Jumalan oikealla puolella, ja hän myös rukoilee meidän edestämme."
+- Hesekiel 34:17: "Mutta te, minun lampaani! Näin sanoo Herra, Herra: Katso, minä tahdon tuomita lampaan ja lampaan, oinasten ja vuohipukkien välillä."
+- Jesaja 30:21: "Ja sinun korvasi kuulevat takaasi tämän sanan, milloin poikkeatte oikealle tai vasemmalle: "Tässä on tie, sitä käykää"."
+- Heprealaiskirje 13:17: "Olkaa kuuliaiset johtajillenne ja tottelevaiset, sillä he valvovat teidän sielujanne niinkuin ne, joiden on tehtävä tili, että he voisivat tehdä sitä ilolla eikä huokaillen; sillä se ei ole teille hyödyllistä."
+- 2. Pietarin kirje 1:8: "Sillä jos teillä on nämä ja ne yhä enenevät, niin ne eivät salli teidän olla toimettomia eikä hedelmättömiä meidän Herramme Jeesuksen Kristuksen tuntemisessa."
+- Saarnaaja 3:18: "Minä sanoin sydämessäni: Ihmislasten tähden se niin on, jotta Jumala heitä koettelisi ja he tulisivat näkemään, että he omassa olossaan ovat eläimiä."
+- Roomalaiskirje 3:4: "Pois se! Olkoon Jumala totinen, mutta jokainen ihminen valhettelija, niinkuin kirjoitettu on: "Että sinut havaittaisiin vanhurskaaksi sanoissasi ja että voittaisit, kun sinun kanssasi oikeutta käydään"."
+- Jesaja 64:4: "(3) Ei ole ikiajoista kuultu, ei ole korviin tullut, ei ole silmä nähnyt muuta Jumalaa, paitsi sinut, joka senkaltaisia tekisi häntä odottavalle."
+- 1. Pietarin kirje 4:5: "Mutta heidän on tehtävä tili hänelle, joka on valmis tuomitsemaan eläviä ja kuolleita."
+- Matteus 25:32: "Ja hänen eteensä kootaan kaikki kansat, ja hän erottaa toiset toisista, niinkuin paimen erottaa lampaat vuohista."
+- Apostolien teot 8:22: "Tee siis parannus ja käänny tästä pahuudestasi ja rukoile Herraa — jos ehkä vielä sinun sydämesi ajatus sinulle anteeksi annetaan."
+- Apostolien teot 20:31: "Valvokaa sentähden ja muistakaa, että minä olen kolme vuotta lakkaamatta yötä ja päivää kyynelin neuvonut teitä itsekutakin."
+- Roomalaiskirje 16:18: "Sillä sellaiset eivät palvele meidän Herraamme Kristusta, vaan omaa vatsaansa, ja he pettävät suloisilla sanoilla ja kauniilla puheilla vilpittömien sydämet."
+
+--- 4 4. Sovellus nykyaikaan ---
+
+(Lopullinen arvosana tälle osiolle: 7/10)
+- Saarnaaja 9:1: "Niin minä painoin mieleeni kaiken tämän ja pyrin saamaan kaikkea tätä selville, kuinka näet vanhurskaat ja viisaat ja heidän tekonsa ovat Jumalan kädessä. Ei rakkauskaan eikä viha ole ihmisen tiedettävissä; kaikkea voi hänellä olla edessä."
+- 2. Tessalonikalaiskirje 1:10: "kun hän sinä päivänä tulee, että hän kirkastuisi pyhissänsä ja olisi ihmeteltävä kaikissa uskovissa, sillä te olette uskoneet meidän todistuksemme."
+- 1. Korinttilaiskirje 7:36: "Mutta jos joku arvelee tekevänsä väärin tytärtänsä kohtaan, joka on täydessä naima-iässä, ja jos kerran sen pitää tapahtua, niin tehköön, niinkuin tahtoo; ei hän syntiä tee: menkööt naimisiin."
+- Apostolien teot 14:23: "Ja kun he olivat valinneet heille vanhimmat jokaisessa seurakunnassa, niin he rukoillen ja paastoten jättivät heidät Herran haltuun, johon he nyt uskoivat."
+- 1. Timoteuskirje 4:12: "Älköön kukaan nuoruuttasi katsoko ylen, vaan ole sinä uskovaisten esikuva puheessa, vaelluksessa, rakkaudessa, uskossa, puhtaudessa."
+- 2. Korinttilaiskirje 5:11: "Kun siis tiedämme, mitä Herran pelko on, niin me koetamme saada ihmisiä uskomaan, mutta Jumala kyllä meidät tuntee; ja minä toivon, että tekin omissatunnoissanne meidät tunnette."
+- 2. Pietarin kirje 3:18: "ja kasvakaa meidän Herramme ja Vapahtajamme Jeesuksen Kristuksen armossa ja tuntemisessa. Hänen olkoon kunnia sekä nyt että hamaan iankaikkisuuden päivään."
+- Johannes 13:33: "Lapsukaiset, vielä vähän aikaa minä olen teidän kanssanne. Te tulette minua etsimään, ja niinkuin sanoin juutalaisille: 'Mihin minä menen, sinne te ette voi tulla', niin minä sanon nyt myös teille."
+- Efesolaiskirje 6:5: "Palvelijat, olkaa kuuliaiset maallisille isännillenne, pelossa ja vavistuksessa, sydämenne yksinkertaisuudessa, niinkuin Kristukselle,"
+- 1. Johanneksen kirje 3:24: "Ja joka pitää hänen käskynsä, se pysyy Jumalassa ja Jumala hänessä. Ja siitä me tiedämme hänen meissä pysyvän, siitä Hengestä, jonka hän on meille antanut."
+- 1. Pietarin kirje 1:10: "Sitä pelastusta ovat etsineet ja tutkineet profeetat, jotka ovat ennustaneet teidän osaksenne tulevasta armosta,"
+- 1. Pietarin kirje 1:13: "Vyöttäkää sentähden mielenne kupeet ja olkaa raittiit; ja pankaa täysi toivonne siihen armoon, joka teille tarjotaan Jeesuksen Kristuksen ilmestymisessä."
+- Johannes 3:2: "Hän tuli Jeesuksen tykö yöllä ja sanoi hänelle: "Rabbi, me tiedämme, että sinun opettajaksi tulemisesi on Jumalasta, sillä ei kukaan voi tehdä niitä tunnustekoja, joita sinä teet, ellei Jumala ole hänen kanssansa.""
+- Heprealaiskirje 6:1: "Jättäkäämme sentähden Kristuksen opin alkeet ja pyrkikäämme täydellisyyteen, ryhtymättä taas uudestaan laskemaan perustusta: parannusta kuolleista töistä ja uskoa Jumalaan,"
+- Kolossalaiskirje 2:23: "Tällä kaikella tosin on viisauden maine itsevalitun jumalanpalveluksen ja nöyryyden vuoksi ja sentähden, ettei se ruumista säästä; mutta se on ilman mitään arvoa, ja se tapahtuu lihan tyydyttämiseksi."
+
+--- 5 5. Yhteenveto ---
+
+(Lopullinen arvosana tälle osiolle: 8/10)
+- 2. Johanneksen kirje 1:3: "Armo, laupeus ja rauha Isältä Jumalalta ja Jeesukselta Kristukselta, Isän Pojalta, on oleva meidän kanssamme, totuudessa ja rakkaudessa."
+- 2. Pietarin kirje 1:7: "jumalisuudessa veljellistä rakkautta, veljellisessä rakkaudessa yhteistä rakkautta."
+- Heprealaiskirje 13:17: "Olkaa kuuliaiset johtajillenne ja tottelevaiset, sillä he valvovat teidän sielujanne niinkuin ne, joiden on tehtävä tili, että he voisivat tehdä sitä ilolla eikä huokaillen; sillä se ei ole teille hyödyllistä."
+- Efesolaiskirje 4:15: "vaan että me, totuutta noudattaen rakkaudessa, kaikin tavoin kasvaisimme häneen, joka on pää, Kristus,"
+- Efesolaiskirje 4:2: "kaikessa nöyryydessä ja hiljaisuudessa ja pitkämielisyydessä kärsien toinen toistanne rakkaudessa"
+- 2. Johanneksen kirje 1:2: "totuuden tähden, joka meissä pysyy ja on oleva meidän kanssamme iankaikkisesti."
+- Psalmit 86:14: "Jumala, julkeat ovat nousseet minua vastaan, väkivaltaisten joukko etsii minun henkeäni; eivät he pidä sinua silmäinsä edessä."
+- Roomalaiskirje 5:3: "Eikä ainoastaan se, vaan meidän kerskauksenamme ovat myös ahdistukset, sillä me tiedämme, että ahdistus saa aikaan kärsivällisyyttä,"
+- Efesolaiskirje 4:16: "josta koko ruumis, yhteen liitettynä ja koossa pysyen jokaisen jänteensä avulla, kasvaa rakentuakseen rakkaudessa sen voiman määrän mukaan, mikä kullakin osalla on."
+- Jesaja 49:8: "Näin sanoo Herra: Otollisella ajalla minä olen sinua kuullut ja pelastuksen päivänä sinua auttanut; minä olen valmistanut sinut ja pannut sinut kansoille liitoksi, kohottamaan ennalleen maan, jakamaan hävitetyt perintöosat,"
+- Juudaksen kirje 1:21: "ja pysyttäkää niin itsenne Jumalan rakkaudessa, odottaessanne meidän Herramme Jeesuksen Kristuksen laupeutta iankaikkiseksi elämäksi."
+- 1. Pietarin kirje 1:3: "Ylistetty olkoon meidän Herramme Jeesuksen Kristuksen Jumala ja Isä, joka suuren laupeutensa mukaan on uudestisynnyttänyt meidät elävään toivoon Jeesuksen Kristuksen kuolleistanousemisen kautta,"
+- 2. Korinttilaiskirje 4:2: "vaan olemme hyljänneet kaikki häpeälliset salatiet, niin ettemme vaella kavaluudessa emmekä väärennä Jumalan sanaa, vaan julkituomalla totuuden me suositamme itseämme jokaisen ihmisen omalletunnolle Jumalan edessä."
+- 2. Tessalonikalaiskirje 3:4: "Ja me luotamme teihin Herrassa, että te sekä nyt että vasta teette, mitä me käskemme."
+- Heprealaiskirje 10:24: "ja valvokaamme toinen toistamme rohkaisuksi toisillemme rakkauteen ja hyviin tekoihin;"
+
+Diagnostiikka valmis.
