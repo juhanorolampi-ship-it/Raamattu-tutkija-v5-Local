@@ -21,8 +21,8 @@ Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus vastaanotettu.
 --- 1. Alkuperäinen laadunarviointi ---
-AI Arvosana: 7/10
-AI Perustelu: Tulokset ovat selkeästi relevantteja aiheeseen ja tukevat hyvin teemaa viisauden tarpeesta ja hengellisen erottamiskyvyn merkitykselle. Jotta arvosana olisi täydellinen, tuloksissa pitäisi olla enemmän jakeita, jotka keskittyvät kunnianhimoiseen viisauden etsimiseen ja erottamiskykyyn lauman suojelemiseksi.
+AI Arvosana: 6/10
+AI Perustelu: Tulokset ovat pääosin aihepiiriltään sopivia, mutta jäävät yleisiksi ja eivät sisällä kaikkia tarpeellisia avainjakeita teeman viisauden ja hengellisen erottamiskyvyn kannalta. Jumalan kutsun tai lauman suojelemisen suoraan aiheeseen liittyviä jakesi ei ole merkittävästi esitetty.
 ----------------------------------------
 Laatuarvio oli heikko. Käynnistetään autonominen korjausprosessi...
 Lähetetään strategiaehdotuspyyntö mallille qwen2.5:14b-instruct (Analyytikko)...
@@ -31,27 +31,22 @@ Analyytikon luonnos vastaanotettu.
 Lähetetään kielenhuoltopyyntö mallille poro-local (Toimittaja)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Toimittajan viimeistelemä versio vastaanotettu.
-Toimittaja ei tuottanut validia JSON-vastausta. Palautetaan Analyytikon raakaversio. Toimittajan vastaus: Avainsanat: ['viisaus', 'erottuvuus']
-Selite: Etsi jakeita, jotka korostavat viisauden ja hengellisen erottuvuuden tärkeyttä lauman suojeluun sekä aiheiden kunnianhimoiseen etsimiseen näiden käsitteiden ympärillä.
+Toimittaja ei tuottanut validia JSON-vastausta. Palautetaan Analyytikon raakaversio. Toimittajan vastaus: <|im_end|>
 --- 2a. Uusi strategia luotu ---
-AI:n ehdottamat avainsanat: ['viisautta', 'erottamiskyvyn']
-AI:n ehdottama selite: Etsi jakeita, jotka keskittyvät viisauden ja hengellisen erottamiskyvyn tarpeeseen lauman suojelemiseksi, sekä aiheiden kunnianhimoiseen etsimiseen näiden käsitteiden ympärille.
+AI:n ehdottamat avainsanat: ['viisaus', 'lauman_suoja']
+AI:n ehdottama selite: Etsi jakeita, jotka käsittelevät hengellisen viisauden merkitystä ja lauman suojelemista erilaisten elämänolosuhteiden varassa. Painokseen tuloksia, joissa on suora yhteydessä aiheeseen liittyviä avainsanoja kuten 'viisautta', 'lauma' tai 'herraan kutsu'.
 Uusi strategia lisätty väliaikaisesti tähän ajoon.
 ----------------------------------------
 --- 2c. Suoritetaan haku uudelleen korjatulla strategialla... ---
 Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
-Suoritetaan strategian relevanssin esianalyysi...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Esianalyysin tulos: Soveltuuko strategia? Kyllä.
-Strategia 'viisautta' todettiin relevantiksi.
 Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus vastaanotettu.
 --- 2d. Korjatun haun laadunarviointi ---
-Alkuperäinen arvosana: 7/10
+Alkuperäinen arvosana: 6/10
 UUSI arvosana: 7/10
-TULOS: Laatu ei parantunut. ⚠️
-Uusi perustelu: Tulokset ovat pääosin relevantteja aiheeseen liittyvien jakeiden ja lauseiden välityksellä, mutta jäävät hieman yleisemmiksi teemassa hengellisen erottamiskyvyn ja viisauden käsitteistä.
+TULOS: Laatu parani merkittävästi! ✅
+Uusi perustelu: Tulokset ovat pääosin relevantteja aiheeseen ja sisältävät johdannosta viisauden ja erottamiskykyyn liittyviä viitteitä. Ne tukevat ajatusta hengellisen erottamiskyvyn tarpeesta, mutta eivät sisällä kaikkia aiheeseen suoraan liittyviä avainjakeita.
 ----------------------------------------
 
 ================================================================================
@@ -63,8 +58,26 @@ Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus vastaanotettu.
 --- 1. Alkuperäinen laadunarviointi ---
-AI Arvosana: 7/10
-AI Perustelu: Tulokset ovat keskeisesti relevantteja aiheeseen, mutta ne sisältävät myös joitakin jakeita, jotka eivät täydentä suoraan pyrinnettä antamaan konkreettisia esimerkkejä harhaopetuksesta ja sen tunnistamisesta. Jotkin jaksheet (kuten Markus 12:14) ovat liian yleisiä tai eivät koske aihepiiria niin suoraan kuin ne voitaisiin.
+AI Arvosana: 8/10
+AI Perustelu: Tulokset ovat hyvin relevantteja aiheeseen ja sisältävät monia jakeita, jotka kuvastavat väärän opetuksen merkkejä. Ne tukevat teemaa hyvin, mutta eivät kaikki täydellisesti vastaavat konkreettisiin tuntomerkintään ja esimerkkeihin Vanhasta Testamentista.
+----------------------------------------
+
+================================================================================
+                            Käsitellään osio 3/5: 3                             
+================================================================================
+
+Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
+Suoritetaan strategian relevanssin esianalyysi...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'tasapaino' todettiin relevantiksi.
+Manuaalisesti valittu siemenjae: Saarn. 3:1
+Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus vastaanotettu.
+--- 1. Alkuperäinen laadunarviointi ---
+AI Arvosana: 6/10
+AI Perustelu: Tulokset on aihepiirin mukaisia ja viittaavat jumalan kärsivällisyyteen ja rakkauteen. Ne sisältävät kuitenkin myös kirjeitä, jotka eivät suoraan liity eroteltavan suhtaudumisen heikkoon veljeen ja eksyttäjään verraten.
 ----------------------------------------
 Laatuarvio oli heikko. Käynnistetään autonominen korjausprosessi...
 Lähetetään strategiaehdotuspyyntö mallille qwen2.5:14b-instruct (Analyytikko)...
@@ -74,5 +87,202 @@ Lähetetään kielenhuoltopyyntö mallille poro-local (Toimittaja)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Toimittajan viimeistelemä versio vastaanotettu.
 --- 2a. Uusi strategia luotu ---
-AI:n ehdottamat avainsanat: [{'sana': 'harhaopetus', 'muoto': 'genetiivi'}, {'sana': 'eksytys', 'muoto': 'genetiivi'}]
-AI:n ehdottama selite: Tunnista ja vältä harhaopettajia, jotka esittävät valheellisia ennusteita, käyttäytyvät moraalittomasti tai osoittavat hallitsevaisuutta.
+AI:n ehdottamat avainsanat: ['kärsivällisyys', 'eroteltava suhtautuminen']
+AI:n ehdottama selite: Etsi raamatunjakeita, jotka korostavat kärsivällisyyden ja rakkauden tärkeyttä erilaisia ihmisiä kohtaan. Tutki, miten Jumalan seuraajat suhtautuvat heikkoja veljiään ja eksyttäjiä, painottaen armoa ja tukea sen sijaan, että heidät eroteltaisiin.
+Uusi strategia lisätty väliaikaisesti tähän ajoon.
+----------------------------------------
+--- 2c. Suoritetaan haku uudelleen korjatulla strategialla... ---
+Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
+Suoritetaan strategian relevanssin esianalyysi...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'tasapaino' todettiin relevantiksi.
+Manuaalisesti valittu siemenjae: Saarn. 3:1
+Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus vastaanotettu.
+--- 2d. Korjatun haun laadunarviointi ---
+Alkuperäinen arvosana: 6/10
+UUSI arvosana: 6/10
+TULOS: Laatu ei parantunut. ⚠️
+Uusi perustelu: Tulokset viittaavat osittain aiheeseen, mutta ne eivät keskity riittävästi susien ja eksyneiden eriarvoiseen kohdattelussa. Ne sisältävät merkkejä, jotka liittyvät hengellisen kasvun prosessiin ja jumalan kunnioitukseen, mutta niissä puuttuu keskeinen aihepiiri susien ja eksyneiden eriarvoiseen kohteluun.
+----------------------------------------
+
+================================================================================
+                            Käsitellään osio 4/5: 4                             
+================================================================================
+
+Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
+Suoritetaan strategian relevanssin esianalyysi...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'viisaus' todettiin relevantiksi.
+Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus vastaanotettu.
+Vastauksen JSON-jäsennys epäonnistui: Expecting ',' delimiter: line 3 column 249 (char 267). Vastaus: {
+  "arvosana": 7,
+  "perustelu": "Tulokset ovat selkeästi relevantteja aiheeseen ja tukevat sen teemaa hyvin. Ne käsityksissään kiinnittävät huomiota Juman työhön, uskoon ja viisautteen liikkeitä arvioidessa, mutta jäävät vähemmän keskittyviin avainjakeisiin kuten "Kiitollisuuden" tai "Pitävä opetuslapseuttaminen"."
+}
+--- 1. Alkuperäinen laadunarviointi ---
+AI Arvosana: Ei saatu.
+AI Perustelu: Virheellinen JSON-vastaus: {
+  "arvosana": 7,
+  "perustelu": "Tulokset ovat selkeästi relevantteja aiheeseen ja tukevat sen teemaa hyvin. Ne käsityksissään kiinnittävät huomiota Juman työhön, uskoon ja viisautteen liikkeitä arvioidessa, mutta jäävät vähemmän keskittyviin avainjakeisiin kuten "Kiitollisuuden" tai "Pitävä opetuslapseuttaminen"."
+}
+----------------------------------------
+
+================================================================================
+                            Käsitellään osio 5/5: 5                             
+================================================================================
+
+Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
+Suoritetaan strategian relevanssin esianalyysi...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'tasapaino' todettiin relevantiksi.
+Manuaalisesti valittu siemenjae: Saarn. 3:1
+Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus vastaanotettu.
+--- 1. Alkuperäinen laadunarviointi ---
+AI Arvosana: 7/10
+AI Perustelu: Tulokset ovat pääosin relevantteja aiheeseen ja korostavat tärkeitä tek Hijaoissa esitettyjä periaatteita, kuten totuuden merkitystä, rakkautta ja kärsivällisyyttä. Ne puuttuvat kuitenkin jatkossa avainjakeiden tiivistelmän antamisessa aiheeseen liittyvistä erityiskysymyksistä.
+----------------------------------------
+Laatuarvio oli heikko. Käynnistetään autonominen korjausprosessi...
+Lähetetään strategiaehdotuspyyntö mallille qwen2.5:14b-instruct (Analyytikko)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Analyytikon luonnos vastaanotettu.
+Lähetetään kielenhuoltopyyntö mallille poro-local (Toimittaja)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Toimittajan viimeistelemä versio vastaanotettu.
+--- 2a. Uusi strategia luotu ---
+AI:n ehdottamat avainsanat: ['tasapaino', 'rakkaus']
+AI:n ehdottama selite: Hakuja varten on otettava huomioon ja tuottaa tuloksia, jotka sisältävät tekstit tai jakeet, joissa keskitytään yhteenvetoa koskeviin periaatteisiin kuten tasapaino totuuden kanssa ja rakkautta kohtaan muuta ihmiskuntaa. Tuloksissa on korostettava niiden osioiden näkyvyyttä, jotka sekä selkitsevät tärkeitä tekijöitä että syventyvät aiheisiin liittyviin kysymyksiin ja tiivistämiseen.
+Uusi strategia lisätty väliaikaisesti tähän ajoon.
+----------------------------------------
+--- 2c. Suoritetaan haku uudelleen korjatulla strategialla... ---
+Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
+Suoritetaan strategian relevanssin esianalyysi...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'tasapaino' todettiin relevantiksi.
+Manuaalisesti valittu siemenjae: Saarn. 3:1
+Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus vastaanotettu.
+--- 2d. Korjatun haun laadunarviointi ---
+Alkuperäinen arvosana: 7/10
+UUSI arvosana: 7/10
+TULOS: Laatu ei parantunut. ⚠️
+Uusi perustelu: Tulokset ovat suurelta osin relevantteja aiheeseen, mutta niissä puuttuu tiivistelmän vaadittu tasapaino totuuden ja rakkautensa välillä. Korostetaan enemmän totuutta ja uskon rauhaa kuin kärsivällistä rakkautta.
+----------------------------------------
+
+================================================================================
+                            DIAGNOSTIIKAN YHTEENVETO                            
+================================================================================
+
+Koko diagnostiikan ajo kesti: 237.76 sekuntia.
+AI:n antama lopullinen keskiarvo tulosten laadulle: 7.00/10
+
+================================================================================
+                         YKSITYISKOHTAINEN JAEJAOTTELU                          
+================================================================================
+
+
+--- 1 1. Johdanto ---
+
+(Lopullinen arvosana tälle osiolle: 7/10)
+- Miika 2:11: "Jos tulisi mies, joka tuulta tavoittelisi ja petollisuudessaan valhettelisi: "Minä saarnaan sinulle viinistä ja väkijuomasta", siinä olisi saarnaaja tälle kansalle."
+- 1. Korinttilaiskirje 7:21: "Jos olet kutsuttu orjana, älä siitä murehdi; mutta vaikka voisitkin päästä vapaaksi, niin ole ennemmin siinä osassasi."
+- Jaakobin kirje 1:5: "Mutta jos joltakin teistä puuttuu viisautta, anokoon sitä Jumalalta, joka antaa kaikille alttiisti ja soimaamatta, niin se hänelle annetaan."
+- Jeremia 9:2: "(9:1) Oi, jospa minulla olisi erämaassa matkamiehen yömaja, niin minä jättäisin kansani ja vaeltaisin pois heidän luotaan! Sillä he ovat kaikki avionrikkojia, ovat uskottomain joukkio."
+- 2. Kuningasten kirja 2:10: "Hän vastasi: "Pyyntösi on vaikea täyttää. Mutta jos näet, kuinka minut otetaan pois sinun tyköäsi, niin se täytetään; jollet, niin se jää täyttämättä.""
+- 2. Tessalonikalaiskirje 3:6: "Mutta Herran Jeesuksen Kristuksen nimessä me käskemme teitä, veljet, vetäytymään pois jokaisesta veljestä, joka vaeltaa kurittomasti eikä sen opetuksen mukaan, jonka olette meiltä saaneet."
+- Jeremia 49:20: "Sentähden kuulkaa Herran päätös, jonka hän on päättänyt Edomia vastaan, ja hänen aivoituksensa, jotka hän on aivoitellut Teemanin asukkaita vastaan: Totisesti, ne raastetaan pois, nuo lauman vähäiset; totisesti, niiden laidun kauhistuu niiden tähden."
+- Matteus 18:13: "Ja jos hän sen löytää, totisesti minä sanon teille: hän iloitsee enemmän siitä kuin niistä yhdeksästäkymmenestä yhdeksästä, jotka eivät olleet eksyneet."
+- 1. Samuelin kirja 14:6: "Ja Joonatan sanoi palvelijalle, joka kantoi hänen aseitansa: "Tule, menkäämme lähelle noiden ympärileikkaamattomain vartiostoa; ehkä Herra on tekevä jotakin meidän puolestamme, sillä ei mikään estä Herraa antamasta voittoa harvojen kautta yhtä hyvin kuin monien"."
+- Luukas 15:7: "Minä sanon teille: samoin on ilo taivaassa suurempi yhdestä syntisestä, joka tekee parannuksen, kuin yhdeksästäkymmenestä yhdeksästä vanhurskaasta, jotka eivät parannusta tarvitse."
+- Jesaja 63:1: "Kuka tuolla tulee Edomista, tulipunaisissa vaatteissa Bosrasta, tuo puvultansa komea, joka uljaana astelee suuressa voimassansa? "Minä, joka puhun vanhurskautta, joka olen voimallinen auttamaan.""
+- 5. Mooseksen kirja 29:19: "(18) niin että se, joka kuulee tämän valan sanat, siunaisi itseänsä sydämessään sanoen: 'Minun käy hyvin, vaikka vaellankin sydämeni paatumuksessa'. Siten hän hukuttaisi kaikki, sekä kostean että kuivan maan."
+- 1. Korinttilaiskirje 11:16: "Mutta jos joku haluaa väittää vastaan, niin tietäköön, että meillä ei ole sellaista tapaa eikä Jumalan seurakunnilla."
+- Johannes 10:16: "Minulla on myös muita lampaita, jotka eivät ole tästä lammastarhasta; myös niitä tulee minun johdattaa, ja ne saavat kuulla minun ääneni, ja on oleva yksi lauma ja yksi paimen."
+- 1. Timoteuskirje 5:16: "Jos jollakin uskovaisella naisella on leskiä, niin pitäköön niistä huolen, älköönkä seurakuntaa rasitettako, että se voisi pitää huolta oikeista leskistä."
+
+--- 2 2. Raamatun selkeä varoitus ---
+
+(Lopullinen arvosana tälle osiolle: 8/10)
+- Jeremia 9:3: "(2) He jännittävät valheeseen kielensä jousen, eivätkä käytä totuuteen valtaansa maassa; sillä he menevät pahuudesta pahuuteen, mutta minua he eivät tunne, sanoo Herra."
+- Markus 13:22: "Sillä vääriä kristuksia ja vääriä profeettoja nousee, ja he tekevät tunnustekoja ja ihmeitä, eksyttääkseen, jos mahdollista, valitut."
+- Efesolaiskirje 5:5: "Sillä sen te tiedätte ja tunnette, ettei yhdelläkään haureellisella eikä saastaisella eikä ahneella — sillä hän on epäjumalanpalvelija — ole perintöosaa Kristuksen ja Jumalan valtakunnassa."
+- Jeremia 23:32: "Katso, minä käyn niiden kimppuun, jotka ennustavat valheunia, sanoo Herra, ja kertovat niitä ja eksyttävät minun kansaani valheillansa ja kerskumisellansa, vaikka minä en ole heitä lähettänyt enkä käskenyt ja vaikka heistä ei ole mitään hyötyä tälle kansalle, sanoo Herra."
+- 2. Pietarin kirje 2:1: "Mutta myös valheprofeettoja oli kansan seassa, niinkuin teidänkin keskuudessanne on oleva valheenopettajia, jotka salaa kuljettavat sisään turmiollisia harhaoppeja, kieltävätpä Herrankin, joka on heidät ostanut, ja tuottavat itselleen äkillisen perikadon."
+- Markus 12:14: "Nämä tulivat ja sanoivat hänelle: "Opettaja, me tiedämme, että sinä olet totinen etkä välitä kenestäkään, sillä sinä et katso henkilöön, vaan opetat Jumalan tietä totuudessa. Onko luvallista antaa keisarille veroa vai ei? Tuleeko meidän antaa vai ei?""
+- Jesaja 59:13: "me olemme luopuneet Herrasta ja kieltäneet hänet, vetäytyneet pois Jumalaamme seuraamasta, puhuneet sortoa ja kapinaa, kantaneet kohdussamme ja purkaneet sisimmästämme valheen sanoja."
+- Matteus 24:24: "Sillä vääriä kristuksia ja vääriä profeettoja nousee, ja he tekevät suuria tunnustekoja ja ihmeitä, niin että eksyttävät, jos mahdollista, valitutkin."
+- Jeremia 23:14: "Mutta Jerusalemin profeetoissa minä olen nähnyt kauhistuksia: aviorikosta ja valheessa vaeltamista; he vahvistavat pahantekijäin käsiä, niin ettei kukaan käänny pois pahuudestansa. He ovat minun edessäni kaikki kuin Sodoma, ja kaupungin asukkaat kuin Gomorra."
+- 2. Timoteuskirje 4:2: "saarnaa sanaa, astu esiin sopivalla ja sopimattomalla ajalla, nuhtele, varoita, kehoita, kaikella pitkämielisyydellä ja opetuksella."
+- Heprealaiskirje 4:12: "Sillä Jumalan sana on elävä ja voimallinen ja terävämpi kuin mikään kaksiteräinen miekka ja tunkee lävitse, kunnes se erottaa sielun ja hengen, nivelet sekä ytimet, ja on sydämen ajatusten ja aivoitusten tuomitsija;"
+- Matteus 16:22: "Silloin Pietari otti hänet erilleen ja rupesi nuhtelemaan häntä sanoen: "Jumala varjelkoon, Herra, älköön se sinulle tapahtuko"."
+- Roomalaiskirje 3:4: "Pois se! Olkoon Jumala totinen, mutta jokainen ihminen valhettelija, niinkuin kirjoitettu on: "Että sinut havaittaisiin vanhurskaaksi sanoissasi ja että voittaisit, kun sinun kanssasi oikeutta käydään"."
+- 1. Korinttilaiskirje 4:5: "Älkää sentähden lausuko mitään tuomiota, ennenkuin aika on, ennenkuin Herra tulee, joka myös on saattava valoon pimeyden kätköt ja tuova ilmi sydänten aivoitukset; ja silloin kukin saa kiitoksensa Jumalalta."
+- Sakarja 10:2: "Sillä kotijumalat puhuvat tyhjiä, ja tietäjät näkevät petosnäkyjä, puhuvat valheunia, lohduttelevat turhilla. Sentähden he saavat lähteä matkaan kuin lammaslauma ja kärsivät vaivaa, kun ei ole paimenta."
+
+--- 3 3. Tasapaino ja oikea asenne ---
+
+(Lopullinen arvosana tälle osiolle: 6/10)
+- Kolossalaiskirje 2:1: "Sillä minä tahdon, että te tiedätte, kuinka suuri kilvoittelu minulla on teidän tähtenne ja laodikealaisten ja kaikkien tähden, jotka eivät ole minun ruumiillisia kasvojani nähneet,"
+- Apostolien teot 15:10: "Miksi te siis nyt kiusaatte Jumalaa ja tahdotte panna opetuslasten niskaan ikeen, jota eivät meidän isämme emmekä mekään ole jaksaneet kantaa?"
+- Roomalaiskirje 8:34: "Kuka voi tuomita kadotukseen? Kristus Jeesus on se, joka on kuollut, onpa vielä herätettykin, ja hän on Jumalan oikealla puolella, ja hän myös rukoilee meidän edestämme."
+- Hesekiel 34:17: "Mutta te, minun lampaani! Näin sanoo Herra, Herra: Katso, minä tahdon tuomita lampaan ja lampaan, oinasten ja vuohipukkien välillä."
+- Jesaja 30:21: "Ja sinun korvasi kuulevat takaasi tämän sanan, milloin poikkeatte oikealle tai vasemmalle: "Tässä on tie, sitä käykää"."
+- 2. Pietarin kirje 1:8: "Sillä jos teillä on nämä ja ne yhä enenevät, niin ne eivät salli teidän olla toimettomia eikä hedelmättömiä meidän Herramme Jeesuksen Kristuksen tuntemisessa."
+- Saarnaaja 3:18: "Minä sanoin sydämessäni: Ihmislasten tähden se niin on, jotta Jumala heitä koettelisi ja he tulisivat näkemään, että he omassa olossaan ovat eläimiä."
+- Roomalaiskirje 3:4: "Pois se! Olkoon Jumala totinen, mutta jokainen ihminen valhettelija, niinkuin kirjoitettu on: "Että sinut havaittaisiin vanhurskaaksi sanoissasi ja että voittaisit, kun sinun kanssasi oikeutta käydään"."
+- Jesaja 64:4: "(3) Ei ole ikiajoista kuultu, ei ole korviin tullut, ei ole silmä nähnyt muuta Jumalaa, paitsi sinut, joka senkaltaisia tekisi häntä odottavalle."
+- 1. Pietarin kirje 4:5: "Mutta heidän on tehtävä tili hänelle, joka on valmis tuomitsemaan eläviä ja kuolleita."
+- Matteus 25:32: "Ja hänen eteensä kootaan kaikki kansat, ja hän erottaa toiset toisista, niinkuin paimen erottaa lampaat vuohista."
+- Apostolien teot 8:22: "Tee siis parannus ja käänny tästä pahuudestasi ja rukoile Herraa — jos ehkä vielä sinun sydämesi ajatus sinulle anteeksi annetaan."
+- Apostolien teot 20:31: "Valvokaa sentähden ja muistakaa, että minä olen kolme vuotta lakkaamatta yötä ja päivää kyynelin neuvonut teitä itsekutakin."
+- Roomalaiskirje 16:18: "Sillä sellaiset eivät palvele meidän Herraamme Kristusta, vaan omaa vatsaansa, ja he pettävät suloisilla sanoilla ja kauniilla puheilla vilpittömien sydämet."
+- Apostolien teot 2:39: "Sillä teille ja teidän lapsillenne tämä lupaus on annettu ja kaikille, jotka kaukana ovat, ketkä ikinä Herra, meidän Jumalamme, kutsuu.""
+
+--- 4 4. Sovellus nykyaikaan ---
+
+(Lopullinen arvosana tälle osiolle: None/10)
+- 2. Korinttilaiskirje 11:12: "Mutta mitä minä teen, sen olen vastakin tekevä, riistääkseni aiheen niiltä, jotka aihetta etsivät, että heidät siinä, missä kerskaavat, havaittaisiin samankaltaisiksi kuin mekin."
+- Heprealaiskirje 11:6: "Mutta ilman uskoa on mahdoton olla otollinen; sillä sen, joka Jumalan tykö tulee, täytyy uskoa, että Jumala on ja että hän palkitsee ne, jotka häntä etsivät."
+- 1. Tessalonikalaiskirje 4:13: "Mutta me emme tahdo pitää teitä, veljet, tietämättöminä siitä, kuinka poisnukkuneiden on, ettette murehtisi niinkuin muut, joilla ei toivoa ole."
+- 1. Timoteuskirje 6:1: "Kaikki, jotka ovat orjina ikeen alla, pitäkööt isäntiänsä kaikkea kunnioitusta ansaitsevina, ettei Jumalan nimi ja oppi tulisi häväistyksi."
+- 2. Korinttilaiskirje 13:6: "Minä toivon teidän tulevan tuntemaan, että me emme ole niitä, jotka eivät koetusta kestä."
+- Jesaja 45:19: "En ole minä puhunut salassa, en pimeässä maan paikassa; en ole sanonut Jaakobin jälkeläisille: etsikää minua tyhjyydestä. Minä Herra puhun vanhurskautta, ilmoitan, mikä oikein on."
+- Kolossalaiskirje 3:1: "Jos te siis olette herätetyt Kristuksen kanssa, niin etsikää sitä, mikä on ylhäällä, jossa Kristus on, istuen Jumalan oikealla puolella."
+- 1. Pietarin kirje 1:11: "ovat tutkineet, mihin tai millaiseen aikaan heissä oleva Kristuksen Henki viittasi, edeltäpäin todistaessaan Kristusta kohtaavista kärsimyksistä ja niiden jälkeen tulevasta kunniasta."
+- Filippiläiskirje 1:18: "Vaan mitäpä tuosta, kunhan Kristusta vain tavalla tai toisella julistetaan, joko näön vuoksi tai totuudessa! Ja siitä minä iloitsen, ja olen vastakin iloitseva."
+- Saarnaaja 8:16: "Kun minä käänsin sydämeni oppimaan viisautta ja katsomaan työtä, jota tehdään maan päällä saamatta untakaan silmiin päivällä tai yöllä,"
+- Psalmit 40:17: "Iloitkoot ja riemuitkoot sinussa kaikki, jotka sinua etsivät; ne, jotka sinun autuuttasi rakastavat, sanokoot aina: "Ylistetty olkoon Herra!""
+- 2. Pietarin kirje 1:4: "joiden kautta hän on lahjoittanut meille kalliit ja mitä suurimmat lupaukset, että te niiden kautta tulisitte jumalallisesta luonnosta osallisiksi ja pelastuisitte siitä turmeluksesta, joka maailmassa himojen tähden vallitsee,"
+- Psalmit 40:5: "Autuas se mies, joka panee turvansa Herraan eikä käänny ylpeiden puoleen eikä niitten, jotka valheeseen eksyvät!"
+- Psalmit 50:22: "Ymmärtäkää tämä te, jotka Jumalan unhotatte, etten minä raatelisi, eikä olisi pelastajaa."
+- 2. Korinttilaiskirje 4:4: "niissä uskottomissa, joiden mielet tämän maailman jumala on niin sokaissut, ettei heille loista valkeus, joka lähtee Kristuksen kirkkauden evankeliumista, hänen, joka on Jumalan kuva."
+
+--- 5 5. Yhteenveto ---
+
+(Lopullinen arvosana tälle osiolle: 7/10)
+- Jaakobin kirje 5:11: "Katso, me ylistämme autuaiksi niitä, jotka ovat kestäneet; Jobin kärsivällisyyden te olette kuulleet, ja lopun, jonka Herra antaa, te olette nähneet. Sillä Herra on laupias ja armahtavainen."
+- Sakarja 10:2: "Sillä kotijumalat puhuvat tyhjiä, ja tietäjät näkevät petosnäkyjä, puhuvat valheunia, lohduttelevat turhilla. Sentähden he saavat lähteä matkaan kuin lammaslauma ja kärsivät vaivaa, kun ei ole paimenta."
+- Saarnaaja 9:1: "Niin minä painoin mieleeni kaiken tämän ja pyrin saamaan kaikkea tätä selville, kuinka näet vanhurskaat ja viisaat ja heidän tekonsa ovat Jumalan kädessä. Ei rakkauskaan eikä viha ole ihmisen tiedettävissä; kaikkea voi hänellä olla edessä."
+- 2. Korinttilaiskirje 13:11: "Lopuksi, veljet, iloitkaa, tulkaa täydellisiksi, ottakaa vastaan kehoituksia, olkaa yhtä mieltä, eläkää sovussa, niin rakkauden ja rauhan Jumala on oleva teidän kanssanne."
+- Jesaja 30:15: "Sillä näin sanoo Herra, Herra, Israelin Pyhä: Kääntymällä ja pysymällä hiljaa te pelastutte, rauhallisuus ja luottamus on teidän väkevyytenne; mutta te ette tahtoneet,"
+- 2. Korinttilaiskirje 5:12: "Emme nyt taas suosittele itseämme teille, vaan tahdomme antaa teille aihetta kerskata meistä, että teillä olisi mitä vastata niille, jotka kerskaavat siitä, mikä silmään näkyy, eikä siitä, mikä sydämessä on."
+- Heprealaiskirje 13:17: "Olkaa kuuliaiset johtajillenne ja tottelevaiset, sillä he valvovat teidän sielujanne niinkuin ne, joiden on tehtävä tili, että he voisivat tehdä sitä ilolla eikä huokaillen; sillä se ei ole teille hyödyllistä."
+- 1. Pietarin kirje 2:12: "ja vaeltamaan nuhteettomasti pakanain keskuudessa, että he siitä, mistä he parjaavat teitä niinkuin pahantekijöitä, teidän hyvien tekojenne tähden, niitä tarkatessaan, ylistäisivät Jumalaa etsikkopäivänä."
+- Jesaja 16:4: "Salli minun karkoitettujeni asua tykönäsi, ole Mooabille suojana hävittäjää vastaan. Sillä sortajalle tulee loppu, hävitys lakkaa, ja polkija on maasta poissa;"
+- Jeremia 9:3: "(2) He jännittävät valheeseen kielensä jousen, eivätkä käytä totuuteen valtaansa maassa; sillä he menevät pahuudesta pahuuteen, mutta minua he eivät tunne, sanoo Herra."
+- Daniel 6:4: "(5) Silloin toiset valtaherrat sekä satraapit etsivät Danielia vastaan syytä valtakunnan hallinnossa. Mutta he eivät voineet löytää mitään syytä eikä rikkomusta, sillä hän oli uskollinen, eikä hänestä laiminlyöntiä eikä rikkomusta löydetty."
+- 2. Korinttilaiskirje 4:2: "vaan olemme hyljänneet kaikki häpeälliset salatiet, niin ettemme vaella kavaluudessa emmekä väärennä Jumalan sanaa, vaan julkituomalla totuuden me suositamme itseämme jokaisen ihmisen omalletunnolle Jumalan edessä."
+- Jesaja 33:15: "Joka vanhurskaudessa vaeltaa ja puhuu sitä, mikä oikein on, joka halveksii väärää voittoa, jonka käsi torjuu lahjukset luotaan, joka tukkii korvansa kuulemasta veritöitä ja sulkee silmänsä näkemästä pahaa,"
+- 2. Pietarin kirje 1:7: "jumalisuudessa veljellistä rakkautta, veljellisessä rakkaudessa yhteistä rakkautta."
+- Jaakobin kirje 3:14: "Mutta jos teillä on katkera kiivaus ja riitaisuus sydämessänne, niin älkää kerskatko älkääkä valhetelko totuutta vastaan."
+
+Diagnostiikka valmis.

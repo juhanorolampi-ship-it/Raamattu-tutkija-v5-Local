@@ -1,0 +1,9 @@
+
+================================================================================
+        RAAMATTU-TUTKIJA v8 - DIAGNOSTIIKKA (Tavoitehakuinen oppiminen)         
+================================================================================
+
+Esiladataan kaikki resurssit...
+Ladataan hakumallit, indeksi ja datatiedostot muistiin...
+Use pytorch device_name: cpu
+Load pretrained SentenceTransformer: TurkuNLP/sbert-cased-finnish-paraphrase
