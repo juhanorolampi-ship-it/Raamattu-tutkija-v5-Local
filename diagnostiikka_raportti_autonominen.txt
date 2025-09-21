@@ -1,0 +1,78 @@
+
+================================================================================
+       RAAMATTU-TUTKIJA v6 - DIAGNOSTIIKKA (Autonominen korjaussilmukka)        
+================================================================================
+
+Esiladataan kaikki resurssit...
+Ladataan hakumallit, indeksi ja datatiedostot muistiin...
+Use pytorch device_name: cpu
+Load pretrained SentenceTransformer: TurkuNLP/sbert-cased-finnish-paraphrase
+Use pytorch device: cpu
+Kaikki resurssit ladattu onnistuneesti.
+Resurssit ladattu.
+Löytyi 5 osiota käsiteltäväksi.
+
+================================================================================
+                            Käsitellään osio 1/5: 1                             
+================================================================================
+
+Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
+Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus vastaanotettu.
+--- 1. Alkuperäinen laadunarviointi ---
+AI Arvosana: 7/10
+AI Perustelu: Tulokset ovat selkeästi relevantteja aiheeseen ja tukevat hyvin teemaa viisauden tarpeesta ja hengellisen erottamiskyvyn merkitykselle. Jotta arvosana olisi täydellinen, tuloksissa pitäisi olla enemmän jakeita, jotka keskittyvät kunnianhimoiseen viisauden etsimiseen ja erottamiskykyyn lauman suojelemiseksi.
+----------------------------------------
+Laatuarvio oli heikko. Käynnistetään autonominen korjausprosessi...
+Lähetetään strategiaehdotuspyyntö mallille qwen2.5:14b-instruct (Analyytikko)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Analyytikon luonnos vastaanotettu.
+Lähetetään kielenhuoltopyyntö mallille poro-local (Toimittaja)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Toimittajan viimeistelemä versio vastaanotettu.
+Toimittaja ei tuottanut validia JSON-vastausta. Palautetaan Analyytikon raakaversio. Toimittajan vastaus: Avainsanat: ['viisaus', 'erottuvuus']
+Selite: Etsi jakeita, jotka korostavat viisauden ja hengellisen erottuvuuden tärkeyttä lauman suojeluun sekä aiheiden kunnianhimoiseen etsimiseen näiden käsitteiden ympärillä.
+--- 2a. Uusi strategia luotu ---
+AI:n ehdottamat avainsanat: ['viisautta', 'erottamiskyvyn']
+AI:n ehdottama selite: Etsi jakeita, jotka keskittyvät viisauden ja hengellisen erottamiskyvyn tarpeeseen lauman suojelemiseksi, sekä aiheiden kunnianhimoiseen etsimiseen näiden käsitteiden ympärille.
+Uusi strategia lisätty väliaikaisesti tähän ajoon.
+----------------------------------------
+--- 2c. Suoritetaan haku uudelleen korjatulla strategialla... ---
+Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
+Suoritetaan strategian relevanssin esianalyysi...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'viisautta' todettiin relevantiksi.
+Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus vastaanotettu.
+--- 2d. Korjatun haun laadunarviointi ---
+Alkuperäinen arvosana: 7/10
+UUSI arvosana: 7/10
+TULOS: Laatu ei parantunut. ⚠️
+Uusi perustelu: Tulokset ovat pääosin relevantteja aiheeseen liittyvien jakeiden ja lauseiden välityksellä, mutta jäävät hieman yleisemmiksi teemassa hengellisen erottamiskyvyn ja viisauden käsitteistä.
+----------------------------------------
+
+================================================================================
+                            Käsitellään osio 2/5: 2                             
+================================================================================
+
+Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
+Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus vastaanotettu.
+--- 1. Alkuperäinen laadunarviointi ---
+AI Arvosana: 7/10
+AI Perustelu: Tulokset ovat keskeisesti relevantteja aiheeseen, mutta ne sisältävät myös joitakin jakeita, jotka eivät täydentä suoraan pyrinnettä antamaan konkreettisia esimerkkejä harhaopetuksesta ja sen tunnistamisesta. Jotkin jaksheet (kuten Markus 12:14) ovat liian yleisiä tai eivät koske aihepiiria niin suoraan kuin ne voitaisiin.
+----------------------------------------
+Laatuarvio oli heikko. Käynnistetään autonominen korjausprosessi...
+Lähetetään strategiaehdotuspyyntö mallille qwen2.5:14b-instruct (Analyytikko)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Analyytikon luonnos vastaanotettu.
+Lähetetään kielenhuoltopyyntö mallille poro-local (Toimittaja)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Toimittajan viimeistelemä versio vastaanotettu.
+--- 2a. Uusi strategia luotu ---
+AI:n ehdottamat avainsanat: [{'sana': 'harhaopetus', 'muoto': 'genetiivi'}, {'sana': 'eksytys', 'muoto': 'genetiivi'}]
+AI:n ehdottama selite: Tunnista ja vältä harhaopettajia, jotka esittävät valheellisia ennusteita, käyttäytyvät moraalittomasti tai osoittavat hallitsevaisuutta.

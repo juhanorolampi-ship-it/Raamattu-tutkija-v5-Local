@@ -1,4 +1,4 @@
-# logic.py (Versio 16.0 - Kontekstitietoinen esianalyysi)
+# logic.py (Versio 16.1 - Valmius dynaamisille strategioille)
 import json
 import logging
 import re
@@ -14,12 +14,10 @@ PAAKARTTA_TIEDOSTO = "D:/Python_AI/Raamattu-tutkija-data/raamattu_viite_kartta.j
 RAAMATTU_TIEDOSTO = "D:/Python_AI/Raamattu-tutkija-data/bible.json"
 EMBEDDING_MALLI = "TurkuNLP/sbert-cased-finnish-paraphrase"
 CROSS_ENCODER_MALLI = "cross-encoder/ms-marco-MiniLM-L-6-v2"
-# Mallit eri tehtäviin
 ARVIOINTI_MALLI = "qwen2.5:14b-instruct"
 KIELENHUOLTO_MALLI = "poro-local"
 
 # --- STRATEGIAKERROS JA KARTTA ---
-# (Nämä pysyvät samoina kuin aiemmin, jätetään pois selkeyden vuoksi)
 STRATEGIA_SANAKIRJA = {
     "jännite": (
         "Hae Raamatusta kohtia, jotka kuvaavat rakentavaa erimielisyyttä, "
@@ -91,7 +89,6 @@ STRATEGIA_SIEMENJAE_KARTTA = {
     "kyvyt": "1. Piet. 4:10",
 }
 
-
 # --- LOKITUKSEN ALUSTUS ---
 logging.basicConfig(
     level=logging.INFO,
@@ -103,7 +100,6 @@ logging.basicConfig(
 @st.cache_resource
 def lataa_resurssit():
     """Lataa kaikki tarvittavat resurssit ja pitää ne muistissa."""
-    # ... (Sama kuin aiemmin)
     logging.info("Ladataan hakumallit, indeksi ja datatiedostot muistiin...")
     try:
         model = SentenceTransformer(EMBEDDING_MALLI)
@@ -140,14 +136,12 @@ def lataa_resurssit():
 
 def poimi_raamatunviitteet(teksti: str) -> list[str]:
     """Etsii ja poimii tekstistä raamatunviitteitä."""
-    # ... (Sama kuin aiemmin)
     pattern = r'((?:[1-3]\.\s)?[A-ZÅÄÖa-zåäö]+\.?\s\d+:\d+(?:-\d+)?)'
     return re.findall(pattern, teksti)
 
 
 def hae_jakeet_viitteella(viite_str: str, jae_haku_kartta: dict) -> list[dict]:
     """Hakee jaejoukon tekstistä poimitun viitteen perusteella."""
-    # ... (Sama kuin aiemmin)
     viite_pattern = re.compile(
         r'((?:[1-3]\.\s)?'
         r'[A-ZÅÄÖa-zåäö]+\.?)'
@@ -179,12 +173,8 @@ def hae_jakeet_viitteella(viite_str: str, jae_haku_kartta: dict) -> list[dict]:
     return sorted(loytyneet, key=lambda x: int(x['viite'].split(':')[-1]))
 
 
-# --- UUSI ESIANALYYSIFUNKTIO ---
 def onko_strategia_relevantti(kysely: str, selite: str) -> bool:
-    """
-    Kysyy tekoälyltä, onko löydetty strategia relevantti
-    annettuun hakukyselyyn.
-    """
+    """Kysyy tekoälyltä, onko löydetty strategia relevantti."""
     kehote = f"""
 ROOLI JA TAVOITE:
 Olet looginen päättelijä. Tehtäväsi on arvioida, onko annettu strategia hyödyllinen tietyn hakukyselyn tarkentamiseen.
@@ -215,22 +205,26 @@ Vastaa AINA ja AINOASTAAN JSON-muodossa. Objektin tulee sisältää yksi avain: 
         return False
     except Exception as e:
         logging.error(f"Virhe esianalyysissä: {e}")
-        return False # Oletuksena ei sovelleta, jos tulee virhe
+        return False
 
 
-def etsi_merkityksen_mukaan(kysely: str, top_k: int = 15) -> list[dict]:
+def etsi_merkityksen_mukaan(kysely: str, top_k: int = 15,
+                          custom_strategiat: dict = None,
+                          custom_siemenjakeet: dict = None) -> list[dict]:
     """
     Etsii Raamatusta käyttäen kontekstitietoista hybridihakua.
+    Voi vastaanottaa väliaikaisen strategiakirjaston testausta varten.
     """
     resurssit = lataa_resurssit()
     if not all(resurssit):
-        logging.error("Haku epäonnistui, koska resursseja ei voitu ladata.")
         return []
 
     model, cross_encoder, paaindeksi, paakartta, jae_haku_kartta = resurssit
 
+    strategia_lahde = custom_strategiat if custom_strategiat is not None else STRATEGIA_SANAKIRJA
+    siemenjae_lahde = custom_siemenjakeet if custom_siemenjakeet is not None else STRATEGIA_SIEMENJAE_KARTTA
+
     viite_str_lista = poimi_raamatunviitteet(kysely)
-    # ... (Pakollisten jakeiden poiminta pysyy samana)
     pakolliset_jakeet = []
     loytyneet_viitteet = set()
     for viite_str in viite_str_lista:
@@ -246,14 +240,12 @@ def etsi_merkityksen_mukaan(kysely: str, top_k: int = 15) -> list[dict]:
 
     laajennettu_kysely = kysely
     pien_kysely = kysely.lower()
-
-    # PÄIVITETTY LOGIIKKA ESIANALYYSILLÄ
-    for avainsana, selite in STRATEGIA_SANAKIRJA.items():
+    
+    for avainsana, selite in strategia_lahde.items():
         if avainsana in pien_kysely:
-            # Uusi vaihe: Varmista strategian relevanssi
             if onko_strategia_relevantti(kysely, selite):
                 logging.info(f"Strategia '{avainsana}' todettiin relevantiksi.")
-                siemenjae_viite = STRATEGIA_SIEMENJAE_KARTTA.get(avainsana)
+                siemenjae_viite = siemenjae_lahde.get(avainsana)
                 if siemenjae_viite:
                     siemenjae_teksti = jae_haku_kartta.get(siemenjae_viite, "")
                     logging.info(f"Manuaalisesti valittu siemenjae: {siemenjae_viite}")
@@ -264,14 +256,12 @@ def etsi_merkityksen_mukaan(kysely: str, top_k: int = 15) -> list[dict]:
                     )
                 else:
                     laajennettu_kysely = f"{selite}. Alkuperäinen aihe on: {kysely}"
-                break # Käytetään ensimmäistä relevanttia strategiaa
+                break
             else:
                 logging.info(f"Strategia '{avainsana}' hylättiin epärelevanttina tähän hakuun.")
-    
-    # Hakulogiikan loppuosa pysyy samana...
+
     alyhaun_tulokset = []
     if top_k > 0:
-        # ... (Kerroinlogiikka)
         if top_k <= 10:
             kerroin = 10
         elif 11 <= top_k <= 20:
@@ -288,7 +278,6 @@ def etsi_merkityksen_mukaan(kysely: str, top_k: int = 15) -> list[dict]:
         haettava_maara = min(top_k * kerroin, paaindeksi.ntotal)
 
         if haettava_maara > 0:
-            # ... (Vektorihaku ja uudelleenjärjestys)
             kysely_vektori = model.encode([laajennettu_kysely])
             _, indeksit = paaindeksi.search(
                 np.array(kysely_vektori, dtype=np.float32), haettava_maara
@@ -316,9 +305,8 @@ def etsi_merkityksen_mukaan(kysely: str, top_k: int = 15) -> list[dict]:
     return lopulliset_tulokset
 
 
-# Laadunarviointi- ja strategiaehdotusfunktiot pysyvät samoina
 def arvioi_tulokset(aihe: str, tulokset: list) -> dict:
-    # ... (Sama kuin aiemmin)
+    """Arvioi hakutulosten relevanssia käyttäen suurta kielimallia."""
     if not tulokset:
         return {"arvosana": None, "perustelu": "Ei tuloksia arvioitavaksi."}
 
@@ -329,20 +317,16 @@ def arvioi_tulokset(aihe: str, tulokset: list) -> dict:
     kehote = f"""
 ROOLI JA TAVOITE:
 Olet teologinen asiantuntija. Tehtäväsi on arvioida annettujen Raamatun jakeiden relevanssia ja laatua suhteessa annettuun hakuaiheeseen.
-
 ARVIOINTIKRITEERIT:
 - 10/10 (Täydellinen): Tulokset sisältävät juuri ne avainjakeet, joita aiheeseen tarvitaan.
 - 7-9/10 (Hyvä/Erinomainen): Tulokset ovat selkeästi relevantteja ja tukevat teemaa hyvin.
 - 4-6/10 (Kohtalainen): Tulokset ovat aihepiiriltään oikeansuuntaisia, mutta jäävät yleisiksi.
 - 1-3/10 (Heikko): Tulokset ovat pääosin epärelevantteja.
-
 VASTAUKSEN MUOTO:
 Vastaa AINA ja AINOASTAAN JSON-muodossa. Älä kirjoita mitään muuta tekstiä. JSON-objektin tulee sisältää kaksi avainta: "arvosana" (kokonaisluku 1-10) ja "perustelu" (lyhyt, merkkijonomuotoinen selitys arvosanalle).
 Esimerkki: {{"arvosana": 8, "perustelu": "Tulokset ovat pääosin relevantteja, mutta eivät sisällä kaikkia avainjakeita."}}
-
 NYKYINEN TEHTÄVÄ:
 Arvioi seuraavat tulokset ja palauta vastauksesi JSON-muodossa.
-
 - Aihe: {aihe}
 - Tulokset:
 {tulokset_str}
@@ -381,7 +365,7 @@ Arvioi seuraavat tulokset ja palauta vastauksesi JSON-muodossa.
 
 
 def ehdota_uutta_strategiaa(aihe: str, tulokset: list, arvio: dict) -> dict:
-    # ... (Sama kuin aiemmin)
+    """Ehdottaa uutta strategiaa heikon hakutuloksen perusteella."""
     tulokset_str = "\n".join(
         [f"{i+1}. {jae['viite']}: \"{jae['teksti']}\"" for i, jae in enumerate(tulokset)]
     )

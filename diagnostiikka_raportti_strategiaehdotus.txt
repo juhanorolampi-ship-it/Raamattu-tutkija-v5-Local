@@ -9,7 +9,7 @@ Use pytorch device_name: cpu
 Load pretrained SentenceTransformer: TurkuNLP/sbert-cased-finnish-paraphrase
 Use pytorch device: cpu
 Kaikki resurssit ladattu onnistuneesti.
-Resurssit ladattu. Kesto: 4.93 sekuntia.
+Resurssit ladattu. Kesto: 5.03 sekuntia.
 Löytyi 5 osiota käsiteltäväksi.
 
 ================================================================================
@@ -17,26 +17,14 @@ Löytyi 5 osiota käsiteltäväksi.
 ================================================================================
 
 Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
-Haku valmis. Kesto: 1.5209 sekuntia. Löydettiin 15 jaetta.
+Haku valmis. Kesto: 2.1710 sekuntia. Löydettiin 15 jaetta.
 Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus vastaanotettu.
 --- Automaattinen laadunarviointi ---
-AI Arvosana: 6/10
-AI Perustelu: Tulokset ovat monipuolisia ja käsittelevät useita teologisesti merkittäviä aiheita, kuten jumalan suuri kutsu ja hengellinen erottamiskyky. Ne eivät kuitenkaan täsmää ainoastaan aiheeseen 'Kutsun vaatimukset: viisauden ja erottamiskyvyn tarve' niin kuin olisivat toissijaisia tai ulkopuolisia aiheelle.
-Arvioinnin kesto: 18.65 sekuntia.
-----------------------------------------
---- Strategiaehdotus ---
-Laatuarvio oli heikko. Pyydetään AI:lta ehdotus uudeksi strategiaksi...
-Lähetetään strategiaehdotuspyyntö mallille qwen2.5:14b-instruct (Analyytikko)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Analyytikon luonnos vastaanotettu.
-Lähetetään kielenhuoltopyyntö mallille poro-local (Toimittaja)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Toimittajan viimeistelemä versio vastaanotettu.
-AI:n ehdottamat avainsanat: ['viisaus', 'erottuvuus']
-AI:n ehdottama selite: Etsi rakenneosioita, jotka keskittyvät jumalan suureen kutsun ymmärtämiseen ja toteuttamiseen sekä sen vaatimuksiin viisaudelle ja hengelliselle erottuvuudelle.
-Strategiaehdotuksen kesto: 17.50 sekuntia.
+AI Arvosana: 7/10
+AI Perustelu: Tulokset ovat selkeästi relevantteja aiheeseen, koska ne viittaavat kutsuun, erottamiskykyyn ja hengelliseen tajuun tarpeeseen. Ne eivät kuitenkaan sisällä kaikkia avainjakeita aiheeseen (kuten viisauden käytön ja lauman suojelemisen), mikä heikentää tulosten täydellistä soveltuvuutta.
+Arvioinnin kesto: 20.55 sekuntia.
 ----------------------------------------
 
 ================================================================================
@@ -44,14 +32,14 @@ Strategiaehdotuksen kesto: 17.50 sekuntia.
 ================================================================================
 
 Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
-Haku valmis. Kesto: 3.3344 sekuntia. Löydettiin 15 jaetta.
+Haku valmis. Kesto: 3.3411 sekuntia. Löydettiin 15 jaetta.
 Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus vastaanotettu.
 --- Automaattinen laadunarviointi ---
 AI Arvosana: 8/10
-AI Perustelu: Tulokset ovat monipuoliset ja tukevat hyvin aiheeseen liittyviä teemoja. Ne antavat konkreettisia tuntomerkkeja harhaopetuksesta sekä esimerkkejä siitä, miten Raamatun käskee toimia tässä yhteydessä.
-Arvioinnin kesto: 14.46 sekuntia.
+AI Perustelu: Tulokset ovat pääosin relevantteja aiheeseen ja tukevat hyvin teemaa, mutta jäävät vähemmän konkreettisiin tunnisteisiin eksyttäjiä koskien.
+Arvioinnin kesto: 8.97 sekuntia.
 ----------------------------------------
 
 ================================================================================
@@ -64,26 +52,14 @@ HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Esianalyysin tulos: Soveltuuko strategia? Kyllä.
 Strategia 'tasapaino' todettiin relevantiksi.
 Manuaalisesti valittu siemenjae: Saarn. 3:1
-Haku valmis. Kesto: 5.3623 sekuntia. Löydettiin 15 jaetta.
+Haku valmis. Kesto: 5.6173 sekuntia. Löydettiin 15 jaetta.
 Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus vastaanotettu.
 --- Automaattinen laadunarviointi ---
-AI Arvosana: 5/10
-AI Perustelu: Tulokset keskittyvät moniin eri aiheisiin ja vähän suoraan liittyy pohjimmiltaan käsiteltäville kysymyksiin. Ne sisältävät jonkin verran relevanteja viitteitä, mutta enemmän yleistä Raamatun materiaalia, joka ei täsmää aiheeseen niin kuin se voisi.
-Arvioinnin kesto: 12.30 sekuntia.
-----------------------------------------
---- Strategiaehdotus ---
-Laatuarvio oli heikko. Pyydetään AI:lta ehdotus uudeksi strategiaksi...
-Lähetetään strategiaehdotuspyyntö mallille qwen2.5:14b-instruct (Analyytikko)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Analyytikon luonnos vastaanotettu.
-Lähetetään kielenhuoltopyyntö mallille poro-local (Toimittaja)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Toimittajan viimeistelemä versio vastaanotettu.
-AI:n ehdottamat avainsanat: ['tasa-arvo', 'kunnioitus']
-AI:n ehdottama selite: Hakutuloksia valitsee niin, että ne keskittyvät Raamatun viitteisiin, jotka korostavat tasa-arvon ja kunnioituksen merkitystä erilaisten henkilöiden kohtelussa. Tämä sisältää myös perustein uskoen ihmisten prosessiarjehet, niiden tarvitsevan armoaa ja hyväntahtoisuutta sen sijaan että heitä tuomitaan tai pidätettäisiin.
-Strategiaehdotuksen kesto: 24.49 sekuntia.
+AI Arvosana: 6/10
+AI Perustelu: Tulokset viittaavat pääosin yleisiin teemoihin ja jopa eksytykseen, mutta puuttuvat erityisesti siitä, miten suhtaudutaan heikkoon veljeen eroaeksyneiden suhtautumisen verran. Varsinaisia linkkejä kasvun prosessiin ja kärsivällisyyteen on vähemmän.
+Arvioinnin kesto: 13.28 sekuntia.
 ----------------------------------------
 
 ================================================================================
@@ -91,26 +67,14 @@ Strategiaehdotuksen kesto: 24.49 sekuntia.
 ================================================================================
 
 Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
-Haku valmis. Kesto: 4.3780 sekuntia. Löydettiin 15 jaetta.
+Haku valmis. Kesto: 4.2060 sekuntia. Löydettiin 15 jaetta.
 Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus vastaanotettu.
 --- Automaattinen laadunarviointi ---
 AI Arvosana: 6/10
-AI Perustelu: Tulokset ovat aihepiiriltään oikeansuuntaisia, mutta jäävät yleisiksi ja eivät täydellisesti vastaa kyseisen teeman moniarvoisuutta. Esimerkiksi heidän pitäisi keskittyä enemmän Jumalan työn tunnistamiseen epäterveissä olosuhteissa sekä nuoria uskovien lähestymistapoihin ja rakkaudellisesti opettavan periaatteiden soveltamiseen.
-Arvioinnin kesto: 19.45 sekuntia.
-----------------------------------------
---- Strategiaehdotus ---
-Laatuarvio oli heikko. Pyydetään AI:lta ehdotus uudeksi strategiaksi...
-Lähetetään strategiaehdotuspyyntö mallille qwen2.5:14b-instruct (Analyytikko)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Analyytikon luonnos vastaanotettu.
-Lähetetään kielenhuoltopyyntö mallille poro-local (Toimittaja)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Toimittajan viimeistelemä versio vastaanotettu.
-AI:n ehdottamat avainsanat: ['tunnistaminen', 'rakkaudellinen lähestymistapa']
-AI:n ehdottama selite: Hakuja on ohjattava siten, että ne keskittyvät Jumalan työn tunnistamiseen epäterveissä olosuhteissa sekä nuorten uskovien rakkaudellisen lähestymistavan ymmärtämiseen. Tähän sisältyy syvä analyysi moniarvoisten periaatteiden mukaisesti ja käytännön tilanteissa tehtävät johtopäätökset.
-Strategiaehdotuksen kesto: 25.90 sekuntia.
+AI Perustelu: Tulokset ovat monipuolisesti aiheeseen liittyviä, mutta ne jäävät yleisemmiksi ja eivät sisällä niitä avainjakeita, jotka olisi odotettavissa suuremmassa määrin tarkasteleva kirjallisuus kristillisen uskonnuttomuuden merkitystä ja hyödyllisyyttä nykyaikaisessa kontekstissa.
+Arvioinnin kesto: 14.63 sekuntia.
 ----------------------------------------
 
 ================================================================================
@@ -120,37 +84,26 @@ Strategiaehdotuksen kesto: 25.90 sekuntia.
 Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
 Suoritetaan strategian relevanssin esianalyysi...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Esianalyysin tulos: Soveltuuko strategia? Ei.
-Strategia 'tasapaino' hylättiin epärelevanttina tähän hakuun.
-Haku valmis. Kesto: 23.7651 sekuntia. Löydettiin 15 jaetta.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'tasapaino' todettiin relevantiksi.
+Manuaalisesti valittu siemenjae: Saarn. 3:1
+Haku valmis. Kesto: 4.1466 sekuntia. Löydettiin 15 jaetta.
 Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b-instruct...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus vastaanotettu.
 --- Automaattinen laadunarviointi ---
 AI Arvosana: 7/10
-AI Perustelu: Tulokset ovat pääosin relevantteja teeman yhteenvetoon kuvaavista jakeista, mutta jättevät välttämättömiä avainjakeita kuten Efesolaiskirjeen 4:15-16 ja Juudaksen kirjeen 3:17. Nämä ovat tärkeitä aiheeseen, koska ne korostavat jopa tehokasta lähestymistapa totuuden ja rakkauden yhteensovitukseen.
-Arvioinnin kesto: 14.62 sekuntia.
-----------------------------------------
---- Strategiaehdotus ---
-Laatuarvio oli heikko. Pyydetään AI:lta ehdotus uudeksi strategiaksi...
-Lähetetään strategiaehdotuspyyntö mallille qwen2.5:14b-instruct (Analyytikko)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Analyytikon luonnos vastaanotettu.
-Lähetetään kielenhuoltopyyntö mallille poro-local (Toimittaja)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Toimittajan viimeistelemä versio vastaanotettu.
-AI:n ehdottamat avainsanat: ['totuuden rakkaus', 'tasapaino']
-AI:n ehdottama selite: Etsi jakeita, jotka käsittelevät totuuden ja rakkauden yhteensovittamista sekä tasapainon löytämistä niihin suhteessa. Nämä jaksot varmistavat, että toiminta perustuu totuuteen, valppaana eksytyksen vaaroille, samalla osoittaen armollisuutta kaikissa asioissa.
-Strategiaehdotuksen kesto: 22.55 sekuntia.
+AI Perustelu: Tulokset ovat hyvin relevaantteja aiheeseen ja tarjoavat monipuolisen käsityksen loppuyhteenvetosta, jossa painotetaan totuuden ja rakkauden yhteenkuuluvuutta. Kuitenkin tulokset eivät sisällä kaikkia avainjakeita aiheeseen liittyvistä teemoista.
+Arvioinnin kesto: 13.05 sekuntia.
 ----------------------------------------
 
 ================================================================================
                             DIAGNOSTIIKAN YHTEENVETO                            
 ================================================================================
 
-Koko diagnostiikan ajo kesti: 213.24 sekuntia.
-Hakujen kokonaisaika: 38.36 sekuntia.
-AI:n antama keskiarvo tulosten laadulle: 6.40/10
+Koko diagnostiikan ajo kesti: 95.00 sekuntia.
+Hakujen kokonaisaika: 19.48 sekuntia.
+AI:n antama keskiarvo tulosten laadulle: 6.80/10
 
 ================================================================================
                          YKSITYISKOHTAINEN JAEJAOTTELU                          
@@ -231,20 +184,20 @@ AI:n antama keskiarvo tulosten laadulle: 6.40/10
 
 --- 5 5. Yhteenveto ---
 
-- Efesolaiskirje 4:16: "josta koko ruumis, yhteen liitettynä ja koossa pysyen jokaisen jänteensä avulla, kasvaa rakentuakseen rakkaudessa sen voiman määrän mukaan, mikä kullakin osalla on."
-- Juudaksen kirje 1:21: "ja pysyttäkää niin itsenne Jumalan rakkaudessa, odottaessanne meidän Herramme Jeesuksen Kristuksen laupeutta iankaikkiseksi elämäksi."
-- 2. Pietarin kirje 1:7: "jumalisuudessa veljellistä rakkautta, veljellisessä rakkaudessa yhteistä rakkautta."
-- 1. Korinttilaiskirje 16:14: "Kaikki, mitä teette, tapahtukoon rakkaudessa."
-- 2. Korinttilaiskirje 4:2: "vaan olemme hyljänneet kaikki häpeälliset salatiet, niin ettemme vaella kavaluudessa emmekä väärennä Jumalan sanaa, vaan julkituomalla totuuden me suositamme itseämme jokaisen ihmisen omalletunnolle Jumalan edessä."
-- Efesolaiskirje 4:15: "vaan että me, totuutta noudattaen rakkaudessa, kaikin tavoin kasvaisimme häneen, joka on pää, Kristus,"
-- Efesolaiskirje 4:2: "kaikessa nöyryydessä ja hiljaisuudessa ja pitkämielisyydessä kärsien toinen toistanne rakkaudessa"
-- 1. Pietarin kirje 2:12: "ja vaeltamaan nuhteettomasti pakanain keskuudessa, että he siitä, mistä he parjaavat teitä niinkuin pahantekijöitä, teidän hyvien tekojenne tähden, niitä tarkatessaan, ylistäisivät Jumalaa etsikkopäivänä."
 - Jaakobin kirje 5:11: "Katso, me ylistämme autuaiksi niitä, jotka ovat kestäneet; Jobin kärsivällisyyden te olette kuulleet, ja lopun, jonka Herra antaa, te olette nähneet. Sillä Herra on laupias ja armahtavainen."
+- Sakarja 10:2: "Sillä kotijumalat puhuvat tyhjiä, ja tietäjät näkevät petosnäkyjä, puhuvat valheunia, lohduttelevat turhilla. Sentähden he saavat lähteä matkaan kuin lammaslauma ja kärsivät vaivaa, kun ei ole paimenta."
+- Saarnaaja 9:1: "Niin minä painoin mieleeni kaiken tämän ja pyrin saamaan kaikkea tätä selville, kuinka näet vanhurskaat ja viisaat ja heidän tekonsa ovat Jumalan kädessä. Ei rakkauskaan eikä viha ole ihmisen tiedettävissä; kaikkea voi hänellä olla edessä."
+- 2. Korinttilaiskirje 13:11: "Lopuksi, veljet, iloitkaa, tulkaa täydellisiksi, ottakaa vastaan kehoituksia, olkaa yhtä mieltä, eläkää sovussa, niin rakkauden ja rauhan Jumala on oleva teidän kanssanne."
 - Jesaja 30:15: "Sillä näin sanoo Herra, Herra, Israelin Pyhä: Kääntymällä ja pysymällä hiljaa te pelastutte, rauhallisuus ja luottamus on teidän väkevyytenne; mutta te ette tahtoneet,"
-- 2. Tessalonikalaiskirje 1:3: "Me olemme velvolliset aina kiittämään Jumalaa teidän tähtenne, veljet, niinkuin oikein onkin, koska teidän uskonne runsaasti kasvaa ja keskinäinen rakkautenne lisääntyy itsekussakin, kaikissa teissä,"
-- Psalmit 86:15: "Mutta sinä, Herra, olet laupias ja armahtavainen Jumala, pitkämielinen, suuri armossa ja totuudessa."
-- 2. Johanneksen kirje 1:2: "totuuden tähden, joka meissä pysyy ja on oleva meidän kanssamme iankaikkisesti."
-- 2. Pietarin kirje 3:18: "ja kasvakaa meidän Herramme ja Vapahtajamme Jeesuksen Kristuksen armossa ja tuntemisessa. Hänen olkoon kunnia sekä nyt että hamaan iankaikkisuuden päivään."
+- 2. Korinttilaiskirje 5:12: "Emme nyt taas suosittele itseämme teille, vaan tahdomme antaa teille aihetta kerskata meistä, että teillä olisi mitä vastata niille, jotka kerskaavat siitä, mikä silmään näkyy, eikä siitä, mikä sydämessä on."
+- Heprealaiskirje 13:17: "Olkaa kuuliaiset johtajillenne ja tottelevaiset, sillä he valvovat teidän sielujanne niinkuin ne, joiden on tehtävä tili, että he voisivat tehdä sitä ilolla eikä huokaillen; sillä se ei ole teille hyödyllistä."
+- 1. Pietarin kirje 2:12: "ja vaeltamaan nuhteettomasti pakanain keskuudessa, että he siitä, mistä he parjaavat teitä niinkuin pahantekijöitä, teidän hyvien tekojenne tähden, niitä tarkatessaan, ylistäisivät Jumalaa etsikkopäivänä."
 - Jesaja 16:4: "Salli minun karkoitettujeni asua tykönäsi, ole Mooabille suojana hävittäjää vastaan. Sillä sortajalle tulee loppu, hävitys lakkaa, ja polkija on maasta poissa;"
+- Jeremia 9:3: "(2) He jännittävät valheeseen kielensä jousen, eivätkä käytä totuuteen valtaansa maassa; sillä he menevät pahuudesta pahuuteen, mutta minua he eivät tunne, sanoo Herra."
+- Daniel 6:4: "(5) Silloin toiset valtaherrat sekä satraapit etsivät Danielia vastaan syytä valtakunnan hallinnossa. Mutta he eivät voineet löytää mitään syytä eikä rikkomusta, sillä hän oli uskollinen, eikä hänestä laiminlyöntiä eikä rikkomusta löydetty."
+- 2. Korinttilaiskirje 4:2: "vaan olemme hyljänneet kaikki häpeälliset salatiet, niin ettemme vaella kavaluudessa emmekä väärennä Jumalan sanaa, vaan julkituomalla totuuden me suositamme itseämme jokaisen ihmisen omalletunnolle Jumalan edessä."
+- Jesaja 33:15: "Joka vanhurskaudessa vaeltaa ja puhuu sitä, mikä oikein on, joka halveksii väärää voittoa, jonka käsi torjuu lahjukset luotaan, joka tukkii korvansa kuulemasta veritöitä ja sulkee silmänsä näkemästä pahaa,"
+- 2. Pietarin kirje 1:7: "jumalisuudessa veljellistä rakkautta, veljellisessä rakkaudessa yhteistä rakkautta."
+- Jaakobin kirje 3:14: "Mutta jos teillä on katkera kiivaus ja riitaisuus sydämessänne, niin älkää kerskatko älkääkä valhetelko totuutta vastaan."
 
 Diagnostiikka valmis.
