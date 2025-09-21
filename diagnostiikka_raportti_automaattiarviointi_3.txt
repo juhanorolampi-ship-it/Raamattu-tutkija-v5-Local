@@ -1,0 +1,209 @@
+
+================================================================================
+      RAAMATTU-TUTKIJA v5 - DIAGNOSTIIKKA (Automaattinen laadunarviointi)       
+================================================================================
+
+Esiladataan kaikki resurssit...
+Ladataan hakumallit, indeksi ja datatiedostot muistiin...
+Use pytorch device_name: cpu
+Load pretrained SentenceTransformer: TurkuNLP/sbert-cased-finnish-paraphrase
+Use pytorch device: cpu
+Kaikki resurssit ladattu onnistuneesti.
+Resurssit ladattu. Kesto: 5.06 sekuntia.
+Löytyi 5 osiota käsiteltäväksi.
+
+================================================================================
+                            Käsitellään osio 1/5: 1                             
+================================================================================
+
+Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
+Strategiaa ei löytynyt. Käytetään perinteistä semanttista hakua.
+Yhdistetty 0 pakollista jaetta ja 15 älyhaun tulosta. Yhteensä 15 jaetta.
+Haku valmis. Kesto: 1.5358 sekuntia. Löydettiin 15 jaetta.
+Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus vastaanotettu.
+--- Automaattinen laadunarviointi ---
+AI Arvosana: 7/10
+AI Perustelu: Tulokset ovat hyvin relevantteja aiheeseen ja tukevat teemaa hyvin. Ne sisältävät monia jakeita, jotka käsittelevät ruumiin osista ja niiden riippuvuutta toisistaan sekä keskinäistä avun antamista. Jostakin puututaan kuitenkin syvemmälle aiheeseen liittyviin kehitustiedoisiin, erityisesti ruumiin moniarvoisen toiminnan ja sen merkityksen kristillisen uskonnon kannalta.
+Arvioinnin kesto: 18.69 sekuntia.
+----------------------------------------
+
+================================================================================
+                            Käsitellään osio 2/5: 2                             
+================================================================================
+
+Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
+Strategia aktivoitu avainsanalla 'profeetta'.
+Manuaalisesti valittu siemenjae: Ef. 4:11-12
+Rakennettu 'superkysely' strategian ja siemenjakeen pohjalta.
+Yhdistetty 0 pakollista jaetta ja 15 älyhaun tulosta. Yhteensä 15 jaetta.
+Haku valmis. Kesto: 3.6556 sekuntia. Löydettiin 15 jaetta.
+Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus vastaanotettu.
+--- Automaattinen laadunarviointi ---
+AI Arvosana: 5/10
+AI Perustelu: Tulokset ovat monipuolisia ja viittaavat profeetan ja papin roolin erottumisesta, mutta ne puuttuvat konkreettiseksi ohjeeksi tai hyviinkin selkeiksi esimerkkeihin siitä, miten nämä kaksi roolia voivat toimia yhdessä järjestelmällisesti ja rakentavasti. Ne ovat enemmän keskittyneet profeeteille ja papille kyseenalaistamaan sen, että he eivät ole toteuttaneet tehtäviään tehokkaasti tai uskollisesti.
+Arvioinnin kesto: 16.43 sekuntia.
+----------------------------------------
+
+================================================================================
+                            Käsitellään osio 3/5: 3                             
+================================================================================
+
+Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
+Strategia aktivoitu avainsanalla 'tasapaino'.
+Manuaalisesti valittu siemenjae: Saarn. 3:1
+Rakennettu 'superkysely' strategian ja siemenjakeen pohjalta.
+Yhdistetty 0 pakollista jaetta ja 15 älyhaun tulosta. Yhteensä 15 jaetta.
+Haku valmis. Kesto: 3.3338 sekuntia. Löydettiin 15 jaetta.
+Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus vastaanotettu.
+--- Automaattinen laadunarviointi ---
+AI Arvosana: 5/10
+AI Perustelu: Tulokset ovat pääosin yleisessä teologisessa kontekstissa, mutta jäävät keskeiseksi aihepiiriksi Martan ja Marian palveluyhteenvetoa koskien. Niissä puuttuu suora arviointi ja tukenaanteko kummallekin asiayhteydessä tai välttämättömiä viittauksia sosiaalisiin, psyykkisiin ja uskovallanpiirteihin.
+Arvioinnin kesto: 14.55 sekuntia.
+----------------------------------------
+
+================================================================================
+                            Käsitellään osio 4/5: 4                             
+================================================================================
+
+Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
+Strategia aktivoitu avainsanalla 'jännite'.
+Manuaalisesti valittu siemenjae: Room. 12:4-5
+Rakennettu 'superkysely' strategian ja siemenjakeen pohjalta.
+Yhdistetty 0 pakollista jaetta ja 15 älyhaun tulosta. Yhteensä 15 jaetta.
+Haku valmis. Kesto: 3.5795 sekuntia. Löydettiin 15 jaetta.
+Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus vastaanotettu.
+--- Automaattinen laadunarviointi ---
+AI Arvosana: 7/10
+AI Perustelu: Tulokset ovat selkeästi relevantteja aiheeseen ja tukevat hyvin keskinäisen kunnioituksen ja kompromissien tekemistä periaatteita. Ne sisältävät myös avaintekstejä jumalan työkaluista, kuten profetian ja rakentamisen. Kuitenkaan tulokset puuttuvat tarkasti lauseeseen 'Huono Jännite Hajottaa', mikä heikentää kokonaisvaltaista relevanssia aiheeseen.
+Arvioinnin kesto: 15.27 sekuntia.
+----------------------------------------
+
+================================================================================
+                            Käsitellään osio 5/5: 5                             
+================================================================================
+
+Löydettiin 0 viitettä, jotka vastasivat 0 uniikkia jaetta.
+Strategiaa ei löytynyt. Käytetään perinteistä semanttista hakua.
+Yhdistetty 0 pakollista jaetta ja 15 älyhaun tulosta. Yhteensä 15 jaetta.
+Haku valmis. Kesto: 1.8368 sekuntia. Löydettiin 15 jaetta.
+Lähetetään JSON-arviointipyyntö mallille qwen2.5:14b...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus vastaanotettu.
+--- Automaattinen laadunarviointi ---
+AI Arvosana: 6/10
+AI Perustelu: Tulokset ovat pääosin aihepiiriltään oikeansuuntaisia, mutta jäävät yleisiksi. Ne käsittävät Jumalan kutsumusta ja sen merkitystä elämällässä, mutta eivät täsmää erityisesti aiheeseen liittyviin haasteisiin tai erilaisuuteen.
+Arvioinnin kesto: 11.60 sekuntia.
+----------------------------------------
+
+================================================================================
+                            DIAGNOSTIIKAN YHTEENVETO                            
+================================================================================
+
+Koko diagnostiikan ajo kesti: 95.54 sekuntia.
+Hakujen kokonaisaika: 13.94 sekuntia.
+AI:n antama keskiarvo tulosten laadulle: 6.00/10
+
+================================================================================
+                         YKSITYISKOHTAINEN JAEJAOTTELU                          
+================================================================================
+
+
+--- 1 1. Johdanto ---
+
+- 1. Korinttilaiskirje 12:20: "Mutta nytpä onkin monta jäsentä, ja ainoastaan yksi ruumis."
+- 2. Samuelin kirja 18:2: "Sitten Daavid lähetti väen liikkeelle: yhden kolmanneksen Jooabin johdolla, toisen kolmanneksen Abisain, Serujan pojan, Jooabin veljen, johdolla ja kolmannen kolmanneksen gatilaisen Ittain johdolla. Ja kuningas sanoi kansalle: "Minä lähden myös itse teidän kanssanne"."
+- 1. Korinttilaiskirje 12:14: "Sillä eihän ruumiskaan ole yksi jäsen, vaan niitä on siinä monta."
+- 1. Korinttilaiskirje 7:5: "Älkää vetäytykö pois toisistanne, paitsi ehkä keskinäisestä sopimuksesta joksikin ajaksi, niin että olisitte vapaat rukoukseen ja sitten taas tulisitte yhteen, ettei saatana teitä kiusaisi teidän hillittömyytenne tähden."
+- 1. Mooseksen kirja 42:16: "Lähettäkää yksi joukostanne noutamaan veljenne tänne, mutta teidän muiden on jääminen tänne vangeiksi, että koeteltaisiin, oletteko puhuneet totta; muuten, niin totta kuin farao elää, te olette vakoojia.""
+- Tuomarien kirja 16:30: "Ja Simson sanoi: "Menköön oma henkeni yhdessä filistealaisten kanssa!" Ja hän taivuttautui eteenpäin niin rajusti, että rakennus luhistui ruhtinasten ja kaiken siinä olevan kansan päälle. Ja kuolleita, jotka hän surmasi kuollessaan, oli enemmän kuin niitä, jotka hän oli surmannut eläessään."
+- Saarnaaja 4:10: "Jos he lankeavat, niin toinen nostaa ylös toverinsa; mutta voi yksinäistä, jos hän lankeaa! Ei ole toista nostamassa häntä ylös."
+- 1. Korinttilaiskirje 12:15: "Jos jalka sanoisi: "Koska en ole käsi, en kuulu ruumiiseen", niin ei se silti olisi ruumiiseen kuulumaton."
+- 1. Mooseksen kirja 25:23: "Ja Herra sanoi hänelle: "Kaksi kansaa on sinun kohdussasi, kaksi heimoa erkanee sinun ruumiistasi, toinen heimo on toista voimakkaampi, vanhempi palvelee nuorempaa"."
+- 1. Mooseksen kirja 42:38: "Mutta hän sanoi: "Ei minun poikani saa lähteä teidän kanssanne, sillä hänen veljensä on kuollut, ja hän on yksin jäljellä; jos onnettomuus kohtaa häntä matkalla, jolle aiotte lähteä, niin te saatatte minun harmaat hapseni vaipumaan murheella tuonelaan"."
+- 1. Samuelin kirja 17:8: "Hän astui esiin ja huusi Israelin taisteluriveille sanoen: "Miksi te lähditte sotaan ja asetuitte sotarintaan? Minä olen filistealainen, ja te olette Saulin palvelijoita; valitkaa joukostanne mies, joka tulee tänne minun luokseni."
+- Saarnaaja 4:11: "Myös, jos kaksi makaa yhdessä, on heillä lämmin; mutta kuinka voisi yksinäisellä olla lämmin?"
+- 5. Mooseksen kirja 28:43: "Muukalainen, joka asuu keskuudessasi, kohoaa sinun ylitsesi yhä ylemmäksi, mutta sinä painut aina alemmaksi."
+- 2. Samuelin kirja 18:3: "Mutta kansa vastasi: "Älä lähde; sillä jos me pakenemme, ei meistä välitetä, ja jos puolet meistä saa surmansa, ei meistä silloinkaan välitetä, mutta sinä olet niinkuin kymmenen tuhatta meistä. Sentähden on nyt parempi, että sinä olet valmiina tulemaan meille avuksi kaupungista.""
+- Markus 10:8: "Ja ne kaksi tulevat yhdeksi lihaksi.' Niin eivät he enää ole kaksi, vaan yksi liha."
+
+--- 2 2. Profeetan ja Papin Sydän ---
+
+- 2. Kuningasten kirja 5:22: "Hän vastasi: "Hyvin on; mutta herrani on lähettänyt minut ja käskee sanoa: 'Nyt juuri tuli luokseni Efraimin vuoristosta kaksi nuorta miestä, profeetanoppilaita. Anna heille talentti hopeata ja kaksi juhlapukua.'""
+- Miika 3:5: "Näin sanoo Herra niitä profeettoja vastaan, jotka eksyttävät minun kansaani, jotka huutavat: "Rauha!", kun heidän hampaissaan on purtavaa, mutta julistavat pyhän sodan sille, joka ei anna mitään heidän suuhunsa:"
+- Sakarja 10:3: "Paimenia kohtaan syttyy minun vihani, ja johtomiehiä minä rankaisen; sillä Herra Sebaot pitää huolen laumastansa, Juudan heimosta, ja asettaa sen ikäänkuin kunniaratsuksensa sodassa."
+- Miika 7:4: "Paras heistä on kuin orjantappura, oikeamielisin pahempi kuin teräväokainen aita. Sinun tähystäjäisi ilmoittama päivä, kosto sinulle, tulee. Silloin he joutuvat sekasortoon."
+- Jeremia 23:17: "He hokevat minun halveksijoilleni: 'Herra on sen sanonut: Teillä on oleva rauha!' Ja kaikille, jotka vaeltavat sydämensä paatumuksessa, he sanovat: 'Ei teitä kohtaa onnettomuus'."
+- Hesekiel 7:26: "Häviö tulee häviön jälkeen, sanoma tulee sanoman jälkeen. He havittelevat näkyä profeetalta; papilta katoaa opetus ja vanhimmilta neuvo."
+- Jeremia 8:6: "Minä olen tarkannut ja kuunnellut: he puhuvat sitä, mikä ei ole oikein; ei kukaan kadu pahuuttansa, ei ajattele: Mitä olen minä tehnyt! Kaikki he kääntyvät pois juosten juoksuansa, niinkuin orhi kiitää taistelussa."
+- Jeremia 18:18: "Mutta he sanoivat: "Tulkaa, pitäkäämme neuvoa Jeremiaa vastaan. Sillä ei laki lopu papilta, ei neuvo viisaalta eikä sana profeetalta. Tulkaa, lyökäämme hänet kielellä, älkäämme kuunnelko lainkaan hänen puheitansa.""
+- Jeremia 15:18: "Miksi kestää minun kipuni ainiaan ja haavani on paha eikä tahdo parantua? Sinä olet minulle kuin ehtyvä puro, kuin vesi, joka ei pysy."
+- Jeremia 23:20: "Eikä Herran viha asetu, ennenkuin hän on toteuttanut ja täyttänyt sydämensä aivoitukset. Aikojen lopulla te tulette sen hyvin ymmärtämään."
+- Jeremia 14:18: "Jos minä kedolle lähden, katso — miekan kaatamia! Jos tulen kaupunkiin, katso — kalvava nälkä! Sillä sekä profeetat että papit kiertävät maata eivätkä mitään tiedä."
+- Miika 7:3: "Pahantekoon molemmin käsin! Sitä taidolla tekemään! Päämies vaatii, tuomari maksusta tuomitsee, ja mahtava puhuu julki sielunsa himon; senkaltaista he punovat."
+- Sakarja 10:2: "Sillä kotijumalat puhuvat tyhjiä, ja tietäjät näkevät petosnäkyjä, puhuvat valheunia, lohduttelevat turhilla. Sentähden he saavat lähteä matkaan kuin lammaslauma ja kärsivät vaivaa, kun ei ole paimenta."
+- Jesaja 58:2: "Minua he muka etsivät joka päivä ja haluavat tietoa minun teistäni niinkuin kansa, joka tekee vanhurskautta eikä hylkää Jumalansa oikeutta. He vaativat minulta vanhurskaita tuomioita, haluavat, että Jumala heitä lähestyisi:"
+- 2. Korinttilaiskirje 5:10: "Sillä kaikkien meidän pitää ilmestymän Kristuksen tuomioistuimen eteen, että kukin saisi sen mukaan, kuin hän ruumiissa ollessaan on tehnyt, joko hyvää tai pahaa."
+
+--- 3 3. Martan ja Marian Palvelutyöt ---
+
+- 2. Korinttilaiskirje 6:16: "Ja miten soveltuvat yhteen Jumalan temppeli ja epäjumalat? Sillä me olemme elävän Jumalan temppeli, niinkuin Jumala on sanonut: "Minä olen heissä asuva ja vaeltava heidän keskellään ja oleva heidän Jumalansa, ja he ovat minun kansani"."
+- 1. Pietarin kirje 4:11: "Jos joku puhuu, puhukoon niinkuin Jumalan sanoja; jos joku palvelee, palvelkoon sen voiman mukaan, minkä Jumala antaa, että Jumala tulisi kaikessa kirkastetuksi Jeesuksen Kristuksen kautta. Hänen on kunnia ja valta aina ja iankaikkisesti. Amen."
+- 1. Korinttilaiskirje 16:15: "Mutta minä kehoitan teitä, veljet: te tunnette Stefanaan perhekunnan ja tiedätte, että se on Akaian ensi hedelmä ja että he ovat antautuneet pyhien palvelukseen."
+- Jaakobin kirje 1:27: "Puhdas ja tahraton jumalanpalvelus Jumalan ja Isän silmissä on käydä katsomassa orpoja ja leskiä heidän ahdistuksessaan ja varjella itsensä niin, ettei maailma saastuta."
+- Jesaja 64:5: "(4) Sinä käyt niitä kohden, jotka ilolla vanhurskautta tekevät ja jotka sinun teilläsi sinua muistavat. Katso, sinä vihastuit, ja me jouduimme synnin alaisiksi; niin on ollut ikiajoista asti — saammeko avun?"
+- Saarnaaja 9:1: "Niin minä painoin mieleeni kaiken tämän ja pyrin saamaan kaikkea tätä selville, kuinka näet vanhurskaat ja viisaat ja heidän tekonsa ovat Jumalan kädessä. Ei rakkauskaan eikä viha ole ihmisen tiedettävissä; kaikkea voi hänellä olla edessä."
+- 3. Johanneksen kirje 1:10: "Sentähden minä, jos tulen, muistutan hänen teoistansa, mitä hän tekee, kun pahoilla sanoilla meistä juoruaa; ja vielä siihenkään tyytymättä, hän ei itse ota veljiä vastaan, vaan estää niitäkin, jotka tahtovat sen tehdä, ja ajaa heidät pois seurakunnasta."
+- Heprealaiskirje 13:17: "Olkaa kuuliaiset johtajillenne ja tottelevaiset, sillä he valvovat teidän sielujanne niinkuin ne, joiden on tehtävä tili, että he voisivat tehdä sitä ilolla eikä huokaillen; sillä se ei ole teille hyödyllistä."
+- 1. Timoteuskirje 5:17: "Vanhimpia, jotka seurakuntaa hyvin hoitavat, pidettäköön kahdenkertaisen kunnian ansainneina, varsinkin niitä, jotka sanassa ja opetuksessa työtä tekevät."
+- Matteus 6:24: "Ei kukaan voi palvella kahta herraa; sillä hän on joko tätä vihaava ja toista rakastava, taikka tähän liittyvä ja toista halveksiva. Ette voi palvella Jumalaa ja mammonaa."
+- 2. Korinttilaiskirje 12:13: "Sillä missä muussa te olette jääneet muita seurakuntia vähemmälle kuin siinä, etten minä puolestani ole rasittanut teitä? Antakaa minulle anteeksi tämä vääryys."
+- Malakia 2:17: "Te väsytätte Herran puheillanne. Mutta te sanotte: "Miten väsytämme?" Siten, että sanotte: "Jokainen, joka pahaa tekee, on hyvä Herran silmissä, ja niihin hänellä on mielisuosio"; tahi: "Missä on tuomion Jumala?""
+- 1. Samuelin kirja 15:23: "Sillä tottelemattomuus on taikuuden syntiä, ja niskoittelu on valhetta ja kuin kotijumalain palvelusta. Koska sinä olet hyljännyt Herran sanan, on myös hän hyljännyt sinut, etkä sinä enää saa olla kuninkaana.""
+- Roomalaiskirje 16:17: "Mutta minä kehoitan teitä, veljet, pitämään silmällä niitä, jotka saavat aikaan erimielisyyttä ja pahennusta vastoin sitä oppia, jonka te olette saaneet; vetäytykää pois heistä."
+- Galatalaiskirje 1:10: "Ihmistenkö suosiota minä nyt etsin vai Jumalan? Tai ihmisillekö pyydän olla mieliksi? Jos minä vielä tahtoisin olla ihmisille mieliksi, en olisi Kristuksen palvelija."
+
+--- 4 4. Terve Jännite Rakentaa, Huono Jännite Hajottaa ---
+
+- 2. Korinttilaiskirje 13:10: "Sentähden minä kirjoitan tämän poissa ollessani, ettei minun teidän luonanne ollessani tarvitsisi käyttää ankaruutta sen vallan nojalla, minkä Herra on minulle antanut rakentamiseksi, ei kukistamiseksi."
+- 1. Korinttilaiskirje 14:5: "Soisin teidän kaikkien puhuvan kielillä, mutta vielä mieluummin soisin teidän profetoivan; sillä profetoiva on suurempi kuin kielillä puhuva, ellei tämä samalla selitä, niin että seurakunta siitä rakentuu."
+- 1. Korinttilaiskirje 8:1: "Mitä sitten epäjumalille uhrattuun lihaan tulee, niin tiedämme, että meillä kaikilla on tieto. Tieto paisuttaa, mutta rakkaus rakentaa."
+- 1. Timoteuskirje 6:2: "Mutta ne, joilla on uskovaiset isännät, älkööt pitäkö heitä vähemmässä arvossa sentähden, että he ovat veljiä, vaan palvelkoot heitä sitä mieluummin, koska he ovat uskovia ja rakastettuja ja harrastavat hyväntekemistä. Tätä opeta ja tähän kehoita."
+- 1. Korinttilaiskirje 14:4: "Kielillä puhuva rakentaa itseään, mutta profetoiva rakentaa seurakuntaa."
+- Tiituskirje 3:8: "Tämä sana on varma, ja minä tahdon, että sinä näitä teroitat, niin että ne, jotka Jumalaan uskovat, ahkeroisivat hyvien tekojen harjoittamista. Nämä ovat hyviä ja hyödyllisiä ihmisille."
+- 2. Korinttilaiskirje 9:13: "kun he, tästä teidän palveluksestanne huomattuaan, kuinka taattu teidän mielenne on, ylistävät Jumalaa siitä, että te näin alistuvaisesti tunnustaudutte Kristuksen evankeliumiin ja näin vilpittömästi olette ruvenneet yhteyteen heidän kanssaan ja kaikkien kanssa."
+- Galatalaiskirje 5:21: "kateus, juomingit, mässäykset ja muut senkaltaiset, joista teille edeltäpäin sanon, niinkuin jo ennenkin olen sanonut, että ne, jotka semmoista harjoittavat, eivät peri Jumalan valtakuntaa."
+- Roomalaiskirje 14:19: "Niin tavoitelkaamme siis sitä, mikä edistää rauhaa ja keskinäistä rakentumistamme."
+- Heprealaiskirje 13:17: "Olkaa kuuliaiset johtajillenne ja tottelevaiset, sillä he valvovat teidän sielujanne niinkuin ne, joiden on tehtävä tili, että he voisivat tehdä sitä ilolla eikä huokaillen; sillä se ei ole teille hyödyllistä."
+- 2. Korinttilaiskirje 5:12: "Emme nyt taas suosittele itseämme teille, vaan tahdomme antaa teille aihetta kerskata meistä, että teillä olisi mitä vastata niille, jotka kerskaavat siitä, mikä silmään näkyy, eikä siitä, mikä sydämessä on."
+- Malakia 3:1: "Katso, minä lähetän sanansaattajani, ja hän on valmistava tien minun eteeni. Ja äkisti on tuleva temppeliinsä Herra, jota te etsitte, ja liiton enkeli, jota te halajatte. Katso, hän tulee, sanoo Herra Sebaot."
+- Jesaja 30:15: "Sillä näin sanoo Herra, Herra, Israelin Pyhä: Kääntymällä ja pysymällä hiljaa te pelastutte, rauhallisuus ja luottamus on teidän väkevyytenne; mutta te ette tahtoneet,"
+- Roomalaiskirje 3:4: "Pois se! Olkoon Jumala totinen, mutta jokainen ihminen valhettelija, niinkuin kirjoitettu on: "Että sinut havaittaisiin vanhurskaaksi sanoissasi ja että voittaisit, kun sinun kanssasi oikeutta käydään"."
+- 2. Korinttilaiskirje 13:7: "Mutta me rukoilemme Jumalaa, ettette tekisi mitään pahaa, emme sitä varten, että näyttäisi siltä, kuin me olisimme koetuksen kestäviä, vaan että te tekisitte hyvää ja me olisimme ikäänkuin ne, jotka eivät koetusta kestä."
+
+--- 5 5. Yhteenveto ---
+
+- 1. Pietarin kirje 4:11: "Jos joku puhuu, puhukoon niinkuin Jumalan sanoja; jos joku palvelee, palvelkoon sen voiman mukaan, minkä Jumala antaa, että Jumala tulisi kaikessa kirkastetuksi Jeesuksen Kristuksen kautta. Hänen on kunnia ja valta aina ja iankaikkisesti. Amen."
+- Efesolaiskirje 3:19: "ja oppia tuntemaan Kristuksen rakkauden, joka on kaikkea tietoa ylempänä; että tulisitte täyteen Jumalan kaikkea täyteyttä."
+- Jesaja 64:5: "(4) Sinä käyt niitä kohden, jotka ilolla vanhurskautta tekevät ja jotka sinun teilläsi sinua muistavat. Katso, sinä vihastuit, ja me jouduimme synnin alaisiksi; niin on ollut ikiajoista asti — saammeko avun?"
+- 2. Korinttilaiskirje 5:10: "Sillä kaikkien meidän pitää ilmestymän Kristuksen tuomioistuimen eteen, että kukin saisi sen mukaan, kuin hän ruumiissa ollessaan on tehnyt, joko hyvää tai pahaa."
+- 1. Korinttilaiskirje 4:6: "Tämän olen, veljet, sovittanut itseeni ja Apollokseen, teidän tähtenne, että meistä oppisitte tämän: "Ei yli sen, mikä kirjoitettu on", ettette pöyhkeillen asettuisi mikä minkin puolelle toista vastaan."
+- Jesaja 55:5: "Katso, sinä olet kutsuva pakanoita, joita sinä et tunne, ja pakanat, jotka eivät sinua tunne, rientävät sinun tykösi Herran, sinun Jumalasi, tähden, Israelin Pyhän tähden, sillä hän kirkastaa sinut."
+- Roomalaiskirje 8:28: "Mutta me tiedämme, että kaikki yhdessä vaikuttaa niiden parhaaksi, jotka Jumalaa rakastavat, niiden, jotka hänen aivoituksensa mukaan ovat kutsutut."
+- Psalmit 14:1: "Veisuunjohtajalle; Daavidin virsi. Hullu sanoo sydämessänsä: "Ei ole Jumalaa". Turmiollinen ja iljettävä on heidän menonsa; ei ole ketään, joka tekee, mikä hyvää on."
+- 3. Mooseksen kirja 27:14: "Ja jos joku pyhittää talonsa pyhäksi lahjaksi Herralle, niin pappi arvioikoon sen tarkastaen, onko se hyvä vai huono. Olkoon sillä se arviohinta, jonka pappi määrää."
+- Galatalaiskirje 1:6: "Minua kummastuttaa, että te niin äkkiä käännytte hänestä, joka on kutsunut teidät Kristuksen armossa, pois toisenlaiseen evankeliumiin,"
+- Kolossalaiskirje 2:1: "Sillä minä tahdon, että te tiedätte, kuinka suuri kilvoittelu minulla on teidän tähtenne ja laodikealaisten ja kaikkien tähden, jotka eivät ole minun ruumiillisia kasvojani nähneet,"
+- 1. Korinttilaiskirje 14:26: "Kuinka siis on, veljet? Kun tulette yhteen, on jokaisella jotakin annettavaa: millä on virsi, millä opetus, millä ilmestys, mikä puhuu kielillä, mikä selittää; kaikki tapahtukoon rakennukseksi."
+- 3. Johanneksen kirje 1:12: "Demetrius on kaikilta, jopa itse totuudeltakin, saanut hyvän todistuksen; ja mekin todistamme hänestä samaa, ja sinä tiedät, että meidän todistuksemme on tosi."
+- Roomalaiskirje 12:3: "Sillä sen armon kautta, mikä minulle on annettu, minä sanon teille jokaiselle, ettei tule ajatella itsestänsä enempää, kuin ajatella sopii, vaan ajatella kohtuullisesti, sen uskonmäärän mukaan, minkä Jumala on kullekin suonut."
+- Efesolaiskirje 1:18: "ja valaisisi teidän sydämenne silmät, että tietäisitte, mikä on se toivo, johon hän on teidät kutsunut, kuinka suuri hänen perintönsä kirkkaus hänen pyhissään"
+
+Diagnostiikka valmis.
