@@ -1,0 +1,9 @@
+# Streamlit-käyttöliittymä
+streamlit
+
+# Vektorihakuun ja datan käsittelyyn
+faiss-cpu
+sentence-transformers
+torch
+numpy
+python-docx

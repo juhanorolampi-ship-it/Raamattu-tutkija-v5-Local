@@ -1,0 +1,23 @@
+# Python virtual environment
+.venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Secrets files
+.env
+.streamlit/secrets.toml
+
+# Estä käyttäjän syötetiedosto
+syote.txt
+
+# Estä diagnostiikka- ja raporttitiedostot nimen osan perusteella
+*report*.txt
+*diagnostics*.txt
+
+# Estä generoidut JSON-logit
+*log*.json
+Modelfile
+raamattu_viite_kartta.json
+raamattu_vektori_indeksi.faiss
