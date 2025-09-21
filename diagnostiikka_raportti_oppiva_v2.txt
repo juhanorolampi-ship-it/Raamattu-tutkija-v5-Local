@@ -7,3 +7,14 @@ Esiladataan kaikki resurssit...
 Ladataan hakumallit, indeksi ja datatiedostot muistiin...
 Use pytorch device_name: cpu
 Load pretrained SentenceTransformer: TurkuNLP/sbert-cased-finnish-paraphrase
+Use pytorch device: cpu
+Kaikki resurssit ladattu onnistuneesti.
+Resurssit ladattu.
+Löytyi 5 osiota käsiteltäväksi.
+
+================================================================================
+                            Käsitellään osio 1/5: 1                             
+================================================================================
+
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille qwen2.5:14b-instruct (Yritys 1/3)...
