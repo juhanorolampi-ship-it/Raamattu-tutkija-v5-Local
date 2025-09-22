@@ -1,31 +1,59 @@
-# app.py (Versio 8.2 - Yhdistetty syötteenkäsittely)
+# app.py (Versio 12.0 - Integroitu oppiminen, PEP-8)
+import logging
 import re
 from collections import defaultdict
 from io import BytesIO
+
 import docx
 import streamlit as st
 
-# Varmistetaan, että tuodaan uusin logiikka
-from logic import etsi_merkityksen_mukaan, lataa_resurssit
-
+from logic import (
+    STRATEGIA_SANAKIRJA,
+    STRATEGIA_SIEMENJAE_KARTTA,
+    arvioi_tulokset,
+    ehdota_uutta_strategiaa,
+    etsi_merkityksen_mukaan,
+    lataa_resurssit,
+    luo_kontekstisidonnainen_avainsana,
+    tallenna_uusi_strategia
+)
 
 # --- Sivun asetukset ---
 st.set_page_config(
-    page_title="Raamattu-tutkija v4",
+    page_title="Raamattu-tutkija v6",
     page_icon="📚",
     layout="wide"
 )
 
 
+# Aseta lokituksen käsittelijä Streamlitin st.info/st.warning-funktioille
+class StreamlitLogHandler(logging.Handler):
+    def __init__(self, container):
+        super().__init__()
+        self.container = container
+
+    def emit(self, record):
+        msg = self.format(record)
+        if record.levelno == logging.WARNING:
+            self.container.warning(msg)
+        elif record.levelno >= logging.ERROR:
+            self.container.error(msg)
+        else:
+            self.container.info(msg)
+
+
+# Poista aiemmat käsittelijät ja lisää omat
+logger = logging.getLogger()
+if logger.hasHandlers():
+    logger.handlers.clear()
+
+
 # --- Apufunktiot ---
 def lue_syote_data(syote_data):
-    """
-    Jäsentää syötetiedon vankasti ja valmistelee sen hakua varten.
-    """
+    """Jäsentää syötetiedon vankasti ja valmistelee sen hakua varten."""
     if not syote_data:
         return None, None, None, None
 
-    # Käsitellään sekä tiedostoa että tekstikenttää
     if hasattr(syote_data, 'getvalue'):
         sisalto = syote_data.getvalue().decode("utf-8")
     else:
@@ -44,7 +72,6 @@ def lue_syote_data(syote_data):
         osio_teksti = osio_teksti.strip()
         if not osio_teksti:
             continue
-
         rivit = osio_teksti.split('\n', 1)
         otsikko = rivit[0].strip()
         kuvaus = rivit[1].strip() if len(rivit) > 1 else ""
@@ -56,13 +83,14 @@ def lue_syote_data(syote_data):
             hakulauseet[osio_nro] = haku
             otsikot[osio_nro] = otsikko
 
-    sl_match = re.search(r"Sisällysluettelo:(.*?)(?=\n\d\.|\Z)", sisalto, re.DOTALL)
+    sl_match = re.search(r"Sisällysluettelo:(.*?)(?=\n\d\.|\Z)", sisalto,
+                         re.DOTALL)
     sl_teksti = sl_match.group(1).strip() if sl_match else ""
 
     return paaotsikko, hakulauseet, otsikot, sl_teksti
 
 
-def luo_raportti_md(sl, jae_kartta):
+def luo_raportti_md(sl, jae_kartta, arvosanat):
     """Luo siistin tekstimuotoisen raportin."""
     md = f"# {sl['otsikko']}\n\n"
     if sl['teksti']:
@@ -74,7 +102,8 @@ def luo_raportti_md(sl, jae_kartta):
         key=lambda item: [int(p) for p in item[0].split('.')]
     )
     for osio_nro, data in sorted_osiot:
-        md += f"## {data['otsikko']}\n\n"
+        arvosana = arvosanat.get(osio_nro, "N/A")
+        md += f"## {data['otsikko']} (Lopullinen arvosana: {arvosana}/10)\n\n"
         if data["jakeet"]:
             for jae in data["jakeet"]:
                 md += f"- **{jae['viite']}**: \"{jae['teksti']}\"\n"
@@ -84,7 +113,7 @@ def luo_raportti_md(sl, jae_kartta):
     return md
 
 
-def luo_raportti_doc(sl, jae_kartta):
+def luo_raportti_doc(sl, jae_kartta, arvosanat):
     """Luo ladattavan Word-dokumentin."""
     doc = docx.Document()
     doc.add_heading(sl['otsikko'], 0)
@@ -97,7 +126,8 @@ def luo_raportti_doc(sl, jae_kartta):
         key=lambda item: [int(p) for p in item[0].split('.')]
     )
     for osio_nro, data in sorted_osiot:
-        doc.add_heading(data['otsikko'], 1)
+        arvosana = arvosanat.get(osio_nro, "N/A")
+        doc.add_heading(f"{data['otsikko']} (Lopullinen arvosana: {arvosana}/10)", 1)
         if data["jakeet"]:
             for jae in data["jakeet"]:
                 p = doc.add_paragraph()
@@ -105,7 +135,7 @@ def luo_raportti_doc(sl, jae_kartta):
                 p.add_run(f"\"{jae['teksti']}\"")
         else:
             doc.add_paragraph("Ei jakeita tähän osioon.")
-    
+
     buffer = BytesIO()
     doc.save(buffer)
     buffer.seek(0)
@@ -113,7 +143,7 @@ def luo_raportti_doc(sl, jae_kartta):
 
 
 # --- Streamlit-käyttöliittymä ---
-st.title("📚 Raamattu-tutkija v4")
+st.title("📚 Raamattu-tutkija v6 (Itseoppiva agentti)")
 st.markdown("---")
 
 with st.spinner("Valmistellaan hakukonetta..."):
@@ -126,75 +156,170 @@ col1, col2 = st.columns([2, 1])
 
 with col1:
     st.subheader("Syötä tutkielman aihe ja rakenne")
-    
-    uploaded_file = st.file_uploader(
-        "1. Lataa .txt-tiedosto (valinnainen)",
-        type=['txt'],
-        help="Voit joko ladata tiedoston tai käyttää alla olevaa tekstikenttää."
-    )
-
-    syote_alue = st.text_area(
-        "2. Kirjoita tai liitä sisältö tähän (voit myös täydentää ladattua tiedostoa)",
-        height=350,
-        placeholder="Esimerkiksi:\n\nOsa 1: Johdanto\nTeema: Kutsu kuuluu kaikille..."
-    )
+    uploaded_file = st.file_uploader("1. Lataa .txt-tiedosto", type=['txt'])
+    syote_alue = st.text_area("2. Kirjoita tai liitä sisältö tähän", height=350)
 
 with col2:
     st.subheader("Asetukset")
-    top_k_valinta = st.slider(
-        "Kuinka monta jaetta haetaan per osio?", 1, 100, 15
+    top_k_valinta = st.slider("Jakeita per osio:", 1, 100, 15)
+    tavoitearvosana_valinta = st.number_input(
+        "Tavoiteltava laatuarvosana (1-10)",
+        min_value=1, max_value=10, value=8
     )
-    suorita_nappi = st.button("Suorita haku", type="primary")
+    max_yritykset_valinta = st.number_input(
+        "Maksimi parannusyritystä per osio",
+        min_value=1, max_value=5, value=3
+    )
+    oppiminen_paalla = st.checkbox(
+        "Oppiminen päällä (tallentaa strategiat pysyvästi)",
+        value=False,
+        help=("Jos tämä on valittuna, sovellus muokkaa `logic.py`-tiedostoa, "
+              "kun se löytää parannuksia.")
+    )
+    suorita_nappi = st.button("Suorita älykäs haku", type="primary")
 
 st.markdown("---")
-st.subheader("Hakutulokset")
+st.subheader("Prosessi ja tulokset")
 
 if suorita_nappi:
-    syote_tiedostosta = ""
+    koko_syote = ""
     if uploaded_file is not None:
-        syote_tiedostosta = uploaded_file.getvalue().decode("utf-8")
-        st.info(f"Käytetään ladattua tiedostoa: {uploaded_file.name}")
+        koko_syote += uploaded_file.getvalue().decode("utf-8")
+    koko_syote += "\n\n" + syote_alue.strip()
+    koko_syote = koko_syote.strip()
 
-    syote_tekstikentasta = syote_alue.strip()
-    
-    koko_syote = (syote_tiedostosta + "\n\n" + syote_tekstikentasta).strip()
-    
     if not koko_syote:
-        st.warning("Syötä aihe ja rakenne joko tiedostona tai tekstikenttään.")
+        st.warning("Syötä aihe ja rakenne.")
     else:
-        with st.spinner("Suoritetaan älykästä hakua... Tämä voi kestää hetken."):
-            paaotsikko, hakulauseet, otsikot, sl_teksti = lue_syote_data(koko_syote)
+        st.session_state.processing_complete = False
+        paaotsikko, hakulauseet, otsikot, sl_teksti = lue_syote_data(koko_syote)
 
-            if not hakulauseet:
-                st.error("Syötettä ei voitu jäsentää. Varmista, että se on oikeassa muodossa.")
-                st.stop()
-            
-            sl = {"otsikko": paaotsikko, "teksti": sl_teksti}
-            jae_kartta = defaultdict(lambda: {"jakeet": [], "otsikko": ""})
-            total = len(hakulauseet)
-            p_bar = st.progress(0, text="Aloitetaan...")
+        if not hakulauseet:
+            st.error("Syötettä ei voitu jäsentää.")
+            st.stop()
 
-            sorted_hakulauseet = sorted(
-                hakulauseet.items(),
-                key=lambda item: [int(p) for p in item[0].split('.')]
+        sl = {"otsikko": paaotsikko, "teksti": sl_teksti}
+        jae_kartta = defaultdict(lambda: {"jakeet": [], "otsikko": ""})
+        lopulliset_arvosanat = {}
+
+        log_container = st.expander("Näytä prosessin loki", expanded=True)
+        sh = StreamlitLogHandler(log_container)
+        sh.setFormatter(logging.Formatter('%(message)s'))
+        logger.addHandler(sh)
+
+        temp_strategiat = STRATEGIA_SANAKIRJA.copy()
+        temp_siemenjakeet = STRATEGIA_SIEMENJAE_KARTTA.copy()
+
+        sorted_hakulauseet = sorted(
+            hakulauseet.items(),
+            key=lambda item: [int(p) for p in item[0].split('.')]
+        )
+
+        for i, (osio_nro, haku) in enumerate(sorted_hakulauseet):
+            log_container.markdown(f"--- \n ### Käsitellään osiota "
+                                   f"{i+1}/{len(sorted_hakulauseet)}: "
+                                   f"{otsikot.get(osio_nro, '')}")
+
+            tulokset = etsi_merkityksen_mukaan(
+                haku,
+                top_k=top_k_valinta,
+                custom_strategiat=temp_strategiat,
+                custom_siemenjakeet=temp_siemenjakeet
             )
+            arvio = arvioi_tulokset(haku, tulokset)
+            kokonaisarvosana = arvio.get("kokonaisarvosana")
 
-            for i, (osio_nro, haku) in enumerate(sorted_hakulauseet):
-                tulokset = etsi_merkityksen_mukaan(haku, top_k_valinta)
-                jae_kartta[osio_nro]["jakeet"] = tulokset
-                jae_kartta[osio_nro]["otsikko"] = otsikot.get(
-                    osio_nro, haku.split(':')[0]
-                )
-                p_text = f"Käsitellään osiota {i+1}/{total}: {osio_nro}"
-                p_bar.progress((i + 1) / total, text=p_text)
+            logging.info(f"Alkuperäinen arvosana: {kokonaisarvosana}/10")
 
-            st.session_state.final_report_md = luo_raportti_md(sl, jae_kartta)
-            st.session_state.final_report_doc = luo_raportti_doc(sl, jae_kartta)
-            st.session_state.processing_complete = True
-            p_bar.empty()
-            st.success("Haku suoritettu onnistuneesti!")
+            if (kokonaisarvosana is not None and
+                    kokonaisarvosana < tavoitearvosana_valinta):
+                yritykset = 0
+                edellinen_ehdotus = None
+
+                while (arvio.get("kokonaisarvosana") is not None and
+                       arvio["kokonaisarvosana"] < tavoitearvosana_valinta and
+                       yritykset < max_yritykset_valinta):
+                    yritykset += 1
+                    log_container.markdown(f"**Parannusyritys "
+                                           f"{yritykset}/{max_yritykset_valinta}**")
+
+                    jae_arviot = arvio.get("jae_arviot", [])
+                    hyvat_jakeet = [
+                        next((item for item in tulokset if item['viite'] == jae_arvio['viite']), None)
+                        for jae_arvio in jae_arviot
+                        if jae_arvio.get('arvosana', 0) >= tavoitearvosana_valinta
+                    ]
+                    hyvat_jakeet = [j for j in hyvat_jakeet if j]
+
+                    poistettavien_maara = top_k_valinta - len(hyvat_jakeet)
+                    logging.info(f"Säilytetään {len(hyvat_jakeet)} jaetta. "
+                                 f"Haetaan {poistettavien_maara} korvaajaa.")
+
+                    if poistettavien_maara > 0:
+                        ehdotus = ehdota_uutta_strategiaa(haku, arvio,
+                                                           edellinen_ehdotus)
+                        edellinen_ehdotus = ehdotus.copy()
+
+                        if "virhe" in ehdotus:
+                            logging.error("Strategiaehdotus epäonnistui.")
+                            break
+
+                        avainsanat = ehdotus.get('avainsanat', [])
+                        selite = ehdotus.get('selite', '')
+                        if not avainsanat or not selite:
+                            logging.error("Strategiaehdotus oli tyhjä.")
+                            break
+
+                        logging.info(f"  -> Luotu strategia, avainsanat: {avainsanat}")
+
+                        for sana in avainsanat:
+                            temp_strategiat[sana.lower()] = selite
+
+                        paikkaushaku = etsi_merkityksen_mukaan(
+                            haku, poistettavien_maara, temp_strategiat
+                        )
+                        tulokset = hyvat_jakeet + paikkaushaku
+
+                        vanha_kokonaisarvosana = kokonaisarvosana
+                        arvio = arvioi_tulokset(haku, tulokset)
+                        kokonaisarvosana = arvio.get("kokonaisarvosana")
+
+                        logging.info(f"Ed. arvosana: {vanha_kokonaisarvosana}/10 -> "
+                                     f"UUSI: {kokonaisarvosana}/10")
+
+                        if (kokonaisarvosana is not None and
+                                vanha_kokonaisarvosana is not None and
+                                kokonaisarvosana > vanha_kokonaisarvosana):
+                            logging.info("TULOS: Laatu parani! ✅")
+                            if oppiminen_paalla:
+                                uniikit_sanat = []
+                                for sana in avainsanat:
+                                    if sana.lower() in STRATEGIA_SANAKIRJA:
+                                        u_sana = luo_kontekstisidonnainen_avainsana(sana, selite)
+                                        uniikit_sanat.append(u_sana)
+                                    else:
+                                        uniikit_sanat.append(sana)
+                                tallenna_uusi_strategia(uniikit_sanat, selite)
+                        else:
+                            logging.warning("TULOS: Laatu ei parantunut. ⚠️")
+                    else:
+                        logging.info("Kaikki jakeet OK.")
+                        break
+
+            jae_kartta[osio_nro]["jakeet"] = tulokset
+            jae_kartta[osio_nro]["otsikko"] = otsikot.get(osio_nro, haku.split(':')[0])
+            lopulliset_arvosanat[osio_nro] = kokonaisarvosana
+
+        logger.removeHandler(sh)
+        st.session_state.final_report_md = luo_raportti_md(sl, jae_kartta, lopulliset_arvosanat)
+        st.session_state.final_report_doc = luo_raportti_doc(sl, jae_kartta, lopulliset_arvosanat)
+        st.session_state.processing_complete = True
+        st.success("Haku suoritettu onnistuneesti!")
+        st.rerun()
 
 if st.session_state.processing_complete:
+    st.markdown("---")
+    st.subheader("Lopullinen tutkielma")
     st.markdown(st.session_state.final_report_md)
     st.divider()
     st.subheader("Lataa raportti")

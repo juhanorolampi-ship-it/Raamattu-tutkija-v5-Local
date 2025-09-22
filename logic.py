@@ -1,4 +1,4 @@
-# logic.py (Versio 20.0 - Finaali: Analyyttinen ote)
+# logic.py (Versio 21.0 - Jakeiden yksilöllinen arviointi, PEP-8)
 import json
 import logging
 import pprint
@@ -13,14 +13,13 @@ from sentence_transformers import CrossEncoder, SentenceTransformer
 
 # --- VAKIOASETUKSET ---
 LOGIC_TIEDOSTOPOLKU = "logic.py"
-PAAINDESKI_TIEDOSTO = "D:/Python_AI/Raamattu-tutkija-data/raamattu_vektori_indeksi.faiss"
-PAAKARTTA_TIEDOSTO = "D:/Python_AI/Raamattu-tutkija-data/raamattu_viite_kartta.json"
+PAAINDESKI_TIEDOSTO = "D:/Python_AI/Raamattu-tutkija-data/raamattu_indeksi_e5_large.faiss"
+PAAKARTTA_TIEDOSTO = "D:/Python_AI/Raamattu-tutkija-data/raamattu_kartta_e5_large.json"
 RAAMATTU_TIEDOSTO = "D:/Python_AI/Raamattu-tutkija-data/bible.json"
-EMBEDDING_MALLI = "TurkuNLP/sbert-cased-finnish-paraphrase"
+EMBEDDING_MALLI = "intfloat/multilingual-e5-large"
 CROSS_ENCODER_MALLI = "cross-encoder/ms-marco-MiniLM-L-6-v2"
-ARVIOINTI_MALLI = "qwen2.5:14b-instruct"
-KIELENHUOLTO_MALLI = "poro-local"
-AVAINSAINOITTAJA_MALLI = "poro-local"
+ARVIOINTI_MALLI = "gemma3:latest"
+ASIANTUNTIJA_MALLI = "gemma3:latest"
 
 
 # --- STRATEGIAKERROS JA KARTTA ---
@@ -34,29 +33,18 @@ STRATEGIA_SANAKIRJA = {   'intohimo': 'Hae jakeita, jotka kuvaavat sydämen palo
     'koetinkivi': 'Etsi jakeita, jotka käsittelevät luonteen testaamista ja '
                   'koettelemista erityisissä olosuhteissa, kuten vastoinkäymisissä, '
                   'menestyksessä, kritiikin alla tai näkymättömyydessä.',
+    'kohdenna': 'Edellinen strategia oli epäonnistunut, koska se keskittyi liian '
+                'yleisesti Korinttilaiskirjeen teemoihin ja ei riittävästi '
+                'konkreettisiin ongelmiin, joita Paavali käsittelee kirjeessä. '
+                'Hakusanat eivät suoraan kohdistuneet korintlaisten ongelmiin ja '
+                'Paavalin vastauksuihin. Parempi lähestymistapa on eristää kirjeen '
+                'keskeiset nuhketukset ja Paavalin opetukset.',
     'kritiikki': 'Etsi jakeita, jotka opastavat, miten suhtautua oikeutetusti tai '
                  'epäoikeutetusti saatuun kritiikkiin, arvosteluun tai nuhteeseen '
                  'säilyttäen nöyrän ja opetuslapseen sopivan sydämen.',
     'kyvyt': 'Etsi kohtia, jotka käsittelevät luontaisia, synnynnäisiä taitoja, '
              'lahjakkuutta ja osaamista, jotka Jumala on ihmiselle antanut ja joita '
              'voidaan käyttää hänen kunniakseen.',
-    'nuorten kehitys': 'Strategiaa etsiessä nuorten uskonnon kehittämisen haasteisiin '
-                       'liittyviä laadukkaita ja tarkkoja kirjallisia lähteitä, '
-                       'keskitetään pyrkimykset nykyajan ongelmanratkaisemiseen. '
-                       'Huomioidaan seuraavat näkökulmat: 1) Nuorten uskonnon '
-                       'kehittämisen haasteiden syvällinen ymmärrys ja lähestyminen '
-                       'niitä koskevan kontekstin kautta, 2) Esimerkkiesitteet '
-                       'vanhempien roolista nuorisokuussa sekä heidän aikeissaan oman '
-                       'uskonnutensa kehittämiseksi, 3) Tärkeiden liikkeitjen ja '
-                       'verkostojen työn arviointi Jumalan viestinnän näkökulmasta, '
-                       'välttäen yksityiskohtisten asiantuntijakriitikoiden '
-                       'vaarallisen puuttuvuuden. Huomioitava on myös kyky tunnistaa '
-                       'ja arvostaa todellista hedelmää senkin tapahtumisessa '
-                       'epätäydellisin olosuhteissa, mikä edellyttää luontevaan '
-                       'uskonnon syventämistä ja monipuolisuutta. Tavoitteena on '
-                       'laatia strategian, joka antaa nuorille varmasti hyödyllisen ja '
-                       'merkityksellisen opas heidän kriittisten huolenpiteen '
-                       'tukemiseksi.',
     'näkymättömyys': 'Hae jakeita, jotka käsittelevät palvelemista ilman ihmisten '
                      'näkemystä, kiitosta tai tunnustusta, keskittyen Jumalan '
                      'palkkioon ja oikeaan sydämen asenteeseen.',
@@ -69,75 +57,31 @@ STRATEGIA_SANAKIRJA = {   'intohimo': 'Hae jakeita, jotka kuvaavat sydämen palo
     'profeetta': 'Etsi kohtia, jotka kuvaavat profeetallisen ja pastoraalisen tai '
                  'opettavan roolin välistä dynamiikkaa, yhteistyötä tai jännitettä '
                  'seurakunnassa.',
-    'rakkaus': '5. Yhteenveto: Totuus rakkaudessa - Teema tässä yhteenvetossa on '
-               'korostaa sitä tasapainoa, joka meidän on saavutettava totuuden ja '
-               'rauhan välillä sekä karittomien ihmisten suojelun ja heidän '
-               'kasvattamisen. Tämä sisältö painottaa kärsivällisyyden ja armon '
-               'tekemistä niitä kohtaan, jotka ovat edelleen matkansa alussa, samalla '
-               'kun valppauttaa eksytystä vastaan ja suojellaa totuuden puolesta. '
-               'Tämän aiheen tavoitteena on antaa kuvaus siitä, miten kristinuskunnan '
-               'jäsenille pitää olla sekä vahvoja ja lujia että hyvin armollisia ja '
-               'käsittävällisiä.',
-    'rauhanvari': '5. Yhteenveto: Totuus rakkaudessa - Teema tässä yhteenvetossa on '
-                  'korostaa sitä tasapainoa, joka meidän on saavutettava totuuden ja '
-                  'rauhan välillä sekä karittomien ihmisten suojelun ja heidän '
-                  'kasvattamisen. Tämä sisältö painottaa kärsivällisyyden ja armon '
-                  'tekemistä niitä kohtaan, jotka ovat edelleen matkansa alussa, '
-                  'samalla kun valppauttaa eksytystä vastaan ja suojellaa totuuden '
-                  'puolesta. Tämän aiheen tavoitteena on antaa kuvaus siitä, miten '
-                  'kristinuskunnan jäsenille pitää olla sekä vahvoja ja lujia että '
-                  'hyvin armollisia ja käsittävällisiä.',
-    'strategia': 'Strategiaa etsiessä nuorten uskonnon kehittämisen haasteisiin '
-                 'liittyviä laadukkaita ja tarkkoja kirjallisia lähteitä, keskitetään '
-                 'pyrkimykset nykyajan ongelmanratkaisemiseen. Huomioidaan seuraavat '
-                 'näkökulmat: 1) Nuorten uskonnon kehittämisen haasteiden syvällinen '
-                 'ymmärrys ja lähestyminen niitä koskevan kontekstin kautta, 2) '
-                 'Esimerkkiesitteet vanhempien roolista nuorisokuussa sekä heidän '
-                 'aikeissaan oman uskonnutensa kehittämiseksi, 3) Tärkeiden '
-                 'liikkeitjen ja verkostojen työn arviointi Jumalan viestinnän '
-                 'näkökulmasta, välttäen yksityiskohtisten asiantuntijakriitikoiden '
-                 'vaarallisen puuttuvuuden. Huomioitava on myös kyky tunnistaa ja '
-                 'arvostaa todellista hedelmää senkin tapahtumisessa epätäydellisin '
-                 'olosuhteissa, mikä edellyttää luontevaan uskonnon syventämistä ja '
-                 'monipuolisuutta. Tavoitteena on laatia strategian, joka antaa '
-                 'nuorille varmasti hyödyllisen ja merkityksellisen opas heidän '
-                 'kriittisten huolenpiteen tukemiseksi.',
+    'raamatullinen': 'Edellinen strategia oli liian abstrakti ja pyrki käsittelemään '
+                     'laajoja teemoja ilman riittävää kontekstuaalista tukea. Se ei '
+                     'tarjonnut riittävästi konkreettisia termejä, joiden avulla '
+                     'Raamatun jakeita voisi hakea systemaattisesti. Parempi '
+                     'lähestymistapa keskittyy selkeisiin johtamisprosessin '
+                     'elementteihin ja niiden raamatullisiin esimerkkeihin.',
     'tasapaino': 'Etsi kohtia, jotka käsittelevät tasapainoa, harmoniaa tai oikeaa '
                  'suhdetta kahden eri asian, kuten työn ja levon, tai totuuden ja '
                  'rakkauden, välillä.',
     'testi': 'Etsi jakeita, jotka käsittelevät luonteen testaamista ja koettelemista '
              'erityisissä olosuhteissa, kuten vastoinkäymisissä, menestyksessä, '
-             'kritiikin alla tai näkymättömyydessä.',
-    'usko': 'Strategiaa etsiessä nuorten uskonnon kehittämisen haasteisiin liittyviä '
-            'laadukkaita ja tarkkoja kirjallisia lähteitä, keskitetään pyrkimykset '
-            'nykyajan ongelmanratkaisemiseen. Huomioidaan seuraavat näkökulmat: 1) '
-            'Nuorten uskonnon kehittämisen haasteiden syvällinen ymmärrys ja '
-            'lähestyminen niitä koskevan kontekstin kautta, 2) Esimerkkiesitteet '
-            'vanhempien roolista nuorisokuussa sekä heidän aikeissaan oman '
-            'uskonnutensa kehittämiseksi, 3) Tärkeiden liikkeitjen ja verkostojen työn '
-            'arviointi Jumalan viestinnän näkökulmasta, välttäen yksityiskohtisten '
-            'asiantuntijakriitikoiden vaarallisen puuttuvuuden. Huomioitava on myös '
-            'kyky tunnistaa ja arvostaa todellista hedelmää senkin tapahtumisessa '
-            'epätäydellisin olosuhteissa, mikä edellyttää luontevaan uskonnon '
-            'syventämistä ja monipuolisuutta. Tavoitteena on laatia strategian, joka '
-            'antaa nuorille varmasti hyödyllisen ja merkityksellisen opas heidän '
-            'kriittisten huolenpiteen tukemiseksi.'}
+             'kritiikin alla tai näkymättömyydessä.'}
 STRATEGIA_SIEMENJAE_KARTTA = {   'intohimo': 'Room. 12:1-2',
     'jännite': 'Room. 12:4-5',
     'koetinkivi': 'Jaak. 1:2-4',
+    'kohdenna': 'Lisää siemenjae manuaalisesti',
     'kritiikki': 'Miika 6:8',
     'kyvyt': '1. Piet. 4:10',
-    'nuorten kehitys': 'Lisää siemenjae manuaalisesti',
     'näkymättömyys': 'Fil. 2:3-4',
     'paimen': 'Ef. 4:11-12',
     'pappi': 'Ef. 4:11-12',
     'profeetta': 'Ef. 4:11-12',
-    'rakkaus': 'Lisää siemenjae manuaalisesti',
-    'rauhanvari': 'Lisää siemenjae manuaalisesti',
-    'strategia': 'Lisää siemenjae manuaalisesti',
+    'raamatullinen': 'Lisää siemenjae manuaalisesti',
     'tasapaino': 'Saarn. 3:1',
-    'testi': 'Jaak. 1:2-4',
-    'usko': 'Lisää siemenjae manuaalisesti'}
+    'testi': 'Jaak. 1:2-4'}
 
 
 # --- LOKITUKSEN ALUSTUS ---
@@ -230,14 +174,28 @@ def suorita_varmistettu_json_kutsu(malli: str, kehote: str,
                                  max_yritykset: int = 3) -> dict:
     """
     Suorittaa LLM-kutsun ja varmistaa, että vastaus on validi JSON.
-    Yrittää uudelleen tarvittaessa.
+    Yrittää uudelleen ja antaa palautetta virheestä.
     """
     alkuperainen_kehote = kehote
+    edellinen_virhe_viesti = ""
+
     for yritys in range(max_yritykset):
         try:
+            # Lisätään yksityiskohtainen virheilmoitus kehotteeseen toisella yrittämällä
+            if edellinen_virhe_viesti:
+                kehote_laajennus = (
+                    f"\n\n--- EDELTÄVÄ YRITYS EPÄONNISTUI ---\n"
+                    f"Edellinen vastauksesi aiheutti JSON-jäsentelyvirheen: '{edellinen_virhe_viesti}'.\n"
+                    f"Ole hyvä ja korjaa virhe. Varmista, että KOKO vastauksesi on YKSI validi JSON-objekti, "
+                    f"joka alkaa merkillä '{{' ja päättyy merkkiin '}}', ja että kaikki rakenteet (listat, objektit, pilkut) ovat oikein.\n"
+                    f"--- VIRHEEN KUVAUS LOPPUU ---\n\n"
+                )
+                kehote = alkuperainen_kehote + kehote_laajennus
+
             msg = (f"Lähetetään JSON-pyyntö mallille {malli} "
                    f"(Yritys {yritys + 1}/{max_yritykset})...")
             logging.info(msg)
+
             response = ollama.chat(
                 model=malli,
                 messages=[{'role': 'user', 'content': kehote.strip()}]
@@ -251,18 +209,15 @@ def suorita_varmistettu_json_kutsu(malli: str, kehote: str,
                 logging.info("Vastaus jäsennelty onnistuneesti.")
                 return data
             else:
-                raise json.JSONDecodeError("JSON-objektia ei löytynyt",
-                                           vastaus_teksti, 0)
-        except (json.JSONDecodeError, TypeError) as e:
+                edellinen_virhe_viesti = "Vastauksesta ei löytynyt JSON-objektia."
+                raise json.JSONDecodeError(edellinen_virhe_viesti, vastaus_teksti, 0)
+
+        except json.JSONDecodeError as e:
+            edellinen_virhe_viesti = str(e)
             msg = (f"Virhe JSON-jäsennnyksessä (yritys {yritys + 1}): {e}. "
                    "Yritetään uudelleen...")
             logging.warning(msg)
-            kehote = (
-                f"{alkuperainen_kehote}\n\nEDELLINEN VASTAUKSESI OLI "
-                f"VIRHEELLINEN:\n---\n{vastaus_teksti}\n---\n"
-                "VASTAUKSESI EI OLLUT KELVOLLISTA JSON-MUOTOA. KORJAA VIRHE JA "
-                "PALAUTA VAIN JA AINOASTAAN VALIDI JSON-OBJEKTI."
-            )
+
     logging.error(f"JSON-vastausta ei saatu {max_yritykset} yrityksestä.")
     return {"virhe": f"JSON-vastausta ei saatu {max_yritykset} yrityksestä."}
 
@@ -271,20 +226,11 @@ def suorita_varmistettu_json_kutsu(malli: str, kehote: str,
 def onko_strategia_relevantti(kysely: str, selite: str) -> bool:
     """Kysyy tekoälyltä, onko löydetty strategia relevantti."""
     kehote = f"""
-ROOLI JA TAVOITE:
-Olet looginen päättelijä. Tehtäväsi on arvioida, onko annettu strategia
-hyödyllinen tietyn hakukyselyn tarkentamiseen.
-
-KONTEKSTI:
-Saat käyttäjän hakukyselyn ja siihen liittyvän strategian selityksen. Päätä,
-auttaako strategian soveltaminen löytämään parempia ja tarkempia vastauksia
-juuri tähän nimenomaiseen kyselyyn.
-
-- Käyttäjän kysely: "{kysely}"
-- Tarjottu strategia: "{selite}"
-
-VASTAUKSEN MUOTO:
-Vastaa AINA ja AINOASTAAN JSON-muodossa: {{"sovellu": true/false}}
+ROOLI: Olet looginen päättelijä.
+TEHTÄVÄ: Arvioi, onko strategia hyödyllinen hakukyselyn tarkentamiseen.
+- Kysely: "{kysely}"
+- Strategia: "{selite}"
+VASTAA JSON-MUODOSSA: {{"sovellu": true/false}}
 """
     logging.info("Suoritetaan strategian relevanssin esianalyysi...")
     data = suorita_varmistettu_json_kutsu(ARVIOINTI_MALLI, kehote)
@@ -329,17 +275,15 @@ def etsi_merkityksen_mukaan(kysely: str, top_k: int = 15,
                 if siemenjae_viite:
                     siemenjae_teksti = jae_haku_kartta.get(siemenjae_viite, "")
                     laajennettu_kysely = (
-                        f"Aihe on: '{kysely}'. Teeman selitys on: '{selite}'. "
-                        f"Tärkeä esimerkki aiheesta on jae '{siemenjae_viite}', "
-                        f"joka kuuluu: '{siemenjae_teksti}'."
+                        f"{kysely}. Hakua ohjaava lisäkonteksti: {selite}. "
+                        f"Teemaa havainnollistava jae: '{siemenjae_teksti}'."
                     )
                 else:
-                    laajennettu_kysely = (f"{selite}. "
-                                        f"Alkuperäinen aihe on: {kysely}")
+                    # YHDISTETÄÄN ALKUPERÄINEN JA UUSI STRATEGIA
+                    laajennettu_kysely = f"{kysely}. Hakua tarkentava strategia: {selite}"
                 break
             else:
-                msg = (f"Strategia '{avainsana}' hylättiin "
-                       "epärelevanttina tähän hakuun.")
+                msg = (f"Strategia '{avainsana}' hylättiin epärelevanttina.")
                 logging.info(msg)
 
     alyhaun_tulokset = []
@@ -375,53 +319,41 @@ def etsi_merkityksen_mukaan(kysely: str, top_k: int = 15,
 
 
 def arvioi_tulokset(aihe: str, tulokset: list) -> dict:
-    """Arvioi hakutulokset ja viimeistelee perustelun kielen."""
+    """Arvioi hakutulokset ja antaa jokaiselle jakeelle oman arvosanan."""
     if not tulokset:
-        return {"arvosana": None, "perustelu": "Ei tuloksia arvioitavaksi."}
+        return {"kokonaisarvosana": None, "jae_arviot": [],
+                "kokonaisperustelu": "Ei tuloksia arvioitavaksi."}
 
     tulokset_str = "\n".join(
-        [f"{i+1}. {jae['viite']}: \"{jae['teksti']}\"" for i, jae in enumerate(tulokset)]
+        [f"- {jae['viite']}: \"{jae['teksti']}\"" for jae in tulokset]
     )
     kehote = f"""
-ROOLI JA TAVOITE:
-Olet teologinen asiantuntija. Arvioi annettujen Raamatun jakeiden relevanssia
-ja laatua suhteessa annettuun hakuaiheeseen.
-VASTAUKSEN MUOTO:
-Vastaa AINA JSON-muodossa: {{"arvosana": <1-10>, "perustelu": "<selitys>"}}
-NYKYINEN TEHTÄVÄ:
+ROOLI: Olet ankara teologinen asiantuntija.
+TEHTÄVÄ: Arvioi annettujen Raamatun jakeiden relevanssi suhteessa aiheeseen.
+Anna KOKONAISARVIO ja KOKONAISPERUSTELU. Lisäksi anna JOKAISELLE jakeelle
+oma ARVOSANA (1-10) ja lyhyt PERUSTELU.
+
 - Aihe: {aihe}
 - Tulokset:
 {tulokset_str}
+
+VASTAUKSEN MUOTO: Vastaa AINA JSON-muodossa. Varmista, että jokainen jae
+tuloslistasta löytyy `jae_arviot`-listasta. Esimerkki:
+{{
+  "kokonaisarvosana": 7,
+  "kokonaisperustelu": "Hyvä alku, mutta osa jakeista on epärelevantteja.",
+  "jae_arviot": [
+    {{ "viite": "1. Kor. 7:15", "arvosana": 9, "perustelu": "Osuu suoraan." }},
+    {{ "viite": "Jer. 49:20", "arvosana": 4, "perustelu": "Kontekstisidonnainen." }}
+  ]
+}}
 """
     data = suorita_varmistettu_json_kutsu(ARVIOINTI_MALLI, kehote)
     if "virhe" in data:
-        return {"arvosana": None,
-                "perustelu": f"Virheellinen vastaus: {data['virhe']}"}
+        return {"kokonaisarvosana": None, "jae_arviot": [],
+                "kokonaisperustelu": f"Virheellinen vastaus: {data['virhe']}"}
 
-    arvosana = data.get("arvosana")
-    raaka_perustelu = data.get("perustelu", "Perustelua ei annettu.")
-
-    if arvosana is not None:
-        try:
-            arvosana = int(arvosana)
-        except (ValueError, TypeError):
-            arvosana = None
-
-    # Kielentarkistus perustelulle
-    logging.info("Viimeistellään arvioinnin perustelua...")
-    kehote_poro = f"""
-ROOLI: Olet suomen kielen toimittaja.
-TEHTÄVÄ: Viimeistele oheinen lause kieliopillisesti virheettömäksi ja
-ytimekkääksi.
-LAUSE: "{raaka_perustelu}"
-VASTAUKSEN MUOTO: JSON: {{"viimeistelty_perustelu": "Viimeistelty lause."}}
-"""
-    poro_data = suorita_varmistettu_json_kutsu(KIELENHUOLTO_MALLI,
-                                               kehote_poro)
-    viimeistelty_perustelu = poro_data.get("viimeistelty_perustelu",
-                                          raaka_perustelu)
-
-    return {"arvosana": arvosana, "perustelu": viimeistelty_perustelu}
+    return data
 
 
 def luo_avainsana_selitteen_pohjalta(selite: str) -> list:
@@ -434,76 +366,61 @@ yleiskieliseksi termiksi (yleensä 1-2 sanaa).
 SELITE: "{selite}"
 VASTAUKSEN MUOTO: JSON: {{"avainsanat": ["sana1", "sana2"]}}
 """
-    data = suorita_varmistettu_json_kutsu(AVAINSAINOITTAJA_MALLI, kehote)
+    data = suorita_varmistettu_json_kutsu(ASIANTUNTIJA_MALLI, kehote)
     return data.get("avainsanat", [])
 
-
-def ehdota_uutta_strategiaa(aihe: str, tulokset: list, arvio: dict,
+def ehdota_uutta_strategiaa(aihe: str, arvio: dict,
                            edellinen_ehdotus: dict = None) -> dict:
-    """Ehdottaa uutta strategiaa selite-ensin-periaatteella."""
+    """Ehdottaa uutta, konkreettista strategiaa hakutulosten parantamiseksi."""
+    kokonaisperustelu = arvio.get('kokonaisperustelu', 'Ei perustelua.')
     analyysi_kehote = ""
+
     if edellinen_ehdotus:
         analyysi_kehote = f"""
-SYVEMPI ANALYYSI:
-Edellinen yritys parantaa tuloksia epäonnistui.
+SYVEMPI ANALYYSI (ITSEKRITIIKKI):
+Edellinen parannusyritys epäonnistui. Laatu ei parantunut.
 - EDELLINEN STRATEGIA: {edellinen_ehdotus.get('selite', '')}
-- TULOKSEN ARVIOINTI: Arvosana oli {arvio.get('arvosana')}/10, koska:
-  "{arvio.get('perustelu')}"
+- TULOKSEN ARVIOINTI: Perustelu: "{kokonaisperustelu}"
 
 UUSI TEHTÄVÄ:
-Luo täysin uusi ja laadukkaampi strategian selite, joka ottaa huomioon
-yllä olevan perustelun ja korjaa siinä mainitut puutteet.
+1.  **Analysoi lyhyesti (1-2 lausetta), miksi edellinen strategia oli liian abstrakti tai epäonnistunut.**
+2.  **Ehdota 2-4 TÄSMÄLLISTÄ JA KONKREETTISTA HAKUSANAA tai LYHYTTÄ HAKULAUSETTA**, jotka voisivat löytää parempia jakeita. Älä käytä abstrakteja metaforia. Keskity termeihin, jotka löytyvät todennäköisesti suoraan Raamatusta.
+3.  **Kirjoita lyhyt selite**, joka perustuu näihin konkreettisiin hakusanoihin ja selittää, miksi ne ovat parempia.
 """
     else:
         analyysi_kehote = f"""
 ONGELMA-ANALYYSIN KEHOTE:
-Ensimmäinen haku aiheelle ei tuottanut riittävän laadukkaita tuloksia.
-- TULOSTEN ARVIOINTI: Arvosana oli {arvio.get('arvosana')}/10, koska:
-  "{arvio.get('perustelu')}"
+Ensimmäinen haku aiheelle "{aihe}" tuotti heikkoja tuloksia, joiden perustelu oli: "{kokonaisperustelu}".
 
 TEHTÄVÄ:
-Tee ensimmäinen, analyyttinen korjausehdotus. Luo laadukas ja tarkka
-strategian selite, joka ratkaisee arvioijan mainitsemat puutteet. Keskity
-suoraan ongelman korjaamiseen.
+1.  **Ehdota 2-4 TÄSMÄLLISTÄ JA KONKREETTISTA HAKUSANAA tai LYHYTTÄ HAKULAUSETTA**, jotka ratkaisevat arvioijan mainitsemat puutteet.
+2.  **Kirjoita lyhyt selite**, joka perustuu näihin konkreettisiin hakusanoihin.
 """
 
-    kehote_qwen = f"""
-ROOLI: Olet Raamattu-hakukoneen vanhempi kehittäjä.
-KONTEKSTI: Haku aiheelle "{aihe}" tuotti heikkoja tuloksia.
+    kehote_strategi = f"""
+ROOLI: Olet huipputason Raamattu-hakustrategikko. Tavoitteesi on tuottaa konkreettisia hakulauseita, ei abstrakteja ideoita.
 {analyysi_kehote}
-TEHTÄVÄ: Kirjoita uusi, laadukas ja tarkka selite hakustrategialle.
-ÄLÄ luo avainsanoja.
-VASTAUKSEN MUOTO: JSON: {{"selite": "Uusi, paranneltu selite..."}}
+VASTAUKSEN MUOTO: JSON. Varmista, että selite viittaa ehdottamiisi konkreettisiin hakusanoihin. Esimerkki:
+{{
+  "selite": "Haku epäonnistui, koska se oli liian laaja. Parempi lähestymistapa on keskittyä termeihin kuten 'hengellinen viisaus' ja 'valheelliset opettajat', jotka kohdistavat haun tarkemmin ytimeen."
+}}
 """
-    qwen_data = suorita_varmistettu_json_kutsu(ARVIOINTI_MALLI, kehote_qwen)
-    if "virhe" in qwen_data:
-        return {"virhe": "Analyytikko-vaihe epäonnistui."}
+    strategi_data = suorita_varmistettu_json_kutsu(ASIANTUNTIJA_MALLI,
+                                                    kehote_strategi)
+    if "virhe" in strategi_data:
+        return {"virhe": "Strategian luonti epäonnistui."}
 
-    raaka_selite = qwen_data.get("selite", "")
-    if not raaka_selite:
-        return {"virhe": "Analyytikko ei tuottanut selitettä."}
+    selite = strategi_data.get("selite", "")
+    if not selite:
+        return {"virhe": "Strategi ei tuottanut selitettä."}
 
-    luodut_avainsanat = luo_avainsana_selitteen_pohjalta(raaka_selite)
-    if not luodut_avainsanat:
-        # Varmistus: jos avainsanoittaja epäonnistuu
-        logging.warning("Avainsanoittaja epäonnistui. Luodaan geneerinen avainsana.")
+    avainsanat = luo_avainsana_selitteen_pohjalta(selite)
+    if not avainsanat:
+        logging.warning("Avainsanoittaja epäonnistui. Luodaan geneerinen.")
         placeholder = re.sub(r'\s+', '_', aihe.split(':')[0].lower())[:20]
-        luodut_avainsanat = [f"konteksti_{placeholder}"]
+        avainsanat = [f"konteksti_{placeholder}"]
 
-    kehote_poro = f"""
-ROOLI: Olet suomen kielen toimittaja.
-TEHTÄVÄ: Viimeistele oheinen selite kieliopillisesti virheettömäksi ja
-ytimekkääksi.
-SELITE: "{raaka_selite}"
-VASTAUKSEN MUOTO: JSON: {{"selite": "Viimeistelty selite."}}
-"""
-    poro_data = suorita_varmistettu_json_kutsu(KIELENHUOLTO_MALLI, kehote_poro)
-    if "virhe" in poro_data:
-        logging.warning("Toimittaja-vaihe epäonnistui, käytetään raakaa selitettä.")
-        return {"avainsanat": luodut_avainsanat, "selite": raaka_selite}
-
-    return {"avainsanat": luodut_avainsanat,
-            "selite": poro_data.get("selite", raaka_selite)}
+    return {"avainsanat": avainsanat, "selite": selite}
 
 
 def tallenna_uusi_strategia(avainsanat: list, selite: str):
@@ -563,7 +480,7 @@ def luo_kontekstisidonnainen_avainsana(sana: str, selite: str) -> str:
     kehote = f"""
     ROOLI: Olet hakustrategikko.
     TEHTÄVÄ: Avainsana '{sana}' on liian yleinen. Luo sille tarkempi,
-    1-2 sanan uniikki vastine, joka kuvaa tätä erityistä kontekstia: "{selite}".
+    1-2 sanan uniikki vastine, joka kuvaa tätä erityistä kontekstiä: "{selite}".
     Käytä muotoa 'pääsana-tarkenne'.
     Esimerkki: Jos sana on 'tasapaino' ja konteksti 'armo ja totuus',
     hyvä vastine voisi olla 'tasapaino-armo ja totuus'.

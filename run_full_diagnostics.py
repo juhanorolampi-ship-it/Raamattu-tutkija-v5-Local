@@ -1,26 +1,22 @@
-# run_full_diagnostics.py (Versio 12.1 - Yksityiskohtainen iterointiloki, PEP-8)
+# run_full_diagnostics.py (Versio 16.0 - Lopullinen, vankka logiikka)
 import logging
 import re
 import time
 from collections import defaultdict
+import math
 
 from logic import (
-    STRATEGIA_SANAKIRJA,
-    STRATEGIA_SIEMENJAE_KARTTA,
     arvioi_tulokset,
-    ehdota_uutta_strategiaa,
     etsi_merkityksen_mukaan,
     lataa_resurssit,
-    luo_kontekstisidonnainen_avainsana,
-    tallenna_uusi_strategia
 )
 
 # --- MÄÄRITYKSET ---
 SYOTE_TIEDOSTO = 'syote.txt'
-TULOS_LOKI = 'diagnostiikka_raportti_oppiva_v4_FINAALI.txt'
-HAKUTULOSTEN_MAARA_PER_TEEMA = 15
-TAVOITEARVOSANA = 8
-MAKSIMI_YRITYKSET_PER_OSIO = 3
+TULOS_LOKI = 'diagnostiikka_raportti_hybridi.txt'
+LOPULLISTEN_HAKUTULOSTEN_MAARA = 15
+LAAJAN_HAUN_MAARA = 75
+ARVIOINTI_ERAN_KOKO = 10 # Pilkotaan arviointi pienempiin osiin
 
 # --- LOKITUSMÄÄRITYKSET ---
 logger = logging.getLogger()
@@ -53,9 +49,10 @@ def lue_syote_tiedosto(tiedostopolku):
             sisalto = f.read()
     except FileNotFoundError:
         logging.error(f"Syötetiedostoa '{tiedostopolku}' ei löytynyt.")
-        return None
+        return None, None
 
     hakulauseet = {}
+    otsikot = {}
     osiot = re.split(r'\n(?=\d\.\s)', sisalto)
 
     for osio_teksti in osiot:
@@ -68,28 +65,28 @@ def lue_syote_tiedosto(tiedostopolku):
         osio_match = re.match(r"^([\d\.]+)", otsikko)
         if osio_match:
             osio_nro = osio_match.group(1).strip('.')
-            haku = f"{otsikko}: {kuvaus.replace(' ', ' ')}"
+            haku = f"{otsikko}: {kuvaus.replace(r'\n', ' ')}"
             hakulauseet[osio_nro] = haku
-    return hakulauseet
+            otsikot[osio_nro] = otsikko
+            
+    return hakulauseet, otsikot
 
 
 def suorita_diagnostiikka():
-    """Ajaa koko diagnostiikkaprosessin sisältäen itseoppivan silmukan."""
+    """Ajaa koko diagnostiikkaprosessin käyttäen uutta kaksivaiheista logiikkaa."""
     total_start_time = time.time()
-    log_header("RAAMATTU-TUTKIJA v9 - DIAGNOSTIIKKA (Analyyttinen oppiminen)")
+    log_header("RAAMATTU-TUTKIJA v16 - DIAGNOSTIIKKA (Laaja haku + Pilkottu karsinta)")
 
     logging.info("Esiladataan kaikki resurssit...")
     lataa_resurssit()
     logging.info("Resurssit ladattu.")
 
-    hakulauseet = lue_syote_tiedosto(SYOTE_TIEDOSTO)
+    hakulauseet, otsikot = lue_syote_tiedosto(SYOTE_TIEDOSTO)
     if not hakulauseet:
         return
 
     logging.info(f"Löytyi {len(hakulauseet)} osiota käsiteltäväksi.")
 
-    temp_strategiat = STRATEGIA_SANAKIRJA.copy()
-    temp_siemenjakeet = STRATEGIA_SIEMENJAE_KARTTA.copy()
     jae_kartta_tuloksille = defaultdict(list)
     lopulliset_arvosanat = {}
 
@@ -99,109 +96,71 @@ def suorita_diagnostiikka():
     )
 
     for i, (osio_nro, haku) in enumerate(sorted_osiot):
-        log_header(f"Käsitellään osio {i+1}/{len(sorted_osiot)}: {osio_nro}")
+        log_header(f"Käsitellään osio {i+1}/{len(sorted_osiot)}: {otsikot.get(osio_nro, '')}")
 
-        tulokset = etsi_merkityksen_mukaan(
-            haku,
-            top_k=HAKUTULOSTEN_MAARA_PER_TEEMA,
-            custom_strategiat=temp_strategiat,
-            custom_siemenjakeet=temp_siemenjakeet
+        # VAIHE 1: LAAJA ETSINTÄ
+        logging.info(f"Vaihe 1: Suoritetaan laaja haku (haetaan {LAAJAN_HAUN_MAARA} jaetta)...")
+        ehdokkaat = etsi_merkityksen_mukaan(haku, top_k=LAAJAN_HAUN_MAARA)
+        logging.info(f"Löytyi {len(ehdokkaat)} ehdokasjaetta.")
+
+        if not ehdokkaat:
+            logging.warning("Laaja haku ei tuottanut tuloksia. Siirrytään seuraavaan osioon.")
+            continue
+
+        # VAIHE 2: PILKOTTU KARSINTA
+        logging.info(f"Vaihe 2: Arvioidaan {len(ehdokkaat)} ehdokasta {ARVIOINTI_ERAN_KOKO} jakeen erissä...")
+        kaikki_arviot = []
+        erien_maara = math.ceil(len(ehdokkaat) / ARVIOINTI_ERAN_KOKO)
+
+        for j in range(erien_maara):
+            alku = j * ARVIOINTI_ERAN_KOKO
+            loppu = alku + ARVIOINTI_ERAN_KOKO
+            era_ehdokkaat = ehdokkaat[alku:loppu]
+            
+            logging.info(f"  - Arvioidaan erä {j+1}/{erien_maara}...")
+            arvio = arvioi_tulokset(haku, era_ehdokkaat)
+            era_arviot = arvio.get("jae_arviot", [])
+
+            if len(era_arviot) != len(era_ehdokkaat):
+                logging.error(f"  -> VIRHE: Malli palautti {len(era_arviot)} arviota, "
+                              f"vaikka sille annettiin {len(era_ehdokkaat)} jaetta. Erä ohitetaan.")
+                continue
+
+            kaikki_arviot.extend(era_arviot)
+        
+        logging.info(f"Arviointi valmis. Saatiin yhteensä {len(kaikki_arviot)} jaearviota.")
+
+        if not kaikki_arviot:
+            logging.error("Arviointi epäonnistui, yhtään jaearviota ei saatu.")
+            continue
+            
+        # VAIHE 3: LOPULLISTEN TULOSTEN KOKOAMINEN
+        jarjestetyt_arviot = sorted(
+            kaikki_arviot,
+            key=lambda x: x.get('arvosana', 0),
+            reverse=True
         )
-        arvio = arvioi_tulokset(haku, tulokset)
 
-        logging.info("--- 1. Alkuperäinen laadunarviointi ---")
-        logging.info(f"AI Arvosana: {arvio.get('arvosana', 'N/A')}/10")
-        logging.info(f"AI Perustelu: {arvio.get('perustelu', 'Ei.')}")
-        logging.info("-" * 40)
+        parhaat_arviot = jarjestetyt_arviot[:LOPULLISTEN_HAKUTULOSTEN_MAARA]
 
-        arvosana_num = arvio.get("arvosana")
-        if arvosana_num is not None and arvosana_num < TAVOITEARVOSANA:
-            yritykset = 0
-            edellinen_ehdotus = None
+        final_tulokset = []
+        for par_arvio in parhaat_arviot:
+            vastaava_jae = next((item for item in ehdokkaat if item['viite'] == par_arvio['viite']), None)
+            if vastaava_jae:
+                final_tulokset.append(vastaava_jae)
+        
+        valid_scores = [a.get('arvosana') for a in parhaat_arviot if a.get('arvosana') is not None]
+        keskiarvo = sum(valid_scores) / len(valid_scores) if valid_scores else 0
+        lopulliset_arvosanat[osio_nro] = f"{keskiarvo:.2f}"
 
-            while (arvio.get("arvosana") is not None and
-                   arvio["arvosana"] < TAVOITEARVOSANA and
-                   yritykset < MAKSIMI_YRITYKSET_PER_OSIO):
-                yritykset += 1
-                log_header(
-                    f"Parannusyritys {yritykset}/{MAKSIMI_YRITYKSET_PER_OSIO} "
-                    f"osiolle {osio_nro}"
-                )
+        logging.info(f"Vaihe 3: Valittu {len(final_tulokset)} parasta jaetta. Lopullinen laatuarvio: {keskiarvo:.2f}/10")
+        logging.info("--- Valitut jakeet ja niiden arviot ---")
+        for jae_arvio in parhaat_arviot:
+             logging.info(f"  - {jae_arvio.get('viite')}: {jae_arvio.get('arvosana')}/10 ({jae_arvio.get('perustelu')})")
 
-                ehdotus = ehdota_uutta_strategiaa(haku, tulokset, arvio,
-                                                   edellinen_ehdotus)
-                edellinen_ehdotus = ehdotus.copy()
-
-                if "virhe" in ehdotus:
-                    logging.error("Strategiaehdotus epäonnistui, "
-                                  "silmukka keskeytetään.")
-                    break
-
-                avainsanat = ehdotus.get('avainsanat', [])
-                selite = ehdotus.get('selite', '')
-                
-                # === UUSI LOKITUS ALKAA ===
-                logger.info("--- Luotu strategia ---")
-                logger.info(f"  Avainsanat: {avainsanat}")
-                logger.info(f"  Selite: {selite}")
-                logger.info("---------------------")
-                # === UUSI LOKITUS PÄÄTTYY ===
-                
-                if not avainsanat or not selite:
-                    logging.error("Strategiaehdotus oli tyhjä, "
-                                  "silmukka keskeytetään.")
-                    break
-
-                for sana in avainsanat:
-                    temp_strategiat[sana.lower()] = selite
-
-                uudet_tulokset = etsi_merkityksen_mukaan(
-                    haku, top_k=HAKUTULOSTEN_MAARA_PER_TEEMA,
-                    custom_strategiat=temp_strategiat
-                )
-                uusi_arvio = arvioi_tulokset(haku, uudet_tulokset)
-
-                logging.info("--- Parannetun haun laadunarviointi ---")
-                logging.info(f"Edellinen arvosana: "
-                             f"{arvio.get('arvosana', 'N/A')}/10")
-                logging.info(f"UUSI arvosana: "
-                             f"{uusi_arvio.get('arvosana', 'N/A')}/10")
-
-                vanha_arvosana = arvio.get("arvosana")
-                uusi_arvosana = uusi_arvio.get("arvosana")
-
-                if uusi_arvosana is not None and vanha_arvosana is not None:
-                    if uusi_arvosana > vanha_arvosana:
-                        logging.info("TULOS: Laatu parani! ✅")
-                        tulokset, arvio = uudet_tulokset, uusi_arvio
-
-                        uniikit_sanat = []
-                        for sana in avainsanat:
-                            if sana.lower() in STRATEGIA_SANAKIRJA:
-                                msg = (f"Avainsana '{sana}' on jo olemassa. "
-                                       "Luodaan kontekstisidonnainen versio.")
-                                logging.warning(msg)
-                                uusi = luo_kontekstisidonnainen_avainsana(sana,
-                                                                          selite)
-                                uniikit_sanat.append(uusi)
-                                logging.info("Luotu uusi kontekstisidonnainen "
-                                             f"avainsana: '{uusi}'")
-                            else:
-                                uniikit_sanat.append(sana)
-
-                        tallenna_uusi_strategia(uniikit_sanat, selite)
-                    else:
-                        logging.warning("TULOS: Laatu ei parantunut. ⚠️")
-                        arvio = uusi_arvio
-                else:
-                    logging.error("Arvosanaa ei saatu, "
-                                  "silmukka keskeytetään.")
-                    break
-
-        lopulliset_arvosanat[osio_nro] = arvio.get("arvosana")
-        if tulokset:
+        if final_tulokset:
             jae_kartta_tuloksille[osio_nro] = [
-                f"- {t['viite']}: \"{t['teksti']}\"" for t in tulokset
+                f"- {t['viite']}: \"{t['teksti']}\"" for t in final_tulokset
             ]
 
     total_end_time = time.time()
@@ -209,16 +168,16 @@ def suorita_diagnostiikka():
     aika = total_end_time - total_start_time
     logging.info(f"Koko diagnostiikan ajo kesti: {aika:.2f} sekuntia.")
 
-    valid_scores = [s for s in lopulliset_arvosanat.values() if s is not None]
-    if valid_scores:
-        keskiarvo = sum(valid_scores) / len(valid_scores)
+    valid_scores_float = [float(s) for s in lopulliset_arvosanat.values() if isinstance(s, str) and s != 'N/A']
+    if valid_scores_float:
+        keskiarvo_total = sum(valid_scores_float) / len(valid_scores_float)
         logging.info("AI:n antama lopullinen keskiarvo tulosten laadulle: "
-                     f"{keskiarvo:.2f}/10")
+                     f"{keskiarvo_total:.2f}/10")
 
     log_header("YKSITYISKOHTAINEN JAEJAOTTELU")
     for osio_nro_sorted, haku_sorted in sorted_osiot:
-        logger.info(f"\n--- {osio_nro_sorted} "
-                     f"{haku_sorted.split(':')[0]} ---\n")
+        otsikko_sorted = otsikot.get(osio_nro_sorted, haku_sorted.split(':')[0])
+        logger.info(f"\n--- {osio_nro_sorted} {otsikko_sorted} ---\n")
         arvosana = lopulliset_arvosanat.get(osio_nro_sorted, 'N/A')
         logger.info(f"(Lopullinen arvosana tälle osiolle: {arvosana}/10)")
         if osio_nro_sorted in jae_kartta_tuloksille:

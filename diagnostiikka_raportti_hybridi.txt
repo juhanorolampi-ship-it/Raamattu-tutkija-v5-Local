@@ -1,0 +1,430 @@
+
+================================================================================
+     RAAMATTU-TUTKIJA v16 - DIAGNOSTIIKKA (Laaja haku + Pilkottu karsinta)      
+================================================================================
+
+Esiladataan kaikki resurssit...
+Ladataan hakumallit, indeksi ja datatiedostot muistiin...
+Use pytorch device_name: cpu
+Load pretrained SentenceTransformer: intfloat/multilingual-e5-large
+Use pytorch device: cpu
+Kaikki resurssit ladattu onnistuneesti.
+Resurssit ladattu.
+Löytyi 5 osiota käsiteltäväksi.
+
+================================================================================
+  Käsitellään osio 1/5: 1. Johdanto: Kutsu vaatii viisautta ja erottamiskykyä   
+================================================================================
+
+Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Löytyi 75 ehdokasjaetta.
+Vaihe 2: Arvioidaan 75 ehdokasta 10 jakeen erissä...
+  - Arvioidaan erä 1/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> VIRHE: Malli palautti 9 arviota, vaikka sille annettiin 10 jaetta. Erä ohitetaan.
+  - Arvioidaan erä 2/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 3/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Virhe JSON-jäsennnyksessä (yritys 1): Expecting ',' delimiter: line 23 column 106 (char 1526). Yritetään uudelleen...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 2/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 4/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 5/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 6/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 7/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 8/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Arviointi valmis. Saatiin yhteensä 65 jaearviota.
+Vaihe 3: Valittu 12 parasta jaetta. Lopullinen laatuarvio: 9.27/10
+--- Valitut jakeet ja niiden arviot ---
+  - 1. Korinttilaiskirje 7:18: 10/10 (Tämä jae on keskeinen teemaan. Se varoittaa yliluonnollisesta pyrkimyksestä, ja korostaa, että 'kutsuttu' tarkoittaa enemmän kuin pelkkää osallistumista. Se viittaa myös hengelliseen erottamiseen ja totuuden säilyttämiseen. Sopii erinomaisesti aiheeseen.)
+  - Johannes 10:3: 10/10 (Johannesin luku on täydellinen teologinen vertauskuva, joka korostaa jumalaisen herran (Jeesuksen) roolia lauman johtajana ja lampaiden erottamisessa. Tämän jakeen merkitys on päättelyssä selvä.)
+  - 1. Korinttilaiskirje 7:24: 10/10 (Tämä jae on keskeinen ja suora. Se korostaa, että meidän on pysyttävä 'Jumalan edessä siinä asemassa, missä hänet on kutsuttu', mikä merkitsee Jumalan tahdonmukaisuutta ja henkilökohtaista elämää. Sen painotus 'vapaaehtoisuudessa' on merkittävä.)
+  - 1. Korinttilaiskirje 1:25: 10/10 (Tämä jae on keskeinen. Se ilmaisee selkeästi Jumalan 'hulluuden' ja 'heikkouden' olevan voimakkaita välineitä, jotka voivat olla vastalauseen merkkejä ihmisten itsetietyille ymmärryksille. Se tukee suoraan teemaa, että uskonnollinen korruptio voi olla piilossa, mutta Jumalan vaikutus on tunnistettavissa.)
+  - 2. Kor. 10:2: 9/10 (Tämä jae on erittäin osuva. Se kuvaa suoraan haasteen, jonka uskovat kohtaavat, kun he yrittävät vaikuttaa muihin ja puolustaa kristillistä totuutta. Vaatimus 'luottavaisesta uskalta käydä eräiden kimppuun' korostaa sisäistä vahvuutta ja rohkeutta, joita tarvitaan vaelluksessa.)
+  - Kol. 3:15: 9/10 (Jae korostaa Kristuksen rauhaa sisäisen pohjana, jota uskovat ovat saaneet. Se antaa myös tärkeän ohjeen – sydämen hallinta – joka on olennaista vaelluksen tavoitteiden saavuttamiseksi. )
+  - Rom. 12:8: 9/10 (Tämä jae on erittäin osuva ohje, joka korostaa sisäistä luonnetta ja toimintaa. Se muistuttaa, että uskovan tulee olla valmis rohkeasti palvelemaan ja toteuttamaan Jumalan tahtoa.)
+  - Jesaja 66:4: 9/10 (Tämä jae on keskeinen, koska se kuvaa Jumalan vihaa niitä kohtaan, jotka eivät kuulleet tai vastanneet kutsuun. Se korostaa kurin ja oikeanlaisen reaktion tärkeyttä.)
+  - Sananlaskut 15:32: 9/10 (Tämä jae korostaa nuhdekkumyönteisyyden merkitystä. Hengellinen oppiminen ja kasvu edellyttävät kykyä kuunnella, oppia ja muuttaa omaa toimintaansa.)
+  - Johannes 10:8: 9/10 (Tämä jae käyttää vahvaa symboliikkaa lampaiden ja varkasten välillä korostaen Jumalan kutsun aitoa luonnetta, jossa on rakkaus ja huolenpito, ei vääryyttä ja hyötymistä.)
+  - 1. Korinttilaiskirje 14:24: 9/10 (Jae korostaa kyvyttömyyttä ja tarvetta 'totuudessa'. Tämä sopii täydellisesti teeman ytimeen - totuuden noudattaminen on keskeistä oikeanlaista hengellistä toimintaa. Se myös tuo esiin tarpeen hienostuneelle ymmärrykselle. )
+  - Johannes 4:23: 9/10 (Jae puhuu 'totisista rukoilijoista', jotka rukoilevat 'Isää hengessä ja totuudessa'. Tämä vahvistaa teeman ytimen ja korostaa autenttisuuden tärkeyttä hengellisessä elämässä.)
+  - 1. Tessalonikalaiskirje 5:23: 9/10 (Jae puhuu 'rauhan Jumalasta', joka pyhittää ja säilyttää. Tämä on suoraan teemaan liittyvä, ja korostaa Jumalan aktiivista roolia hengellisessä elämässä.)
+  - Jaakobin kirje 1:21: 9/10 (Tämä jae ilmaisee selkeästi tarpeen hengelliselle erottumiselle, 'saastaisuuden ja pahuuden' hylkäämisestä ja sanan 'hiljaisuudella' vastaanottamista. Se on suoraan relevantti, kun on kyse hengellisestä puhdistumisesta ja valmistelemisesta Jumalan sanan vastaanottamiseen.)
+  - 2. Pietarin kirje 1:10: 9/10 (Tämä jae korostaa 'kutsumisen ja valitsemisen' lujittamisen tarvetta. Se on suoraan relevantti, kun on kyse uskonnonostoista ja siitä, miten uskovat voivat sitoutua uskonnolliseen elämäänsä.)
+
+================================================================================
+ Käsitellään osio 2/5: 2. Raamatun selkeä varoitus: Tunnista ja vältä eksytystä 
+================================================================================
+
+Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Löytyi 75 ehdokasjaetta.
+Vaihe 2: Arvioidaan 75 ehdokasta 10 jakeen erissä...
+  - Arvioidaan erä 1/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 2/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> VIRHE: Malli palautti 11 arviota, vaikka sille annettiin 10 jaetta. Erä ohitetaan.
+  - Arvioidaan erä 3/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 4/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 5/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 6/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> VIRHE: Malli palautti 9 arviota, vaikka sille annettiin 10 jaetta. Erä ohitetaan.
+  - Arvioidaan erä 7/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 8/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Arviointi valmis. Saatiin yhteensä 55 jaearviota.
+Vaihe 3: Valittu 15 parasta jaetta. Lopullinen laatuarvio: 9.13/10
+--- Valitut jakeet ja niiden arviot ---
+  - Efesolaiskirje 5:5: 10/10 (Jae on erittäin relevantti, koska se yhdistää harhaopettajien teot (haurellisuus, saastaisuus, ahneus) Raamatun mukaisiin periaatteisiin. Se on suora varoitus siitä, mitä ei saa hyväksyä.)
+  - 1. Johanneksen kirje 4:6: 10/10 (Tämä on keskeinen jae, joka erottaa totuuden hengen harhaoppien hengen. Se on selkeä, ymmärrettävä ja perustuu Raamatun opetukseen.)
+  - Jaakobin kirje 2:5: 9/10 (Jae onnistuneesti osoittaa, että harhaopettajat usein edustavat ahneutta ja valtaa, ja että Jumalan valitut kykenevät noudattamaan Raamattua ja tavoittelemaan Jumalan valtakunnan perintöä.)
+  - Jeremia 23:32: 9/10 (Jae on vahva varoitus harhaopettajien valheellisista ennustuksista ja niiden negatiivisista vaikutuksista. Korostaa harhaopettajien vastuuta seurakunnille aiheuttamista vahingoista.)
+  - Hesekiel 33:6: 9/10 (Erinomainen ja merkittävä jae. Se kuvaa selkeästi vastuullisuuden ja seuraukset, kun vartija (uskonnolliset johtajat) ei toimi. Se on suora varoitus ja eettinen painotus.)
+  - 2. Timoteuskirje 4:2: 9/10 (Tämä jae viittaa johdonmukaisesti opettamisen ja varoittamisen tarpeeseen, mikä on olennainen osa uskonnollisen johtajan roolia.)
+  - 1. Johanneksen kirje 2:27: 9/10 (Jae on erittäin relevantti ja selvästi Raamatullinen ohje siitä, kuinka pysyä Jumalan opettajien aikana. 'Voitelu' ja 'oppiminen hänessä' ovat vahvoja symboleja Jumalan johdatuksesta ja totuudesta.)
+  - 2. Pietarin kirje 2:12: 9/10 (Jae kuvaa harhaoppijoiden 'epäröivä' ja 'hullu' luonne. Se selittää, että harhaoppijat eivät ymmärrä Jumalan totuutta.)
+  - 2. Tessalonikalaiskirje 1:5: 9/10 (Tämä jae on keskeinen, koska se käsittelee harhaopettajien motiiveja (tuomio) ja seurauksia (valtakuntaan kutsuttavat). Vahva linkki aiheeseen.)
+  - Hesekiel 18:8: 9/10 (Tämä jae määrittää harhaopettajien hylkäämisen –  niin kauan kuin he eivät yritä tehdä oikeutta. Se on hyvin konkreettinen jaettava.  Heikko moraali on harhaopettajien tunnusmerkki.)
+  - 2. Pietarin kirje 2:10: 9/10 (Tämä jae yhdistää harhaopettajien tuomitsemisen heidän saastaisiin himoihinsa ja heidän välinpitämättömyytensä kohtaan Herrauteen. Täydellinen kuva harhaopettajista.)
+  - Hesekiel 3:20: 9/10 (Erinomainen jae, joka kuvaa selkeästi seurauksen, jos vanhurskas ei varoita toisia. Korostaa vastuuta ja voi johtaa ihmisen kuolemaan.  Vahva ja konkreettinen.)
+  - Heprealaiskirje 6:1: 9/10 (Täsmällinen jae, joka varoittaa uudelleen perustamasta kristuksen oppia. Keskittyy kristuksen oppien perusrakenteen säilyttämiseen.)
+  - Matteus 5:20: 9/10 (Erinomainen jae, joka vaatii, että meidän vanhurskautemme on suurempi kuin kirjanoppineiden ja fariseusten.  Korostaa ylivoimaisen vanhurskauden tärkeyttä.)
+  - Hesekiel 3:19: 9/10 (Tämä jae on erittäin relevantti ja osoittaa selkeästi, että Jumala odottaa meiltä vastuuta varoittaa harhaopeista. Se korostaa myös, että oma turvallisuutemme riippuu siitä, kuinka vakavasti suhtaudumme harhaan.)
+
+================================================================================
+Käsitellään osio 3/5: 3. Tasapaino ja oikea asenne: Erottelua, ei tuomitsemista 
+================================================================================
+
+Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'raamatullinen' todettiin relevantiksi.
+Löytyi 75 ehdokasjaetta.
+Vaihe 2: Arvioidaan 75 ehdokasta 10 jakeen erissä...
+  - Arvioidaan erä 1/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 2/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Virhe JSON-jäsennnyksessä (yritys 1): Invalid control character at: line 8 column 370 (char 1183). Yritetään uudelleen...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 2/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> VIRHE: Malli palautti 9 arviota, vaikka sille annettiin 10 jaetta. Erä ohitetaan.
+  - Arvioidaan erä 3/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 4/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 5/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 6/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 7/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 8/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Arviointi valmis. Saatiin yhteensä 65 jaearviota.
+Vaihe 3: Valittu 13 parasta jaetta. Lopullinen laatuarvio: 9.20/10
+--- Valitut jakeet ja niiden arviot ---
+  - Jaakobin kirje 4:11: 10/10 (Tämä jae on keskeinen, koska se suoraan osoittaa tuomitsemisen ja epärakkauden seuraukset. Se on tehokas varoitus, joka korostaa myötätuntoa ja rakkauden tärkeyttä uskonelämässä.)
+  - Johannes 10:16: 10/10 (Jae on keskeinen ja ilmaisee suoraan Jumalan suunnitelman ohjata erilaisia ​​ihmisiä ja tuoda heidät yhteen, mikä on olennaista aiheen ytimelle – tarve ohjaukselle ja armolle.)
+  - 2. Piet. 2:11: 10/10 (Tämä jae on erittäin relevantti ja voimakas. Se alleviivaa periaatteen, että vaikka jumalalliset olentovatkään tuomitsevat, meidän tulisi välttää tuomitsemista ja keskittyä rakkauteen ja armoon. Se on keskeinen periaate uskonnollisessa yhteisössä.)
+  - Nehemia 9:17: 9/10 (Tämä jae on erittäin relevantti. Se kuvaa selkeästi tilannetta, jossa ihmiset eivät ole noudattaneet Jumalan käskyjä ja ovat valinneet pahan asenteen, mikä on ominaista epäkunnioituksessa ja itsekeskeisyydessä. Se korostaa anteeksiantamisen ja armahduksen tärkeyttä.)
+  - 1. Timoteuskirje 6:2: 9/10 (Tämä jae on keskeinen. Se korostaa uskonnollisen asenteen tärkeyttä ja kehottaa uskovia kunnioittamaan ja palvelemaan uskonnollisia johtajiaan, mikä on olennaista lampaiden ja susien erottelussa.)
+  - 2. Tessalonikalaiskirje 1:5: 9/10 (Jae on keskeinen ja ytimekäs - se muistuttaa, että kunnioitusta tulee osoittaa toisten ihmisten, jopa heikkojen, erityisesti heidän uskonpolullensa vaikuttamisesta.)
+  - 1. Pietarin kirje 3:7: 9/10 (Jae on erinomainen ohje, joka painottaa kunnioitusta toista kohtaan, koska he ovat uskonpolun perillisiä.)
+  - Jaakobin kirje 1:4: 9/10 (Jae korostaa, että kärsivällisyys tuottaa täydellisyyden, mikä on keskeinen elementti, kun kohdellaan heikkoja uskovia.)
+  - 1. Korinttolaiskirje 7:15: 9/10 (Tämä jae on erittäin relevantti, koska se korostaa uskonnollisen yhteisön jäsenten suhteellista käsittelyä ja armoa. Se antaa suoraa ohjausta siihen, miten suhtautua heikkoihin uskoviin.  (Kor. 7:15: '…etteivät näpistele, vaan kaikin tavoin osoittavat vilpitöntä uskollisuutta, että he Jumalan, meidän vapahtajamme, opin kaikessa kaunistaisivat.'))
+  - Hesekiel 34:16: 9/10 (Tämä jae on keskeinen, koska se osoittaa suoran ja selkeän ohjeen siitä, miten Jumala kohtelee eri ihmisiä. Se korostaa, että Jumala etsii, tuo takaisin ja sitoo harhailevat, mutta myös hävittää lihavat ja väkevät. Tämä viittaa myötätuntoon heikkojen kanssa ja varoituksen eri ihmisryhmistä.)
+  - Jesaja 58:10: 9/10 (Tämä jae onnistuu täydellisesti heijastamaan teeman keskeistä viestiä. Se puhuu myötätuntoisesta ja valoisasta suhtautumisesta, joka vaatii toimia ja välittämistä. Sehtellinen painotus tarvitulla toiminnalla luotavasta valosta on erinomainen.)
+  - Efesolaiskirje 6:5: 9/10 (Tämä jae on olennaisesti oleellinen, sillä se muistuttaa nöyrästä kuuliaisuudesta, joka on merkittävä osa Kristuksen esimerkkiä ja uskonelämän periaatteita. 'Sydämenne yksinkertaisuudessa' on voimakas ohje.)
+  - Hesekiel 34:19: 9/10 (Tämä jae kuvaa suoraan lampaiden jahtamista ja huolestuttavaa johtoa, mikä on täsmällinen merkitys suhteiden ja opastuksen näkökulmasta. Se painottaa huolenpidon ja ohjauksen tarvetta.)
+  - 5. Mooseksen kirja 22:2: 9/10 (Tämä jae on erittäin osuva. Se puhuu suhteesta 'eksytettyyn taloon', mikä kuvastaa suhteellisen heikkojen ja hämmennystilanteessa olevien ystävien huolehtimista. On tärkeää huomioida suhteet, jotka ovat yllättäen vaikeuksissa.)
+  - Jaakobin kirje 5:10: 9/10 (Jae korostaa profeettien vaivankestämistä ja kärsivällisyyttä, mikä on täysin linjassa aiheen ytimen kanssa. Se toimii voimakkaana muistutuksena rakkaudellisesta ja kestävän kohtaamisesta.)
+
+================================================================================
+Käsitellään osio 4/5: 4. Sovellus nykyaikaan: Suomen nuorten herätys ja sen haasteet
+================================================================================
+
+Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Löytyi 75 ehdokasjaetta.
+Vaihe 2: Arvioidaan 75 ehdokasta 10 jakeen erissä...
+  - Arvioidaan erä 1/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 2/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 3/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 4/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 5/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 6/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 7/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 8/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Arviointi valmis. Saatiin yhteensä 75 jaearviota.
+Vaihe 3: Valittu 15 parasta jaetta. Lopullinen laatuarvio: 9.13/10
+--- Valitut jakeet ja niiden arviot ---
+  - Roomalaiskirje 6:22: 10/10 (Jae määrittelee uskonannon, joka luo mahdollisuuden elämään iankaikkisesti. Se on erinomainen johtolanka, joka kuvaa uskon, joka on yhteydessä elämään.)
+  - 1. Korinttilaiskirje 13:13: 10/10 (Jae korostaa rakkauden keskeistä roolia, ja on erityisen suora ja vahva. Se on suoraan olennaista nuorten herätyksen pohjana.)
+  - 1. Aikakirja 28:8: 9/10 (Tämä jae edellyttää pitkäjänteistä ja velvollisuudentuntoista toimintaa. Se ohjaa uskovia, että Hyvä Maa säilytetään lapsille.)
+  - Filippiläiskirje 2:12: 9/10 (Tämä jae korostaa herätysten tärkeyttä ja velvollisuutta jatkaa uskon harjoittelua, erityisesti kun olemme poissa isännöistä. Se korostaa herätysten arvoa ja niiden merkitystä.)
+  - 1. Johanneksen kirje 2:28: 9/10 (Tämä jae on erittäin relevantti, sillä se korostaa turvan ja tulevan ilmestyksen tärkeyttä. Se myös viittaa siihen, että todellinen usko ilmenee uskonnossa pysymisessä.)
+  - Efesolaiskirje 6:5: 9/10 (Tämä jae painottaa palvelijan kuuliaisyyttä ja kunnioitusta maallisille isännille, mikä on olennaista myös nuorten uskovien kohdalla - samalla korostaen Kristuksen mallina.)
+  - Kolossalaiskirje 1:9: 9/10 (Tämä jae on erittäin relevantti. Se korostaa jatkuvaa rukoilemista ja tahtoon pyhtimätöntä elämistä, mikä on keskeistä kiitollisuuden ja ilon ylläpitämiselle. 'Täyteen hänen tahtonsa tuntemista' edellyttää aktiivista ja tarkkaavainen elämää.)
+  - 1. Johanneksen kirje 3:17: 9/10 (Jae keskittyy erittäin relevanttiin havaintoon: voimme tuntea iloa Jumalan työstä, vaikka ympäristö tuntuisi puutteelliselta.  Se korostaa veljellemme huolenaiheista huolimatta iloa, mikä on keskeistä nuorten herätyksessä.)
+  - Tiituskirje 3:8: 9/10 (Jae alleviivaa aktiivista toimintaa ja hyvien tekojen harjoittamista, mikä on keskeistä nuorten herätysryhmissä. Se on tavoite ja käytännöllinen ohje.)
+  - 2. Tessalonikalaiskirje 2:13: 9/10 (Jae korostaa Jumalan valintaa ja hänen pyhityksensä, mikä on tärkeä muistutus nuorille. Se on suora viittaus valittuun, ja erinomainen pohja itsevarmuuden rakentamiselle.)
+  - Kolossalaiskirje 1:12: 9/10 (Erittäin relevantti. Jeesus on tehnyt pelastetut soveliaiksi perinnöstä, eli Jumalan arvoisiksi ja osalliseksi pyhän perinnön hyväksymiseen. Korostaa ilon ja kiitollisuuden periaatetta.)
+  - Roomalaiskirje 14:18: 9/10 (Tämä jae on keskeinen. Se ilmaisee, että Kristuksessa palveleva on 'otollinen Jumalalle ja ihmisille kelvollinen'. Tämä on perusta kaikelle ohjaukselle ja siitä, miten ohjaaja asettaa itsensä.)
+  - 2. Pietarin kirje 3:17: 9/10 (Tämä jae on erittäin relevantti. Se varoittaa eksytyksestä ja korostaa turvallista pohjaa, johon uskominen perustuu. Varoitus on tärkeä nuorten herätyksennehteen kannalta.)
+  - Roomalaiskirje 10:9: 9/10 (Tämä jae on keskeinen ja tehokas ilmaisemaan uskon perusvaatimukset. Se korostaa, että usko Jeesukseen on pelastuksen ehto, mikä on olennaista nuorten herätyksen kontekstissa.)
+  - Kolossalaiskirje 3:16: 9/10 (Tämä jae painottaa Kristuksen sanan keskeistä asemaa uskonnollisessa elämässä, sekä sen opettamisen ja ilmaisemisen tärkeyttä. Se on erittäin relevantti nuorten uskovien opetuksen ja hengellisen kasvun tukemiselle.)
+
+================================================================================
+            Käsitellään osio 5/5: 5. Yhteenveto: Totuus rakkaudessa             
+================================================================================
+
+Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Suoritetaan strategian relevanssin esianalyysi...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Esianalyysin tulos: Soveltuuko strategia? Kyllä.
+Strategia 'tasapaino' todettiin relevantiksi.
+Löytyi 75 ehdokasjaetta.
+Vaihe 2: Arvioidaan 75 ehdokasta 10 jakeen erissä...
+  - Arvioidaan erä 1/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 2/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 3/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 4/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 5/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 6/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> VIRHE: Malli palautti 9 arviota, vaikka sille annettiin 10 jaetta. Erä ohitetaan.
+  - Arvioidaan erä 7/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 8/8...
+Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Arviointi valmis. Saatiin yhteensä 65 jaearviota.
+Vaihe 3: Valittu 15 parasta jaetta. Lopullinen laatuarvio: 9.20/10
+--- Valitut jakeet ja niiden arviot ---
+  - 2. Johanneksen kirje 1:3: 10/10 (Tämä jae on keskeinen. Se yhdistää totuuden ja rakkauden suoraan Jumalan nimissä ja henkilökohtaisessa suhteessa Kristukseen, mikä on juuri sitä, mitä teema korostaa.)
+  - 1. Johanneksen kirje 4:17: 10/10 (Tämä on erittäin osuva ja vahva jae, joka määrittää täydellisen rakkauden, joka on turva tuomiopäivänä. Se täydentää täydellisesti kokonaisuuden.)
+  - Roomalaiskirje 13:10: 10/10 (Tämä jae tarjoaa selkeän eettisen ohjeen rakkauden pohjalta.  Se yhdistää rakkauden ja lain täyttämisen, ja korostaa, että rakkaus on positiivinen voima, joka vaikuttaa toisten elämään. Täydellinen yhtenäisyyttä teeman kanssa.)
+  - Nehemia 9:32: 9/10 (Tämä jae on erittäin relevantti. Se tuo esiin Jumalan suuren ja voimakkaan luonteen, hänen liittonsa ja hänen laupeutensa, mikä on keskeistä teemalle. Osoittaa, että totuus rakkaudessa alkaa Jumalan luonteesta ja liitosta kansan kanssa.)
+  - 2. Korinttilaiskirje 6:6: 9/10 (Tämä jae listaavat olennaiset ominaisuudet, jotka ovat olennainen osa totuudessa ja rakkaudessa olevan ilmaisun. Se luo hyvin konkreettisenanavan todellisuudessa.)
+  - Tiituskirje 2:14: 9/10 (Tämä jae kuvaa suoraan Jumalan tehtävää, joka on lunastaa ja puhdistaa, mikä onnistuu vain rakkaudella ja totuudella. Se heijastaa suoraan teeman ydintä.)
+  - Roomalaiskirje 8:39: 9/10 (Tämä jae esittää tehokkaasti Jumalan rakkauden voiman ja sen, että se on ikuinen. Se tukee teeman korostusta rakkauden voimasta.)
+  - 2. Pietarin kirje 1:7: 9/10 (Jae ilmaisee selvästi veljellisen rakkauden ja yhteisön sisäisen yhteyden, jotka ovat olennaisia teeman kannalta.)
+  - 2. Pietarin kirje 1:8: 9/10 (Tämä jae on erittäin relevantti. Se alleviivaa, että totuuden toteuttaminen on välttämätöntä toiminnan ja hedelmällisyyden kannalta uskon tavoittelussa. Se korostaa, että totuuden vahva omaksuminen johtaa toimintaan, mikä on keskeistä teeman kannalta.)
+  - 1. Timoteuskirje 4:16: 9/10 (Jae korostaa opettajan kestävyyttä ja sen vaikutusta, mikä on olennaista teeman kannalta: totuuden vahvasta ja pitkäaikaisesta todistamisesta.)
+  - Kolossalaiskirje 3:13: 9/10 (Jae keskittyy anteeksiannon tärkeysiin, mikä on keskeinen osa teemaa: totuuden ja rakkauden tasapainoinen toteuttaminen, joka sisältää myös nöyryyttä ja myötätuntoa.)
+  - Filippiläiskirje 1:8: 9/10 (Tämä jae ilmaisee syvän uskon ja rakkauden, joka on olennainen osa Kristuksen seuraamista. Se korostaa Jumalan todistajan roolia ja henkilökohtaista yhteyttä, mikä sopii täydellisesti annetun teeman ytimeen. 'Sydämellisellä rakkaudella' on selkeä merkitys.)
+  - 2. Korinttilaiskirje 4:2: 9/10 (Jae kertoo selkeästi velvollisuuden välttää salaisuuksia ja julkistaa totuuden. Se on suoraan linjassa teeman ytimen kanssa, joka korostaa totuuden julkistamista ja sen tärkeyttä. 'Hylkääneet kaikki häpeälliset salatiet' on voimakas toteaminen.)
+  - Kolossalaiskirje 3:15: 9/10 (Jae korostaa Kristuksen rauhaa, joka on keskeinen osa uskovan elämää. Se yhdistää sisäisen, hengellisen rauhan ulkoisen totuuden kanssa, ja viittaa ruumiin rakenteeseen, mikä onkin olennainen piirre tässä yhteydessä.)
+  - Efesolaiskirje 4:4: 9/10 (Tämä jae ilmaisee perusperiaatteen, jonka mukaan kristityt ovat yhtä ruumiissa ja hengessä, mikä edellyttää yhtenäisyyttä, toivoa ja yhteistä suuntaa. Se on erittäin relevantti teemalla.)
+
+================================================================================
+                            DIAGNOSTIIKAN YHTEENVETO                            
+================================================================================
+
+Koko diagnostiikan ajo kesti: 649.11 sekuntia.
+AI:n antama lopullinen keskiarvo tulosten laadulle: 9.19/10
+
+================================================================================
+                         YKSITYISKOHTAINEN JAEJAOTTELU                          
+================================================================================
+
+
+--- 1 1. Johdanto: Kutsu vaatii viisautta ja erottamiskykyä ---
+
+(Lopullinen arvosana tälle osiolle: 9.27/10)
+- 1. Korinttilaiskirje 7:18: "Jos joku on kutsuttu ympärileikattuna, älköön hän pyrkikö ympärileikkaamattomaksi; jos joku on kutsuttu ympärileikkaamatonna, älköön ympärileikkauttako itseään."
+- Johannes 10:3: "Hänelle ovenvartija avaa, ja lampaat kuulevat hänen ääntänsä; ja hän kutsuu omat lampaansa nimeltä ja vie heidät ulos."
+- 1. Korinttilaiskirje 7:24: "Pysyköön kukin, veljet, Jumalan edessä siinä asemassa, missä hänet on kutsuttu."
+- 1. Korinttilaiskirje 1:25: "Sillä Jumalan hulluus on viisaampi kuin ihmiset, ja Jumalan heikkous on väkevämpi kuin ihmiset."
+- Jesaja 66:4: "niin minäkin valitsen heidän vaivaamisensa ja annan heille tulla sen, mitä he pelkäävät, koska ei kukaan vastannut, kun minä kutsuin, koska he eivät kuulleet, kun minä puhuin, vaan tekivät sitä, mikä on pahaa minun silmissäni, ja valitsivat sen, mikä ei ole minulle otollista."
+- Sananlaskut 15:32: "Joka kuritusta vieroo, pitää sielunsa halpana; mutta joka nuhdetta kuuntelee, se saa mieltä."
+- Johannes 10:8: "Kaikki, jotka ovat tulleet ennen minua, ovat varkaita ja ryöväreitä; mutta lampaat eivät ole heitä kuulleet."
+- 1. Korinttilaiskirje 14:24: "Mutta jos kaikki profetoisivat ja joku uskosta tai opetuksesta osaton tulisi sisään, niin kaikki paljastaisivat hänet ja kaikki langettaisivat hänestä tuomion,"
+- Johannes 4:23: "Mutta tulee aika ja on jo, jolloin totiset rukoilijat rukoilevat Isää hengessä ja totuudessa; sillä senkaltaisia rukoilijoita myös Isä tahtoo."
+- 1. Tessalonikalaiskirje 5:23: "Mutta itse rauhan Jumala pyhittäköön teidät kokonansa, ja säilyköön koko teidän henkenne ja sielunne ja ruumiinne nuhteettomana meidän Herramme Jeesuksen Kristuksen tulemukseen."
+- Jaakobin kirje 1:21: "Sentähden pankaa pois kaikki saastaisuus ja kaikkinainen pahuus ja ottakaa hiljaisuudella vastaan sana, joka on teihin istutettu ja joka voi teidän sielunne pelastaa."
+- 2. Pietarin kirje 1:10: "Pyrkikää sentähden, veljet, sitä enemmän tekemään kutsumisenne ja valitsemisenne lujaksi; sillä jos sen teette, ette koskaan lankea;"
+
+--- 2 2. Raamatun selkeä varoitus: Tunnista ja vältä eksytystä ---
+
+(Lopullinen arvosana tälle osiolle: 9.13/10)
+- Efesolaiskirje 5:5: "Sillä sen te tiedätte ja tunnette, ettei yhdelläkään haureellisella eikä saastaisella eikä ahneella — sillä hän on epäjumalanpalvelija — ole perintöosaa Kristuksen ja Jumalan valtakunnassa."
+- 1. Johanneksen kirje 4:6: "Me olemme Jumalasta. Joka tuntee Jumalan, se kuulee meitä; joka ei ole Jumalasta, se ei kuule meitä. Siitä me tunnemme totuuden hengen ja eksytyksen hengen."
+- Jaakobin kirje 2:5: "Kuulkaa, rakkaat veljeni. Eikö Jumala ole valinnut niitä, jotka maailman silmissä ovat köyhiä, olemaan rikkaita uskossa ja sen valtakunnan perillisiä, jonka hän on luvannut niille, jotka häntä rakastavat?"
+- Jeremia 23:32: "Katso, minä käyn niiden kimppuun, jotka ennustavat valheunia, sanoo Herra, ja kertovat niitä ja eksyttävät minun kansaani valheillansa ja kerskumisellansa, vaikka minä en ole heitä lähettänyt enkä käskenyt ja vaikka heistä ei ole mitään hyötyä tälle kansalle, sanoo Herra."
+- Hesekiel 33:6: "Jos taas vartija näkee miekan tulevan, mutta ei puhalla pasunaan eikä kansa saa varoitusta, ja miekka tulee ja ottaa pois jonkun sielun heistä, on hän otettu pois synnissänsä, mutta hänen verensä minä vaadin vartijan kädestä."
+- 2. Timoteuskirje 4:2: "saarnaa sanaa, astu esiin sopivalla ja sopimattomalla ajalla, nuhtele, varoita, kehoita, kaikella pitkämielisyydellä ja opetuksella."
+- 1. Johanneksen kirje 2:27: "Mutta te — teissä pysyy se voitelu, jonka olette häneltä saaneet, ja te ette ole kenenkään opetuksen tarpeessa; vaan niinkuin hänen voitelunsa opettaa teitä kaikessa, niin se opetus on myös totta eikä ole valhetta; ja niinkuin se on opettanut teitä, niin pysykää hänessä."
+- 2. Pietarin kirje 2:12: "Mutta niinkuin järjettömät, luonnostaan pyydystettäviksi ja häviämään syntyneet eläimet, niin joutuvat myös nämä, kun herjaavat sitä, mitä eivät tunne, häviämään omaan turmelukseensa,"
+- 2. Tessalonikalaiskirje 1:5: "ja jotka ovat osoituksena Jumalan vanhurskaasta tuomiosta, että teidät katsottaisiin arvollisiksi Jumalan valtakuntaan, jonka tähden kärsittekin,"
+- Hesekiel 18:8: "ei anna rahaansa korolle, ei ota voittoa, vaan pidättää kätensä vääryydestä, tekee oikean tuomion miesten välillä,"
+- 2. Pietarin kirje 2:10: "ja varsinkin ne, jotka lihan jäljessä kulkevat saastaisissa himoissa ja ylenkatsovat herrauden. Nuo uhkarohkeat, itserakkaat eivät kammo herjata henkivaltoja,"
+- Hesekiel 3:20: "Ja jos vanhurskas kääntyy pois vanhurskaudestansa ja tekee vääryyttä ja minä panen kompastuksen hänen eteensä, niin hän kuolee — kun et sinä häntä varoittanut, niin hän synnissänsä kuolee, ja vanhurskautta, jota hän oli harjoittanut, ei muisteta — mutta hänen verensä minä vaadin sinun kädestäsi."
+- Heprealaiskirje 6:1: "Jättäkäämme sentähden Kristuksen opin alkeet ja pyrkikäämme täydellisyyteen, ryhtymättä taas uudestaan laskemaan perustusta: parannusta kuolleista töistä ja uskoa Jumalaan,"
+- Matteus 5:20: "Sillä minä sanon teille: ellei teidän vanhurskautenne ole paljoa suurempi kuin kirjanoppineiden ja fariseusten, niin te ette pääse taivasten valtakuntaan."
+- Hesekiel 3:19: "Mutta jos sinä varoitat jumalatonta ja hän ei käänny jumalattomuudestansa eikä jumalattomalta tieltänsä, niin hän kuolee synnissänsä, mutta sinä olet sielusi pelastanut."
+
+--- 3 3. Tasapaino ja oikea asenne: Erottelua, ei tuomitsemista ---
+
+(Lopullinen arvosana tälle osiolle: 9.20/10)
+- Jaakobin kirje 4:11: "Älkää panetelko toisianne, veljet. Joka veljeään panettelee tai veljensä tuomitsee, se panettelee lakia ja tuomitsee lain; mutta jos sinä tuomitset lain, niin et ole lain noudattaja, vaan sen tuomari."
+- Johannes 10:16: "Minulla on myös muita lampaita, jotka eivät ole tästä lammastarhasta; myös niitä tulee minun johdattaa, ja ne saavat kuulla minun ääneni, ja on oleva yksi lauma ja yksi paimen."
+- Nehemia 9:17: "He eivät tahtoneet totella eivätkä muistaneet ihmeellisiä tekoja, jotka sinä olit heille tehnyt, vaan olivat niskureita ja valitsivat uppiniskaisuudessaan johtajan palatakseen takaisin orjuuteensa. Mutta sinä olet anteeksiantava Jumala, armahtavainen ja laupias, pitkämielinen ja suuri armossa: sinä et heitä hyljännyt."
+- 1. Timoteuskirje 6:2: "Mutta ne, joilla on uskovaiset isännät, älkööt pitäkö heitä vähemmässä arvossa sentähden, että he ovat veljiä, vaan palvelkoot heitä sitä mieluummin, koska he ovat uskovia ja rakastettuja ja harrastavat hyväntekemistä. Tätä opeta ja tähän kehoita."
+- 2. Tessalonikalaiskirje 1:5: "ja jotka ovat osoituksena Jumalan vanhurskaasta tuomiosta, että teidät katsottaisiin arvollisiksi Jumalan valtakuntaan, jonka tähden kärsittekin,"
+- 1. Pietarin kirje 3:7: "Samoin te, miehet, eläkää taidollisesti kukin vaimonne kanssa, niinkuin heikomman astian kanssa, ja osoittakaa heille kunnioitusta, koska he ovat elämän armon perillisiä niinkuin tekin; etteivät teidän rukouksenne estyisi."
+- Jaakobin kirje 1:4: "Ja kärsivällisyys tuottakoon täydellisen teon, että te olisitte täydelliset ja eheät ettekä missään puuttuvaiset."
+- Hesekiel 34:16: "Kadonneet minä tahdon etsiä, eksyneet tuoda takaisin, haavoittuneet sitoa, heikkoja vahvistaa; mutta lihavat ja väkevät minä hävitän. Minä kaitsen niitä niin, kuin oikein on."
+- Jesaja 58:10: "jos taritset elannostasi isoavalle ja ravitset vaivatun sielun, niin valkeus koittaa sinulle pimeydessä, ja sinun pilkkopimeäsi on oleva niinkuin keskipäivä."
+- Efesolaiskirje 6:5: "Palvelijat, olkaa kuuliaiset maallisille isännillenne, pelossa ja vavistuksessa, sydämenne yksinkertaisuudessa, niinkuin Kristukselle,"
+- Hesekiel 34:19: "Ja onko minun lampaitteni oltava laitumella siinä, mitä jalkanne ovat tallanneet, ja juotava sitä, mitä jalkanne ovat hämmentäneet?"
+- 5. Mooseksen kirja 22:2: "Jos veljesi ei asu sinua lähellä tai jos et tiedä, kuka hän on, niin korjaa eksynyt taloosi, ja olkoon se sinun huostassasi, kunnes veljesi tiedustelee sitä; anna se silloin hänelle takaisin."
+- Jaakobin kirje 5:10: "Ottakaa, veljet, vaivankestämisen ja kärsivällisyyden esikuvaksi profeetat, jotka ovat puhuneet Herran nimessä."
+
+--- 4 4. Sovellus nykyaikaan: Suomen nuorten herätys ja sen haasteet ---
+
+(Lopullinen arvosana tälle osiolle: 9.13/10)
+- Roomalaiskirje 6:22: "Mutta nyt, kun olette synnistä vapautetut ja Jumalan palvelijoiksi tulleet, on teidän hedelmänne pyhitys, ja sen loppu on iankaikkinen elämä."
+- 1. Korinttilaiskirje 13:13: "Niin pysyvät nyt usko, toivo, rakkaus, nämä kolme; mutta suurin niistä on rakkaus."
+- 1. Aikakirja 28:8: "Ja nyt minä sanon koko Israelin, Herran seurakunnan, läsnäollessa ja meidän Jumalamme kuullen: Noudattakaa ja tutkikaa kaikkia Herran, Jumalanne, käskyjä, että saisitte pitää omananne tämän hyvän maan ja jättäisitte sen perinnöksi lapsillenne teidän jälkeenne ikuisiksi ajoiksi."
+- Filippiläiskirje 2:12: "Siis, rakkaani, samoin kuin aina olette olleet kuuliaiset, niin ahkeroikaa, ei ainoastaan niinkuin silloin, kun minä olin teidän tykönänne, vaan paljoa enemmän nyt, kun olen poissa, pelolla ja vavistuksella, että pelastuisitte;"
+- 1. Johanneksen kirje 2:28: "Ja nyt, lapsukaiset, pysykää hänessä, että meillä hänen ilmestyessään olisi turva eikä meitä häpeällä karkoitettaisi pois hänen tyköänsä hänen tulemuksessaan."
+- Efesolaiskirje 6:5: "Palvelijat, olkaa kuuliaiset maallisille isännillenne, pelossa ja vavistuksessa, sydämenne yksinkertaisuudessa, niinkuin Kristukselle,"
+- Kolossalaiskirje 1:9: "Sentähden emme mekään, siitä päivästä alkaen, jona sen kuulimme, ole lakanneet teidän edestänne rukoilemasta ja anomasta, että tulisitte täyteen hänen tahtonsa tuntemista kaikessa hengellisessä viisaudessa ja ymmärtämisessä,"
+- 1. Johanneksen kirje 3:17: "Jos nyt jollakin on tämän maailman hyvyyttä ja hän näkee veljensä olevan puutteessa, mutta sulkee häneltä sydämensä, kuinka Jumalan rakkaus saattaa pysyä hänessä?"
+- Tiituskirje 3:8: "Tämä sana on varma, ja minä tahdon, että sinä näitä teroitat, niin että ne, jotka Jumalaan uskovat, ahkeroisivat hyvien tekojen harjoittamista. Nämä ovat hyviä ja hyödyllisiä ihmisille."
+- 2. Tessalonikalaiskirje 2:13: "Mutta me olemme velvolliset aina kiittämään Jumalaa teidän tähtenne, veljet, te Herran rakastetut, sentähden että Jumala alusta alkaen valitsi teidät pelastukseen Hengen pyhityksessä ja uskossa totuuteen."
+- Kolossalaiskirje 1:12: "kiittäen Isää, joka on tehnyt teidät soveliaiksi olemaan osalliset siitä perinnöstä, mikä pyhillä on valkeudessa,"
+- Roomalaiskirje 14:18: "Joka tässä kohden palvelee Kristusta, se on Jumalalle otollinen ja ihmisille kelvollinen."
+- 2. Pietarin kirje 3:17: "Koska te siis, rakkaani, tämän jo edeltäpäin tiedätte, niin olkaa varuillanne, ettette rietasten eksymyksen mukaansa tempaamina lankeaisi pois omalta lujalta pohjaltanne,"
+- Roomalaiskirje 10:9: "Sillä jos sinä tunnustat suullasi Jeesuksen Herraksi ja uskot sydämessäsi, että Jumala on hänet kuolleista herättänyt, niin sinä pelastut;"
+- Kolossalaiskirje 3:16: "Runsaasti asukoon teissä Kristuksen sana; opettakaa ja neuvokaa toinen toistanne kaikessa viisaudessa, psalmeilla, kiitosvirsillä ja hengellisillä lauluilla, veisaten kiitollisesti Jumalalle sydämissänne."
+
+--- 5 5. Yhteenveto: Totuus rakkaudessa ---
+
+(Lopullinen arvosana tälle osiolle: 9.20/10)
+- 2. Johanneksen kirje 1:3: "Armo, laupeus ja rauha Isältä Jumalalta ja Jeesukselta Kristukselta, Isän Pojalta, on oleva meidän kanssamme, totuudessa ja rakkaudessa."
+- 1. Johanneksen kirje 4:17: "Näin on rakkaus tullut täydelliseksi meissä, että meillä olisi turva tuomiopäivänä; sillä sellainen kuin hän on, sellaisia mekin olemme tässä maailmassa."
+- Roomalaiskirje 13:10: "Rakkaus ei tee lähimmäiselle mitään pahaa. Sentähden on rakkaus lain täyttämys."
+- Nehemia 9:32: "Ja nyt, Jumalamme, sinä suuri, väkevä ja peljättävä Jumala, joka pidät liiton ja säilytät laupeuden: älä katso vähäksi kaikkea sitä vaivaa, joka on kohdannut meitä, meidän kuninkaitamme, päämiehiämme, pappejamme, profeettojamme, isiämme ja koko sinun kansaasi, Assurin kuningasten ajoista aina tähän päivään saakka."
+- 2. Korinttilaiskirje 6:6: "puhtaudessa, tiedossa, pitkämielisyydessä, ystävällisyydessä, Pyhässä Hengessä, vilpittömässä rakkaudessa,"
+- Tiituskirje 2:14: "hänen, joka antoi itsensä meidän edestämme lunastaakseen meidät kaikesta laittomuudesta ja puhdistaakseen itselleen omaisuudeksi kansan, joka hyviä tekoja ahkeroitsee."
+- Roomalaiskirje 8:39: "ei korkeus eikä syvyys, eikä mikään muu luotu voi meitä erottaa Jumalan rakkaudesta, joka on Kristuksessa Jeesuksessa, meidän Herrassamme."
+- 2. Pietarin kirje 1:7: "jumalisuudessa veljellistä rakkautta, veljellisessä rakkaudessa yhteistä rakkautta."
+- 2. Pietarin kirje 1:8: "Sillä jos teillä on nämä ja ne yhä enenevät, niin ne eivät salli teidän olla toimettomia eikä hedelmättömiä meidän Herramme Jeesuksen Kristuksen tuntemisessa."
+- 1. Timoteuskirje 4:16: "Valvo itseäsi ja opetustasi, ole siinä kestävä; sillä jos sen teet, olet pelastava sekä itsesi että ne, jotka sinua kuulevat."
+- Kolossalaiskirje 3:13: "kärsikää toinen toistanne ja antakaa toisillenne anteeksi, jos kenellä on moitetta toista vastaan. Niinkuin Herrakin on antanut teille anteeksi, niin myös te antakaa."
+- Filippiläiskirje 1:8: "Sillä Jumala on minun todistajani, kuinka minä teitä kaikkia ikävöitsen Kristuksen Jeesuksen sydämellisellä rakkaudella."
+- 2. Korinttilaiskirje 4:2: "vaan olemme hyljänneet kaikki häpeälliset salatiet, niin ettemme vaella kavaluudessa emmekä väärennä Jumalan sanaa, vaan julkituomalla totuuden me suositamme itseämme jokaisen ihmisen omalletunnolle Jumalan edessä."
+- Kolossalaiskirje 3:15: "Ja vallitkoon teidän sydämissänne Kristuksen rauha, johon te olette kutsututkin yhdessä ruumiissa, ja olkaa kiitolliset."
+- Efesolaiskirje 4:4: "yksi ruumis ja yksi henki, niinkuin te olette kutsututkin yhteen ja samaan toivoon, jonka te kutsumuksessanne saitte;"
+
+Diagnostiikka valmis.
