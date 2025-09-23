@@ -1,430 +1,1461 @@
 
 ================================================================================
-     RAAMATTU-TUTKIJA v16 - DIAGNOSTIIKKA (Laaja haku + Pilkottu karsinta)      
+     RAAMATTU-TUTKIJA - DIAGNOSTIIKKA (Älykäs eskalaatio + Rinnakkaistesti)     
 ================================================================================
 
 Esiladataan kaikki resurssit...
 Ladataan hakumallit, indeksi ja datatiedostot muistiin...
-Use pytorch device_name: cpu
+Pakotetaan haku- ja uudelleenjärjestysmallit käyttämään CPU:ta...
 Load pretrained SentenceTransformer: intfloat/multilingual-e5-large
-Use pytorch device: cpu
+Raamatullinen sanasto ladattu (51303 uniikkia sanaa).
 Kaikki resurssit ladattu onnistuneesti.
 Resurssit ladattu.
 Löytyi 5 osiota käsiteltäväksi.
 
 ================================================================================
-  Käsitellään osio 1/5: 1. Johdanto: Kutsu vaatii viisautta ja erottamiskykyä   
+          Käsitellään osio 1/5: 1. Johdanto: Kielletty ja vaiettu aihe          
 ================================================================================
 
 Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Avainsana-Tehostin: Ei relevantteja avainsanoja otsikossa.
 Löytyi 75 ehdokasjaetta.
-Vaihe 2: Arvioidaan 75 ehdokasta 10 jakeen erissä...
+Vaihe 2: Arvioidaan 75 ehdokasta päämallilla...
   - Arvioidaan erä 1/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
-  -> VIRHE: Malli palautti 9 arviota, vaikka sille annettiin 10 jaetta. Erä ohitetaan.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 2/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 3/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Virhe JSON-jäsennnyksessä (yritys 1): Expecting ',' delimiter: line 23 column 106 (char 1526). Yritetään uudelleen...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 2/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 4/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 5/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 6/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 7/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 8/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
-Arviointi valmis. Saatiin yhteensä 65 jaearviota.
-Vaihe 3: Valittu 12 parasta jaetta. Lopullinen laatuarvio: 9.27/10
---- Valitut jakeet ja niiden arviot ---
-  - 1. Korinttilaiskirje 7:18: 10/10 (Tämä jae on keskeinen teemaan. Se varoittaa yliluonnollisesta pyrkimyksestä, ja korostaa, että 'kutsuttu' tarkoittaa enemmän kuin pelkkää osallistumista. Se viittaa myös hengelliseen erottamiseen ja totuuden säilyttämiseen. Sopii erinomaisesti aiheeseen.)
-  - Johannes 10:3: 10/10 (Johannesin luku on täydellinen teologinen vertauskuva, joka korostaa jumalaisen herran (Jeesuksen) roolia lauman johtajana ja lampaiden erottamisessa. Tämän jakeen merkitys on päättelyssä selvä.)
-  - 1. Korinttilaiskirje 7:24: 10/10 (Tämä jae on keskeinen ja suora. Se korostaa, että meidän on pysyttävä 'Jumalan edessä siinä asemassa, missä hänet on kutsuttu', mikä merkitsee Jumalan tahdonmukaisuutta ja henkilökohtaista elämää. Sen painotus 'vapaaehtoisuudessa' on merkittävä.)
-  - 1. Korinttilaiskirje 1:25: 10/10 (Tämä jae on keskeinen. Se ilmaisee selkeästi Jumalan 'hulluuden' ja 'heikkouden' olevan voimakkaita välineitä, jotka voivat olla vastalauseen merkkejä ihmisten itsetietyille ymmärryksille. Se tukee suoraan teemaa, että uskonnollinen korruptio voi olla piilossa, mutta Jumalan vaikutus on tunnistettavissa.)
-  - 2. Kor. 10:2: 9/10 (Tämä jae on erittäin osuva. Se kuvaa suoraan haasteen, jonka uskovat kohtaavat, kun he yrittävät vaikuttaa muihin ja puolustaa kristillistä totuutta. Vaatimus 'luottavaisesta uskalta käydä eräiden kimppuun' korostaa sisäistä vahvuutta ja rohkeutta, joita tarvitaan vaelluksessa.)
-  - Kol. 3:15: 9/10 (Jae korostaa Kristuksen rauhaa sisäisen pohjana, jota uskovat ovat saaneet. Se antaa myös tärkeän ohjeen – sydämen hallinta – joka on olennaista vaelluksen tavoitteiden saavuttamiseksi. )
-  - Rom. 12:8: 9/10 (Tämä jae on erittäin osuva ohje, joka korostaa sisäistä luonnetta ja toimintaa. Se muistuttaa, että uskovan tulee olla valmis rohkeasti palvelemaan ja toteuttamaan Jumalan tahtoa.)
-  - Jesaja 66:4: 9/10 (Tämä jae on keskeinen, koska se kuvaa Jumalan vihaa niitä kohtaan, jotka eivät kuulleet tai vastanneet kutsuun. Se korostaa kurin ja oikeanlaisen reaktion tärkeyttä.)
-  - Sananlaskut 15:32: 9/10 (Tämä jae korostaa nuhdekkumyönteisyyden merkitystä. Hengellinen oppiminen ja kasvu edellyttävät kykyä kuunnella, oppia ja muuttaa omaa toimintaansa.)
-  - Johannes 10:8: 9/10 (Tämä jae käyttää vahvaa symboliikkaa lampaiden ja varkasten välillä korostaen Jumalan kutsun aitoa luonnetta, jossa on rakkaus ja huolenpito, ei vääryyttä ja hyötymistä.)
-  - 1. Korinttilaiskirje 14:24: 9/10 (Jae korostaa kyvyttömyyttä ja tarvetta 'totuudessa'. Tämä sopii täydellisesti teeman ytimeen - totuuden noudattaminen on keskeistä oikeanlaista hengellistä toimintaa. Se myös tuo esiin tarpeen hienostuneelle ymmärrykselle. )
-  - Johannes 4:23: 9/10 (Jae puhuu 'totisista rukoilijoista', jotka rukoilevat 'Isää hengessä ja totuudessa'. Tämä vahvistaa teeman ytimen ja korostaa autenttisuuden tärkeyttä hengellisessä elämässä.)
-  - 1. Tessalonikalaiskirje 5:23: 9/10 (Jae puhuu 'rauhan Jumalasta', joka pyhittää ja säilyttää. Tämä on suoraan teemaan liittyvä, ja korostaa Jumalan aktiivista roolia hengellisessä elämässä.)
-  - Jaakobin kirje 1:21: 9/10 (Tämä jae ilmaisee selkeästi tarpeen hengelliselle erottumiselle, 'saastaisuuden ja pahuuden' hylkäämisestä ja sanan 'hiljaisuudella' vastaanottamista. Se on suoraan relevantti, kun on kyse hengellisestä puhdistumisesta ja valmistelemisesta Jumalan sanan vastaanottamiseen.)
-  - 2. Pietarin kirje 1:10: 9/10 (Tämä jae korostaa 'kutsumisen ja valitsemisen' lujittamisen tarvetta. Se on suoraan relevantti, kun on kyse uskonnonostoista ja siitä, miten uskovat voivat sitoutua uskonnolliseen elämäänsä.)
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+Päämallin arviointi valmis. Saatiin yhteensä 75 jaearviota.
+Vaihe 3: Valittu 15 parasta jaetta. Lopullinen laatuarvio: 9.07/10
+--- Valitut jakeet ja niiden arviot (Päämalli: llama3.1:8b) ---
+  - Jaakobin kirje 2:5: 10/10 (Jakeet on erittäin hyvin suuntautunut aiheeseen ja puhuu hengellisen rakkauden olemassaolosta.)
+  - 2. Kuningasten kirja 17:15: 9/10 (Teksti on hyvin käytännöllinen ja selkeä esimerkki siitä, miten ihmiset vääristivät Jumalan sanoja ja syrjyttivät hänen tahtonsa.)
+  - Jesaja 59:13: 9/10 (Teksti on hyvin käytännöllinen ja selkeä esimerkki siitä, miten ihmiset vääristivät Jumalan sanoja.)
+  - 1. Korinttilaiskirje 1:28: 9/10 (Tämän jakeen perusteella voidaan todeta, että uskon saantia on mahdollista antaa mitättömäksi.)
+  - Nehemia 4:14: 9/10 (Tämän jakeen perusteella voidaan todeta, että taistelijoiden sydäntä saattaa viedä pelko häpeästä.)
+  - Roomalaiskirje 14:23: 9/10 (Samaa kuin johtopuheessa, tästä aiheuttaa pelko ja häpeä.)
+  - Roomalaiskirje 5:5: 9/10 (Jakeet on erittäin hyvin suuntautunut aiheeseen ja puhuu hyvin hengellisestä rakkaudesta.)
+  - Sakarja 10:6: 9/10 (Jakeet on hyvin suuntautunut aiheeseen ja puhuu hengellisen rakkauden olemassaolosta.)
+  - Heprealaiskirje 12:1: 9/10 (Arvioinnissa huomioinut Raamatun sankareiden syvän keskeneräisyyden sekä pelkon ja häpeän vaikutusta uskovien puhumiseen epäonnistuneista asioista.)
+  - Jeremia 7:28: 9/10 (Arvioinnissa huomioinut Raamatun sankareiden syvän keskeneräisyyden sekä pelkon ja häpeän vaikutusta uskovien puhumiseen epäonnistuneista asioista.)
+  - Psalmit 10:1: 9/10 (Teksti esittää Raamatun sankareitten puutetta ja Herra-Jumalan läsnäoloa.)
+  - Roomalaiskirje 1:13: 9/10 (Teksti esittää Raamatun sankareitten omia puutteita ja korostaa Herra-Jumalan läsnäoloa.)
+  - Roomalaiskirje 11:12: 9/10 (Jake on hyvin lyhyt, mutta se esittää hyvän kuvan siitä, miten uskovien epäonnistumiset voivat olla rikkaus muille.)
+  - 2. Mooseksen kirja 18:22: 9/10 (Jake esittää hyvän kuvan siitä, miten Jumala tuomitsee epäonnistuneita uskovia.)
+  - Roomalaiskirje 3:3: 9/10 (Tämä jakee on hyvin relevantti annetun aiheen suhteen, sillä se kertoo siitä, että jos jotkut ovat olleet epäuskoisia, ei välttämättä heidän epäuskonsa ole Jumalan uskollisuutta tyhjäksi tekevä.)
 
 ================================================================================
- Käsitellään osio 2/5: 2. Raamatun selkeä varoitus: Tunnista ja vältä eksytystä 
+RINNAKKAISTESTI VARAMALLILLA (gemma:7b) - Osio: 1. Johdanto: Kielletty ja vaiettu aihe
+================================================================================
+
+  - Varamalli, arvioidaan erä 1/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 8,
+                          'perustelu': 'Korostaa Raamatun sankarien '
+                                       'keskeyttävyyden ja valheiden '
+                                       'vaikutusta.',
+                          'viite': '2. Pietarin kirje 2:1'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Korostaa Raamatun sankarien '
+                                       'teollisesti huonoja päätöksiä.',
+                          'viite': '2. Kuningasten kirja 17:15'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa Raamatun sankarien synnin '
+                                       'seurauksia.',
+                          'viite': 'Hesekiel 6:9'},
+                      {   'arvosana': 9,
+                          'perustelu': 'Korostaa Raamatun sankarien synnin ja '
+                                       'Jumalan armosta.',
+                          'viite': 'Daniel 9:11'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa Jumalan armosta ja Raamatun '
+                                       'sankarien uskoa.',
+                          'viite': '2. Timoteuskirje 2:14'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa Raamatun sankarien synnin ja '
+                                       'Jumalan armosta.',
+                          'viite': 'Esra 9:7'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa Raamatun sankarien synnin ja '
+                                       'Jumalan armosta.',
+                          'viite': 'Jesaja 59:13'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa Raamatun sankarien uskoa '
+                                       'Jumalaan.',
+                          'viite': '1. Tessalonikalaiskirje 2:4'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa Raamatun sankarien uskoa '
+                                       'Jumalaan.',
+                          'viite': '2. Timoteuskirje 2:13'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Korostaa Raamatun sankarien synnin ja '
+                                       'Jumalan armosta.',
+                          'viite': '2. Aikakirja 6:37'}],
+    'kokonaisarvosana': 7,
+    'kokonaisperustelu': 'Raamatun jakeet vastaavat aihetta hyvin, sillä ne '
+                         'korostavat Raamatun sankarien keskeyttävyyden ja '
+                         'synnin seurauksia. Artikkelissa korostetaan, että '
+                         'Raamatun sankarit olivat syvästi keskeneräisiä '
+                         'ihmisiä, ja jakot viittaavat Raamatun sankarien '
+                         'teollisesti ja moraalisesti huonoihin päätöksiin. '
+                         'Jotkut jakeet osoittavat myös, että Raamatun '
+                         'sankarit olivat tietoisia synnin seurauksista. ',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 2/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 9,
+                          'perustelu': 'Ilmoitus Herran paluusta aterialla '
+                                       'tukee Raamatun sankarien keskeistä '
+                                       'asemaa.',
+                          'viite': 'Markus 16:14'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Raamattu korostaa uskonnon ja '
+                                       'teollisuuden välisen rikin ja '
+                                       'viestintävä, että uskoon tulee elämää.',
+                          'viite': '2. Pietarin kirje 2:20'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Raamattu osoittaa sankarien '
+                                       'passiivisuuden ja rikolliset '
+                                       'teollisuudet.',
+                          'viite': 'Nehemia 9:29'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Raamattu korostaa uskonnon ja '
+                                       'teollisuuden välisen rikin ja '
+                                       'viestintävä, että uskoon tulee elämää.',
+                          'viite': '2. Aikakirja 6:38'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Raamattu tukee uskoa ja pelkoa, mutta '
+                                       'korostaa Jumalan armoa.',
+                          'viite': 'Roomalaiskirje 13:4'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Raamattu korostaa uskonnon ja '
+                                       'teollisuuden välisen rikin ja '
+                                       'viestintävä, että uskoon tulee elämää.',
+                          'viite': 'Efesolaiskirje 3:5'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Raamattu tukee uskoa ja pelkoa, mutta '
+                                       'korostaa Jumalan armoa.',
+                          'viite': '5. Mooseksen kirja 20:5'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Raamattu tukee uskoa ja pelkoa, mutta '
+                                       'korostaa Jumalan armoa.',
+                          'viite': '1. Korinttilaiskirje 1:28'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Raamattu korostaa uskonnon ja '
+                                       'teollisuuden välisen rikin ja '
+                                       'viestintävä, että uskoon tulee elämää.',
+                          'viite': 'Psalmit 15:3'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Raamattu tukee uskoa ja pelkoa, mutta '
+                                       'korostaa Jumalan armoa.',
+                          'viite': 'Nehemia 4:14'}],
+    'kokonaisarvosana': 8,
+    'kokonaisperustelu': 'Raamatun jakeet vastaavat aihetta hyvin. Ne '
+                         'osoittavat, että Raamatun sankarit olivat syvästi '
+                         'keskeneräisiä ihmisiä, ja että uskovien '
+                         'epäonnistumisista on vaikea puhua pelkäästä '
+                         'tuomiosta ja häpeästä.',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 3/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 8,
+                          'perustelu': 'Ilmoituu Jumalan pelastuksen '
+                                       'keskeisyydestä ja korostaa sen '
+                                       'tarvetta.',
+                          'viite': 'Heprealaiskirje 2:3'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Tuodaan esiin synnin ja pelastuksen '
+                                       'välillä oleva ero ja korostaa Jumalan '
+                                       'nöyryyttä.',
+                          'viite': '2. Korinttilaiskirje 12:21'},
+                      {   'arvosana': 9,
+                          'perustelu': 'Ilmoituu Jeksen uhrauksen '
+                                       'keskeisyydestä ja sen vaikutus '
+                                       'ihmisten pelastukseen.',
+                          'viite': 'Tiituskirje 2:14'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Tuodaan esiin uskonnon ja tekojen '
+                                       'välillä oleva yhteys ja korostaa '
+                                       'synnin vaikutusta.',
+                          'viite': 'Roomalaiskirje 14:23'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa Jumalan tulosta ja sen '
+                                       'vaikutusta uskovaisten elämästä.',
+                          'viite': '1. Pietarin kirje 4:17'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Ilmoituu Jumalan armosta ja rakaudesta '
+                                       'ja korostaa sen merkitystä '
+                                       'pelastuksessa.',
+                          'viite': 'Hesekiel 12:16'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Tuodaan esiin Jumalan interessoivaa '
+                                       'rakkautta ja sen vaikutus ihmisten '
+                                       'pelastuksessa.',
+                          'viite': 'Nehemia 9:27'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Korostaa uskovaisten velvollisuuksia '
+                                       'ja sen vaikutusta Jumalan armossa.',
+                          'viite': 'Hesekiel 5:7'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Tuodaan esiin uskonnon ja tiedon '
+                                       'välillä oleva ero ja korostaa Jumalan '
+                                       'armoa.',
+                          'viite': 'Efesolaiskirje 4:18'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Ilmoituu uskovaisten pettävästä ja '
+                                       'kielten vääristämisestä.',
+                          'viite': 'Jeremia 9:5'}],
+    'kokonaisarvosana': 7,
+    'kokonaisperustelu': 'Raamatun jakeet vastaavat aihetta hyvällä tavalla, '
+                         'korostamalla uskonnon ja sankarin vaikeutta. Ne '
+                         'osoittavat, että uskovaiset ovat keskesi ihmisiä, '
+                         'jotka taistelevat pahojen kanssa ja joutuvat '
+                         'kärsivään. Jotkut jakeet ehkä painottavat pelkoa ja '
+                         'häpeää liikaa, mutta ne tuovat esiin myös Jumalan '
+                         'armo ja rakkaus.',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 4/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 7,
+                          'perustelu': 'Korostaa Jumalan armoa ja rakkautta.',
+                          'viite': 'Roomalaiskirje 1:27'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Painottaa syntiä ja tuomiota.',
+                          'viite': 'Sananlaskut 5:12'},
+                      {   'arvosana': 9,
+                          'perustelu': 'Korostaa Jumalan armoa ja rakkautta.',
+                          'viite': '1. Pietarin kirje 4:18'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa Jumalan armoa ja rakkautta.',
+                          'viite': 'Juudaksen kirje 1:5'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Korostaa Jumalan armoa ja rakkautta.',
+                          'viite': 'Roomalaiskirje 5:5'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Painottaa syntiä ja tuomiota.',
+                          'viite': '2. Kuningasten kirja 17:16'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa Jumalan armoa ja rakkautta.',
+                          'viite': 'Sakarja 10:6'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Painottaa syntiä ja tuomiota.',
+                          'viite': '3. Mooseksen kirja 26:39'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa Jumalan armoa ja rakkautta.',
+                          'viite': 'Jeremia 4:1'},
+                      {   'arvosana': 9,
+                          'perustelu': 'Korostaa Jumalan armoa ja rakkautta.',
+                          'viite': 'Jaakobin kirje 2:5'}],
+    'kokonaisarvosana': 8,
+    'kokonaisperustelu': 'Raamatun jakeet vastaavat aihetta hyvin, '
+                         'korostamalla uskonnon ja rakkaussuhteen merkitystä. '
+                         'Jotkut jakeet painottavat syntiä ja tuomiota, kun '
+                         'taas toiset korostavat Jumalan armoa ja rakkautta. '
+                         'Koko yhteisnä näistä jakeista tulee ilmi, että '
+                         'uskonnon menestys ei ole pelkästään henkilökohtainen '
+                         'saavutus, vaan se riippuu myös Jumalan toimesta.',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 5/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 9,
+                          'perustelu': 'Korostaa sankarien keskiarvoisuus ja '
+                                       'uskonnon pelastusvoima.',
+                          'viite': 'Heprealaiskirje 12:1'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Painottaa uskonnon vaikeutta '
+                                       'tuomioiden ja häpeiden takia.',
+                          'viite': 'Job 15:5'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa uskonnon vaikeutta tuomioiden '
+                                       'ja häpeiden takia.',
+                          'viite': '2. Pietarin kirje 3:3'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Painottaa uskonnon vaikeutta '
+                                       'tuomioiden ja häpeiden takia.',
+                          'viite': 'Jeremia 7:28'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa sankarien keskiarvoisuus ja '
+                                       'uskonnon pelastusvoima.',
+                          'viite': 'Roomalaiskirje 6:19'},
+                      {   'arvosana': 9,
+                          'perustelu': 'Korostaa sankarien keskiarvoisuus ja '
+                                       'uskonnon pelastusvoima.',
+                          'viite': 'Jaakobin kirje 1:21'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa sankarien keskiarvoisuus ja '
+                                       'uskonnon pelastusvoima.',
+                          'viite': '2. Timoteuskirje 3:8'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa sankarien keskiarvoisuus ja '
+                                       'uskonnon pelastusvoima.',
+                          'viite': '1. Pietarin kirje 3:5'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Painottaa sankarien keskiarvoisuus ja '
+                                       'uskonnon pelastusvoima.',
+                          'viite': 'Job 15:19'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa uskonnon rooli ja rakkaus '
+                                       'Herran tahioon.',
+                          'viite': '1. Pietarin kirje 2:13'}],
+    'kokonaisarvosana': 8,
+    'kokonaisperustelu': 'Raamatun jakeet vastaavat aiheen vaatimusta. Ne '
+                         'korostavat uskonnon vaikeutta ja sankarien '
+                         'keskiarvoisuutta. Jotkut jakeet painottavat uskonnon '
+                         'vaikeutta tuomioiden ja häpeiden takia, kun taas '
+                         'toiset korostavat sankarien keskiarvoisuutta ja '
+                         'uskonnon pelastusvoimaa.',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 6/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 9,
+                          'perustelu': 'Näytää Herran pelastusvoiman sankarien '
+                                       'pelastuksissa.',
+                          'viite': 'Tuomarien kirja 2:18'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Näytää sankarien tarpeettomuuden '
+                                       'rakkaus Herran palvelijana.',
+                          'viite': '1. Timoteuskirje 4:6'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Näytää Herran läsnäolo sankarien '
+                                       'vaikeassa tilanteessa.',
+                          'viite': 'Psalmit 10:1'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Näytää sankarien taidottomuuden ja '
+                                       'riidan keskenään.',
+                          'viite': '2. Korinttilaiskirje 12:20'},
+                      {   'arvosana': 9,
+                          'perustelu': 'Näytää Herran ohjaus sankarien '
+                                       'taistelussa.',
+                          'viite': '5. Mooseksen kirja 1:16'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Näytää sankarien vastuu rikoksensa '
+                                       'takia.',
+                          'viite': 'Job 31:28'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Näytää sankarien vastuu Jumalan sanaa '
+                                       'vastaan.',
+                          'viite': '1. Tessalonikalaiskirje 2:15'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Näytää sankarien vihamielisyys ja '
+                                       'vaivat.',
+                          'viite': 'Hesekiel 23:29'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Näytää sankarien epärölisyys ja riita.',
+                          'viite': 'Roomalaiskirje 1:13'},
+                      {   'arvosana': 9,
+                          'perustelu': 'Näytää sankarien rakkaus Herran sanaan '
+                                       'ja toivomaansa armosta.',
+                          'viite': '2. Korinttilaiskirje 4:2'}],
+    'kokonaisarvosana': 8,
+    'kokonaisperustelu': 'Raamatun jakeet vastaavat aiheellista ja osoittavat, '
+                         'että Raamatun sankarit tekivät virheitä ja kokivat '
+                         'vaaraa, mutta että ne voittivat voittaa vaarat '
+                         'Herran voimalla. Jakot osoittavat, että Raamatun '
+                         'sankarit olivat keskiarvoisia ihmisiä, jotka '
+                         'joutuivat taistelemaan virheitään ja saamaan Herran '
+                         'armoa.',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 7/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 9,
+                          'perustelu': 'Tämän jakeen mukaan sankarit ovat '
+                                       'rikkauden ja pakanoiden kannalta '
+                                       'riittämättömät, mutta ne ovat täytetyt '
+                                       'Jumalan armoilla.',
+                          'viite': 'Roomalaiskirje 11:12'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Tämän jakeen mukaan sankarit saavat '
+                                       'häpeän ja pettymyksen, mutta ne ovat '
+                                       'silti sankarit.',
+                          'viite': 'Jesaja 1:29'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Tämän jakeen mukaan sankarit eivät '
+                                       'pysyvät lujana ja uskollisena '
+                                       'Jumalalle.',
+                          'viite': 'Psalmit 78:8'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Tämän jakeen mukaan sankarit saavat '
+                                       'kärsityksen Jumalan vanhurskaasta '
+                                       'tuomiosta.',
+                          'viite': '2. Tessalonikalaiskirje 1:5'},
+                      {   'arvosana': 9,
+                          'perustelu': 'Tämän jakeen mukaan Jumala valitsee '
+                                       'sankarit kelvollisiksi ja pelkääviksi '
+                                       'miehiksi.',
+                          'viite': '2. Mooseksen kirja 18:21'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Tämän jakeen mukaan sankarit ovat kuin '
+                                       'sodassa taistelleet sankarit.',
+                          'viite': 'Sakarja 10:5'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Tämän jakeen mukaan profetit eivät '
+                                       'saaneet tietoa sankarien '
+                                       'sankarisuudesta.',
+                          'viite': 'Daniel 9:6'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Tämän jakeen mukaan sankarit kantavat '
+                                       'kuormaa.',
+                          'viite': '2. Mooseksen kirja 18:22'},
+                      {   'arvosana': 9,
+                          'perustelu': 'Tämän jakeen mukaan naisen ei ole lupa '
+                                       'puhua seurakunnassa.',
+                          'viite': '1. Korinttilaiskirje 14:35'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Tämän jakeen mukaan jotkut sankarit '
+                                       'taistelevat sodassa, mutta ne pysyvät '
+                                       'elossa.',
+                          'viite': 'Daniel 11:35'}],
+    'kokonaisarvosana': 8,
+    'kokonaisperustelu': 'Raamatun jakeet vastaavat aiheen kysymystä. Ne '
+                         'osoittavat, että Raamatun sankarit olivat keskesi '
+                         'keskihominen ihmisiä, jotka taistelivat paineen, '
+                         'pelon ja häpeän kanssa. Artikkelissa korostetaan, '
+                         'että uskovien epäonnistumisista puhuminen on '
+                         'vaikeaa, mutta Raamattu osoittaa, että sankarit '
+                         'olivat keskeisessä roolissa Jumalan valtakuntassa.',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 8/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 8,
+                          'perustelu': 'Jakso viittaa Jumalan voimakkaan '
+                                       'voiman intervention uskovissa.',
+                          'viite': '2. Tessalonikalaiskirje 2:11'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Jakso pohtii uskonnon rooli ja sen '
+                                       'yhteyttä Jumalan rakkaushenteen.',
+                          'viite': 'Roomalaiskirje 3:3'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Jakso korostaa Jumalan läsnäoloa ja '
+                                       'toivoa.',
+                          'viite': 'Jesaja 5:19'},
+                      {   'arvosana': 9,
+                          'perustelu': 'Jakso painottaa vääryyden rooli ja sen '
+                                       'vaikutusta uskoon.',
+                          'viite': '2. Tessalonikalaiskirje 2:10'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Jakso korostaa Herran armoa ja '
+                                       'huolestustaan laumastaan.',
+                          'viite': 'Sakarja 10:3'}],
+    'kokonaisarvosana': 7,
+    'kokonaisperustelu': 'Raamatun jakeet vastaavat aihetta hyvin, mutta ne '
+                         'eivät täysin ota ole suoraa puhumista uskonnon '
+                         'epäonnistumisesta. Jotkut jakeet korostavat Jumalan '
+                         'armoa ja rakkautta, kun taas toiset korostavat '
+                         'henkilökohtaisia päätöksiä ja vastuuvelvollisuuksia.',
+    'mallin_nimi': 'gemma:7b'}
+Varamallin lopullinen laatuarvio: 8.93/10
+--- Valitut jakeet ja niiden arviot (gemma:7b) ---
+  - Daniel 9:11: 9/10 (Korostaa Raamatun sankarien synnin ja Jumalan armosta.)
+  - Markus 16:14: 9/10 (Ilmoitus Herran paluusta aterialla tukee Raamatun sankarien keskeistä asemaa.)
+  - Tiituskirje 2:14: 9/10 (Ilmoituu Jeksen uhrauksen keskeisyydestä ja sen vaikutus ihmisten pelastukseen.)
+  - 1. Pietarin kirje 4:18: 9/10 (Korostaa Jumalan armoa ja rakkautta.)
+  - Jaakobin kirje 2:5: 9/10 (Korostaa Jumalan armoa ja rakkautta.)
+  - Heprealaiskirje 12:1: 9/10 (Korostaa sankarien keskiarvoisuus ja uskonnon pelastusvoima.)
+  - Jaakobin kirje 1:21: 9/10 (Korostaa sankarien keskiarvoisuus ja uskonnon pelastusvoima.)
+  - Tuomarien kirja 2:18: 9/10 (Näytää Herran pelastusvoiman sankarien pelastuksissa.)
+  - 5. Mooseksen kirja 1:16: 9/10 (Näytää Herran ohjaus sankarien taistelussa.)
+  - 2. Korinttilaiskirje 4:2: 9/10 (Näytää sankarien rakkaus Herran sanaan ja toivomaansa armosta.)
+  - Roomalaiskirje 11:12: 9/10 (Tämän jakeen mukaan sankarit ovat rikkauden ja pakanoiden kannalta riittämättömät, mutta ne ovat täytetyt Jumalan armoilla.)
+  - 2. Mooseksen kirja 18:21: 9/10 (Tämän jakeen mukaan Jumala valitsee sankarit kelvollisiksi ja pelkääviksi miehiksi.)
+  - 1. Korinttilaiskirje 14:35: 9/10 (Tämän jakeen mukaan naisen ei ole lupa puhua seurakunnassa.)
+  - 2. Tessalonikalaiskirje 2:10: 9/10 (Jakso painottaa vääryyden rooli ja sen vaikutusta uskoon.)
+  - 2. Pietarin kirje 2:1: 8/10 (Korostaa Raamatun sankarien keskeyttävyyden ja valheiden vaikutusta.)
+
+================================================================================
+       Käsitellään osio 2/5: 2. Varoittavat esimerkit: Daavid ja Pietari        
 ================================================================================
 
 Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Avainsana-Tehostin aktivoitu sanoille: {'daavid', 'pietari'}
+  -> Tehostettiin jaetta Luukas 20:44 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Johannes 18:15 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Markus 8:32 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Matteus 26:75 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Luukas 22:61 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Markus 14:72 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta 2. Samuelin kirja 1:14 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 2. Samuelin kirja 24:11 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Luukas 9:33 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta 1. Samuelin kirja 18:10 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 2. Samuelin kirja 1:16 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 1. Samuelin kirja 29:5 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Apostolien teot 1:15 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Markus 12:37 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Psalmit 52:2 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 1. Samuelin kirja 21:12 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Luukas 6:14 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Luukas 20:42 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 1. Samuelin kirja 16:19 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Markus 9:5 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Apostolien teot 13:36 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Roomalaiskirje 4:6 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 2. Samuelin kirja 1:15 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Matteus 12:3 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 1. Pietarin kirje 1:1 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Luukas 22:60 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Matteus 26:69 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Apostolien teot 5:29 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Apostolien teot 2:34 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Markus 14:29 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Johannes 21:19 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta 2. Samuelin kirja 7:20 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 1. Samuelin kirja 26:9 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 2. Samuelin kirja 12:20 sanoilla: {'daavid'}
 Löytyi 75 ehdokasjaetta.
-Vaihe 2: Arvioidaan 75 ehdokasta 10 jakeen erissä...
+Vaihe 2: Arvioidaan 75 ehdokasta päämallilla...
   - Arvioidaan erä 1/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 2/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
-  -> VIRHE: Malli palautti 11 arviota, vaikka sille annettiin 10 jaetta. Erä ohitetaan.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 3/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 4/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 5/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 6/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
-  -> VIRHE: Malli palautti 9 arviota, vaikka sille annettiin 10 jaetta. Erä ohitetaan.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 7/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 8/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
-Arviointi valmis. Saatiin yhteensä 55 jaearviota.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+Päämallin arviointi valmis. Saatiin yhteensä 75 jaearviota.
+Vaihe 3: Valittu 15 parasta jaetta. Lopullinen laatuarvio: 8.47/10
+--- Valitut jakeet ja niiden arviot (Päämalli: llama3.1:8b) ---
+  - 1. Samuelin kirja 29:5: 9/10 (Tässä jakeessa on osoituksia Daavidista, mutta ei yleisempää pohdintaa)
+  - Apostolien teot 2:34: 9/10 (Tästä jaksosta selviää hyvä reaktio syynänsä kohtaan. Daavid ei noussut taivaaseen.)
+  - Luukas 22:61: 9/10 (Tämän jakeen teksti kuvaa hyvin Pietarin toiminnan ja hänen kutsunsa vaikutuksia.)
+  - Matteus 26:75: 9/10 (Pietarin muisti toimii hyvänä kuvauksena siitä, miten Jeesus oli sanonut hänelle.)
+  - Johannes 21:19: 9/10 (Erityisesti kertominen Pietarin kuolemasta on vahvasti liitettävä Jumalan varoittavaan toimeen. Pystyy helposti yhdistämään aiheeseen.)
+  - Efesolaiskirje 4:19: 9/10 (Kuvaa hyvin esimerkkiä Daavidista kuten on mainituissa ja antaakin selkeän kuvauksen siitä, miltä lankemuksensa vaikutti hänen kutsuunsa.)
+  - 1. Korinttilaiskirje 10:9: 9/10 (Tämä jakee on osa kertomusta Jumalan kärsimyksistä ja se yhdistyy hyvin aiheeseen.)
+  - Roomalaiskirje 4:6: 8/10 (Jae kertoo osittain tosiasiasta, mutta keskittyy lähinnä Daavidin ylistykseen)
+  - Markus 12:37: 8/10 (Pietarin toiminta kuvaa hyvää reaktiota syynänsä kohtaan, mutta on kuitenkin aika yleistystekevä. )
+  - 2. Samuelin kirja 7:20: 8/10 (Daavidin lankesi on todettu, mutta hänen kutsunsa vaikutukset eivät ole selkeästi kuvattuun.)
+  - Luukas 20:42: 8/10 (Psalmiin viitattu teksti kuvaa hyvin Jumalan kautta antamiaan käskyjä ja palvelijansa toimintaa.)
+  - 1. Samuelin kirja 20:42: 8/10 (Tällä osoitusjaksolla on hyvät piirteet aiheeseen, sillä siinä on maininta Daavidin vakuutuksesta Joonatanille hänen syyllistymisestään.)
+  - Markus 12:38: 8/10 (Tälla osoitusjaksolla on hyvä piirre aiheeseen, sillä siinä mainitaan Jeesuksen sanoma hänen varoituksistaan.)
+  - Matteus 12:3: 8/10 (Tälla jaksolla on hyvä piirre aiheeseen, sillä siinä mainitaan Daavidin syyllistyminen.)
+  - Markus 14:72: 8/10 (Tälla jaksolla on hyvä piirre aiheeseen, sillä siinä mainitaan Pietarin toiminnasta.)
+
+================================================================================
+RINNAKKAISTESTI VARAMALLILLA (gemma:7b) - Osio: 2. Varoittavat esimerkit: Daavid ja Pietari
+================================================================================
+
+  - Varamalli, arvioidaan erä 1/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 8,
+                          'perustelu': 'Korostaa Daavidin syntiä ja Jumalan '
+                                       'sanaa',
+                          'viite': '2. Samuelin kirja 24:11'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Ilmoittava Daavidin pelko Aakista',
+                          'viite': '1. Samuelin kirja 21:12'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Korostaa Daavidin panoja ja Jumalan '
+                                       'armoa',
+                          'viite': '1. Samuelin kirja 29:5'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Ilmoittava Jumalan armoa ja rakkautta',
+                          'viite': 'Roomalaiskirje 4:6'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa Daavidin palvonnan ja '
+                                       'katonnan',
+                          'viite': 'Apostolien teot 13:36'},
+                      {   'arvosana': 5,
+                          'perustelu': 'Ilmoittava Daavidin syntiä ja '
+                                       'rangaistusta',
+                          'viite': '2. Samuelin kirja 1:15'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Korostaa Daavidin syntiä ja tulosta',
+                          'viite': 'Psalmit 52:2'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Ilmoittava Daavidin syntiä ja pelkoa',
+                          'viite': '2. Samuelin kirja 1:14'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Korostaa Daavidin katumusta ja Jumalan '
+                                       'armoa',
+                          'viite': '2. Samuelin kirja 1:16'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Korostaa Pietarin uskollisuutta ja '
+                                       'Jeesuksen seuranta',
+                          'viite': 'Matteus 26:69'}],
+    'kokonaisarvosana': 7,
+    'kokonaisperustelu': 'Raamatun jakeet vastaavat generaalisesti aihetta, '
+                         'mutta jotkut jakeet ovat irrelevaattisia tai '
+                         'huomioimatta. Monet jakeet korostavat Daavidin '
+                         'syntiä ja sen seurauksia, kun taas jotkut '
+                         'keskittyvät Jumalan armoaan ja rakkausheneen.',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 2/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 7,
+                          'perustelu': 'Ilmoitus Daavidin rukousta ja aterin '
+                                       'ottamista.',
+                          'viite': '2. Samuelin kirja 12:20'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Viestintä Daavidin lankeemuksesta ja '
+                                       'kuningaskuntansa hallinnasta.',
+                          'viite': '2. Samuelin kirja 16:6'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Ilmoitus Saulin kutsumisesta '
+                                       'Daavidiksi.',
+                          'viite': '1. Samuelin kirja 16:19'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Daavidin itsestään kertominen '
+                                       'Herrakseksi.',
+                          'viite': 'Markus 12:37'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Ilmoitus Paha henken vaikutuksesta '
+                                       'Saulissa ja Daavidin rooli.',
+                          'viite': '1. Samuelin kirja 18:10'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Pietarin ja apostolien vastaus '
+                                       'Jeesuksen Kristuksen kunniasta.',
+                          'viite': 'Apostolien teot 5:29'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Aakkaan viestintä Daavidin '
+                                       'rehellisyydestä.',
+                          'viite': '1. Samuelin kirja 29:6'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Daavidin itsestään kertominen '
+                                       'Herrasta.',
+                          'viite': 'Apostolien teot 2:34'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Raamatunsanan viestintä Daavidista '
+                                       'Jeesuksen oppaajaksi.',
+                          'viite': 'Apostolien teot 1:16'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Pietarin rooli Jeesuksen Kristuksen '
+                                       'apostolena.',
+                          'viite': '1. Pietarin kirje 1:1'}],
+    'kokonaisarvosana': 7,
+    'kokonaisperustelu': 'Jakot vastaavat aihetta hyvin, vaikka jotkut ovat '
+                         'epätarkanisia. Jotkut jakeet tuovat esiin Daavidin '
+                         'ja Pietarin lankeemuksen ja sen seuraukset, kun taas '
+                         'toiset korostavat heidän uskollisuutensa ja Jumalan '
+                         'kutsumista. Kunkin jakeen arvosana on 7.',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 3/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 8,
+                          'perustelu': 'Tässä jakeessa Herra vihjailee '
+                                       'Daavidin synnin vaikutuksista '
+                                       'kutsuunsa.',
+                          'viite': '2. Samuelin kirja 7:20'},
+                      {   'arvosana': 9,
+                          'perustelu': 'Tässä jakeessa Herra korostaa Pietarin '
+                                       'uskollisuutta ja uskonnon voimaa.',
+                          'viite': 'Luukas 22:61'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Tässä jakeessa Daavidin reaktio '
+                                       'Abisailin uhrikoriin on relevantti '
+                                       'aiheen kontekstiin.',
+                          'viite': '1. Samuelin kirja 26:9'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Tässä jakeessa Pietari osoittaa '
+                                       'uskonnon voimaa Jeesuksen kanssa.',
+                          'viite': 'Luukas 9:33'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Tässä jakeessa kuvatulla hermostus '
+                                       'daavidisella heräämään Herran tahdon.',
+                          'viite': 'Luukas 20:20'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Tässä jakeessa Herran viha ja armo '
+                                       'Pietarin suhteessaan.',
+                          'viite': 'Nehemia 9:29'},
+                      {   'arvosana': 9,
+                          'perustelu': 'Tässä jakeessa Herra palvoo Daavidin '
+                                       'sukupolven ja sen armoisuuden.',
+                          'viite': '1. Kuningasten kirja 13:2'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Tässä jakeessa Daavidin armo ja '
+                                       'palvonta Herran tahdossa korostuu.',
+                          'viite': 'Apostolien teot 4:25'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Tässä jakeessa Daavidin omatoimisuus '
+                                       'Herran tahdossa korostuu.',
+                          'viite': 'Luukas 20:42'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Tässä jakeessa Pietarin ymmärrys '
+                                       'Jeesuksen sanoista korostuu.',
+                          'viite': 'Matteus 26:75'}],
+    'kokonaisarvosana': 8,
+    'kokonaisperustelu': 'Raamatun jakeet vastaavat aihetta hyvin. Ne tuovat '
+                         'esiin Daavidin ja Pietarin synnit, mutta myös Heidän '
+                         'armo ja palvonta Herran tahdossa. Raamattu osoittaa, '
+                         'että Herra rakastaa ja armotaan ihmisiä, vaikka he '
+                         'ovat syntisiä.',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 4/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 8,
+                          'perustelu': 'Viittaus osoittaa, että Pietari oli '
+                                       'Jeesuksen lähellä, ja se viittaa '
+                                       'ehkään hänelle olevan armoa ja '
+                                       'rakkauspuhetta.',
+                          'viite': 'Johannes 18:15'},
+                      {   'arvosana': 9,
+                          'perustelu': 'Viittaus viittaa Daavidin ja Jeesuksen '
+                                       'välillä olevan rakkauspuheen.',
+                          'viite': '1. Samuelin kirja 20:42'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viittaus osoittaa, että Daavid kutsuu '
+                                       'Jeesusta Herraksi, mutta ei kerro '
+                                       'kuinka hän sitten on hänen poikansa.',
+                          'viite': 'Luukas 20:44'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Viittaus viittaa, että Daavid oli '
+                                       'nuorukainen ja kaunis, kun '
+                                       'filistealainen katsosi häntä.',
+                          'viite': '1. Samuelin kirja 17:41'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Viittaus viittaa, että Markus '
+                                       'varoittaa kirjanoppineita, jotka '
+                                       'mielellään käyskelevät pitkissä '
+                                       'vaipoissa ja haluavat tervehdyksiä '
+                                       'toreilla.',
+                          'viite': 'Markus 12:38'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viittaus viittaa Pietarin sanelevan '
+                                       'Jeesukselle, että kolme majaa on '
+                                       'tarpeellinen.',
+                          'viite': 'Markus 9:5'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Viittaus viittaa Jumalan armosta ja '
+                                       'rakkauspuhetta.',
+                          'viite': '2. Tessalonikalaiskirje 1:5'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viittaus viittaa, että Jeesus oli '
+                                       'armoisaa, kun hän puhutti Daavidille.',
+                          'viite': 'Matteus 12:3'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Viittaus viittaa, että filistealainen '
+                                       'halveksi Daavidia, kun hän oli '
+                                       'nuorukainen.',
+                          'viite': '1. Samuelin kirja 17:42'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viittaus viittaa Pietarin '
+                                       'ratkaisukseen Jeesuksen kolman '
+                                       'kuoleman jälkeen.',
+                          'viite': 'Markus 14:72'}],
+    'kokonaisarvosana': 7,
+    'kokonaisperustelu': 'Useita Raamatun jakeita vastaavat aiheen kysymystä. '
+                         'Artikkelissa mainituissa jakeissa Daavid ja Pietari '
+                         'osoittavat virheitä, joita heillä oli. Daavidin '
+                         'lankeemukset vaikuttivat hänen kutsuunsa, ja Pietari '
+                         'oli vastuussa kolmesta Jeesuksen kuolemasta. '
+                         'Artikkelissa mainituista jakeissa on myös viitteitä '
+                         'Jumalan armosta ja rakkauspuhetta.',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 5/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 8,
+                          'perustelu': 'Viite viittaa Daavidin ja Jumalan '
+                                       'välistä suoraa ja henkilökohtaista '
+                                       'suosiota.',
+                          'viite': 'Nehemia 9:30'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viite mainitsee Pietarin nimen '
+                                       'antamisen Simonille, mutta ei '
+                                       'selitetä, miksi Pietari oli Jeesuksen '
+                                       'opetuslapsi.',
+                          'viite': 'Luukas 6:14'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Viite viittaa Pietarin puhumisen '
+                                       'keskeytymiseen, mutta ei selitetä, '
+                                       'miksi Pietari ei ymmärtänyt Jeesuksen '
+                                       'sanoja.',
+                          'viite': 'Luukas 22:60'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Viite viittaa Daavidin olevan '
+                                       'Jeesuksen siemenen, mikä tukee aiheen '
+                                       'oletuksia.',
+                          'viite': '2. Timoteuskirje 2:8'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viite viittaa kanaanilaisen vaimon '
+                                       'vaatimuksen Jeesuksen ja Daavidin '
+                                       'välillä.',
+                          'viite': 'Matteus 15:22'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Viite viittaa Pietarin kuoleman ja '
+                                       'herätyksen olevan yhteyttä Jumalaan.',
+                          'viite': 'Johannes 21:19'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viite viittaa Daavidin olevan Jumalan '
+                                       'kuninkaalliseen valtaan.',
+                          'viite': '2. Aikakirja 7:18'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Viite viittaa Pietarin '
+                                       'ymmärrämättömyyden Jeesuksen sanoihin.',
+                          'viite': 'Markus 8:32'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Viite viittaa Daavidin kuoleman ja '
+                                       'haudan olevan Jeesuksen keskuudessa.',
+                          'viite': 'Apostolien teot 2:29'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viite viittaa Daavidin turmelemisen ja '
+                                       'Saulin hyökkäyksen välillä.',
+                          'viite': 'Psalmit 59:1'}],
+    'kokonaisarvosana': 7,
+    'kokonaisperustelu': 'Raamatun jakeet vastaavat aihetta hyvin, mutta '
+                         'jotkut ne sisältvät epäselvyyksiä tai ovat '
+                         'irreleventteja. Yleisin arvosana on 7/10.',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 6/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 8,
+                          'perustelu': 'Viittaus viittaa Daavidin olevan '
+                                       'Jumalan valinta ja että hän on heidän '
+                                       'paimenen. Tämä tukee aihellista.',
+                          'viite': 'Hesekiel 34:23'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viittaus viittaa Pietarin noustavan '
+                                       'veljien keskuudesta, mutta ei palautaa '
+                                       'kontekstia. Se ei ole suoraa vastusta '
+                                       'aiheellista.',
+                          'viite': 'Apostolien teot 1:15'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Viittaus viittaa naispuolten ja '
+                                       'miespuolten välisen riidan olevan '
+                                       'syynä naispuollisten '
+                                       'riemuksilletomuunille. Se ei ole '
+                                       'suoraa vastusta aiheellista.',
+                          'viite': 'Roomalaiskirje 1:27'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viittaus viittaa Daavidin kurjuuteen '
+                                       'ja köyhään, mutta ei palautaa '
+                                       'kontekstia. Se ei ole suoraa vastusta '
+                                       'aiheellista.',
+                          'viite': 'Psalmit 86:1'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Viittaus viittaa Jeesuksen '
+                                       'vangistamisen ja kuoleman olevan '
+                                       'kontekstissaan. Se tukee aihellista.',
+                          'viite': 'Markus 15:1'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viittaus viittaa Jumalan antavan '
+                                       'Daavidille kolmea ehtoa, mutta ei '
+                                       'palautaa kontekstia. Se ei ole suoraa '
+                                       'vastusta aiheellista.',
+                          'viite': '2. Samuelin kirja 24:12'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Viittaus viittaa Daavidin '
+                                       'vihaantumiseen ja kurjuuteen, mutta ei '
+                                       'palautaa kontekstia. Se ei ole suoraa '
+                                       'vastusta aiheellista.',
+                          'viite': 'Psalmit 37:1'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viittaus viittaa Daavidin turvauksessa '
+                                       'Jumalaan, mutta ei palautaa '
+                                       'kontekstia. Se ei ole suoraa vastusta '
+                                       'aiheellista.',
+                          'viite': 'Psalmit 11:1'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viittaus viittaa Daavidin rukouksen '
+                                       'olevan Jumalan luolamassa. Se tukee '
+                                       'aihellista.',
+                          'viite': 'Psalmit 142:1'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Viittaus viittaa varoituksen olevan '
+                                       'tarpeen, mutta ei palautaa kontekstia. '
+                                       'Se ei ole suoraa vastusta aiheellista.',
+                          'viite': 'Tiituskirje 3:10'}],
+    'kokonaisarvosana': 7,
+    'kokonaisperustelu': 'Useita Raamatun jakeita vastaavat aiheellista, mutta '
+                         'jotkut ovat vähempäränneen tai neliömäiset. Ajan ja '
+                         'kontekstin huomioiminen on tähän aiheen arvioinnissa '
+                         'kriittinen.',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 7/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 8,
+                          'perustelu': 'Viittaus viittaa Pietarin '
+                                       'uskollisuuteen ja rakkausjumalaan.',
+                          'viite': 'Markus 14:29'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Viittaus viittaa saastaisuuden ja '
+                                       'egoismin ongelmiin, mutta se ei '
+                                       'koskeli suoraan aiheen kysymystä.',
+                          'viite': 'Efesolaiskirje 4:19'},
+                      {   'arvosana': 5,
+                          'perustelu': 'Viittaus viittaa fariseuksien '
+                                       'kriittiseen asennelukujaan, mutta se '
+                                       'ei ole suoraan kohdistettu aiheen '
+                                       'kysymykseen.',
+                          'viite': 'Luukas 6:2'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viittaus viittaa Daavidin lankeemusten '
+                                       'vaikutukseen hänen kutsuunsa.',
+                          'viite': '1. Kuningasten kirja 21:10'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Viittaus viittaa Jumalan herätyksen '
+                                       'voimaan.',
+                          'viite': 'Apostolien teot 3:15'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Viittaus viittaa Daavidin lankeemusten '
+                                       'ja Jumalan hätää.',
+                          'viite': 'Markus 3:12'},
+                      {   'arvosana': 5,
+                          'perustelu': 'Viittaus viittaa hyvän teon ja '
+                                       'rakkausjumalaan, mutta se ei koskeli '
+                                       'suoraan aiheen kysymystä.',
+                          'viite': 'Aamos 6:4'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Viittaus viittaa Daavidin ja Saulin '
+                                       'välisen yhteyden.',
+                          'viite': '1. Samuelin kirja 18:28'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Viittaus viittaa kaupungin miehien '
+                                       'passiivisuuteen ja rakkausjumalaan.',
+                          'viite': '1. Kuningasten kirja 21:11'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Viittaus viittaa Jeesuksen rakkaus '
+                                       'Daavidin poikaan.',
+                          'viite': 'Matteus 9:27'}],
+    'kokonaisarvosana': 7,
+    'kokonaisperustelu': ' Jotkut Raamatun jakeet vastaavat aiheen kysymystä, '
+                         'kun taas toiset eivät. Artikkelista tuetaan Raamatun '
+                         'tarinoita ja mainituita henkilöitä, mutta se ei '
+                         'tarjoa laajoja teologisia analyysiä.',
+    'mallin_nimi': 'gemma:7b'}
+  - Varamalli, arvioidaan erä 8/8...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Varamallin KOKO VASTAUS:
+{   'jae_arviot': [   {   'arvosana': 8,
+                          'perustelu': 'Jakautetta keskittelee Jumalan '
+                                       'läsnäolo ja voima, joka voi taistella '
+                                       'taisteluissa.',
+                          'viite': 'Markus 15:29'},
+                      {   'arvosana': 7,
+                          'perustelu': 'Jakautetta korostaa Jumalan armo ja '
+                                       'rakkaus, vaikka jotkut henkilöt '
+                                       'vihaavat häntä.',
+                          'viite': '1. Korinttilaiskirje 10:9'},
+                      {   'arvosana': 6,
+                          'perustelu': 'Jakautetta korostaa uskonnon ja '
+                                       'toivoksen merkitystä pelastukselle.',
+                          'viite': 'Markus 16:8'},
+                      {   'arvosana': 5,
+                          'perustelu': 'Jakautetta korostaa ihmisten viisautta '
+                                       'ja velvollisuutta oppimisesta ja '
+                                       'teosta.',
+                          'viite': 'Job 11:12'},
+                      {   'arvosana': 8,
+                          'perustelu': 'Jakautetta korostaa Jumalan armo ja '
+                                       'rakkaus, vaikka jotkut henkilöt '
+                                       'vihaavat häntä.',
+                          'viite': 'Efesolaiskirje 4:18'}],
+    'kokonaisarvosana': 7,
+    'kokonaisperustelu': 'Useat Raamatun jakeet vastaavat aiheen kysymystä. '
+                         'Jotkut jakeat korostavat Jumalan suuttumoa ja '
+                         'sanktioni ja toiset korostavat uskonnon ja toivoksen '
+                         'merkitystä. ',
+    'mallin_nimi': 'gemma:7b'}
+Varamallin lopullinen laatuarvio: 8.20/10
+--- Valitut jakeet ja niiden arviot (gemma:7b) ---
+  - Luukas 22:61: 9/10 (Tässä jakeessa Herra korostaa Pietarin uskollisuutta ja uskonnon voimaa.)
+  - 1. Kuningasten kirja 13:2: 9/10 (Tässä jakeessa Herra palvoo Daavidin sukupolven ja sen armoisuuden.)
+  - 1. Samuelin kirja 20:42: 9/10 (Viittaus viittaa Daavidin ja Jeesuksen välillä olevan rakkauspuheen.)
+  - 2. Samuelin kirja 24:11: 8/10 (Korostaa Daavidin syntiä ja Jumalan sanaa)
+  - Apostolien teot 13:36: 8/10 (Korostaa Daavidin palvonnan ja katonnan)
+  - 2. Samuelin kirja 1:16: 8/10 (Korostaa Daavidin katumusta ja Jumalan armoa)
+  - 2. Samuelin kirja 16:6: 8/10 (Viestintä Daavidin lankeemuksesta ja kuningaskuntansa hallinnasta.)
+  - 1. Samuelin kirja 18:10: 8/10 (Ilmoitus Paha henken vaikutuksesta Saulissa ja Daavidin rooli.)
+  - 1. Samuelin kirja 29:6: 8/10 (Aakkaan viestintä Daavidin rehellisyydestä.)
+  - Apostolien teot 1:16: 8/10 (Raamatunsanan viestintä Daavidista Jeesuksen oppaajaksi.)
+  - 2. Samuelin kirja 7:20: 8/10 (Tässä jakeessa Herra vihjailee Daavidin synnin vaikutuksista kutsuunsa.)
+  - Luukas 9:33: 8/10 (Tässä jakeessa Pietari osoittaa uskonnon voimaa Jeesuksen kanssa.)
+  - Nehemia 9:29: 8/10 (Tässä jakeessa Herran viha ja armo Pietarin suhteessaan.)
+  - Apostolien teot 4:25: 8/10 (Tässä jakeessa Daavidin armo ja palvonta Herran tahdossa korostuu.)
+  - Luukas 20:42: 8/10 (Tässä jakeessa Daavidin omatoimisuus Herran tahdossa korostuu.)
+
+================================================================================
+      Käsitellään osio 3/5: 3. Tie takaisin: Parannuksen ja armon portaat       
+================================================================================
+
+Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Avainsana-Tehostin aktivoitu sanoille: {'tie', 'parannuksen'}
+  -> Tehostettiin jaetta Psalmit 37:23 sanoilla: {'tie'}
+  -> Tehostettiin jaetta Job 22:29 sanoilla: {'tie'}
+Löytyi 75 ehdokasjaetta.
+Vaihe 2: Arvioidaan 75 ehdokasta päämallilla...
+  - Arvioidaan erä 1/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 2/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 3/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 4/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 5/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 6/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 7/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 8/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+Päämallin arviointi valmis. Saatiin yhteensä 75 jaearviota.
+Vaihe 3: Valittu 15 parasta jaetta. Lopullinen laatuarvio: 9.00/10
+--- Valitut jakeet ja niiden arviot (Päämalli: llama3.1:8b) ---
+  - Luukas 17:15: 9/10 (Jake antaa hyvän kuvan siitä, miten Jumala auttaa ihmisiä, kun he nöyrytyvät.)
+  - Psalmit 37:23: 9/10 (Jake antaa hyvän kuvan siitä, miten Jumala vahvistaa ihmisen askeleet ja auttaa tietä. )
+  - Psalmit 25:10: 9/10 (Jake kuvaa hyvin parannuksen käsitettä ja antaa hyvän kuvan siitä, miten Jumala auttaa ihmisiä.)
+  - Psalmit 25:8: 9/10 (Jake kertoo Jumalan neuvomisesta ihmisten tielle ja antaa hyvän kuvan parannuksen käsitteestä.)
+  - Jaakobin kirje 5:16: 9/10 (Jake kertoo Jumalan parantavasta toimesta ja antaa hyvän kuvan siitä, miten ihmisten on tunnustettava synnit.)
+  - Roomalaiskirje 6:22: 9/10 (Tämä jakee korosti siitä vapautuneiden uutta elämää ja ymmärrystä.)
+  - 2. Pietarin kirje 2:21: 9/10 (Tämä jakee painottaa uskon muutosta ja sen merkitystä.)
+  - Luukas 1:77: 9/10 (Lähetystoiminnassa on yksi hyvin kuvattu esimerkki siitä, miten Jumalan armo toimii ihmisten elämänmuuttamisessa.)
+  - 1. Timoteuskirje 1:14: 9/10 (Ylen runsas, vaikuttaen uskoa ja rakkautta, joka on Kristuksessa Jeesuksessa -tunnuskuva on hyvä kuvitusta siitä, mitä ihmiselle tarvitaan elämänmuuttamiseksi.)
+  - 2. Johanneksen kirje 1:3: 9/10 (Armo, laupeus ja rauha Isältä Jumalalta ja Jeesukselta Kristukselta on hyvä esimerkki siitä, miten ihmisille tarvitaan elämänmuuttamiseksi.)
+  - Jesaja 57:18: 9/10 (Minä olen nähnyt hänen tiensä, mutta minä parannan hänet ja johdatan häntä - esimerkki on hyvä kuvitusta siitä, miten Jumalan armo toimii ihmisen elämänmuuttamisessa.)
+  - Jeremia 31:12: 9/10 (Jake on hyvin kuvaavaa koko ilmiöstä, jossa syntien tunnustaminen ja armon vastaanottaminen voivat olla lähtökohta puhdistavalle kasvuprosessille.)
+  - Apostolien teot 3:20: 9/10 (Jake kuvailee hyvin, mitä Jumalan valitsee aikomuksia ovat. Jake tuo näille aikomuuksille yhteen myös Kristuksen Jeesuksen esittämisen.)
+  - Luukas 1:76: 9/10 (Jake kuvailee hyvin, mitä tapahtuu syntynä jumalallisena lapsena. Jake tuo näille ilmiöille yhteen myös Kristuksen Jeesuksen esittämisen.)
+  - Efesolaiskirje 1:8: 9/10 (Jake kuvailee hyvin, miten Herra antaa tietyn armon ihmisten. Jake tuo näille ilmiöille yhteen myös Kristuksen Jeesuksen esittämisen.)
+
+================================================================================
+       Käsitellään osio 4/5: 4. Miten seurakunta kohtelee kompastunutta?        
+================================================================================
+
+Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Avainsana-Tehostin: Ei relevantteja avainsanoja otsikossa.
+Löytyi 75 ehdokasjaetta.
+Vaihe 2: Arvioidaan 75 ehdokasta päämallilla...
+  - Arvioidaan erä 1/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 2/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 3/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 4/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 5/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 6/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 7/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+  - Arvioidaan erä 8/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+Päämallin arviointi valmis. Saatiin yhteensä 75 jaearviota.
 Vaihe 3: Valittu 15 parasta jaetta. Lopullinen laatuarvio: 9.13/10
---- Valitut jakeet ja niiden arviot ---
-  - Efesolaiskirje 5:5: 10/10 (Jae on erittäin relevantti, koska se yhdistää harhaopettajien teot (haurellisuus, saastaisuus, ahneus) Raamatun mukaisiin periaatteisiin. Se on suora varoitus siitä, mitä ei saa hyväksyä.)
-  - 1. Johanneksen kirje 4:6: 10/10 (Tämä on keskeinen jae, joka erottaa totuuden hengen harhaoppien hengen. Se on selkeä, ymmärrettävä ja perustuu Raamatun opetukseen.)
-  - Jaakobin kirje 2:5: 9/10 (Jae onnistuneesti osoittaa, että harhaopettajat usein edustavat ahneutta ja valtaa, ja että Jumalan valitut kykenevät noudattamaan Raamattua ja tavoittelemaan Jumalan valtakunnan perintöä.)
-  - Jeremia 23:32: 9/10 (Jae on vahva varoitus harhaopettajien valheellisista ennustuksista ja niiden negatiivisista vaikutuksista. Korostaa harhaopettajien vastuuta seurakunnille aiheuttamista vahingoista.)
-  - Hesekiel 33:6: 9/10 (Erinomainen ja merkittävä jae. Se kuvaa selkeästi vastuullisuuden ja seuraukset, kun vartija (uskonnolliset johtajat) ei toimi. Se on suora varoitus ja eettinen painotus.)
-  - 2. Timoteuskirje 4:2: 9/10 (Tämä jae viittaa johdonmukaisesti opettamisen ja varoittamisen tarpeeseen, mikä on olennainen osa uskonnollisen johtajan roolia.)
-  - 1. Johanneksen kirje 2:27: 9/10 (Jae on erittäin relevantti ja selvästi Raamatullinen ohje siitä, kuinka pysyä Jumalan opettajien aikana. 'Voitelu' ja 'oppiminen hänessä' ovat vahvoja symboleja Jumalan johdatuksesta ja totuudesta.)
-  - 2. Pietarin kirje 2:12: 9/10 (Jae kuvaa harhaoppijoiden 'epäröivä' ja 'hullu' luonne. Se selittää, että harhaoppijat eivät ymmärrä Jumalan totuutta.)
-  - 2. Tessalonikalaiskirje 1:5: 9/10 (Tämä jae on keskeinen, koska se käsittelee harhaopettajien motiiveja (tuomio) ja seurauksia (valtakuntaan kutsuttavat). Vahva linkki aiheeseen.)
-  - Hesekiel 18:8: 9/10 (Tämä jae määrittää harhaopettajien hylkäämisen –  niin kauan kuin he eivät yritä tehdä oikeutta. Se on hyvin konkreettinen jaettava.  Heikko moraali on harhaopettajien tunnusmerkki.)
-  - 2. Pietarin kirje 2:10: 9/10 (Tämä jae yhdistää harhaopettajien tuomitsemisen heidän saastaisiin himoihinsa ja heidän välinpitämättömyytensä kohtaan Herrauteen. Täydellinen kuva harhaopettajista.)
-  - Hesekiel 3:20: 9/10 (Erinomainen jae, joka kuvaa selkeästi seurauksen, jos vanhurskas ei varoita toisia. Korostaa vastuuta ja voi johtaa ihmisen kuolemaan.  Vahva ja konkreettinen.)
-  - Heprealaiskirje 6:1: 9/10 (Täsmällinen jae, joka varoittaa uudelleen perustamasta kristuksen oppia. Keskittyy kristuksen oppien perusrakenteen säilyttämiseen.)
-  - Matteus 5:20: 9/10 (Erinomainen jae, joka vaatii, että meidän vanhurskautemme on suurempi kuin kirjanoppineiden ja fariseusten.  Korostaa ylivoimaisen vanhurskauden tärkeyttä.)
-  - Hesekiel 3:19: 9/10 (Tämä jae on erittäin relevantti ja osoittaa selkeästi, että Jumala odottaa meiltä vastuuta varoittaa harhaopeista. Se korostaa myös, että oma turvallisuutemme riippuu siitä, kuinka vakavasti suhtaudumme harhaan.)
+--- Valitut jakeet ja niiden arviot (Päämalli: llama3.1:8b) ---
+  - Galatalaiskirje 6:1: 10/10 (Tämä on hyvin sopiva ohje seurakunnalle aiheesta. Se kertoo, että jokainen on toinen toisilleen rakas.)
+  - 2. Korinttilaiskirje 9:12: 10/10 (Jake korostaa Jumalan sanaa avaimena toiminnan saavuttamiseen seurakunnassa ja ymmärtää parannuksen yhteyttä tavoitteisiin.)
+  - Efesolaiskirje 5:27: 9/10 (Tämä on hyvä esimerkki ystävällisyyden ja rakkauden merkitykselle seurakunnassa.)
+  - 2. Timoteuskirje 2:15: 9/10 (Hyvä ohje 'jotta oikein jakelisit totuuden sanaa', mikä on hyvää pohdintaa seurakuntamme toiminnalle.)
+  - 1. Pietarin kirje 2:20: 9/10 (Hyvä esimerkki siitä, että 'se on Jumalan armoa', joka antaa tilaisuuden kärsivällisyyden harjoittamiseen.)
+  - 1. Pietarin kirje 3:18: 9/10 (Kärsimyskuvauksia on paljon yhtymäkohtia kompastunuttamme käsitteeseen.)
+  - Tiituskirje 2:14: 9/10 (Kärsimyskuvauksia on paljon yhtymäkohtia kompastunuttamme käsitteeseen.)
+  - 2. Korinttilaiskirje 1:6: 9/10 (Jakeet kertovat siitä miten seurakunta tulisi toimimaan kompastuneiden kohtelua koskevissa asioissa.)
+  - Kolossalaiskirje 2:13: 9/10 (Tämän jakeen viesti on hyvin sovellettavissa aiheeseen ja korostaa ymmärrystä Jumalan oikein anteliaisuudesta.)
+  - Galatalaiskirje 4:15: 9/10 (Tämän jakeen viesti on hyvin sovellettavissa aiheeseen ja korostaa ymmärrystä Jumalan oikein anteliaisuudesta.)
+  - Sananlaskut 5:13: 9/10 (Jake on hyvin olemassaoloa ja oikein olemisen olennaista katumattomuutta korostava, sekä se joka toivottaa ihmistä aina läpi hengessään.)
+  - 2. Korinttilaiskirje 13:5: 9/10 (Jake korostaa Jumalan sanaa ja siinä nähdään käsityksen yleiskuvasta seurakunnan elämän tavoitteista.)
+  - Roomalaiskirje 5:19: 9/10 (Jake korostaa Jumalan sanaa avaimena toiminnan saavuttamiseen seurakunnassa ja ymmärtää parannuksen yhteyttä tavoitteisiin.)
+  - Kolossalaiskirje 3:12: 9/10 (Tämä jakeista on hyvin sopiva aiheeseen, sillä siinä korostetaan armollisuutta ja ystävyyttä seurakunnassa.)
+  - Heprealaiskirje 2:3: 9/10 (Korostaa, että seurakunnan on oltava sitoutunut pelastukseen ja sen tuntemiseen.)
 
 ================================================================================
-Käsitellään osio 3/5: 3. Tasapaino ja oikea asenne: Erottelua, ei tuomitsemista 
-================================================================================
-
-Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
-Suoritetaan strategian relevanssin esianalyysi...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-Esianalyysin tulos: Soveltuuko strategia? Kyllä.
-Strategia 'raamatullinen' todettiin relevantiksi.
-Löytyi 75 ehdokasjaetta.
-Vaihe 2: Arvioidaan 75 ehdokasta 10 jakeen erissä...
-  - Arvioidaan erä 1/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  - Arvioidaan erä 2/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Virhe JSON-jäsennnyksessä (yritys 1): Invalid control character at: line 8 column 370 (char 1183). Yritetään uudelleen...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 2/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  -> VIRHE: Malli palautti 9 arviota, vaikka sille annettiin 10 jaetta. Erä ohitetaan.
-  - Arvioidaan erä 3/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  - Arvioidaan erä 4/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  - Arvioidaan erä 5/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  - Arvioidaan erä 6/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  - Arvioidaan erä 7/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  - Arvioidaan erä 8/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-Arviointi valmis. Saatiin yhteensä 65 jaearviota.
-Vaihe 3: Valittu 13 parasta jaetta. Lopullinen laatuarvio: 9.20/10
---- Valitut jakeet ja niiden arviot ---
-  - Jaakobin kirje 4:11: 10/10 (Tämä jae on keskeinen, koska se suoraan osoittaa tuomitsemisen ja epärakkauden seuraukset. Se on tehokas varoitus, joka korostaa myötätuntoa ja rakkauden tärkeyttä uskonelämässä.)
-  - Johannes 10:16: 10/10 (Jae on keskeinen ja ilmaisee suoraan Jumalan suunnitelman ohjata erilaisia ​​ihmisiä ja tuoda heidät yhteen, mikä on olennaista aiheen ytimelle – tarve ohjaukselle ja armolle.)
-  - 2. Piet. 2:11: 10/10 (Tämä jae on erittäin relevantti ja voimakas. Se alleviivaa periaatteen, että vaikka jumalalliset olentovatkään tuomitsevat, meidän tulisi välttää tuomitsemista ja keskittyä rakkauteen ja armoon. Se on keskeinen periaate uskonnollisessa yhteisössä.)
-  - Nehemia 9:17: 9/10 (Tämä jae on erittäin relevantti. Se kuvaa selkeästi tilannetta, jossa ihmiset eivät ole noudattaneet Jumalan käskyjä ja ovat valinneet pahan asenteen, mikä on ominaista epäkunnioituksessa ja itsekeskeisyydessä. Se korostaa anteeksiantamisen ja armahduksen tärkeyttä.)
-  - 1. Timoteuskirje 6:2: 9/10 (Tämä jae on keskeinen. Se korostaa uskonnollisen asenteen tärkeyttä ja kehottaa uskovia kunnioittamaan ja palvelemaan uskonnollisia johtajiaan, mikä on olennaista lampaiden ja susien erottelussa.)
-  - 2. Tessalonikalaiskirje 1:5: 9/10 (Jae on keskeinen ja ytimekäs - se muistuttaa, että kunnioitusta tulee osoittaa toisten ihmisten, jopa heikkojen, erityisesti heidän uskonpolullensa vaikuttamisesta.)
-  - 1. Pietarin kirje 3:7: 9/10 (Jae on erinomainen ohje, joka painottaa kunnioitusta toista kohtaan, koska he ovat uskonpolun perillisiä.)
-  - Jaakobin kirje 1:4: 9/10 (Jae korostaa, että kärsivällisyys tuottaa täydellisyyden, mikä on keskeinen elementti, kun kohdellaan heikkoja uskovia.)
-  - 1. Korinttolaiskirje 7:15: 9/10 (Tämä jae on erittäin relevantti, koska se korostaa uskonnollisen yhteisön jäsenten suhteellista käsittelyä ja armoa. Se antaa suoraa ohjausta siihen, miten suhtautua heikkoihin uskoviin.  (Kor. 7:15: '…etteivät näpistele, vaan kaikin tavoin osoittavat vilpitöntä uskollisuutta, että he Jumalan, meidän vapahtajamme, opin kaikessa kaunistaisivat.'))
-  - Hesekiel 34:16: 9/10 (Tämä jae on keskeinen, koska se osoittaa suoran ja selkeän ohjeen siitä, miten Jumala kohtelee eri ihmisiä. Se korostaa, että Jumala etsii, tuo takaisin ja sitoo harhailevat, mutta myös hävittää lihavat ja väkevät. Tämä viittaa myötätuntoon heikkojen kanssa ja varoituksen eri ihmisryhmistä.)
-  - Jesaja 58:10: 9/10 (Tämä jae onnistuu täydellisesti heijastamaan teeman keskeistä viestiä. Se puhuu myötätuntoisesta ja valoisasta suhtautumisesta, joka vaatii toimia ja välittämistä. Sehtellinen painotus tarvitulla toiminnalla luotavasta valosta on erinomainen.)
-  - Efesolaiskirje 6:5: 9/10 (Tämä jae on olennaisesti oleellinen, sillä se muistuttaa nöyrästä kuuliaisuudesta, joka on merkittävä osa Kristuksen esimerkkiä ja uskonelämän periaatteita. 'Sydämenne yksinkertaisuudessa' on voimakas ohje.)
-  - Hesekiel 34:19: 9/10 (Tämä jae kuvaa suoraan lampaiden jahtamista ja huolestuttavaa johtoa, mikä on täsmällinen merkitys suhteiden ja opastuksen näkökulmasta. Se painottaa huolenpidon ja ohjauksen tarvetta.)
-  - 5. Mooseksen kirja 22:2: 9/10 (Tämä jae on erittäin osuva. Se puhuu suhteesta 'eksytettyyn taloon', mikä kuvastaa suhteellisen heikkojen ja hämmennystilanteessa olevien ystävien huolehtimista. On tärkeää huomioida suhteet, jotka ovat yllättäen vaikeuksissa.)
-  - Jaakobin kirje 5:10: 9/10 (Jae korostaa profeettien vaivankestämistä ja kärsivällisyyttä, mikä on täysin linjassa aiheen ytimen kanssa. Se toimii voimakkaana muistutuksena rakkaudellisesta ja kestävän kohtaamisesta.)
-
-================================================================================
-Käsitellään osio 4/5: 4. Sovellus nykyaikaan: Suomen nuorten herätys ja sen haasteet
+          Käsitellään osio 5/5: 5. Yhteenveto: Arpeutuneet parantajat           
 ================================================================================
 
 Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Avainsana-Tehostin: Ei relevantteja avainsanoja otsikossa.
 Löytyi 75 ehdokasjaetta.
-Vaihe 2: Arvioidaan 75 ehdokasta 10 jakeen erissä...
+Vaihe 2: Arvioidaan 75 ehdokasta päämallilla...
   - Arvioidaan erä 1/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 2/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 3/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 4/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 5/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 6/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 7/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
   - Arvioidaan erä 8/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
 HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
 Vastaus jäsennelty onnistuneesti.
-Arviointi valmis. Saatiin yhteensä 75 jaearviota.
-Vaihe 3: Valittu 15 parasta jaetta. Lopullinen laatuarvio: 9.13/10
---- Valitut jakeet ja niiden arviot ---
-  - Roomalaiskirje 6:22: 10/10 (Jae määrittelee uskonannon, joka luo mahdollisuuden elämään iankaikkisesti. Se on erinomainen johtolanka, joka kuvaa uskon, joka on yhteydessä elämään.)
-  - 1. Korinttilaiskirje 13:13: 10/10 (Jae korostaa rakkauden keskeistä roolia, ja on erityisen suora ja vahva. Se on suoraan olennaista nuorten herätyksen pohjana.)
-  - 1. Aikakirja 28:8: 9/10 (Tämä jae edellyttää pitkäjänteistä ja velvollisuudentuntoista toimintaa. Se ohjaa uskovia, että Hyvä Maa säilytetään lapsille.)
-  - Filippiläiskirje 2:12: 9/10 (Tämä jae korostaa herätysten tärkeyttä ja velvollisuutta jatkaa uskon harjoittelua, erityisesti kun olemme poissa isännöistä. Se korostaa herätysten arvoa ja niiden merkitystä.)
-  - 1. Johanneksen kirje 2:28: 9/10 (Tämä jae on erittäin relevantti, sillä se korostaa turvan ja tulevan ilmestyksen tärkeyttä. Se myös viittaa siihen, että todellinen usko ilmenee uskonnossa pysymisessä.)
-  - Efesolaiskirje 6:5: 9/10 (Tämä jae painottaa palvelijan kuuliaisyyttä ja kunnioitusta maallisille isännille, mikä on olennaista myös nuorten uskovien kohdalla - samalla korostaen Kristuksen mallina.)
-  - Kolossalaiskirje 1:9: 9/10 (Tämä jae on erittäin relevantti. Se korostaa jatkuvaa rukoilemista ja tahtoon pyhtimätöntä elämistä, mikä on keskeistä kiitollisuuden ja ilon ylläpitämiselle. 'Täyteen hänen tahtonsa tuntemista' edellyttää aktiivista ja tarkkaavainen elämää.)
-  - 1. Johanneksen kirje 3:17: 9/10 (Jae keskittyy erittäin relevanttiin havaintoon: voimme tuntea iloa Jumalan työstä, vaikka ympäristö tuntuisi puutteelliselta.  Se korostaa veljellemme huolenaiheista huolimatta iloa, mikä on keskeistä nuorten herätyksessä.)
-  - Tiituskirje 3:8: 9/10 (Jae alleviivaa aktiivista toimintaa ja hyvien tekojen harjoittamista, mikä on keskeistä nuorten herätysryhmissä. Se on tavoite ja käytännöllinen ohje.)
-  - 2. Tessalonikalaiskirje 2:13: 9/10 (Jae korostaa Jumalan valintaa ja hänen pyhityksensä, mikä on tärkeä muistutus nuorille. Se on suora viittaus valittuun, ja erinomainen pohja itsevarmuuden rakentamiselle.)
-  - Kolossalaiskirje 1:12: 9/10 (Erittäin relevantti. Jeesus on tehnyt pelastetut soveliaiksi perinnöstä, eli Jumalan arvoisiksi ja osalliseksi pyhän perinnön hyväksymiseen. Korostaa ilon ja kiitollisuuden periaatetta.)
-  - Roomalaiskirje 14:18: 9/10 (Tämä jae on keskeinen. Se ilmaisee, että Kristuksessa palveleva on 'otollinen Jumalalle ja ihmisille kelvollinen'. Tämä on perusta kaikelle ohjaukselle ja siitä, miten ohjaaja asettaa itsensä.)
-  - 2. Pietarin kirje 3:17: 9/10 (Tämä jae on erittäin relevantti. Se varoittaa eksytyksestä ja korostaa turvallista pohjaa, johon uskominen perustuu. Varoitus on tärkeä nuorten herätyksennehteen kannalta.)
-  - Roomalaiskirje 10:9: 9/10 (Tämä jae on keskeinen ja tehokas ilmaisemaan uskon perusvaatimukset. Se korostaa, että usko Jeesukseen on pelastuksen ehto, mikä on olennaista nuorten herätyksen kontekstissa.)
-  - Kolossalaiskirje 3:16: 9/10 (Tämä jae painottaa Kristuksen sanan keskeistä asemaa uskonnollisessa elämässä, sekä sen opettamisen ja ilmaisemisen tärkeyttä. Se on erittäin relevantti nuorten uskovien opetuksen ja hengellisen kasvun tukemiselle.)
-
-================================================================================
-            Käsitellään osio 5/5: 5. Yhteenveto: Totuus rakkaudessa             
-================================================================================
-
-Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
-Suoritetaan strategian relevanssin esianalyysi...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-Esianalyysin tulos: Soveltuuko strategia? Kyllä.
-Strategia 'tasapaino' todettiin relevantiksi.
-Löytyi 75 ehdokasjaetta.
-Vaihe 2: Arvioidaan 75 ehdokasta 10 jakeen erissä...
-  - Arvioidaan erä 1/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  - Arvioidaan erä 2/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  - Arvioidaan erä 3/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  - Arvioidaan erä 4/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  - Arvioidaan erä 5/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  - Arvioidaan erä 6/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  -> VIRHE: Malli palautti 9 arviota, vaikka sille annettiin 10 jaetta. Erä ohitetaan.
-  - Arvioidaan erä 7/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-  - Arvioidaan erä 8/8...
-Lähetetään JSON-pyyntö mallille gemma3:latest (Yritys 1/3)...
-HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-Vastaus jäsennelty onnistuneesti.
-Arviointi valmis. Saatiin yhteensä 65 jaearviota.
-Vaihe 3: Valittu 15 parasta jaetta. Lopullinen laatuarvio: 9.20/10
---- Valitut jakeet ja niiden arviot ---
-  - 2. Johanneksen kirje 1:3: 10/10 (Tämä jae on keskeinen. Se yhdistää totuuden ja rakkauden suoraan Jumalan nimissä ja henkilökohtaisessa suhteessa Kristukseen, mikä on juuri sitä, mitä teema korostaa.)
-  - 1. Johanneksen kirje 4:17: 10/10 (Tämä on erittäin osuva ja vahva jae, joka määrittää täydellisen rakkauden, joka on turva tuomiopäivänä. Se täydentää täydellisesti kokonaisuuden.)
-  - Roomalaiskirje 13:10: 10/10 (Tämä jae tarjoaa selkeän eettisen ohjeen rakkauden pohjalta.  Se yhdistää rakkauden ja lain täyttämisen, ja korostaa, että rakkaus on positiivinen voima, joka vaikuttaa toisten elämään. Täydellinen yhtenäisyyttä teeman kanssa.)
-  - Nehemia 9:32: 9/10 (Tämä jae on erittäin relevantti. Se tuo esiin Jumalan suuren ja voimakkaan luonteen, hänen liittonsa ja hänen laupeutensa, mikä on keskeistä teemalle. Osoittaa, että totuus rakkaudessa alkaa Jumalan luonteesta ja liitosta kansan kanssa.)
-  - 2. Korinttilaiskirje 6:6: 9/10 (Tämä jae listaavat olennaiset ominaisuudet, jotka ovat olennainen osa totuudessa ja rakkaudessa olevan ilmaisun. Se luo hyvin konkreettisenanavan todellisuudessa.)
-  - Tiituskirje 2:14: 9/10 (Tämä jae kuvaa suoraan Jumalan tehtävää, joka on lunastaa ja puhdistaa, mikä onnistuu vain rakkaudella ja totuudella. Se heijastaa suoraan teeman ydintä.)
-  - Roomalaiskirje 8:39: 9/10 (Tämä jae esittää tehokkaasti Jumalan rakkauden voiman ja sen, että se on ikuinen. Se tukee teeman korostusta rakkauden voimasta.)
-  - 2. Pietarin kirje 1:7: 9/10 (Jae ilmaisee selvästi veljellisen rakkauden ja yhteisön sisäisen yhteyden, jotka ovat olennaisia teeman kannalta.)
-  - 2. Pietarin kirje 1:8: 9/10 (Tämä jae on erittäin relevantti. Se alleviivaa, että totuuden toteuttaminen on välttämätöntä toiminnan ja hedelmällisyyden kannalta uskon tavoittelussa. Se korostaa, että totuuden vahva omaksuminen johtaa toimintaan, mikä on keskeistä teeman kannalta.)
-  - 1. Timoteuskirje 4:16: 9/10 (Jae korostaa opettajan kestävyyttä ja sen vaikutusta, mikä on olennaista teeman kannalta: totuuden vahvasta ja pitkäaikaisesta todistamisesta.)
-  - Kolossalaiskirje 3:13: 9/10 (Jae keskittyy anteeksiannon tärkeysiin, mikä on keskeinen osa teemaa: totuuden ja rakkauden tasapainoinen toteuttaminen, joka sisältää myös nöyryyttä ja myötätuntoa.)
-  - Filippiläiskirje 1:8: 9/10 (Tämä jae ilmaisee syvän uskon ja rakkauden, joka on olennainen osa Kristuksen seuraamista. Se korostaa Jumalan todistajan roolia ja henkilökohtaista yhteyttä, mikä sopii täydellisesti annetun teeman ytimeen. 'Sydämellisellä rakkaudella' on selkeä merkitys.)
-  - 2. Korinttilaiskirje 4:2: 9/10 (Jae kertoo selkeästi velvollisuuden välttää salaisuuksia ja julkistaa totuuden. Se on suoraan linjassa teeman ytimen kanssa, joka korostaa totuuden julkistamista ja sen tärkeyttä. 'Hylkääneet kaikki häpeälliset salatiet' on voimakas toteaminen.)
-  - Kolossalaiskirje 3:15: 9/10 (Jae korostaa Kristuksen rauhaa, joka on keskeinen osa uskovan elämää. Se yhdistää sisäisen, hengellisen rauhan ulkoisen totuuden kanssa, ja viittaa ruumiin rakenteeseen, mikä onkin olennainen piirre tässä yhteydessä.)
-  - Efesolaiskirje 4:4: 9/10 (Tämä jae ilmaisee perusperiaatteen, jonka mukaan kristityt ovat yhtä ruumiissa ja hengessä, mikä edellyttää yhtenäisyyttä, toivoa ja yhteistä suuntaa. Se on erittäin relevantti teemalla.)
+  -> Erän arviointi onnistui. (Käytetty malli: llama3.1:8b)
+Päämallin arviointi valmis. Saatiin yhteensä 75 jaearviota.
+Vaihe 3: Valittu 15 parasta jaetta. Lopullinen laatuarvio: 9.00/10
+--- Valitut jakeet ja niiden arviot (Päämalli: llama3.1:8b) ---
+  - 5. Mooseksen kirja 8:3: 9/10 (Tämä jakee kertoo Jumalan suhteesta ihmiseen ja hänelle tarjoamastaan avusta.)
+  - 1. Tessalonikalaiskirje 5:12: 9/10 (Keskeistä yhteiskuntarakentamisessa olevasta rohkaisemisesta ja toiminnan kannattajista.)
+  - Heprealaiskirje 12:5: 9/10 (Keskeistä yhteiskuntarakentamisessa olevasta rohkaisemisesta ja toiminnan kannattajista.)
+  - Jesaja 35:4: 9/10 (Sanonta yleinen Jumalalle lähettää palvelevia tunteita ympäristöön.)
+  - Apostolien teot 20:35: 9/10 (Että antaminen on rohkaisevampaa kuin ottaa vakuuttaa hyvin Jumalan toimintamuoto.)
+  - Apostolien teot 4:30: 9/10 (Tämä jakee yhteenkuuluvan siten, että Jumala voi käyttää haavoja ja kokemuksia toisten auttamiseen.)
+  - Heprealaiskirje 6:10: 9/10 (Ei ole väärää mieltä, vaan Jumala on armonaistava. Ei hylkää toisten työtä.)
+  - 2. Timoteuskirje 2:25: 9/10 (Jumala voi muuttua mielenvaltion antamassa eläminen.)
+  - Heprealaiskirje 13:7: 9/10 (Kutsuu mukaan sitoutunut johtajat. Niitä jotka puhuvat Jumalan sanaa.)
+  - Job 5:18: 9/10 (Aiheeseen liittyvä teksti on hyvin yhtäläinen antitun aiheeseen. Vastaa hyvin annettuun aiheeseen.)
+  - 2. Korinttilaiskirje 13:5: 9/10 (On selvästi yhtäläinen antitun aiheeseen sekä hyvällä tavalla vastaava annettuun aiheeseen.)
+  - 2. Timoteuskirje 2:26: 9/10 (Jake on oikeassa kutsussaan, koska Jumalan työ ei ole lopussa.)
+  - Job 22:29: 9/10 (Jake on hyvä esimerkki siitä, että elämän käänteet menevät vastakkaiseen suuntaan.)
+  - Psalmit 103:3: 9/10 (Jake on oikeassa kutsussaan Jumalan voimasta parantaa.)
+  - 1. Pietarin kirje 5:2: 9/10 (Jake on hyvä esimerkki siitä, että elämän käänteet menevät vastakkaiseen suuntaan.)
 
 ================================================================================
                             DIAGNOSTIIKAN YHTEENVETO                            
 ================================================================================
 
-Koko diagnostiikan ajo kesti: 649.11 sekuntia.
-AI:n antama lopullinen keskiarvo tulosten laadulle: 9.19/10
+Koko diagnostiikan ajo kesti: 1050.07 sekuntia.
+PÄÄMALLIN antama lopullinen keskiarvo tulosten laadulle: 8.93/10
 
 ================================================================================
-                         YKSITYISKOHTAINEN JAEJAOTTELU                          
+               YKSITYISKOHTAINEN JAEJAOTTELU (PÄÄMALLIN TULOKSET)               
 ================================================================================
 
 
---- 1 1. Johdanto: Kutsu vaatii viisautta ja erottamiskykyä ---
+--- 1 1. Johdanto: Kielletty ja vaiettu aihe ---
 
-(Lopullinen arvosana tälle osiolle: 9.27/10)
-- 1. Korinttilaiskirje 7:18: "Jos joku on kutsuttu ympärileikattuna, älköön hän pyrkikö ympärileikkaamattomaksi; jos joku on kutsuttu ympärileikkaamatonna, älköön ympärileikkauttako itseään."
-- Johannes 10:3: "Hänelle ovenvartija avaa, ja lampaat kuulevat hänen ääntänsä; ja hän kutsuu omat lampaansa nimeltä ja vie heidät ulos."
-- 1. Korinttilaiskirje 7:24: "Pysyköön kukin, veljet, Jumalan edessä siinä asemassa, missä hänet on kutsuttu."
-- 1. Korinttilaiskirje 1:25: "Sillä Jumalan hulluus on viisaampi kuin ihmiset, ja Jumalan heikkous on väkevämpi kuin ihmiset."
-- Jesaja 66:4: "niin minäkin valitsen heidän vaivaamisensa ja annan heille tulla sen, mitä he pelkäävät, koska ei kukaan vastannut, kun minä kutsuin, koska he eivät kuulleet, kun minä puhuin, vaan tekivät sitä, mikä on pahaa minun silmissäni, ja valitsivat sen, mikä ei ole minulle otollista."
-- Sananlaskut 15:32: "Joka kuritusta vieroo, pitää sielunsa halpana; mutta joka nuhdetta kuuntelee, se saa mieltä."
-- Johannes 10:8: "Kaikki, jotka ovat tulleet ennen minua, ovat varkaita ja ryöväreitä; mutta lampaat eivät ole heitä kuulleet."
-- 1. Korinttilaiskirje 14:24: "Mutta jos kaikki profetoisivat ja joku uskosta tai opetuksesta osaton tulisi sisään, niin kaikki paljastaisivat hänet ja kaikki langettaisivat hänestä tuomion,"
-- Johannes 4:23: "Mutta tulee aika ja on jo, jolloin totiset rukoilijat rukoilevat Isää hengessä ja totuudessa; sillä senkaltaisia rukoilijoita myös Isä tahtoo."
-- 1. Tessalonikalaiskirje 5:23: "Mutta itse rauhan Jumala pyhittäköön teidät kokonansa, ja säilyköön koko teidän henkenne ja sielunne ja ruumiinne nuhteettomana meidän Herramme Jeesuksen Kristuksen tulemukseen."
-- Jaakobin kirje 1:21: "Sentähden pankaa pois kaikki saastaisuus ja kaikkinainen pahuus ja ottakaa hiljaisuudella vastaan sana, joka on teihin istutettu ja joka voi teidän sielunne pelastaa."
-- 2. Pietarin kirje 1:10: "Pyrkikää sentähden, veljet, sitä enemmän tekemään kutsumisenne ja valitsemisenne lujaksi; sillä jos sen teette, ette koskaan lankea;"
-
---- 2 2. Raamatun selkeä varoitus: Tunnista ja vältä eksytystä ---
-
-(Lopullinen arvosana tälle osiolle: 9.13/10)
-- Efesolaiskirje 5:5: "Sillä sen te tiedätte ja tunnette, ettei yhdelläkään haureellisella eikä saastaisella eikä ahneella — sillä hän on epäjumalanpalvelija — ole perintöosaa Kristuksen ja Jumalan valtakunnassa."
-- 1. Johanneksen kirje 4:6: "Me olemme Jumalasta. Joka tuntee Jumalan, se kuulee meitä; joka ei ole Jumalasta, se ei kuule meitä. Siitä me tunnemme totuuden hengen ja eksytyksen hengen."
+(Lopullinen arvosana tälle osiolle: 9.07/10)
 - Jaakobin kirje 2:5: "Kuulkaa, rakkaat veljeni. Eikö Jumala ole valinnut niitä, jotka maailman silmissä ovat köyhiä, olemaan rikkaita uskossa ja sen valtakunnan perillisiä, jonka hän on luvannut niille, jotka häntä rakastavat?"
-- Jeremia 23:32: "Katso, minä käyn niiden kimppuun, jotka ennustavat valheunia, sanoo Herra, ja kertovat niitä ja eksyttävät minun kansaani valheillansa ja kerskumisellansa, vaikka minä en ole heitä lähettänyt enkä käskenyt ja vaikka heistä ei ole mitään hyötyä tälle kansalle, sanoo Herra."
-- Hesekiel 33:6: "Jos taas vartija näkee miekan tulevan, mutta ei puhalla pasunaan eikä kansa saa varoitusta, ja miekka tulee ja ottaa pois jonkun sielun heistä, on hän otettu pois synnissänsä, mutta hänen verensä minä vaadin vartijan kädestä."
-- 2. Timoteuskirje 4:2: "saarnaa sanaa, astu esiin sopivalla ja sopimattomalla ajalla, nuhtele, varoita, kehoita, kaikella pitkämielisyydellä ja opetuksella."
-- 1. Johanneksen kirje 2:27: "Mutta te — teissä pysyy se voitelu, jonka olette häneltä saaneet, ja te ette ole kenenkään opetuksen tarpeessa; vaan niinkuin hänen voitelunsa opettaa teitä kaikessa, niin se opetus on myös totta eikä ole valhetta; ja niinkuin se on opettanut teitä, niin pysykää hänessä."
-- 2. Pietarin kirje 2:12: "Mutta niinkuin järjettömät, luonnostaan pyydystettäviksi ja häviämään syntyneet eläimet, niin joutuvat myös nämä, kun herjaavat sitä, mitä eivät tunne, häviämään omaan turmelukseensa,"
-- 2. Tessalonikalaiskirje 1:5: "ja jotka ovat osoituksena Jumalan vanhurskaasta tuomiosta, että teidät katsottaisiin arvollisiksi Jumalan valtakuntaan, jonka tähden kärsittekin,"
-- Hesekiel 18:8: "ei anna rahaansa korolle, ei ota voittoa, vaan pidättää kätensä vääryydestä, tekee oikean tuomion miesten välillä,"
-- 2. Pietarin kirje 2:10: "ja varsinkin ne, jotka lihan jäljessä kulkevat saastaisissa himoissa ja ylenkatsovat herrauden. Nuo uhkarohkeat, itserakkaat eivät kammo herjata henkivaltoja,"
-- Hesekiel 3:20: "Ja jos vanhurskas kääntyy pois vanhurskaudestansa ja tekee vääryyttä ja minä panen kompastuksen hänen eteensä, niin hän kuolee — kun et sinä häntä varoittanut, niin hän synnissänsä kuolee, ja vanhurskautta, jota hän oli harjoittanut, ei muisteta — mutta hänen verensä minä vaadin sinun kädestäsi."
-- Heprealaiskirje 6:1: "Jättäkäämme sentähden Kristuksen opin alkeet ja pyrkikäämme täydellisyyteen, ryhtymättä taas uudestaan laskemaan perustusta: parannusta kuolleista töistä ja uskoa Jumalaan,"
-- Matteus 5:20: "Sillä minä sanon teille: ellei teidän vanhurskautenne ole paljoa suurempi kuin kirjanoppineiden ja fariseusten, niin te ette pääse taivasten valtakuntaan."
-- Hesekiel 3:19: "Mutta jos sinä varoitat jumalatonta ja hän ei käänny jumalattomuudestansa eikä jumalattomalta tieltänsä, niin hän kuolee synnissänsä, mutta sinä olet sielusi pelastanut."
+- 2. Kuningasten kirja 17:15: "He hylkäsivät hänen käskynsä ja hänen liittonsa, jonka hän oli tehnyt heidän isiensä kanssa, ja todistukset, jotka hän oli heille antanut. He seurasivat turhia jumalia, ja turhanpäiväisiksi he tulivat, kun seurasivat pakanakansoja, jotka asuivat heidän ympärillänsä, vaikka Herra oli kieltänyt heitä tekemästä niinkuin ne."
+- Jesaja 59:13: "me olemme luopuneet Herrasta ja kieltäneet hänet, vetäytyneet pois Jumalaamme seuraamasta, puhuneet sortoa ja kapinaa, kantaneet kohdussamme ja purkaneet sisimmästämme valheen sanoja."
+- 1. Korinttilaiskirje 1:28: "ja sen, mikä maailmassa on halpasukuista ja halveksittua, sen Jumala valitsi, sen, joka ei mitään ole, tehdäksensä mitättömäksi sen, joka jotakin on,"
+- Nehemia 4:14: "(8) Ja katsastettuani kaiken minä nousin ja sanoin ylimyksille ja esimiehille ja muulle kansalle: "Älkää peljätkö heitä; muistakaa suurta ja peljättävää Herraa, ja taistelkaa veljienne, poikienne ja tyttärienne, vaimojenne ja kotienne puolesta"."
+- Roomalaiskirje 14:23: "mutta joka epäröi ja kuitenkin syö, on tuomittu, koska se ei tapahdu uskosta; sillä kaikki, mikä ei ole uskosta, on syntiä."
+- Roomalaiskirje 5:5: "mutta toivo ei saata häpeään; sillä Jumalan rakkaus on vuodatettu meidän sydämiimme Pyhän Hengen kautta, joka on meille annettu."
+- Sakarja 10:6: "Minä teen väkeväksi Juudan heimon ja autan Joosefin heimoa. Minä saatan heidät kotiin, sillä minä armahdan heitä, ja he tulevat olemaan, niinkuin en minä olisi heitä hyljännytkään. Sillä minä olen Herra, heidän Jumalansa, ja kuulen heidän rukouksensa."
+- Heprealaiskirje 12:1: "Sentähden, kun meillä on näin suuri pilvi todistajia ympärillämme, pankaamme mekin pois kaikki, mikä meitä painaa, ja synti, joka niin helposti meidät kietoo, ja juoskaamme kestävinä edessämme olevassa kilvoituksessa,"
+- Jeremia 7:28: "Sentähden sano heille: Tämä on kansa, joka ei kuullut Herran, Jumalansa, ääntä eikä ottanut kuritusta varteen. Kadonnut on totuus ja hävinnyt heidän suustansa."
+- Psalmit 10:1: "Miksi, Herra, seisot niin kaukana, miksi kätkeydyt ahdingon aikoina?"
+- Roomalaiskirje 1:13: "Ja minä en tahdo, veljet, teiltä salata, että jo monesti olen päättänyt tulla teidän tykönne saadakseni jonkin hedelmän teidänkin keskuudestanne, niinkuin muidenkin pakanain, mutta olen ollut estetty tähän saakka."
+- Roomalaiskirje 11:12: "Mutta jos heidän lankeemuksensa on maailmalle rikkaudeksi ja heidän vajautensa pakanoille rikkaudeksi, kuinka paljoa enemmän heidän täyteytensä!"
+- 2. Mooseksen kirja 18:22: "Nämä tuomitkoot kansaa joka aika. Kaikki suuret asiat he saattakoot sinun tietoosi, mutta kaikki vähäiset asiat ratkaiskoot itse. Huojenna näin jotakin itseltäsi, ja kantakoot he kuormaa sinun kanssasi."
+- Roomalaiskirje 3:3: "Mutta kuinka? Jos jotkut ovat olleet epäuskoisia, ei kaiketi heidän epäuskonsa ole Jumalan uskollisuutta tyhjäksi tekevä?"
 
---- 3 3. Tasapaino ja oikea asenne: Erottelua, ei tuomitsemista ---
+--- 2 2. Varoittavat esimerkit: Daavid ja Pietari ---
 
-(Lopullinen arvosana tälle osiolle: 9.20/10)
-- Jaakobin kirje 4:11: "Älkää panetelko toisianne, veljet. Joka veljeään panettelee tai veljensä tuomitsee, se panettelee lakia ja tuomitsee lain; mutta jos sinä tuomitset lain, niin et ole lain noudattaja, vaan sen tuomari."
-- Johannes 10:16: "Minulla on myös muita lampaita, jotka eivät ole tästä lammastarhasta; myös niitä tulee minun johdattaa, ja ne saavat kuulla minun ääneni, ja on oleva yksi lauma ja yksi paimen."
-- Nehemia 9:17: "He eivät tahtoneet totella eivätkä muistaneet ihmeellisiä tekoja, jotka sinä olit heille tehnyt, vaan olivat niskureita ja valitsivat uppiniskaisuudessaan johtajan palatakseen takaisin orjuuteensa. Mutta sinä olet anteeksiantava Jumala, armahtavainen ja laupias, pitkämielinen ja suuri armossa: sinä et heitä hyljännyt."
-- 1. Timoteuskirje 6:2: "Mutta ne, joilla on uskovaiset isännät, älkööt pitäkö heitä vähemmässä arvossa sentähden, että he ovat veljiä, vaan palvelkoot heitä sitä mieluummin, koska he ovat uskovia ja rakastettuja ja harrastavat hyväntekemistä. Tätä opeta ja tähän kehoita."
-- 2. Tessalonikalaiskirje 1:5: "ja jotka ovat osoituksena Jumalan vanhurskaasta tuomiosta, että teidät katsottaisiin arvollisiksi Jumalan valtakuntaan, jonka tähden kärsittekin,"
-- 1. Pietarin kirje 3:7: "Samoin te, miehet, eläkää taidollisesti kukin vaimonne kanssa, niinkuin heikomman astian kanssa, ja osoittakaa heille kunnioitusta, koska he ovat elämän armon perillisiä niinkuin tekin; etteivät teidän rukouksenne estyisi."
-- Jaakobin kirje 1:4: "Ja kärsivällisyys tuottakoon täydellisen teon, että te olisitte täydelliset ja eheät ettekä missään puuttuvaiset."
-- Hesekiel 34:16: "Kadonneet minä tahdon etsiä, eksyneet tuoda takaisin, haavoittuneet sitoa, heikkoja vahvistaa; mutta lihavat ja väkevät minä hävitän. Minä kaitsen niitä niin, kuin oikein on."
-- Jesaja 58:10: "jos taritset elannostasi isoavalle ja ravitset vaivatun sielun, niin valkeus koittaa sinulle pimeydessä, ja sinun pilkkopimeäsi on oleva niinkuin keskipäivä."
-- Efesolaiskirje 6:5: "Palvelijat, olkaa kuuliaiset maallisille isännillenne, pelossa ja vavistuksessa, sydämenne yksinkertaisuudessa, niinkuin Kristukselle,"
-- Hesekiel 34:19: "Ja onko minun lampaitteni oltava laitumella siinä, mitä jalkanne ovat tallanneet, ja juotava sitä, mitä jalkanne ovat hämmentäneet?"
-- 5. Mooseksen kirja 22:2: "Jos veljesi ei asu sinua lähellä tai jos et tiedä, kuka hän on, niin korjaa eksynyt taloosi, ja olkoon se sinun huostassasi, kunnes veljesi tiedustelee sitä; anna se silloin hänelle takaisin."
-- Jaakobin kirje 5:10: "Ottakaa, veljet, vaivankestämisen ja kärsivällisyyden esikuvaksi profeetat, jotka ovat puhuneet Herran nimessä."
+(Lopullinen arvosana tälle osiolle: 8.47/10)
+- 1. Samuelin kirja 29:5: "Eikö tämä ole se Daavid, jolle he karkeloiden virittivät tämän laulun: 'Saul voitti tuhat, mutta Daavid kymmenentuhatta'?""
+- Apostolien teot 2:34: "Sillä ei Daavid ole astunut ylös taivaisiin, vaan hän sanoo itse: 'Herra sanoi minun Herralleni: Istu minun oikealle puolelleni,"
+- Luukas 22:61: "Ja Herra kääntyi ja katsoi Pietariin; ja Pietari muisti Herran sanat, kuinka hän oli hänelle sanonut: "Ennenkuin kukko tänään laulaa, sinä kolmesti minut kiellät"."
+- Matteus 26:75: "Niin Pietari muisti Jeesuksen sanat, jotka hän oli sanonut: "Ennenkuin kukko laulaa, sinä kolmesti minut kiellät". Ja hän meni ulos ja itki katkerasti."
+- Johannes 21:19: "Mutta sen hän sanoi antaakseen tietää, minkäkaltaisella kuolemalla Pietari oli kirkastava Jumalaa. Ja tämän sanottuaan hän lausui hänelle: "Seuraa minua"."
+- Efesolaiskirje 4:19: "ovat päästäneet tuntonsa turtumaan ja heittäytyneet irstauden valtaan, harjoittamaan kaikkinaista saastaisuutta, ahneudessa."
+- 1. Korinttilaiskirje 10:9: "Älkäämme myöskään kiusatko Herraa, niinkuin muutamat heistä kiusasivat ja saivat käärmeiltä surmansa."
+- Roomalaiskirje 4:6: "niinkuin myös Daavid ylistää autuaaksi sitä ihmistä, jolle Jumala lukee vanhurskauden ilman tekoja:"
+- Markus 12:37: "Daavid itse sanoo häntä Herraksi; kuinka hän sitten on hänen poikansa?" Ja suuri kansanjoukko kuunteli häntä mielellään."
+- 2. Samuelin kirja 7:20: "Mitä Daavid enää sinulle puhuisi? Sinähän tunnet palvelijasi, Herra, Herra."
+- Luukas 20:42: "Sanoohan Daavid itse psalmien kirjassa: 'Herra sanoi minun Herralleni: Istu minun oikealle puolelleni,"
+- 1. Samuelin kirja 20:42: "Ja Joonatan sanoi Daavidille: "Mene rauhassa. Niin on, kuin me molemmat olemme vannoneet Herran nimeen ja sanoneet: 'Herra on todistaja meidän välillämme, minun ja sinun, ja minun jälkeläisteni ja sinun jälkeläistesi välillä iankaikkisesti'.""
+- Markus 12:38: "Ja opettaessaan hän sanoi: "Varokaa kirjanoppineita, jotka mielellään käyskelevät pitkissä vaipoissa ja haluavat tervehdyksiä toreilla"
+- Matteus 12:3: "Niin hän sanoi heille: "Ettekö ole lukeneet, mitä Daavid teki, kun hänen ja hänen seuralaistensa oli nälkä,"
+- Markus 14:72: "Ja samassa kukko lauloi toisen kerran. Niin Pietari muisti Jeesuksen sanat, jotka hän oli sanonut hänelle: "Ennenkuin kukko kahdesti laulaa, sinä kolmesti minut kiellät". Ja hän ratkesi itkuun."
 
---- 4 4. Sovellus nykyaikaan: Suomen nuorten herätys ja sen haasteet ---
+--- 3 3. Tie takaisin: Parannuksen ja armon portaat ---
+
+(Lopullinen arvosana tälle osiolle: 9.00/10)
+- Luukas 17:15: "Mutta yksi heistä, kun näki olevansa parannettu, palasi takaisin ja ylisti Jumalaa suurella äänellä"
+- Psalmit 37:23: "Herra vahvistaa sen miehen askeleet, jonka tie hänelle kelpaa."
+- Psalmit 25:10: "Kaikki Herran polut ovat armo ja totuus niille, jotka pitävät hänen liittonsa ja todistuksensa."
+- Psalmit 25:8: "Hyvä ja vakaa on Herra; sentähden hän neuvoo syntiset tielle."
+- Jaakobin kirje 5:16: "Tunnustakaa siis toisillenne syntinne ja rukoilkaa toistenne puolesta, että te parantuisitte; vanhurskaan rukous voi paljon, kun se on harras."
+- Roomalaiskirje 6:22: "Mutta nyt, kun olette synnistä vapautetut ja Jumalan palvelijoiksi tulleet, on teidän hedelmänne pyhitys, ja sen loppu on iankaikkinen elämä."
+- 2. Pietarin kirje 2:21: "Parempi olisi heille ollut, etteivät olisi tulleet tuntemaan vanhurskauden tietä, kuin että sen tunnettuaan kääntyvät pois heille annetusta pyhästä käskystä."
+- Luukas 1:77: "antaaksesi hänen kansalleen pelastuksen tuntemisen heidän syntiensä anteeksisaamisessa,"
+- 1. Timoteuskirje 1:14: "ja meidän Herramme armo oli ylen runsas, vaikuttaen uskoa ja rakkautta, joka on Kristuksessa Jeesuksessa."
+- 2. Johanneksen kirje 1:3: "Armo, laupeus ja rauha Isältä Jumalalta ja Jeesukselta Kristukselta, Isän Pojalta, on oleva meidän kanssamme, totuudessa ja rakkaudessa."
+- Jesaja 57:18: "Minä olen nähnyt hänen tiensä, mutta minä parannan hänet ja johdatan häntä ja annan jälleen lohdutuksen hänelle ja hänen surevillensa."
+- Jeremia 31:12: "Ja he tulevat ja riemuitsevat Siionin kukkulalla, tulevat virtanaan Herran hyvyyden tykö, jyväin, viinin ja öljyn ääreen, karitsain ja karjan ääreen. Ja heidän sielunsa on oleva niinkuin runsaasti kasteltu puutarha, eivätkä he enää näänny."
+- Apostolien teot 3:20: "että virvoituksen ajat tulisivat Herran kasvoista ja hän lähettäisi hänet, joka on teille edeltämäärätty, Kristuksen Jeesuksen."
+- Luukas 1:76: "Ja sinä, lapsukainen, olet kutsuttava Korkeimman profeetaksi, sillä sinä olet käyvä Herran edellä valmistaaksesi hänen teitään,"
+- Efesolaiskirje 1:8: "Tätä armoa hän on ylenpalttisesti antanut meille kaikkinaiseksi viisaudeksi ja ymmärrykseksi,"
+
+--- 4 4. Miten seurakunta kohtelee kompastunutta? ---
 
 (Lopullinen arvosana tälle osiolle: 9.13/10)
-- Roomalaiskirje 6:22: "Mutta nyt, kun olette synnistä vapautetut ja Jumalan palvelijoiksi tulleet, on teidän hedelmänne pyhitys, ja sen loppu on iankaikkinen elämä."
-- 1. Korinttilaiskirje 13:13: "Niin pysyvät nyt usko, toivo, rakkaus, nämä kolme; mutta suurin niistä on rakkaus."
-- 1. Aikakirja 28:8: "Ja nyt minä sanon koko Israelin, Herran seurakunnan, läsnäollessa ja meidän Jumalamme kuullen: Noudattakaa ja tutkikaa kaikkia Herran, Jumalanne, käskyjä, että saisitte pitää omananne tämän hyvän maan ja jättäisitte sen perinnöksi lapsillenne teidän jälkeenne ikuisiksi ajoiksi."
-- Filippiläiskirje 2:12: "Siis, rakkaani, samoin kuin aina olette olleet kuuliaiset, niin ahkeroikaa, ei ainoastaan niinkuin silloin, kun minä olin teidän tykönänne, vaan paljoa enemmän nyt, kun olen poissa, pelolla ja vavistuksella, että pelastuisitte;"
-- 1. Johanneksen kirje 2:28: "Ja nyt, lapsukaiset, pysykää hänessä, että meillä hänen ilmestyessään olisi turva eikä meitä häpeällä karkoitettaisi pois hänen tyköänsä hänen tulemuksessaan."
-- Efesolaiskirje 6:5: "Palvelijat, olkaa kuuliaiset maallisille isännillenne, pelossa ja vavistuksessa, sydämenne yksinkertaisuudessa, niinkuin Kristukselle,"
-- Kolossalaiskirje 1:9: "Sentähden emme mekään, siitä päivästä alkaen, jona sen kuulimme, ole lakanneet teidän edestänne rukoilemasta ja anomasta, että tulisitte täyteen hänen tahtonsa tuntemista kaikessa hengellisessä viisaudessa ja ymmärtämisessä,"
-- 1. Johanneksen kirje 3:17: "Jos nyt jollakin on tämän maailman hyvyyttä ja hän näkee veljensä olevan puutteessa, mutta sulkee häneltä sydämensä, kuinka Jumalan rakkaus saattaa pysyä hänessä?"
-- Tiituskirje 3:8: "Tämä sana on varma, ja minä tahdon, että sinä näitä teroitat, niin että ne, jotka Jumalaan uskovat, ahkeroisivat hyvien tekojen harjoittamista. Nämä ovat hyviä ja hyödyllisiä ihmisille."
-- 2. Tessalonikalaiskirje 2:13: "Mutta me olemme velvolliset aina kiittämään Jumalaa teidän tähtenne, veljet, te Herran rakastetut, sentähden että Jumala alusta alkaen valitsi teidät pelastukseen Hengen pyhityksessä ja uskossa totuuteen."
-- Kolossalaiskirje 1:12: "kiittäen Isää, joka on tehnyt teidät soveliaiksi olemaan osalliset siitä perinnöstä, mikä pyhillä on valkeudessa,"
-- Roomalaiskirje 14:18: "Joka tässä kohden palvelee Kristusta, se on Jumalalle otollinen ja ihmisille kelvollinen."
-- 2. Pietarin kirje 3:17: "Koska te siis, rakkaani, tämän jo edeltäpäin tiedätte, niin olkaa varuillanne, ettette rietasten eksymyksen mukaansa tempaamina lankeaisi pois omalta lujalta pohjaltanne,"
-- Roomalaiskirje 10:9: "Sillä jos sinä tunnustat suullasi Jeesuksen Herraksi ja uskot sydämessäsi, että Jumala on hänet kuolleista herättänyt, niin sinä pelastut;"
-- Kolossalaiskirje 3:16: "Runsaasti asukoon teissä Kristuksen sana; opettakaa ja neuvokaa toinen toistanne kaikessa viisaudessa, psalmeilla, kiitosvirsillä ja hengellisillä lauluilla, veisaten kiitollisesti Jumalalle sydämissänne."
-
---- 5 5. Yhteenveto: Totuus rakkaudessa ---
-
-(Lopullinen arvosana tälle osiolle: 9.20/10)
-- 2. Johanneksen kirje 1:3: "Armo, laupeus ja rauha Isältä Jumalalta ja Jeesukselta Kristukselta, Isän Pojalta, on oleva meidän kanssamme, totuudessa ja rakkaudessa."
-- 1. Johanneksen kirje 4:17: "Näin on rakkaus tullut täydelliseksi meissä, että meillä olisi turva tuomiopäivänä; sillä sellainen kuin hän on, sellaisia mekin olemme tässä maailmassa."
-- Roomalaiskirje 13:10: "Rakkaus ei tee lähimmäiselle mitään pahaa. Sentähden on rakkaus lain täyttämys."
-- Nehemia 9:32: "Ja nyt, Jumalamme, sinä suuri, väkevä ja peljättävä Jumala, joka pidät liiton ja säilytät laupeuden: älä katso vähäksi kaikkea sitä vaivaa, joka on kohdannut meitä, meidän kuninkaitamme, päämiehiämme, pappejamme, profeettojamme, isiämme ja koko sinun kansaasi, Assurin kuningasten ajoista aina tähän päivään saakka."
-- 2. Korinttilaiskirje 6:6: "puhtaudessa, tiedossa, pitkämielisyydessä, ystävällisyydessä, Pyhässä Hengessä, vilpittömässä rakkaudessa,"
+- Galatalaiskirje 6:1: "Veljet, jos joku tavataan jostakin rikkomuksesta, niin ojentakaa te, hengelliset, häntä sävyisyyden hengessä; ja ole varuillasi, ettet sinäkin joutuisi kiusaukseen."
+- 2. Korinttilaiskirje 9:12: "Sillä tämä avustamispalvelus ei ainoastaan poista pyhien puutteita, vaan käy vieläkin hedelmällisemmäksi Jumalalle annettujen monien kiitosten kautta,"
+- Efesolaiskirje 5:27: "saadakseen asetetuksi eteensä kirkastettuna seurakunnan, jossa ei olisi tahraa eikä ryppyä eikä mitään muuta sellaista, vaan joka olisi pyhä ja nuhteeton."
+- 2. Timoteuskirje 2:15: "Pyri osoittautumaan Jumalalle semmoiseksi, joka koetukset kestää, työntekijäksi, joka ei työtään häpeä, joka oikein jakelee totuuden sanaa."
+- 1. Pietarin kirje 2:20: "Sillä mitä kiitettävää siinä on, jos te olette kärsivällisiä silloin, kun teitä syntienne tähden piestään? Mutta jos olette kärsivällisiä, kun hyvien tekojenne tähden saatte kärsiä, niin se on Jumalan armoa."
+- 1. Pietarin kirje 3:18: "Sillä myös Kristus kärsi kerran kuoleman syntien tähden, vanhurskas vääräin puolesta, johdattaaksensa meidät Jumalan tykö; hän, joka tosin kuoletettiin lihassa, mutta tehtiin eläväksi hengessä,"
 - Tiituskirje 2:14: "hänen, joka antoi itsensä meidän edestämme lunastaakseen meidät kaikesta laittomuudesta ja puhdistaakseen itselleen omaisuudeksi kansan, joka hyviä tekoja ahkeroitsee."
-- Roomalaiskirje 8:39: "ei korkeus eikä syvyys, eikä mikään muu luotu voi meitä erottaa Jumalan rakkaudesta, joka on Kristuksessa Jeesuksessa, meidän Herrassamme."
-- 2. Pietarin kirje 1:7: "jumalisuudessa veljellistä rakkautta, veljellisessä rakkaudessa yhteistä rakkautta."
-- 2. Pietarin kirje 1:8: "Sillä jos teillä on nämä ja ne yhä enenevät, niin ne eivät salli teidän olla toimettomia eikä hedelmättömiä meidän Herramme Jeesuksen Kristuksen tuntemisessa."
-- 1. Timoteuskirje 4:16: "Valvo itseäsi ja opetustasi, ole siinä kestävä; sillä jos sen teet, olet pelastava sekä itsesi että ne, jotka sinua kuulevat."
-- Kolossalaiskirje 3:13: "kärsikää toinen toistanne ja antakaa toisillenne anteeksi, jos kenellä on moitetta toista vastaan. Niinkuin Herrakin on antanut teille anteeksi, niin myös te antakaa."
-- Filippiläiskirje 1:8: "Sillä Jumala on minun todistajani, kuinka minä teitä kaikkia ikävöitsen Kristuksen Jeesuksen sydämellisellä rakkaudella."
-- 2. Korinttilaiskirje 4:2: "vaan olemme hyljänneet kaikki häpeälliset salatiet, niin ettemme vaella kavaluudessa emmekä väärennä Jumalan sanaa, vaan julkituomalla totuuden me suositamme itseämme jokaisen ihmisen omalletunnolle Jumalan edessä."
-- Kolossalaiskirje 3:15: "Ja vallitkoon teidän sydämissänne Kristuksen rauha, johon te olette kutsututkin yhdessä ruumiissa, ja olkaa kiitolliset."
-- Efesolaiskirje 4:4: "yksi ruumis ja yksi henki, niinkuin te olette kutsututkin yhteen ja samaan toivoon, jonka te kutsumuksessanne saitte;"
+- 2. Korinttilaiskirje 1:6: "Mutta jos olemme ahdistuksessa, niin tapahtuu se teille lohdutukseksi ja pelastukseksi; jos taas saamme lohdutusta, niin tapahtuu sekin teille lohdutukseksi, ja se vaikuttaa, että te kestätte samat kärsimykset, joita mekin kärsimme; ja toivomme teistä on vahva,"
+- Kolossalaiskirje 2:13: "Ja teidät, jotka olitte kuolleet rikoksiinne ja lihanne ympärileikkaamattomuuteen, teidät hän teki eläviksi yhdessä hänen kanssaan, antaen meille anteeksi kaikki rikokset,"
+- Galatalaiskirje 4:15: "Missä on nyt teiltä kerskaaminen onnestanne? Sillä minä annan teistä sen todistuksen, että te, jos se olisi ollut mahdollista, olisitte kaivaneet silmät päästänne ja antaneet minulle."
+- Sananlaskut 5:13: "Miksi en kuullut neuvojaini ääntä, kallistanut korvaani opettajilleni?"
+- 2. Korinttilaiskirje 13:5: "Koetelkaa itseänne, oletteko uskossa; tutkikaa itseänne. Vai ettekö tunne itseänne, että Jeesus Kristus on teissä? Ellei, niin ette kestä koetusta."
+- Roomalaiskirje 5:19: "sillä niinkuin yhden ihmisen tottelemattomuuden kautta monet ovat joutuneet syntisiksi, niin myös yhden kuuliaisuuden kautta monet tulevat vanhurskaiksi."
+- Kolossalaiskirje 3:12: "Pukeutukaa siis, te, jotka olette Jumalan valituita, pyhiä ja rakkaita, sydämelliseen armahtavaisuuteen, ystävällisyyteen, nöyryyteen, sävyisyyteen, pitkämielisyyteen,"
+- Heprealaiskirje 2:3: "kuinka me voimme päästä pakoon, jos emme välitä tuosta niin suuresta pelastuksesta, jonka Herra alkuaan julisti ja joka niiden vahvistamana, jotka olivat sen kuulleet, saatettiin meille,"
+
+--- 5 5. Yhteenveto: Arpeutuneet parantajat ---
+
+(Lopullinen arvosana tälle osiolle: 9.00/10)
+- 5. Mooseksen kirja 8:3: "Hän nöyryytti sinua ja antoi sinun nähdä nälkää, ja hän antoi sinulle mannaa syödä, jota et ennen tuntenut ja jota eivät isäsikään tunteneet, opettaaksensa sinut ymmärtämään, että ihminen ei elä ainoastaan leivästä, vaan että hän elää jokaisesta sanasta, joka Herran suusta lähtee."
+- 1. Tessalonikalaiskirje 5:12: "Mutta me pyydämme teitä, veljet, antamaan tunnustuksenne niille, jotka tekevät työtä teidän keskuudessanne ja ovat teidän johtajanne Herrassa ja neuvovat teitä,"
+- Heprealaiskirje 12:5: "ja te olette unhottaneet kehoituksen, joka puhuu teille niinkuin lapsille: "Poikani, älä pidä halpana Herran kuritusta, äläkä menetä toivoasi, kun hän sinua nuhtelee;"
+- Jesaja 35:4: "Sanokaa hätääntyneille sydämille: "Olkaa lujat, älkää peljätkö. Katso, teidän Jumalanne! Kosto tulee, Jumalan rangaistus. Hän tulee ja pelastaa teidät.""
+- Apostolien teot 20:35: "Kaikessa minä olen osoittanut teille, että näin työtä tehden tulee huolehtia heikoista ja muistaa nämä Herran Jeesuksen sanat, jotka hän itse sanoi: 'Autuaampi on antaa kuin ottaa'.""
+- Apostolien teot 4:30: "ja ojenna kätesi, niin että sairaat parantuvat ja tunnustekoja ja ihmeitä tapahtuu sinun pyhän Poikasi Jeesuksen nimen kautta.""
+- Heprealaiskirje 6:10: "Sillä Jumala ei ole väärämielinen, niin että hän unhottaisi teidän työnne ja rakkautenne, jota olette osoittaneet hänen nimeänsä kohtaan, kun olette palvelleet pyhiä ja vielä palvelette."
+- 2. Timoteuskirje 2:25: "hänen tulee sävyisästi ojentaa vastustelijoita; ehkäpä Jumala antaa heille mielenmuutoksen, niin että tulevat tuntemaan totuuden"
+- Heprealaiskirje 13:7: "Muistakaa johtajianne, jotka ovat puhuneet teille Jumalan sanaa; katsokaa, kuinka heidän vaelluksensa on päättynyt, ja seuratkaa heidän uskoansa."
+- Job 5:18: "Sillä hän haavoittaa, ja hän sitoo; lyö murskaksi, mutta hänen kätensä myös parantavat."
+- 2. Korinttilaiskirje 13:5: "Koetelkaa itseänne, oletteko uskossa; tutkikaa itseänne. Vai ettekö tunne itseänne, että Jeesus Kristus on teissä? Ellei, niin ette kestä koetusta."
+- 2. Timoteuskirje 2:26: "ja selviävät perkeleen pauloista, joka on heidät vanginnut tahtoansa tekemään."
+- Job 22:29: "Jos tie painuu alaspäin, niin sinä sanot: 'Ylös!' ja hän auttaa nöyrtyväistä."
+- Psalmit 103:3: "hän, joka antaa kaikki sinun syntisi anteeksi ja parantaa kaikki sinun sairautesi,"
+- 1. Pietarin kirje 5:2: "kaitkaa teille uskottua Jumalan laumaa, ei pakosta, vaan vapaaehtoisesti, Jumalan tahdon mukaan, ei häpeällisen voiton tähden, vaan sydämen halusta,"
 
 Diagnostiikka valmis.

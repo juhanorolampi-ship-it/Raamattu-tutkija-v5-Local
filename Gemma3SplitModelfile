@@ -1,0 +1,2 @@
+FROM gemma3:latest
+PARAMETER num_gpu 18

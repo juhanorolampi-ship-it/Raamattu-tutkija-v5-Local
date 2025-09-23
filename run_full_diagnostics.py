@@ -1,12 +1,16 @@
-# run_full_diagnostics.py (Versio 16.0 - Lopullinen, vankka logiikka)
+# run_full_diagnostics.py (Versio 18.0 - Älykäs eskalaatio ja rinnakkaistesti)
 import logging
+import math
+import pprint
 import re
 import time
 from collections import defaultdict
-import math
 
 from logic import (
+    ARVIOINTI_MALLI_ENSISIJAINEN,
+    ARVIOINTI_MALLI_VARAMALLI,
     arvioi_tulokset,
+    arvioi_tulokset_varamallilla,
     etsi_merkityksen_mukaan,
     lataa_resurssit,
 )
@@ -16,7 +20,9 @@ SYOTE_TIEDOSTO = 'syote.txt'
 TULOS_LOKI = 'diagnostiikka_raportti_hybridi.txt'
 LOPULLISTEN_HAKUTULOSTEN_MAARA = 15
 LAAJAN_HAUN_MAARA = 75
-ARVIOINTI_ERAN_KOKO = 10 # Pilkotaan arviointi pienempiin osiin
+ARVIOINTI_ERAN_KOKO = 10
+# UUSI: Määritetään, monelleko osiolle ajetaan rinnakkaistesti varamallilla
+OSIOIDEN_MAARA_VARAMALLI_TESTIIN = 2
 
 # --- LOKITUSMÄÄRITYKSET ---
 logger = logging.getLogger()
@@ -53,7 +59,8 @@ def lue_syote_tiedosto(tiedostopolku):
 
     hakulauseet = {}
     otsikot = {}
-    osiot = re.split(r'\n(?=\d\.\s)', sisalto)
+    # Jäsennys olettaa, että uusi osio alkaa numerolla ja pisteellä
+    osiot = re.split(r'\n(?=[\d]+\.[\d\.]*\s)', sisalto)
 
     for osio_teksti in osiot:
         osio_teksti = osio_teksti.strip()
@@ -68,14 +75,14 @@ def lue_syote_tiedosto(tiedostopolku):
             haku = f"{otsikko}: {kuvaus.replace(r'\n', ' ')}"
             hakulauseet[osio_nro] = haku
             otsikot[osio_nro] = otsikko
-            
+
     return hakulauseet, otsikot
 
 
 def suorita_diagnostiikka():
-    """Ajaa koko diagnostiikkaprosessin käyttäen uutta kaksivaiheista logiikkaa."""
+    """Ajaa koko diagnostiikkaprosessin, sisältäen eskalaation ja rinnakkaistestin."""
     total_start_time = time.time()
-    log_header("RAAMATTU-TUTKIJA v16 - DIAGNOSTIIKKA (Laaja haku + Pilkottu karsinta)")
+    log_header("RAAMATTU-TUTKIJA - DIAGNOSTIIKKA (Älykäs eskalaatio + Rinnakkaistesti)")
 
     logging.info("Esiladataan kaikki resurssit...")
     lataa_resurssit()
@@ -96,85 +103,121 @@ def suorita_diagnostiikka():
     )
 
     for i, (osio_nro, haku) in enumerate(sorted_osiot):
-        log_header(f"Käsitellään osio {i+1}/{len(sorted_osiot)}: {otsikot.get(osio_nro, '')}")
+        otsikko = otsikot.get(osio_nro, "")
+        log_header(f"Käsitellään osio {i+1}/{len(sorted_osiot)}: {otsikko}")
 
         # VAIHE 1: LAAJA ETSINTÄ
         logging.info(f"Vaihe 1: Suoritetaan laaja haku (haetaan {LAAJAN_HAUN_MAARA} jaetta)...")
-        ehdokkaat = etsi_merkityksen_mukaan(haku, top_k=LAAJAN_HAUN_MAARA)
+        ehdokkaat = etsi_merkityksen_mukaan(haku, otsikko, top_k=LAAJAN_HAUN_MAARA)
         logging.info(f"Löytyi {len(ehdokkaat)} ehdokasjaetta.")
 
         if not ehdokkaat:
             logging.warning("Laaja haku ei tuottanut tuloksia. Siirrytään seuraavaan osioon.")
             continue
 
-        # VAIHE 2: PILKOTTU KARSINTA
-        logging.info(f"Vaihe 2: Arvioidaan {len(ehdokkaat)} ehdokasta {ARVIOINTI_ERAN_KOKO} jakeen erissä...")
+        # VAIHE 2: PILKOTTU KARSINTA PÄÄMALLILLA
+        logging.info(f"Vaihe 2: Arvioidaan {len(ehdokkaat)} ehdokasta päämallilla...")
         kaikki_arviot = []
         erien_maara = math.ceil(len(ehdokkaat) / ARVIOINTI_ERAN_KOKO)
 
         for j in range(erien_maara):
-            alku = j * ARVIOINTI_ERAN_KOKO
-            loppu = alku + ARVIOINTI_ERAN_KOKO
+            alku, loppu = j * ARVIOINTI_ERAN_KOKO, (j + 1) * ARVIOINTI_ERAN_KOKO
             era_ehdokkaat = ehdokkaat[alku:loppu]
-            
+
             logging.info(f"  - Arvioidaan erä {j+1}/{erien_maara}...")
+
             arvio = arvioi_tulokset(haku, era_ehdokkaat)
             era_arviot = arvio.get("jae_arviot", [])
 
+            if len(era_arviot) != len(era_ehdokkaat) and "virhe" not in arvio:
+                logging.warning(f"  -> VAROITUS: Päämalli epäonnistui loogisesti (sai {len(era_arviot)}/{len(era_ehdokkaat)}). "
+                                f"Eskaloidaan erä varamallille...")
+                logging.warning(f"  -> Päämallin KOKO VASTAUS, joka aiheutti virheen:\n{pprint.pformat(arvio, indent=4)}")
+
+                arvio = arvioi_tulokset_varamallilla(haku, era_ehdokkaat)
+                era_arviot = arvio.get("jae_arviot", [])
+                
+                # LISÄTTY: Lokitetaan myös varamallin vastaus eskalaatiotilanteessa
+                if "virhe" not in arvio:
+                    logging.info(f"  -> Varamallin KOKO VASTAUS:\n{pprint.pformat(arvio, indent=4)}")
+
+            if "virhe" not in arvio:
+                mallin_nimi = arvio.get('mallin_nimi', 'Tuntematon')
+                logging.info(f"  -> Erän arviointi onnistui. (Käytetty malli: {mallin_nimi})")
+            
             if len(era_arviot) != len(era_ehdokkaat):
-                logging.error(f"  -> VIRHE: Malli palautti {len(era_arviot)} arviota, "
-                              f"vaikka sille annettiin {len(era_ehdokkaat)} jaetta. Erä ohitetaan.")
+                logging.error(f"  -> KRIITTINEN VIRHE: Myös varamalli epäonnistui erässä {j+1}/{erien_maara}. Erä ohitetaan.")
                 continue
 
             kaikki_arviot.extend(era_arviot)
-        
-        logging.info(f"Arviointi valmis. Saatiin yhteensä {len(kaikki_arviot)} jaearviota.")
+
+        logging.info(f"Päämallin arviointi valmis. Saatiin yhteensä {len(kaikki_arviot)} jaearviota.")
 
         if not kaikki_arviot:
-            logging.error("Arviointi epäonnistui, yhtään jaearviota ei saatu.")
+            logging.error("Päämallin arviointi epäonnistui, yhtään jaearviota ei saatu.")
             continue
-            
-        # VAIHE 3: LOPULLISTEN TULOSTEN KOKOAMINEN
-        jarjestetyt_arviot = sorted(
-            kaikki_arviot,
-            key=lambda x: x.get('arvosana', 0),
-            reverse=True
-        )
 
-        parhaat_arviot = jarjestetyt_arviot[:LOPULLISTEN_HAKUTULOSTEN_MAARA]
-
+        # VAIHE 3: LOPULLISTEN TULOSTEN KOKOAMINEN (PÄÄMALLI)
+        ehdokas_viitteet = {item['viite'] for item in ehdokkaat}
+        puhtaat_arviot = [a for a in kaikki_arviot if a.get('viite') in ehdokas_viitteet]
+        jarjestetyt_puhtaat_arviot = sorted(puhtaat_arviot, key=lambda x: x.get('arvosana', 0), reverse=True)
+        parhaat_arviot = jarjestetyt_puhtaat_arviot[:LOPULLISTEN_HAKUTULOSTEN_MAARA]
         final_tulokset = []
         for par_arvio in parhaat_arviot:
-            vastaava_jae = next((item for item in ehdokkaat if item['viite'] == par_arvio['viite']), None)
+            vastaava_jae = next((item for item in ehdokkaat if item['viite'] == par_arvio.get('viite')), None)
             if vastaava_jae:
                 final_tulokset.append(vastaava_jae)
-        
         valid_scores = [a.get('arvosana') for a in parhaat_arviot if a.get('arvosana') is not None]
         keskiarvo = sum(valid_scores) / len(valid_scores) if valid_scores else 0
         lopulliset_arvosanat[osio_nro] = f"{keskiarvo:.2f}"
-
         logging.info(f"Vaihe 3: Valittu {len(final_tulokset)} parasta jaetta. Lopullinen laatuarvio: {keskiarvo:.2f}/10")
-        logging.info("--- Valitut jakeet ja niiden arviot ---")
+        logging.info(f"--- Valitut jakeet ja niiden arviot (Päämalli: {ARVIOINTI_MALLI_ENSISIJAINEN}) ---")
         for jae_arvio in parhaat_arviot:
-             logging.info(f"  - {jae_arvio.get('viite')}: {jae_arvio.get('arvosana')}/10 ({jae_arvio.get('perustelu')})")
-
+            logging.info(f"  - {jae_arvio.get('viite')}: {jae_arvio.get('arvosana')}/10 ({jae_arvio.get('perustelu')})")
         if final_tulokset:
-            jae_kartta_tuloksille[osio_nro] = [
-                f"- {t['viite']}: \"{t['teksti']}\"" for t in final_tulokset
-            ]
+            jae_kartta_tuloksille[osio_nro] = [f"- {t['viite']}: \"{t['teksti']}\"" for t in final_tulokset]
 
+        # --- UUSI VAIHE: RINNAKKAISTESTI VARAMALLILLA ---
+        if i < OSIOIDEN_MAARA_VARAMALLI_TESTIIN:
+            log_header(f"RINNAKKAISTESTI VARAMALLILLA ({ARVIOINTI_MALLI_VARAMALLI}) - Osio: {otsikko}")
+            varamalli_arviot = []
+            for j_vara in range(erien_maara):
+                alku_v, loppu_v = j_vara * ARVIOINTI_ERAN_KOKO, (j_vara + 1) * ARVIOINTI_ERAN_KOKO
+                era_ehdokkaat_v = ehdokkaat[alku_v:loppu_v]
+                logging.info(f"  - Varamalli, arvioidaan erä {j_vara + 1}/{erien_maara}...")
+                arvio_v = arvioi_tulokset_varamallilla(haku, era_ehdokkaat_v)
+                
+                # LISÄTTY: Lokitetaan varamallin vastaus rinnakkaistestissä
+                if "virhe" not in arvio_v:
+                    logging.info(f"  -> Varamallin KOKO VASTAUS:\n{pprint.pformat(arvio_v, indent=4)}")
+                
+                varamalli_arviot.extend(arvio_v.get("jae_arviot", []))
+
+            if varamalli_arviot:
+                puhtaat_varamalli_arviot = [a for a in varamalli_arviot if a.get('viite') in ehdokas_viitteet]
+                jarjestetyt_v_arviot = sorted(puhtaat_varamalli_arviot, key=lambda x: x.get('arvosana', 0), reverse=True)
+                parhaat_varamalli_arviot = jarjestetyt_v_arviot[:LOPULLISTEN_HAKUTULOSTEN_MAARA]
+                valid_scores_v = [a.get('arvosana') for a in parhaat_varamalli_arviot if a.get('arvosana') is not None]
+                keskiarvo_v = sum(valid_scores_v) / len(valid_scores_v) if valid_scores_v else 0
+                logging.info(f"Varamallin lopullinen laatuarvio: {keskiarvo_v:.2f}/10")
+                logging.info(f"--- Valitut jakeet ja niiden arviot ({ARVIOINTI_MALLI_VARAMALLI}) ---")
+                for jae_arvio_v in parhaat_varamalli_arviot:
+                    logging.info(f"  - {jae_arvio_v.get('viite')}: {jae_arvio_v.get('arvosana')}/10 ({jae_arvio_v.get('perustelu')})")
+            else:
+                logging.error("Varamallin rinnakkaistesti epäonnistui.")
+
+    # YHTEENVETO-OSA
     total_end_time = time.time()
     log_header("DIAGNOSTIIKAN YHTEENVETO")
     aika = total_end_time - total_start_time
     logging.info(f"Koko diagnostiikan ajo kesti: {aika:.2f} sekuntia.")
-
     valid_scores_float = [float(s) for s in lopulliset_arvosanat.values() if isinstance(s, str) and s != 'N/A']
     if valid_scores_float:
         keskiarvo_total = sum(valid_scores_float) / len(valid_scores_float)
-        logging.info("AI:n antama lopullinen keskiarvo tulosten laadulle: "
+        logging.info(f"PÄÄMALLIN antama lopullinen keskiarvo tulosten laadulle: "
                      f"{keskiarvo_total:.2f}/10")
 
-    log_header("YKSITYISKOHTAINEN JAEJAOTTELU")
+    log_header("YKSITYISKOHTAINEN JAEJAOTTELU (PÄÄMALLIN TULOKSET)")
     for osio_nro_sorted, haku_sorted in sorted_osiot:
         otsikko_sorted = otsikot.get(osio_nro_sorted, haku_sorted.split(':')[0])
         logger.info(f"\n--- {osio_nro_sorted} {otsikko_sorted} ---\n")
@@ -188,6 +231,6 @@ def suorita_diagnostiikka():
 
     logging.info("\nDiagnostiikka valmis.")
 
-
+# Pääohjelman kutsu
 if __name__ == '__main__':
     suorita_diagnostiikka()
