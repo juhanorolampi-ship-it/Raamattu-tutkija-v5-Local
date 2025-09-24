@@ -14,10 +14,13 @@ syote.txt
 
 # Estä diagnostiikka- ja raporttitiedostot nimen osan perusteella
 *report*.txt
-*diagnostics*.txt
+*diagnostiikka*.txt
+*log.txt
+*.log
 
 # Estä generoidut JSON-logit
 *log*.json
 Modelfile
 raamattu_viite_kartta.json
 raamattu_vektori_indeksi.faiss
+tarkista_ollama.py

@@ -190,7 +190,12 @@ def suorita_diagnostiikka():
                         vanha_jae = heikot_jakeet[i]
                         uusi_jae = uudet_parhaat[i]
                         if uusi_jae.get('arvosana', 0) > vanha_jae.get('arvosana', 0):
-                            logging.info(f"  -> KORVATAAN: '{vanha_jae['viite']}' ({vanha_jae.get('arvosana'):.2f}/10) ==> '{uusi_jae['viite']}' ({uusi_jae.get('arvosana'):.2f}/10)")
+                            log_msg = (
+                                f"  -> KORVATAAN: '{vanha_jae['viite']}' ({vanha_jae.get('arvosana'):.2f}/10) ==> '{uusi_jae['viite']}' ({uusi_jae.get('arvosana'):.2f}/10)\n"
+                                f"     - Vanha perustelu: {vanha_jae.get('perustelu', 'N/A')}\n"
+                                f"     + Uusi perustelu:  {uusi_jae.get('perustelu', 'N/A')}"
+                            )
+                            logging.info(log_msg)
                             for idx, item in enumerate(final_tulokset):
                                 if item['viite'] == vanha_jae['viite']:
                                     final_tulokset[idx] = uusi_jae

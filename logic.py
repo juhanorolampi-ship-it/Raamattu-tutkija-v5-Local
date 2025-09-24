@@ -142,6 +142,7 @@ def hae_jakeet_viitteella(viite_str: str, jae_haku_kartta: dict) -> list[dict]:
 # --- VANKAT TEKOÄLYKUTSUT ---
 def suorita_varmistettu_json_kutsu(mallit: list, kehote: str, max_yritykset: int = 3) -> tuple[dict, str]:
     """Palauttaa datan ja onnistuneen mallin nimen."""
+    vastaus_teksti = ""  # Alustetaan muuttuja
     for malli in mallit:
         alkuperainen_kehote = kehote
         edellinen_virhe_viesti = ""
@@ -163,14 +164,17 @@ def suorita_varmistettu_json_kutsu(mallit: list, kehote: str, max_yritykset: int
                     raise ValueError(edellinen_virhe_viesti)
                 data = json.loads(vastaus_teksti)
                 logging.info("Vastaus jäsennelty onnistuneesti.")
+
+                # TÄRKEÄ LISÄYS: Lisätään raakavastaus data-objektiin virhelokia varten
+                data['_raw_response_text'] = vastaus_teksti
+
                 return data, malli
             except (json.JSONDecodeError, TypeError, ValueError) as e:
                 edellinen_virhe_viesti = str(e)
                 msg = (f"Virhe mallin {malli} kanssa (yritys {yritys + 1}): {e}. Yritetään uudelleen...")
                 logging.warning(msg)
-        logging.error(f"Malli {malli} epäonnistui {max_yritykset} kertaa. Siirrytään varamalliin, jos saatavilla.")
     logging.error(f"Kaikki mallit ({mallit}) epäonnistuivat. Palautetaan virhe.")
-    return {"virhe": "JSON-vastausta ei saatu malleilta."}, "Tuntematon"
+    return {"virhe": "JSON-vastausta ei saatu malleilta.", "_raw_response_text": vastaus_teksti}, "Tuntematon"
 
 
 # --- PÄÄFUNKTIOT ---
@@ -289,8 +293,13 @@ def etsi_merkityksen_mukaan(kysely: str, otsikko: str, top_k: int = 15,
     return alyhaun_tulokset
 
 
+# logic.py: arvioi_tulokset (päivitetty)
+
 def arvioi_tulokset(aihe: str, tulokset: list, malli_nimi: str = ARVIOINTI_MALLI_ENSISIJAINEN) -> dict:
     """Arvioi tulokset käyttäen määriteltyä mallia ja sen varajärjestelmää."""
+    if not tulokset:
+        return {"kokonaisarvosana": 0.0, "jae_arviot": []}
+
     kehote = f"""
 ROOLI: Olet teologian asiantuntija ja data-analyytikko.
 TEHTÄVÄ: Arvioi, kuinka hyvin seuraavat Raamatun jakeet vastaavat annettuun aiheeseen. Anna kullekin jakeelle arvosana desimaalilukuna asteikolla 1.0-10.0 (esim. 8.5) ja lyhyt, ytimekäs suomenkielinen perustelu. Lopuksi anna kokonaisarvosana ja -perustelu koko tulosjoukolle.
@@ -306,12 +315,26 @@ VASTAUKSEN MUOTO: Palauta AINOASTAAN validi JSON-objekti.
   ]
 }}
 """
-    # Käytetään annettua mallia ensisijaisena ja yleistä varamallia toissijaisena
     data, malli = suorita_varmistettu_json_kutsu(
         [malli_nimi, ARVIOINTI_MALLI_VARAMALLI], kehote
     )
     if "virhe" not in data:
         data['mallin_nimi'] = malli
+        
+        # UUSI LISÄYS: Tarkistetaan, onko tulos loogisesti tyhjä
+        valid_scores = [a.get('arvosana') for a in data.get("jae_arviot", []) if a.get('arvosana') is not None]
+        if not valid_scores:
+            logging.error("LLM palautti loogisesti tyhjän vastauksen (0.00). Tallennetaan raakavastaus error_log.txt-tiedostoon.")
+            with open("error_log.txt", "a", encoding="utf-8") as f:
+                f.write(f"--- AIKA: {time.strftime('%Y-%m-%d %H:%M:%S')} ---\n")
+                f.write(f"AIHE: {aihe}\n")
+                f.write(f"MALLI: {malli}\n")
+                f.write("VASTAUS, JOKA AIHEUTTI VIRHEEN:\n")
+                # Yritetään hakea alkuperäinen vastaus, jos se on saatavilla
+                raw_response = data.get('_raw_response_text', json.dumps(data, indent=2, ensure_ascii=False))
+                f.write(raw_response)
+                f.write("\n-------------------------------------------\n")
+
     return data
 
 
