@@ -1,4 +1,4 @@
-# logic.py (Versio 33.1 - Desimaaliarviointi)
+# logic.py (Versio 34.1 - Tuki dynaamiselle mallin valinnalle)
 import json
 import logging
 import pprint
@@ -19,6 +19,7 @@ RAAMATTU_TIEDOSTO = "D:/Python_AI/Raamattu-tutkija-data/bible.json"
 RAAMATTU_SANAKIRJA_TIEDOSTO = "D:/Python_AI/Raamattu-tutkija-data/bible_dictionary.json"
 EMBEDDING_MALLI = "intfloat/multilingual-e5-large"
 CROSS_ENCODER_MALLI = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+TIMANTTIJAE_MINIMI_MAARA = 3
 
 # --- MALLIMÄÄRITYKSET ---
 ARVIOINTI_MALLI_ENSISIJAINEN = "llama3.1:8b"
@@ -74,7 +75,6 @@ def lataa_resurssit():
     """Lataa kaikki tarvittavat resurssit ja luo Raamatun sanaston."""
     logging.info("Ladataan hakumallit, indeksi ja datatiedostot muistiin...")
     try:
-        logging.info("Pakotetaan haku- ja uudelleenjärjestysmallit käyttämään CPU:ta...")
         model = SentenceTransformer(EMBEDDING_MALLI, device='cpu')
         cross_encoder = CrossEncoder(CROSS_ENCODER_MALLI, device='cpu')
 
@@ -289,8 +289,8 @@ def etsi_merkityksen_mukaan(kysely: str, otsikko: str, top_k: int = 15,
     return alyhaun_tulokset
 
 
-def arvioi_tulokset(aihe: str, tulokset: list) -> dict:
-    """Arvioi tulokset käyttäen ensisijaista mallia ja sen varajärjestelmiä."""
+def arvioi_tulokset(aihe: str, tulokset: list, malli_nimi: str = ARVIOINTI_MALLI_ENSISIJAINEN) -> dict:
+    """Arvioi tulokset käyttäen määriteltyä mallia ja sen varajärjestelmää."""
     kehote = f"""
 ROOLI: Olet teologian asiantuntija ja data-analyytikko.
 TEHTÄVÄ: Arvioi, kuinka hyvin seuraavat Raamatun jakeet vastaavat annettuun aiheeseen. Anna kullekin jakeelle arvosana desimaalilukuna asteikolla 1.0-10.0 (esim. 8.5) ja lyhyt, ytimekäs suomenkielinen perustelu. Lopuksi anna kokonaisarvosana ja -perustelu koko tulosjoukolle.
@@ -306,38 +306,40 @@ VASTAUKSEN MUOTO: Palauta AINOASTAAN validi JSON-objekti.
   ]
 }}
 """
+    # Käytetään annettua mallia ensisijaisena ja yleistä varamallia toissijaisena
     data, malli = suorita_varmistettu_json_kutsu(
-        [ARVIOINTI_MALLI_ENSISIJAINEN, ARVIOINTI_MALLI_VARAMALLI], kehote
+        [malli_nimi, ARVIOINTI_MALLI_VARAMALLI], kehote
     )
     if "virhe" not in data:
         data['mallin_nimi'] = malli
     return data
 
 
-def arvioi_tulokset_varamallilla(aihe: str, tulokset: list) -> dict:
-    """Arvioi tulokset käyttäen AINOASTAAN varamallia."""
-    logging.info(f"Käynnistetään arviointi pelkällä varamallilla ({ARVIOINTI_MALLI_VARAMALLI})...")
-    kehote = f"""
-ROOLI: Olet teologian asiantuntija ja data-analyytikko.
-TEHTÄVÄ: Arvioi, kuinka hyvin seuraavat Raamatun jakeet vastaavat annettuun aiheeseen. Anna kullekin jakeelle arvosana desimaalilukuna asteikolla 1.0-10.0 (esim. 8.5) ja lyhyt, ytimekäs suomenkielinen perustelu.
-AIHE: "{aihe}"
-ARVIOITAVAT JAKEET:
-{json.dumps([{"viite": t['viite'], "teksti": t['teksti']} for t in tulokset], indent=2, ensure_ascii=False)}
-VASTAUKSEN MUOTO: Palauta AINOASTAAN validi JSON-objekti.
-{{
-  "kokonaisarvosana": <desimaaliluku 1.0-10.0>,
-  "kokonaisperustelu": "<Yleisarvio>",
-  "jae_arviot": [
-    {{"viite": "<viite>", "arvosana": <desimaaliluku 1.0-10.0>, "perustelu": "<perustelu>"}}
-  ]
-}}
-"""
-    data, malli = suorita_varmistettu_json_kutsu(
-        [ARVIOINTI_MALLI_VARAMALLI], kehote
-    )
-    if "virhe" not in data:
-        data['mallin_nimi'] = malli
-    return data
+def suorita_tarkennushaku(ydinjakeet: list, vanhat_tulokset_viitteet: set, haettava_maara: int) -> list:
+    """
+    Laskee ydinjakeiden keskipistevektorin ja suorittaa uuden haun sen perusteella.
+    """
+    resurssit = lataa_resurssit()
+    if not all(resurssit):
+        return []
+    model, _, paaindeksi, paakartta, jae_haku_kartta, _ = resurssit
+
+    if not ydinjakeet:
+        return []
+
+    ydinjakeiden_tekstit = [j['teksti'] for j in ydinjakeet]
+    ydin_vektorit = model.encode(ydinjakeiden_tekstit)
+    keskipiste_vektori = np.mean(ydin_vektorit, axis=0)
+
+    _, indeksit = paaindeksi.search(np.array([keskipiste_vektori], dtype=np.float32), haettava_maara * 2) # Haetaan tuplamäärä varmuuden vuoksi
+    
+    uudet_ehdokkaat = []
+    for i in indeksit[0]:
+        viite = paakartta.get(str(i))
+        if viite and viite not in vanhat_tulokset_viitteet:
+            uudet_ehdokkaat.append({'viite': viite, 'teksti': jae_haku_kartta.get(viite, "")})
+    
+    return uudet_ehdokkaat[:haettava_maara]
 
 
 def ehdota_uutta_strategiaa(aihe: str, arvio: dict, edellinen_ehdotus: dict = None) -> dict:
