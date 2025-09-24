@@ -1,4 +1,4 @@
-# logic.py (Versio 33.0 - Täydellinen, validoitu korjaus)
+# logic.py (Versio 33.1 - Desimaaliarviointi)
 import json
 import logging
 import pprint
@@ -293,16 +293,16 @@ def arvioi_tulokset(aihe: str, tulokset: list) -> dict:
     """Arvioi tulokset käyttäen ensisijaista mallia ja sen varajärjestelmiä."""
     kehote = f"""
 ROOLI: Olet teologian asiantuntija ja data-analyytikko.
-TEHTÄVÄ: Arvioi, kuinka hyvin seuraavat Raamatun jakeet vastaavat annettuun aiheeseen. Anna kullekin jakeelle arvosana asteikolla 1-10 ja lyhyt, ytimekäs suomenkielinen perustelu. Lopuksi anna kokonaisarvosana ja -perustelu koko tulosjoukolle.
+TEHTÄVÄ: Arvioi, kuinka hyvin seuraavat Raamatun jakeet vastaavat annettuun aiheeseen. Anna kullekin jakeelle arvosana desimaalilukuna asteikolla 1.0-10.0 (esim. 8.5) ja lyhyt, ytimekäs suomenkielinen perustelu. Lopuksi anna kokonaisarvosana ja -perustelu koko tulosjoukolle.
 AIHE: "{aihe}"
 ARVIOITAVAT JAKEET:
 {json.dumps([{"viite": t['viite'], "teksti": t['teksti']} for t in tulokset], indent=2, ensure_ascii=False)}
 VASTAUKSEN MUOTO: Palauta AINOASTAAN validi JSON-objekti.
 {{
-  "kokonaisarvosana": <kokonaisluku 1-10>,
+  "kokonaisarvosana": <desimaaliluku 1.0-10.0>,
   "kokonaisperustelu": "<Yleisarvio>",
   "jae_arviot": [
-    {{"viite": "<viite>", "arvosana": <arvosana>, "perustelu": "<perustelu>"}}
+    {{"viite": "<viite>", "arvosana": <desimaaliluku 1.0-10.0>, "perustelu": "<perustelu>"}}
   ]
 }}
 """
@@ -319,16 +319,16 @@ def arvioi_tulokset_varamallilla(aihe: str, tulokset: list) -> dict:
     logging.info(f"Käynnistetään arviointi pelkällä varamallilla ({ARVIOINTI_MALLI_VARAMALLI})...")
     kehote = f"""
 ROOLI: Olet teologian asiantuntija ja data-analyytikko.
-TEHTÄVÄ: Arvioi, kuinka hyvin seuraavat Raamatun jakeet vastaavat annettuun aiheeseen. Anna kullekin jakeelle arvosana asteikolla 1-10 ja lyhyt, ytimekäs suomenkielinen perustelu.
+TEHTÄVÄ: Arvioi, kuinka hyvin seuraavat Raamatun jakeet vastaavat annettuun aiheeseen. Anna kullekin jakeelle arvosana desimaalilukuna asteikolla 1.0-10.0 (esim. 8.5) ja lyhyt, ytimekäs suomenkielinen perustelu.
 AIHE: "{aihe}"
 ARVIOITAVAT JAKEET:
 {json.dumps([{"viite": t['viite'], "teksti": t['teksti']} for t in tulokset], indent=2, ensure_ascii=False)}
 VASTAUKSEN MUOTO: Palauta AINOASTAAN validi JSON-objekti.
 {{
-  "kokonaisarvosana": <kokonaisluku 1-10>,
+  "kokonaisarvosana": <desimaaliluku 1.0-10.0>,
   "kokonaisperustelu": "<Yleisarvio>",
   "jae_arviot": [
-    {{"viite": "<viite>", "arvosana": <arvosana>, "perustelu": "<perustelu>"}}
+    {{"viite": "<viite>", "arvosana": <desimaaliluku 1.0-10.0>, "perustelu": "<perustelu>"}}
   ]
 }}
 """

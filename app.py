@@ -1,4 +1,4 @@
-# app.py (Versio 12.0 - Integroitu oppiminen, PEP-8)
+# app.py (Versio 12.1 - Desimaaliasetukset)
 import logging
 import re
 from collections import defaultdict
@@ -102,8 +102,9 @@ def luo_raportti_md(sl, jae_kartta, arvosanat):
         key=lambda item: [int(p) for p in item[0].split('.')]
     )
     for osio_nro, data in sorted_osiot:
-        arvosana = arvosanat.get(osio_nro, "N/A")
-        md += f"## {data['otsikko']} (Lopullinen arvosana: {arvosana}/10)\n\n"
+        arvosana_num = arvosanat.get(osio_nro)
+        arvosana_str = f"{arvosana_num:.2f}" if isinstance(arvosana_num, float) else "N/A"
+        md += f"## {data['otsikko']} (Lopullinen arvosana: {arvosana_str}/10)\n\n"
         if data["jakeet"]:
             for jae in data["jakeet"]:
                 md += f"- **{jae['viite']}**: \"{jae['teksti']}\"\n"
@@ -126,8 +127,9 @@ def luo_raportti_doc(sl, jae_kartta, arvosanat):
         key=lambda item: [int(p) for p in item[0].split('.')]
     )
     for osio_nro, data in sorted_osiot:
-        arvosana = arvosanat.get(osio_nro, "N/A")
-        doc.add_heading(f"{data['otsikko']} (Lopullinen arvosana: {arvosana}/10)", 1)
+        arvosana_num = arvosanat.get(osio_nro)
+        arvosana_str = f"{arvosana_num:.2f}" if isinstance(arvosana_num, float) else "N/A"
+        doc.add_heading(f"{data['otsikko']} (Lopullinen arvosana: {arvosana_str}/10)", 1)
         if data["jakeet"]:
             for jae in data["jakeet"]:
                 p = doc.add_paragraph()
@@ -163,8 +165,8 @@ with col2:
     st.subheader("Asetukset")
     top_k_valinta = st.slider("Jakeita per osio:", 1, 100, 15)
     tavoitearvosana_valinta = st.number_input(
-        "Tavoiteltava laatuarvosana (1-10)",
-        min_value=1, max_value=10, value=8
+        "Tavoiteltava laatuarvosana (1.0-10.0)",
+        min_value=1.0, max_value=10.0, value=8.5, step=0.1
     )
     max_yritykset_valinta = st.number_input(
         "Maksimi parannusyritystä per osio",
@@ -222,6 +224,7 @@ if suorita_nappi:
 
             tulokset = etsi_merkityksen_mukaan(
                 haku,
+                otsikot.get(osio_nro, ''),
                 top_k=top_k_valinta,
                 custom_strategiat=temp_strategiat,
                 custom_siemenjakeet=temp_siemenjakeet
@@ -276,7 +279,10 @@ if suorita_nappi:
                             temp_strategiat[sana.lower()] = selite
 
                         paikkaushaku = etsi_merkityksen_mukaan(
-                            haku, poistettavien_maara, temp_strategiat
+                            haku,
+                            otsikot.get(osio_nro, ''),
+                            poistettavien_maara,
+                            temp_strategiat
                         )
                         tulokset = hyvat_jakeet + paikkaushaku
 
