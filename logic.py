@@ -1,4 +1,4 @@
-# logic.py (Versio 34.1 - Tuki dynaamiselle mallin valinnalle)
+# logic.py (Versio 35.0 - Parannettu virhelokitus)
 import json
 import logging
 import pprint
@@ -142,7 +142,7 @@ def hae_jakeet_viitteella(viite_str: str, jae_haku_kartta: dict) -> list[dict]:
 # --- VANKAT TEKOÄLYKUTSUT ---
 def suorita_varmistettu_json_kutsu(mallit: list, kehote: str, max_yritykset: int = 3) -> tuple[dict, str]:
     """Palauttaa datan ja onnistuneen mallin nimen."""
-    vastaus_teksti = ""  # Alustetaan muuttuja
+    vastaus_teksti = ""
     for malli in mallit:
         alkuperainen_kehote = kehote
         edellinen_virhe_viesti = ""
@@ -164,10 +164,7 @@ def suorita_varmistettu_json_kutsu(mallit: list, kehote: str, max_yritykset: int
                     raise ValueError(edellinen_virhe_viesti)
                 data = json.loads(vastaus_teksti)
                 logging.info("Vastaus jäsennelty onnistuneesti.")
-
-                # TÄRKEÄ LISÄYS: Lisätään raakavastaus data-objektiin virhelokia varten
                 data['_raw_response_text'] = vastaus_teksti
-
                 return data, malli
             except (json.JSONDecodeError, TypeError, ValueError) as e:
                 edellinen_virhe_viesti = str(e)
@@ -293,8 +290,6 @@ def etsi_merkityksen_mukaan(kysely: str, otsikko: str, top_k: int = 15,
     return alyhaun_tulokset
 
 
-# logic.py: arvioi_tulokset (päivitetty)
-
 def arvioi_tulokset(aihe: str, tulokset: list, malli_nimi: str = ARVIOINTI_MALLI_ENSISIJAINEN) -> dict:
     """Arvioi tulokset käyttäen määriteltyä mallia ja sen varajärjestelmää."""
     if not tulokset:
@@ -315,25 +310,35 @@ VASTAUKSEN MUOTO: Palauta AINOASTAAN validi JSON-objekti.
   ]
 }}
 """
+    # Ensimmäinen yritys valitulla mallilla (ja sen geneerisellä varamallilla)
     data, malli = suorita_varmistettu_json_kutsu(
         [malli_nimi, ARVIOINTI_MALLI_VARAMALLI], kehote
     )
-    if "virhe" not in data:
-        data['mallin_nimi'] = malli
-        
-        # UUSI LISÄYS: Tarkistetaan, onko tulos loogisesti tyhjä
-        valid_scores = [a.get('arvosana') for a in data.get("jae_arviot", []) if a.get('arvosana') is not None]
-        if not valid_scores:
-            logging.error("LLM palautti loogisesti tyhjän vastauksen (0.00). Tallennetaan raakavastaus error_log.txt-tiedostoon.")
-            with open("error_log.txt", "a", encoding="utf-8") as f:
-                f.write(f"--- AIKA: {time.strftime('%Y-%m-%d %H:%M:%S')} ---\n")
-                f.write(f"AIHE: {aihe}\n")
-                f.write(f"MALLI: {malli}\n")
-                f.write("VASTAUS, JOKA AIHEUTTI VIRHEEN:\n")
-                # Yritetään hakea alkuperäinen vastaus, jos se on saatavilla
-                raw_response = data.get('_raw_response_text', json.dumps(data, indent=2, ensure_ascii=False))
-                f.write(raw_response)
-                f.write("\n-------------------------------------------\n")
+    
+    if "virhe" in data:
+        return data
+
+    data['mallin_nimi'] = malli
+    
+    # Tarkistetaan, onko tulos loogisesti tyhjä
+    valid_scores = [a.get('arvosana') for a in data.get("jae_arviot", []) if isinstance(a.get('arvosana'), (int, float))]
+    
+    if not valid_scores:
+        logging.error(f"Malli {malli} palautti loogisesti tyhjän vastauksen. Tallennetaan raakavastaus ja yritetään uudelleen varamallilla.")
+        with open("error_log.txt", "a", encoding="utf-8") as f:
+            f.write(f"--- AIKA: {time.strftime('%Y-%m-%d %H:%M:%S')} ---\n")
+            f.write(f"AIHE: {aihe}\n")
+            f.write(f"MALLI: {malli}\n")
+            f.write("VASTAUS, JOKA AIHEUTTI VIRHEEN:\n")
+            raw_response = data.get('_raw_response_text', json.dumps(data, indent=2, ensure_ascii=False))
+            f.write(raw_response)
+            f.write("\n-------------------------------------------\n")
+
+        # UUSI YRITYS: Pakotetaan kutsu pelkällä varamallilla
+        logging.info(f"Suoritetaan pakotettu uusintayritys varamallilla {ARVIOINTI_MALLI_VARAMALLI}...")
+        data, malli = suorita_varmistettu_json_kutsu([ARVIOINTI_MALLI_VARAMALLI], kehote)
+        if "virhe" not in data:
+            data['mallin_nimi'] = malli
 
     return data
 
@@ -354,7 +359,7 @@ def suorita_tarkennushaku(ydinjakeet: list, vanhat_tulokset_viitteet: set, haett
     ydin_vektorit = model.encode(ydinjakeiden_tekstit)
     keskipiste_vektori = np.mean(ydin_vektorit, axis=0)
 
-    _, indeksit = paaindeksi.search(np.array([keskipiste_vektori], dtype=np.float32), haettava_maara * 2) # Haetaan tuplamäärä varmuuden vuoksi
+    _, indeksit = paaindeksi.search(np.array([keskipiste_vektori], dtype=np.float32), haettava_maara * 2)
     
     uudet_ehdokkaat = []
     for i in indeksit[0]:
