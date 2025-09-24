@@ -1,0 +1,636 @@
+
+================================================================================
+        RAAMATTU-TUTKIJA - DIAGNOSTIIKKA (Dynaaminen Parannusalgoritmi)         
+================================================================================
+
+Esiladataan kaikki resurssit...
+Ladataan hakumallit, indeksi ja datatiedostot muistiin...
+Pakotetaan haku- ja uudelleenjärjestysmallit käyttämään CPU:ta...
+Load pretrained SentenceTransformer: intfloat/multilingual-e5-large
+Raamatullinen sanasto ladattu (51303 uniikkia sanaa).
+Kaikki resurssit ladattu onnistuneesti.
+Resurssit ladattu.
+Löytyi 5 osiota käsiteltäväksi.
+
+================================================================================
+          Käsitellään osio 1/5: 1. Johdanto: Kielletty ja vaiettu aihe          
+================================================================================
+
+Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Avainsana-Tehostin: Ei relevantteja avainsanoja otsikossa.
+Löytyi 75 ehdokasjaetta.
+Vaihe 2: Arvioidaan 75 ehdokasta päämallilla...
+  - Arvioidaan erä 1/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 2/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 3/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 4/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Päämalli epäonnistui loogisesti. Eskaloidaan erä varamallille...
+Käynnistetään arviointi pelkällä varamallilla (gemma:7b)...
+Käytetään mallia: gemma:7b
+Lähetetään JSON-pyyntö mallille gemma:7b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 5/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 6/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 7/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 8/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Alkuperäinen arviointi valmis. Saatiin 75 jaearviota.
+Vaihe 3: Valittu 15 parasta jaetta. Alkuperäinen laatuarvio: 9.07/10
+
+================================================================================
+              KÄYNNISTETÄÄN DYNAAMINEN PARANNUSALGORITMI (OSIO 1)               
+================================================================================
+
+TILA A: Ydinjakeita löytyi 3 kpl (väh. 3). Suoritetaan tarkennushaku.
+Dynaaminen raja-arvo tälle osiolle: 9.07/10
+Korvattavia heikkoja jakeita: 12. Haetaan 36 uutta ehdokasta.
+Tarkennushaku löysi 32 uutta, uniikkia jaetta. Arvioidaan ne...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- LAADUNVALVONTA JA ÄLYKÄS KORVAAMINEN ---
+  -> KORVATAAN: 'Markus 16:14' (8.50/10) ==> '1. Pietarin kirje 4:18' (9.00/10)
+  -> SÄILYTETÄÄN: '2. Kuningasten kirja 17:15' (9.00/10), koska uusi ehdokas 'Efesolaiskirje 4:24' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '1. Tessalonikalaiskirje 2:4' (9.00/10), koska uusi ehdokas 'Efesolaiskirje 4:23' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '2. Aikakirja 6:37' (9.00/10), koska uusi ehdokas '2. Tessalonikalaiskirje 1:5' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '2. Pietarin kirje 2:20' (9.00/10), koska uusi ehdokas 'Jaakobin kirje 1:22' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Psalmit 15:3' (9.00/10), koska uusi ehdokas 'Roomalaiskirje 11:31' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '2. Korinttilaiskirje 12:21' (9.00/10), koska uusi ehdokas '1. Pietarin kirje 4:16' (8.50/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '2. Pietarin kirje 3:3' (9.00/10), koska uusi ehdokas 'Apostolien teot 26:17' (8.50/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '2. Timoteuskirje 3:8' (9.00/10), koska uusi ehdokas 'Jeremia 16:11' (8.50/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '2. Korinttilaiskirje 4:2' (9.00/10), koska uusi ehdokas 'Apostolien teot 22:15' (8.50/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Roomalaiskirje 11:12' (9.00/10), koska uusi ehdokas 'Roomalaiskirje 6:17' (8.50/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Sakarja 10:5' (9.00/10), koska uusi ehdokas 'Kolossalaiskirje 3:7' (8.50/10) ei ollut parempi.
+Laadunvalvonta valmis. 1 jaetta korvattu.
+Parannusprosessin jälkeen lopullinen laatuarvio: 9.10/10
+LAADUNPARANNUS ONNISTUI! (9.07 -> 9.10) ✅
+--- Lopulliset valitut jakeet ja niiden arviot (Päämalli: llama3.1:8b) ---
+  - 2. Aikakirja 6:38: 9.50/10 (Vankien rukoileminen kääntyneinä tähän kaupunkiin päin ja temppeliin on hyvä esimerkki siitä, kuinka hengellinen kärsivällisyys voittaa.)
+  - 1. Pietarin kirje 4:17: 9.50/10 (Erityisen hyvin sanoo siitä, että tuomion alkaa Jumalan huoneesta.)
+  - Jaakobin kirje 1:21: 9.50/10 (Erittäin hyvin teet osansa siitä, että Raamatun sankareiden olisikin ollut keskeneräisiä ihmisiä)
+  - 2. Kuningasten kirja 17:15: 9.00/10 (Erittäin hyvä esimerkki siitä, miten uskovat pahoinpitelevät ja hylkivät Herraan.)
+  - 1. Tessalonikalaiskirje 2:4: 9.00/10 (Hyvä esimerkki siitä miten uskovat pahoinpitelevät ja hylkivät Herraan.)
+  - 2. Aikakirja 6:37: 9.00/10 (Erittäin hyvä esimerkki siitä, miten uskovat voivat kääntyä Jumalan puoleen ja pyytää armoa.)
+  - 2. Pietarin kirje 2:20: 9.00/10 (Jos ihminen on päässyt pois maailman saastutuksesta mutta palaa siihen jälleen, niin hänen tulee tulla voitettuna.)
+  - Psalmit 15:3: 9.00/10 (Kuka ei panettele kielellään eikä saata lähimmäistään häväistyksen alaiseksi.)
+  - 2. Korinttilaiskirje 12:21: 9.00/10 (Hyvin sanoo siitä, että Jumalan armolahja on avulias myös epäonnistuneille.)
+  - 2. Pietarin kirje 3:3: 9.00/10 (Hyvin esittää sen, miten totuutta vastaan suuntautuvat vääräuskoiset)
+  - 2. Timoteuskirje 3:8: 9.00/10 (Kuvaa hyvin sen, miten vääräuskoiset eivät uskoni ja toiminnastaan johtuen, saavat syynä toimintaansa)
+  - 2. Korinttilaiskirje 4:2: 9.00/10 (Raamatussa on selvää syyttoa Raamatun sankareiden puutteellisuutta vastaan ja selkeää osoitusta yleiskierron hyväksi.)
+  - Roomalaiskirje 11:12: 9.00/10 (Vahvaa ylpeyttä ja uskoa, että jokainen sankari saa täyden palkkansa.)
+  - Sakarja 10:5: 9.00/10 (Erinomaisesti kuvailee sankarien sodankäynnistä ja sen tuntumaa.)
+  - 1. Pietarin kirje 4:18: 9.00/10 (Jake on hyvin osoittanut Raamatun näkökulman uskovien epäonnistumiseen.)
+
+================================================================================
+       Käsitellään osio 2/5: 2. Varoittavat esimerkit: Daavid ja Pietari        
+================================================================================
+
+Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Avainsana-Tehostin aktivoitu sanoille: {'pietari', 'daavid'}
+  -> Tehostettiin jaetta Luukas 20:44 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Johannes 18:15 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Markus 8:32 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Matteus 26:75 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Luukas 22:61 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Markus 14:72 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta 2. Samuelin kirja 1:14 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 2. Samuelin kirja 24:11 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Luukas 9:33 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta 1. Samuelin kirja 18:10 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 2. Samuelin kirja 1:16 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 1. Samuelin kirja 29:5 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Apostolien teot 1:15 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Markus 12:37 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Psalmit 52:2 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 1. Samuelin kirja 21:12 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Luukas 6:14 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Luukas 20:42 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 1. Samuelin kirja 16:19 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Markus 9:5 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Apostolien teot 13:36 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Roomalaiskirje 4:6 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 2. Samuelin kirja 1:15 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Matteus 12:3 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 1. Pietarin kirje 1:1 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Luukas 22:60 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Matteus 26:69 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Apostolien teot 5:29 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Apostolien teot 2:34 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta Markus 14:29 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta Johannes 21:19 sanoilla: {'pietari'}
+  -> Tehostettiin jaetta 2. Samuelin kirja 7:20 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 1. Samuelin kirja 26:9 sanoilla: {'daavid'}
+  -> Tehostettiin jaetta 2. Samuelin kirja 12:20 sanoilla: {'daavid'}
+Löytyi 75 ehdokasjaetta.
+Vaihe 2: Arvioidaan 75 ehdokasta päämallilla...
+  - Arvioidaan erä 1/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 2/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 3/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 4/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 5/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 6/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 7/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 8/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Alkuperäinen arviointi valmis. Saatiin 75 jaearviota.
+Vaihe 3: Valittu 15 parasta jaetta. Alkuperäinen laatuarvio: 9.13/10
+
+================================================================================
+              KÄYNNISTETÄÄN DYNAAMINEN PARANNUSALGORITMI (OSIO 2)               
+================================================================================
+
+TILA A: Ydinjakeita löytyi 4 kpl (väh. 3). Suoritetaan tarkennushaku.
+Dynaaminen raja-arvo tälle osiolle: 9.13/10
+Korvattavia heikkoja jakeita: 11. Haetaan 33 uutta ehdokasta.
+Tarkennushaku löysi 31 uutta, uniikkia jaetta. Arvioidaan ne...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- LAADUNVALVONTA JA ÄLYKÄS KORVAAMINEN ---
+  -> SÄILYTETÄÄN: 'Roomalaiskirje 4:6' (9.00/10), koska uusi ehdokas 'Apostolien teot 2:33' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Apostolien teot 13:36' (9.00/10), koska uusi ehdokas 'Matteus 22:45' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '2. Samuelin kirja 12:20' (9.00/10), koska uusi ehdokas 'Apostolien teot 2:26' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Apostolien teot 5:29' (9.00/10), koska uusi ehdokas '1. Aikakirja 17:19' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Apostolien teot 4:25' (9.00/10), koska uusi ehdokas 'Apostolien teot 2:25' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Johannes 18:15' (9.00/10), koska uusi ehdokas 'Psalmit 119:136' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '2. Tessalonikalaiskirje 1:5' (9.00/10), koska uusi ehdokas 'Apostolien teot 2:28' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Luukas 6:14' (9.00/10), koska uusi ehdokas 'Markus 12:37' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '2. Timoteuskirje 2:8' (9.00/10), koska uusi ehdokas 'Johannes 21:20' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '2. Aikakirja 7:18' (9.00/10), koska uusi ehdokas 'Apostolien teot 22:15' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Markus 8:32' (9.00/10), koska uusi ehdokas 'Psalmit 69:19' (9.00/10) ei ollut parempi.
+Laadunvalvonta valmis. 0 jaetta korvattu.
+Parannusprosessin jälkeen lopullinen laatuarvio: 9.13/10
+Laatu ei parantunut tai pysyi samana.
+--- Lopulliset valitut jakeet ja niiden arviot (Päämalli: llama3.1:8b) ---
+  - Apostolien teot 2:34: 9.50/10 (Erinomainen esimerkki Pietarin sydämestä ja hänen menetelmistään aiheeseen liittyvän osalta)
+  - 2. Samuelin kirja 7:20: 9.50/10 (Hyvin havainnollistaa Daavidin yhteys Jumalan kanssa.)
+  - Johannes 21:19: 9.50/10 (Pietarin kutsu liitetään tarkastelussa hänen kuolemalleen, ja teksti kertoo selkeästi hänestä.)
+  - Markus 3:12: 9.50/10 (Jeesuksen varoitus on hyvä esimerkki siitä, miten hänen seuraajansa eli meidän tulisi toimia.)
+  - Roomalaiskirje 4:6: 9.00/10 (Tämä jakee pohtii Daavidin sitoutumista Jumalan hyvyyteen ja hänen syynsä.)
+  - Apostolien teot 13:36: 9.00/10 (Tämä jakee pohtii Daavidin sitoutumista Jumalan tahtoon ja hänen toimien vaikutusta.)
+  - 2. Samuelin kirja 12:20: 9.00/10 (Hyvä esimerkki Daavidin sydämestä ja hänen menetelmistään, mutta aihe on vähän poissa kohderyhmältä)
+  - Apostolien teot 5:29: 9.00/10 (Erittäin hyvä esimerkki Pietarin sydämestä ja hänen menetelmistään aiheeseen liittyvän osalta)
+  - Apostolien teot 4:25: 9.00/10 (Hyvin havainnollistaa Daavidin yhteys Jumalan kanssa.)
+  - Johannes 18:15: 9.00/10 (Pietari on todettu olevan hyvä opetuslapsi, vaikka kieltäytyykään kolmesti Jeesuksesta.)
+  - 2. Tessalonikalaiskirje 1:5: 9.00/10 (Jumalan vanhurskautta tuomiosta on selkeästi näkyvissä Pietarin kutsussa.)
+  - Luukas 6:14: 9.00/10 (Tätä tekstiä liitetään Pietariin, ja siitä voidaan saada ideaista huolimatta kenties hankalasta kokonaiskuvasta.)
+  - 2. Timoteuskirje 2:8: 9.00/10 (Jeesus Kristus on kuollut ja noussut, ja hänet liitetään Daavidin siemeneksi, mikä on aiheeseen sopivasti lähestymistapaa.)
+  - 2. Aikakirja 7:18: 9.00/10 (Aiheeseen liittyvällä yhteydellä on varovaisuus ja huomio, että Daavidin kuninkaiden historiaan liittyy tärkeää tietoa.)
+  - Markus 8:32: 9.00/10 (Pietarin kieltäytyminen vastaanottaa palautetta ja hänen syytöksensä kohtalosta on liitettynä aiheeseen.)
+
+================================================================================
+      Käsitellään osio 3/5: 3. Tie takaisin: Parannuksen ja armon portaat       
+================================================================================
+
+Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Avainsana-Tehostin aktivoitu sanoille: {'tie', 'parannuksen'}
+  -> Tehostettiin jaetta Psalmit 37:23 sanoilla: {'tie'}
+  -> Tehostettiin jaetta Job 22:29 sanoilla: {'tie'}
+Löytyi 75 ehdokasjaetta.
+Vaihe 2: Arvioidaan 75 ehdokasta päämallilla...
+  - Arvioidaan erä 1/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 2/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 3/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 4/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 5/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 6/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 7/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 8/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Alkuperäinen arviointi valmis. Saatiin 75 jaearviota.
+Vaihe 3: Valittu 15 parasta jaetta. Alkuperäinen laatuarvio: 9.32/10
+
+================================================================================
+              KÄYNNISTETÄÄN DYNAAMINEN PARANNUSALGORITMI (OSIO 3)               
+================================================================================
+
+TILA A: Ydinjakeita löytyi 9 kpl (väh. 3). Suoritetaan tarkennushaku.
+Dynaaminen raja-arvo tälle osiolle: 9.32/10
+Korvattavia heikkoja jakeita: 6. Haetaan 18 uutta ehdokasta.
+Tarkennushaku löysi 16 uutta, uniikkia jaetta. Arvioidaan ne...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- LAADUNVALVONTA JA ÄLYKÄS KORVAAMINEN ---
+  -> KORVATAAN: 'Luukas 17:15' (9.00/10) ==> 'Psalmit 103:4' (9.50/10)
+  -> KORVATAAN: 'Psalmit 25:8' (9.00/10) ==> 'Luukas 1:76' (9.50/10)
+  -> KORVATAAN: '1. Timoteuskirje 1:15' (9.00/10) ==> 'Kolossalaiskirje 1:11' (9.50/10)
+  -> KORVATAAN: '2. Pietarin kirje 2:21' (9.00/10) ==> 'Efesolaiskirje 2:8' (9.50/10)
+  -> SÄILYTETÄÄN: 'Luukas 1:77' (9.00/10), koska uusi ehdokas 'Roomalaiskirje 5:1' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '2. Johanneksen kirje 1:3' (9.00/10), koska uusi ehdokas 'Efesolaiskirje 1:7' (9.00/10) ei ollut parempi.
+Laadunvalvonta valmis. 4 jaetta korvattu.
+Parannusprosessin jälkeen lopullinen laatuarvio: 9.45/10
+LAADUNPARANNUS ONNISTUI! (9.32 -> 9.45) ✅
+--- Lopulliset valitut jakeet ja niiden arviot (Päämalli: llama3.1:8b) ---
+  - Filippiläiskirje 3:10: 9.80/10 (Rikastuttava kuvaus tunnustamiselle ja ylösnousemukselle.)
+  - Psalmit 37:23: 9.50/10 (Tämä jakee korostaa hyvin Lordin valintoja ja sen, miten hän ohjaa ihmisten elämää.)
+  - Roomalaiskirje 6:22: 9.50/10 (Toki on erinomainen teksti, joka yksityisesti kiittää Jumalan armosta ja tarjoutuu sitoutuneena palvelemaan hänelle.)
+  - Roomalaiskirje 10:10: 9.50/10 (Sanausko ja tunnustukset ovat perusta hänen pelastavalle toimilleen, mikä on hyvin kuvattu.)
+  - Efesolaiskirje 1:8: 9.50/10 (Armo on hyvin kuvattu, mutta ei pahemmanlaatuista katumusta tai rakkaudesta.)
+  - Roomalaiskirje 4:7: 9.50/10 (Tämän jakeen sisältö on hyvin yksityiskohtainen ja se puhuu oikein syntien anteeksiantamisesta.)
+  - Heprealaiskirje 11:16: 9.50/10 (Hyvin kattaa armon vastaanottamisen ja sen seuraukset. Ei syrjää synnin tunnustamista.)
+  - Roomalaiskirje 3:25: 9.50/10 (Jake on erittäin hyvä esimerkki siitä, miten vanhurskaus ja armahtaminen liittyvät toisiinsa.)
+  - Roomalaiskirje 3:24: 9.50/10 (Korkeapainoinen kuvaus armosta ja hänen kautensa tunnustamisesta.)
+  - Psalmit 103:4: 9.50/10 (Armollisuus ja anteeksiantamus Jumalan toimintaa kuvaavat laaja-alainen kuvauksen saa)
+  - Luukas 1:76: 9.50/10 (Korkein profeetta tulee kutsua armollisuuden ja anteeksiantamisen kautta)
+  - Kolossalaiskirje 1:11: 9.50/10 (Armon portaita korostetaan anteeksiantamisen ja rahastetun syyn välityksellä)
+  - Efesolaiskirje 2:8: 9.50/10 (Armon portaita korostetaan anteeksiantamisen ja rahastetun syyn välityksellä)
+  - Luukas 1:77: 9.00/10 (Syntien anteeksiantamisella on merkitystä ja sitä tunnustetaan palvelevana askelena armollisuuden suuntaan.)
+  - 2. Johanneksen kirje 1:3: 9.00/10 (Armo ja laupeus ovat toisinaan sama asia ja ne muodostavat yhtenäisen kuvauksen.)
+
+================================================================================
+       Käsitellään osio 4/5: 4. Miten seurakunta kohtelee kompastunutta?        
+================================================================================
+
+Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Avainsana-Tehostin: Ei relevantteja avainsanoja otsikossa.
+Löytyi 75 ehdokasjaetta.
+Vaihe 2: Arvioidaan 75 ehdokasta päämallilla...
+  - Arvioidaan erä 1/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 2/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 3/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 4/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 5/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 6/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 7/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 8/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Alkuperäinen arviointi valmis. Saatiin 75 jaearviota.
+Vaihe 3: Valittu 15 parasta jaetta. Alkuperäinen laatuarvio: 9.10/10
+
+================================================================================
+              KÄYNNISTETÄÄN DYNAAMINEN PARANNUSALGORITMI (OSIO 4)               
+================================================================================
+
+TILA A: Ydinjakeita löytyi 3 kpl (väh. 3). Suoritetaan tarkennushaku.
+Dynaaminen raja-arvo tälle osiolle: 9.10/10
+Korvattavia heikkoja jakeita: 12. Haetaan 36 uutta ehdokasta.
+Tarkennushaku löysi 32 uutta, uniikkia jaetta. Arvioidaan ne...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- LAADUNVALVONTA JA ÄLYKÄS KORVAAMINEN ---
+  -> KORVATAAN: 'Efesolaiskirje 5:27' (9.00/10) ==> 'Sananlaskut 22:22' (9.50/10)
+  -> KORVATAAN: 'Galatalaiskirje 6:1' (9.00/10) ==> '2. Timoteuskirje 2:24' (9.50/10)
+  -> KORVATAAN: 'Tiituskirje 1:7' (9.00/10) ==> 'Roomalaiskirje 5:5' (9.50/10)
+  -> KORVATAAN: '2. Tessalonikalaiskirje 3:6' (9.00/10) ==> '2. Tessalonikalaiskirje 3:4' (9.50/10)
+  -> KORVATAAN: '1. Pietarin kirje 3:18' (9.00/10) ==> 'Efesolaiskirje 4:23' (9.50/10)
+  -> KORVATAAN: 'Tiituskirje 2:14' (9.00/10) ==> 'Valitusvirret 3:30' (9.50/10)
+  -> KORVATAAN: '1. Timoteuskirje 3:8' (9.00/10) ==> '4. Mooseksen kirja 6:25' (9.50/10)
+  -> SÄILYTETÄÄN: 'Kolossalaiskirje 2:13' (9.00/10), koska uusi ehdokas '2. Timoteuskirje 2:26' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '2. Korinttilaiskirje 13:5' (9.00/10), koska uusi ehdokas 'Apostolien teot 3:19' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Tiituskirje 3:3' (9.00/10), koska uusi ehdokas 'Heprealaiskirje 10:23' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Roomalaiskirje 5:19' (9.00/10), koska uusi ehdokas 'Sananlaskut 3:5' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '1. Tessalonikalaiskirje 2:5' (9.00/10), koska uusi ehdokas 'Job 36:10' (9.00/10) ei ollut parempi.
+Laadunvalvonta valmis. 7 jaetta korvattu.
+Parannusprosessin jälkeen lopullinen laatuarvio: 9.33/10
+LAADUNPARANNUS ONNISTUI! (9.10 -> 9.33) ✅
+--- Lopulliset valitut jakeet ja niiden arviot (Päämalli: llama3.1:8b) ---
+  - 2. Timoteuskirje 2:15: 9.50/10 (Tämän jakeen mukaan seurakuntalainen olisi aina oikeasti pyrkivä sivistymään.)
+  - Jesaja 53:8: 9.50/10 (Vastailee erinomaisesti Kristuksen sovinnon antamista ja tämän seurauksia ihmisten elämässä.)
+  - 2. Timoteuskirje 2:25: 9.50/10 (Tämä jakee korostaa rakkauden ja lempeyden olemassaoloa seurakunnissa.)
+  - Sananlaskut 22:22: 9.50/10 (Toistaa lempeän kohtelun hyödyllisyyttä epäonnistuneelle.)
+  - 2. Timoteuskirje 2:24: 9.50/10 (Toistaa lempeän kohtelun ja opettamisen tärkeyttä epäonnistuneelle.)
+  - Roomalaiskirje 5:5: 9.50/10 (Puhuu Jumalan rakkauden tulosta sydämiimme pyhien hengen kautta, mikä on lempeyden ja armollisuuden peruste.)
+  - 2. Tessalonikalaiskirje 3:4: 9.50/10 (Luotaa Herrassa, mikä on lähellä lempeyden edellytystä epäonnistuneelle.)
+  - Efesolaiskirje 4:23: 9.50/10 (Kehottaa uudesta ihmisestä ja uudistumisesta mielen hengeltä.)
+  - Valitusvirret 3:30: 9.50/10 (Kehottaa ojentamista ja häväistyksen saamista epäonnistuneelle.)
+  - 4. Mooseksen kirja 6:25: 9.50/10 (Kehottaa Herra-valistamista ja armollisuutta ehdottomasti lempeyden osalta epäonnistuneelle.)
+  - Kolossalaiskirje 2:13: 9.00/10 (Tämä laatta on hyvin sopiva käsittelemään kompastuneiden kohtelua ja sitoutumista rakentamiseen yhteisöä.)
+  - 2. Korinttilaiskirje 13:5: 9.00/10 (Jakeet ymmärtää erittäin hyvin aiheen, mutta se ei oikeastaan vastaa aiheita.)
+  - Tiituskirje 3:3: 9.00/10 (Jakeet ymmärtää erittäin hyvin aiheen, mutta ne eivät sisällä lempeyttä.)
+  - Roomalaiskirje 5:19: 9.00/10 (Jakeet ymmärtää erittäin hyvin aiheen, mutta ne eivät sisällä lempeyttä.)
+  - 1. Tessalonikalaiskirje 2:5: 9.00/10 (Korostaa seurakunnan roolia ja pyrkimystä edistää hyvää.)
+
+================================================================================
+          Käsitellään osio 5/5: 5. Yhteenveto: Arpeutuneet parantajat           
+================================================================================
+
+Vaihe 1: Suoritetaan laaja haku (haetaan 75 jaetta)...
+Avainsana-Tehostin: Ei relevantteja avainsanoja otsikossa.
+Löytyi 75 ehdokasjaetta.
+Vaihe 2: Arvioidaan 75 ehdokasta päämallilla...
+  - Arvioidaan erä 1/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 2/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 3/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 4/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 5/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 6/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 7/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+  - Arvioidaan erä 8/8...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+Alkuperäinen arviointi valmis. Saatiin 75 jaearviota.
+Vaihe 3: Valittu 15 parasta jaetta. Alkuperäinen laatuarvio: 9.13/10
+
+================================================================================
+              KÄYNNISTETÄÄN DYNAAMINEN PARANNUSALGORITMI (OSIO 5)               
+================================================================================
+
+TILA A: Ydinjakeita löytyi 4 kpl (väh. 3). Suoritetaan tarkennushaku.
+Dynaaminen raja-arvo tälle osiolle: 9.13/10
+Korvattavia heikkoja jakeita: 11. Haetaan 33 uutta ehdokasta.
+Tarkennushaku löysi 29 uutta, uniikkia jaetta. Arvioidaan ne...
+Käytetään mallia: llama3.1:8b
+Lähetetään JSON-pyyntö mallille llama3.1:8b (Yritys 1/3)...
+HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+Vastaus jäsennelty onnistuneesti.
+--- LAADUNVALVONTA JA ÄLYKÄS KORVAAMINEN ---
+  -> SÄILYTETÄÄN: '2. Korinttilaiskirje 1:8' (9.00/10), koska uusi ehdokas '4. Mooseksen kirja 6:25' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '1. Tessalonikalaiskirje 4:6' (9.00/10), koska uusi ehdokas 'Sananlaskut 3:5' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Apostolien teot 20:35' (9.00/10), koska uusi ehdokas 'Psalmit 119:66' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Roomalaiskirje 2:3' (9.00/10), koska uusi ehdokas 'Sananlaskut 3:26' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '2. Timoteuskirje 2:25' (9.00/10), koska uusi ehdokas 'Jesaja 35:5' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Psalmit 86:5' (9.00/10), koska uusi ehdokas 'Filippiläiskirje 4:6' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Job 5:18' (9.00/10), koska uusi ehdokas '5. Mooseksen kirja 28:14' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Roomalaiskirje 6:19' (9.00/10), koska uusi ehdokas 'Jaakobin kirje 4:8' (9.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: 'Psalmit 103:3' (9.00/10), koska uusi ehdokas 'Roomalaiskirje 6:18' (8.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '1. Tessalonikalaiskirje 2:12' (9.00/10), koska uusi ehdokas '2. Tessalonikalaiskirje 3:4' (8.00/10) ei ollut parempi.
+  -> SÄILYTETÄÄN: '1. Pietarin kirje 5:2' (9.00/10), koska uusi ehdokas 'Heprealaiskirje 6:11' (8.00/10) ei ollut parempi.
+Laadunvalvonta valmis. 0 jaetta korvattu.
+Parannusprosessin jälkeen lopullinen laatuarvio: 9.13/10
+Laatu ei parantunut tai pysyi samana.
+--- Lopulliset valitut jakeet ja niiden arviot (Päämalli: llama3.1:8b) ---
+  - Jesaja 35:4: 9.50/10 (Täysin samanlaista tuntea, kuin esimerkissä nähdään ja on todella hyvin sanottua!)
+  - Heprealaiskirje 6:10: 9.50/10 (Jake on hyvin yhtäläinen aiheeseen, sillä se korostaa Jumalan rakkautta ja armoa.)
+  - Roomalaiskirje 6:17: 9.50/10 (Tämä jakee kertoo siitä, kuinka Jumala on ystävällinen ja anteeksiantava, mutta myös sitoutunut tekemään hyvää.)
+  - Job 22:29: 9.50/10 (Jos ihminen kääntyy nöyryyttään, niin Jumala auttaa ja saa ylös.)
+  - 2. Korinttilaiskirje 1:8: 9.00/10 (Kokemukset ahdistuksen kautta ja niiden hyödyntäminen lohdutuksena muiden ihmisten kanssa on tärkeä näkemys.)
+  - 1. Tessalonikalaiskirje 4:6: 9.00/10 (Täysi hyväksi toisten kannattamista, ja harkitsematon käyttäytyminen.)
+  - Apostolien teot 20:35: 9.00/10 (Ei yhtenevää tuntua aiheeseen.)
+  - Roomalaiskirje 2:3: 9.00/10 (Erittäin hyvin vastaa aiheeseen ja on myös yksityiskohtainen.)
+  - 2. Timoteuskirje 2:25: 9.00/10 (Jake on hyvin yhtäläinen aiheeseen, sillä se kertoo Jumalan mielenmuutoksesta eikä pelkästään hänelle omaksi toiminnaksi.)
+  - Psalmit 86:5: 9.00/10 (Jakee korostaa Jumalan ylpeyttä ja rakastavaista luonnontapansa.)
+  - Job 5:18: 9.00/10 (Jakee mainitsee Jumalan kyvyn parantaa haavat ja lyöjän oikein myös parantaa.)
+  - Roomalaiskirje 6:19: 9.00/10 (Hengellisen elämän on välttettävä taas synneinmukainen elämää ja kääntymään uudelleen hartaaseen Jumalan luo.)
+  - Psalmit 103:3: 9.00/10 (Jumala parantaa kaikki ihmiselle synnit ja sairaudet.)
+  - 1. Tessalonikalaiskirje 2:12: 9.00/10 (Jumala pyytää kaikkaan arvollisesti Jumalan kutsua.)
+  - 1. Pietarin kirje 5:2: 9.00/10 (Jumalan tahdon mukaan on vapaaehtoisuus elämäänsä ja saa sydän halusta hengellistä elämää.)
+
+================================================================================
+                            DIAGNOSTIIKAN YHTEENVETO                            
+================================================================================
+
+Koko diagnostiikan ajo kesti: 807.73 sekuntia.
+PÄÄMALLIN antama lopullinen keskiarvo tulosten laadulle: 9.23/10
+
+================================================================================
+              YKSITYISKOHTAINEN JAEJAOTTELU (LOPULLISET TULOKSET)               
+================================================================================
+
+
+--- 1 1. Johdanto: Kielletty ja vaiettu aihe ---
+
+(Lopullinen arvosana tälle osiolle: 9.10/10)
+- 2. Aikakirja 6:38: "ja palajavat sinun tykösi kaikesta sydämestään ja kaikesta sielustaan vankeutensa maassa, johon heidät on vangeiksi viety, ja rukoilevat kääntyneinä tähän maahan päin, jonka sinä olet heidän isillensä antanut, tähän kaupunkiin päin, jonka sinä olet valinnut, ja tähän temppeliin päin, jonka minä olen sinun nimellesi rakentanut,"
+- 1. Pietarin kirje 4:17: "Sillä aika on tuomion alkaa Jumalan huoneesta; mutta jos se alkaa ensiksi meistä, niin mikä on niiden loppu, jotka eivät ole Jumalan evankeliumille kuuliaiset?"
+- Jaakobin kirje 1:21: "Sentähden pankaa pois kaikki saastaisuus ja kaikkinainen pahuus ja ottakaa hiljaisuudella vastaan sana, joka on teihin istutettu ja joka voi teidän sielunne pelastaa."
+- 2. Kuningasten kirja 17:15: "He hylkäsivät hänen käskynsä ja hänen liittonsa, jonka hän oli tehnyt heidän isiensä kanssa, ja todistukset, jotka hän oli heille antanut. He seurasivat turhia jumalia, ja turhanpäiväisiksi he tulivat, kun seurasivat pakanakansoja, jotka asuivat heidän ympärillänsä, vaikka Herra oli kieltänyt heitä tekemästä niinkuin ne."
+- 1. Tessalonikalaiskirje 2:4: "vaan niinkuin Jumala on katsonut meidän kelpaavan siihen, että meille uskottiin evankeliumi, niin me puhumme, emme, niinkuin tahtoisimme olla mieliksi ihmisille, vaan Jumalalle, joka koettelee meidän sydämemme."
+- 2. Aikakirja 6:37: "mutta jos he sitten menevät itseensä siinä maassa, johon heidät on viety vangeiksi, kääntyvät ja anovat sinulta armoa vankeutensa maassa, sanoen: 'Me olemme tehneet syntiä, tehneet väärin ja olleet jumalattomat',"
+- 2. Pietarin kirje 2:20: "Sillä jos he meidän Herramme ja Vapahtajan Jeesuksen Kristuksen tuntemisen kautta ovat päässeetkin maailman saastutuksia pakoon, mutta niihin taas kietoutuvat ja tulevat voitetuiksi, niin on viimeinen tullut heille ensimmäistä pahemmaksi."
+- Psalmit 15:3: "joka ei panettele kielellänsä, joka ei tee toiselle pahaa eikä saata lähimmäistään häväistyksen alaiseksi;"
+- 2. Korinttilaiskirje 12:21: "ja että, kun tulen, Jumalani on taas nöyryyttävä minua teidän tykönänne, ja että joudun suremaan monen tähden, jotka ennen ovat synnissä eläneet eivätkä ole katuneet sitä saastaisuutta ja haureutta ja irstautta, jota ovat harjoittaneet."
+- 2. Pietarin kirje 3:3: "Ja ennen kaikkea tietäkää se, että viimeisinä päivinä tulee pilkkapuheinensa pilkkaajia, jotka vaeltavat omien himojensa mukaan"
+- 2. Timoteuskirje 3:8: "Ja niinkuin Jannes ja Jambres vastustivat Moosesta, niin nuokin vastustavat totuutta, nuo mieleltään turmeltuneet ihmiset, jotka eivät uskonkoetuksissa kestä."
+- 2. Korinttilaiskirje 4:2: "vaan olemme hyljänneet kaikki häpeälliset salatiet, niin ettemme vaella kavaluudessa emmekä väärennä Jumalan sanaa, vaan julkituomalla totuuden me suositamme itseämme jokaisen ihmisen omalletunnolle Jumalan edessä."
+- Roomalaiskirje 11:12: "Mutta jos heidän lankeemuksensa on maailmalle rikkaudeksi ja heidän vajautensa pakanoille rikkaudeksi, kuinka paljoa enemmän heidän täyteytensä!"
+- Sakarja 10:5: "Ja he ovat niinkuin sankarit, jotka polkevat katujen lokaa sodassa. He sotivat, sillä Herra on heidän kanssansa; ja häpeään joutuvat hevosilla-ratsastajat."
+- 1. Pietarin kirje 4:18: "Ja "jos vanhurskas vaivoin pelastuu, niin mihinkä joutuukaan jumalaton ja syntinen?""
+
+--- 2 2. Varoittavat esimerkit: Daavid ja Pietari ---
+
+(Lopullinen arvosana tälle osiolle: 9.13/10)
+- Apostolien teot 2:34: "Sillä ei Daavid ole astunut ylös taivaisiin, vaan hän sanoo itse: 'Herra sanoi minun Herralleni: Istu minun oikealle puolelleni,"
+- 2. Samuelin kirja 7:20: "Mitä Daavid enää sinulle puhuisi? Sinähän tunnet palvelijasi, Herra, Herra."
+- Johannes 21:19: "Mutta sen hän sanoi antaakseen tietää, minkäkaltaisella kuolemalla Pietari oli kirkastava Jumalaa. Ja tämän sanottuaan hän lausui hänelle: "Seuraa minua"."
+- Markus 3:12: "Ja hän varoitti ankarasti heitä saattamasta häntä julki."
+- Roomalaiskirje 4:6: "niinkuin myös Daavid ylistää autuaaksi sitä ihmistä, jolle Jumala lukee vanhurskauden ilman tekoja:"
+- Apostolien teot 13:36: "Sillä kun Daavid oli aikanansa Jumalan tahtoa palvellut, nukkui hän ja tuli otetuksi isiensä tykö ja näki katoavaisuuden."
+- 2. Samuelin kirja 12:20: "Niin Daavid nousi maasta, peseytyi ja voiteli itsensä, muutti vaatteensa, meni Herran huoneeseen ja rukoili. Ja kun hän tuli kotiinsa, pyysi hän ruokaa; ja he tarjosivat, ja hän söi."
+- Apostolien teot 5:29: "Mutta Pietari ja muut apostolit vastasivat ja sanoivat: "Enemmän tulee totella Jumalaa kuin ihmisiä."
+- Apostolien teot 4:25: "Sinä, joka Pyhän Hengen kautta, isämme Daavidin, sinun palvelijasi, suun kautta, olet puhunut: 'Miksi pakanat pauhaavat ja kansat turhia ajattelevat?"
+- Johannes 18:15: "Ja Jeesusta seurasi Simon Pietari ja eräs toinen opetuslapsi. Tämä opetuslapsi oli ylimmäisen papin tuttava ja meni Jeesuksen kanssa sisälle ylimmäisen papin kartanoon."
+- 2. Tessalonikalaiskirje 1:5: "ja jotka ovat osoituksena Jumalan vanhurskaasta tuomiosta, että teidät katsottaisiin arvollisiksi Jumalan valtakuntaan, jonka tähden kärsittekin,"
+- Luukas 6:14: "Simonin, jolle hän myös antoi nimen Pietari, ja Andreaan, hänen veljensä, ja Jaakobin ja Johanneksen, ja Filippuksen ja Bartolomeuksen,"
+- 2. Timoteuskirje 2:8: "Muista Jeesusta Kristusta, joka on kuolleista herätetty ja on Daavidin siementä minun evankeliumini mukaan,"
+- 2. Aikakirja 7:18: "niin minä pidän pystyssä sinun kuninkaallisen valtaistuimesi, niinkuin minä lupasin sinun isällesi Daavidille sanoen: 'Aina on mies sinun suvustasi hallitseva Israelia'."
+- Markus 8:32: "Ja tämän hän puhui peittelemättä. Silloin Pietari otti hänet erilleen ja rupesi häntä nuhtelemaan."
+
+--- 3 3. Tie takaisin: Parannuksen ja armon portaat ---
+
+(Lopullinen arvosana tälle osiolle: 9.45/10)
+- Filippiläiskirje 3:10: "tunteakseni hänet ja hänen ylösnousemisensa voiman ja hänen kärsimyksiensä osallisuuden, tullessani hänen kaltaisekseen samankaltaisen kuoleman kautta,"
+- Psalmit 37:23: "Herra vahvistaa sen miehen askeleet, jonka tie hänelle kelpaa."
+- Roomalaiskirje 6:22: "Mutta nyt, kun olette synnistä vapautetut ja Jumalan palvelijoiksi tulleet, on teidän hedelmänne pyhitys, ja sen loppu on iankaikkinen elämä."
+- Roomalaiskirje 10:10: "sillä sydämen uskolla tullaan vanhurskaaksi ja suun tunnustuksella pelastutaan."
+- Efesolaiskirje 1:8: "Tätä armoa hän on ylenpalttisesti antanut meille kaikkinaiseksi viisaudeksi ja ymmärrykseksi,"
+- Roomalaiskirje 4:7: ""Autuaat ne, joiden rikokset ovat anteeksi annetut ja joiden synnit ovat peitetyt!"
+- Heprealaiskirje 11:16: "mutta nyt he pyrkivät parempaan, se on taivaalliseen. Sentähden Jumala ei heitä häpeä, vaan sallii kutsua itseään heidän Jumalaksensa; sillä hän on valmistanut heille kaupungin."
+- Roomalaiskirje 3:25: "jonka Jumala on asettanut armoistuimeksi uskon kautta hänen vereensä, osoittaaksensa vanhurskauttaan, koska hän oli jättänyt rankaisematta ennen tehdyt synnit"
+- Roomalaiskirje 3:24: "ja saavat lahjaksi vanhurskauden hänen armostaan sen lunastuksen kautta, joka on Kristuksessa Jeesuksessa,"
+- Psalmit 103:4: "joka lunastaa sinun henkesi tuonelasta ja kruunaa sinut armolla ja laupeudella,"
+- Luukas 1:76: "Ja sinä, lapsukainen, olet kutsuttava Korkeimman profeetaksi, sillä sinä olet käyvä Herran edellä valmistaaksesi hänen teitään,"
+- Kolossalaiskirje 1:11: "ja hänen kirkkautensa väkevyyden mukaan kaikella voimalla vahvistettuina olemaan kaikessa kestäviä ja pitkämielisiä, ilolla"
+- Efesolaiskirje 2:8: "Sillä armosta te olette pelastetut uskon kautta, ette itsenne kautta — se on Jumalan lahja —"
+- Luukas 1:77: "antaaksesi hänen kansalleen pelastuksen tuntemisen heidän syntiensä anteeksisaamisessa,"
+- 2. Johanneksen kirje 1:3: "Armo, laupeus ja rauha Isältä Jumalalta ja Jeesukselta Kristukselta, Isän Pojalta, on oleva meidän kanssamme, totuudessa ja rakkaudessa."
+
+--- 4 4. Miten seurakunta kohtelee kompastunutta? ---
+
+(Lopullinen arvosana tälle osiolle: 9.33/10)
+- 2. Timoteuskirje 2:15: "Pyri osoittautumaan Jumalalle semmoiseksi, joka koetukset kestää, työntekijäksi, joka ei työtään häpeä, joka oikein jakelee totuuden sanaa."
+- Jesaja 53:8: "mutta hän on haavoitettu meidän rikkomustemme tähden, runneltu meidän pahain tekojemme tähden. Rangaistus oli hänen päällänsä, että meillä rauha olisi, ja hänen haavainsa kautta me olemme paratut."
+- 2. Timoteuskirje 2:25: "hänen tulee sävyisästi ojentaa vastustelijoita; ehkäpä Jumala antaa heille mielenmuutoksen, niin että tulevat tuntemaan totuuden"
+- Sananlaskut 22:22: "Älä raasta vaivaista, siksi että hän on vaivainen, äläkä polje kurjaa portissa."
+- 2. Timoteuskirje 2:24: "Mutta Herran palvelijan ei sovi riidellä, vaan hänen tulee olla lempeä kaikkia kohtaan, kyetä opettamaan ja pahaa kärsimään;"
+- Roomalaiskirje 5:5: "mutta toivo ei saata häpeään; sillä Jumalan rakkaus on vuodatettu meidän sydämiimme Pyhän Hengen kautta, joka on meille annettu."
+- 2. Tessalonikalaiskirje 3:4: "Ja me luotamme teihin Herrassa, että te sekä nyt että vasta teette, mitä me käskemme."
+- Efesolaiskirje 4:23: "ja uudistua mielenne hengeltä"
+- Valitusvirret 3:30: "Ojentakoon hän posken sille, joka häntä lyö, saakoon kyllälti häväistystä."
+- 4. Mooseksen kirja 6:25: "Herra valistakoon kasvonsa sinulle ja olkoon sinulle armollinen;"
+- Kolossalaiskirje 2:13: "Ja teidät, jotka olitte kuolleet rikoksiinne ja lihanne ympärileikkaamattomuuteen, teidät hän teki eläviksi yhdessä hänen kanssaan, antaen meille anteeksi kaikki rikokset,"
+- 2. Korinttilaiskirje 13:5: "Koetelkaa itseänne, oletteko uskossa; tutkikaa itseänne. Vai ettekö tunne itseänne, että Jeesus Kristus on teissä? Ellei, niin ette kestä koetusta."
+- Tiituskirje 3:3: "Olimmehan mekin ennen ymmärtämättömiä, tottelemattomia, eksyksissä, moninaisten himojen ja hekumain orjia, elimme pahuudessa ja kateudessa, olimme inhottavia ja vihasimme toisiamme."
+- Roomalaiskirje 5:19: "sillä niinkuin yhden ihmisen tottelemattomuuden kautta monet ovat joutuneet syntisiksi, niin myös yhden kuuliaisuuden kautta monet tulevat vanhurskaiksi."
+- 1. Tessalonikalaiskirje 2:5: "Sillä me emme koskaan ole liikkuneet liehakoivin sanoin, sen te tiedätte, emmekä millään tekosyyllä voittoa ahnehtineet; Jumala on todistajamme,"
+
+--- 5 5. Yhteenveto: Arpeutuneet parantajat ---
+
+(Lopullinen arvosana tälle osiolle: 9.13/10)
+- Jesaja 35:4: "Sanokaa hätääntyneille sydämille: "Olkaa lujat, älkää peljätkö. Katso, teidän Jumalanne! Kosto tulee, Jumalan rangaistus. Hän tulee ja pelastaa teidät.""
+- Heprealaiskirje 6:10: "Sillä Jumala ei ole väärämielinen, niin että hän unhottaisi teidän työnne ja rakkautenne, jota olette osoittaneet hänen nimeänsä kohtaan, kun olette palvelleet pyhiä ja vielä palvelette."
+- Roomalaiskirje 6:17: "Mutta kiitos Jumalalle, että te, jotka ennen olitte synnin palvelijoita, nyt olette tulleet sydämestänne kuuliaisiksi sille opin muodolle, jonka johtoon te olette annetut,"
+- Job 22:29: "Jos tie painuu alaspäin, niin sinä sanot: 'Ylös!' ja hän auttaa nöyrtyväistä."
+- 2. Korinttilaiskirje 1:8: "Sillä me emme tahdo, veljet, pitää teitä tietämättöminä siitä ahdistuksesta, jossa me olimme Aasiassa, kuinka ylenpalttiset, yli voimiemme käyvät, meidän rasituksemme olivat, niin että jo olimme epätoivossa hengestämmekin,"
+- 1. Tessalonikalaiskirje 4:6: "ettei kukaan sorra veljeänsä eikä tuota hänelle vahinkoa missään asiassa, sillä Herra on kaiken tämän kostaja, niinkuin myös ennen olemme teille sanoneet ja todistaneet."
+- Apostolien teot 20:35: "Kaikessa minä olen osoittanut teille, että näin työtä tehden tulee huolehtia heikoista ja muistaa nämä Herran Jeesuksen sanat, jotka hän itse sanoi: 'Autuaampi on antaa kuin ottaa'.""
+- Roomalaiskirje 2:3: "Vai luuletko, ihminen, sinä, joka tuomitset niitä, jotka senkaltaisia tekevät, ja itse samoja teet, että sinä vältät Jumalan tuomion?"
+- 2. Timoteuskirje 2:25: "hänen tulee sävyisästi ojentaa vastustelijoita; ehkäpä Jumala antaa heille mielenmuutoksen, niin että tulevat tuntemaan totuuden"
+- Psalmit 86:5: "Sillä sinä, Herra, olet hyvä ja anteeksiantavainen, suuri armossa kaikille, jotka sinua avuksensa huutavat."
+- Job 5:18: "Sillä hän haavoittaa, ja hän sitoo; lyö murskaksi, mutta hänen kätensä myös parantavat."
+- Roomalaiskirje 6:19: "Minä puhun ihmisten tavalla teidän lihanne heikkouden tähden. Sillä niinkuin te ennen annoitte jäsenenne saastaisuuden ja laittomuuden palvelijoiksi laittomuuteen, niin antakaa nyt jäsenenne vanhurskauden palvelijoiksi pyhitykseen."
+- Psalmit 103:3: "hän, joka antaa kaikki sinun syntisi anteeksi ja parantaa kaikki sinun sairautesi,"
+- 1. Tessalonikalaiskirje 2:12: "ja teroitimme teille, että teidän on vaeltaminen arvollisesti Jumalan edessä, joka kutsuu teitä valtakuntaansa ja kirkkauteensa."
+- 1. Pietarin kirje 5:2: "kaitkaa teille uskottua Jumalan laumaa, ei pakosta, vaan vapaaehtoisesti, Jumalan tahdon mukaan, ei häpeällisen voiton tähden, vaan sydämen halusta,"
+
+Diagnostiikka valmis.
