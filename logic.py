@@ -195,11 +195,12 @@ VASTAA AINOASTAAN JSON-MUODOSSA: {{"sovellu": true}} TAI {{"sovellu": false}}
 
 def etsi_merkityksen_mukaan(kysely: str, otsikko: str, top_k: int = 15,
                           custom_strategiat: dict = None,
-                          custom_siemenjakeet: dict = None) -> list[dict]:
+                          custom_siemenjakeet: dict = None,
+                          valitut_tehostesanat: set = None) -> list[dict]:
     """Etsii Raamatusta käyttäen kontekstitietoista ja strategista hakua, jossa on sanasto-varmennettu avainsana-tehostin."""
     resurssit = lataa_resurssit()
     if not all(resurssit):
-        return []
+        return [], set()
     model, cross_encoder, paaindeksi, paakartta, jae_haku_kartta, raamattu_sanasto = resurssit
 
     strategia_lahde = custom_strategiat if custom_strategiat is not None else STRATEGIA_SANAKIRJA
@@ -208,42 +209,24 @@ def etsi_merkityksen_mukaan(kysely: str, otsikko: str, top_k: int = 15,
     laajennettu_kysely = kysely
     pien_kysely = kysely.lower()
 
-    stop_words = {
-        'aiemmin', 'aika', 'aikaa', 'aikaan', 'aikaisemmin', 'aikaisin', 'aikana', 'aikoa', 'aina', 'ainakaan',
-        'ainakin', 'ainoa', 'ainut', 'aivan', 'alas', 'alkuisin', 'alla', 'alle', 'alta', 'aluksi', 'antaa', 'asia', 'asti',
-        'edes', 'edessä', 'edestä', 'ehkä', 'ei', 'eikä', 'eilen', 'eivät', 'eli', 'ellei', 'emme', 'en', 'enemmän', 'eniten',
-        'ensin', 'entinen', 'entä', 'eri', 'erittäin', 'esimerkiksi', 'et', 'eteen', 'etenkin', 'ette', 'he', 'heidän',
-        'hän', 'hänen', 'ihan', 'ilman', 'itse', 'itsensä', 'ja', 'jo', 'johon', 'joiden', 'joihin', 'joiksi', 'joilla',
-        'joille', 'joilta', 'joina', 'joissa', 'joista', 'joita', 'joka', 'jokainen', 'jokin', 'joko', 'joku', 'jolla',
-        'jolle', 'jolloin', 'jolta', 'jonka', 'jonkin', 'jonne', 'jos', 'joskus', 'jossa', 'josta', 'jota', 'jotain',
-        'joten', 'jotka', 'jotta', 'juuri', 'jälkeen', 'kanssa', 'keiden', 'keihin', 'keillä', 'keille', 'keiltä',
-        'keissä', 'keistä', 'keitä', 'kuka', 'kukaan', 'ken', 'kerran', 'kerta', 'kertaa', 'kesken', 'koska', 'koskaan',
-        'kuin', 'kuinka', 'kuitenkaan', 'kuitenkin', 'kun', 'kuten', 'kyllä', 'kymmenen', 'lähellä', 'läheltä', 'lähes',
-        'läpi', 'liian', 'lisäksi', 'me', 'meidän', 'melkein', 'melko', 'mihin', 'mikin', 'miksi', 'mikä', 'mikään',
-        'mille', 'milloin', 'millä', 'miltä', 'minkä', 'minne', 'minun', 'minut', 'minä', 'missä', 'mistä', 'miten',
-        'mitkä', 'mitä', 'mitään', 'mukaan', 'mutta', 'muu', 'muut', 'muuta', 'muutama', 'muuten', 'myös', 'myöskään',
-        'ne', 'neljä', 'niiden', 'niihin', 'niiksi', 'niillä', 'niille', 'niiltä', 'niin', 'niinä', 'niissä', 'niistä',
-        'niitä', 'noin', 'nopeasti', 'nyt', 'nämä', 'näiden', 'näihin', 'näiksi', 'näillä', 'näille', 'näiltä', 'näinä',
-        'näissä', 'näistä', 'näitä', 'ole', 'olemme', 'olen', 'olet', 'olette', 'oleva', 'olevan', 'olevat', 'oli',
-        'olimme', 'olin', 'olisi', 'olisimme', 'olisin', 'olisit', 'olisitte', 'olivat', 'olla', 'olleet', 'ollut',
-        'oma', 'omat', 'on', 'ovat', 'paljon', 'paremmin', 'perusteella', 'pian', 'pitkin', 'pitäisi', 'pitää', 'pois',
-        'puolesta', 'puolestaan', 'päälle', 'päin', 'saakka', 'sata', 'se', 'sekä', 'sen', 'siellä', 'sieltä', 'siihen',
-        'siinä', 'siitä', 'sijaan', 'siksi', 'sillä', 'silloin', 'silti', 'sinne', 'sinun', 'sinut', 'sinä', 'sisällä',
-        'siten', 'sitten', 'sitä', 'suoraan', 'suuri', 'suurin', 'tai', 'taas', 'takana', 'takia', 'tavalla', 'tavoin',
-        'te', 'teidän', 'tietenkin', 'todella', 'toinen', 'toisaalla', 'toisaalta', 'toistaiseksi', 'toki', 'tosin',
-        'tuhannen', 'tuhat', 'tulee', 'tulla', 'tämä', 'tämän', 'tänään', 'tässä', 'tästä', 'täysin', 'täytyy', 'täällä',
-        'täältä', 'usea', 'useasti', 'usein', 'useita', 'uusi', 'uusia', 'uutta', 'vaan', 'vaikka', 'vain', 'varmasti',
-        'varsinkin', 'varten', 'vasta', 'vastaan', 'verran', 'vielä', 'viime', 'viimeksi', 'voida', 'voimme', 'voin',
-        'voit', 'voitte', 'voivat', 'vuoksi', 'vuosi', 'vuotta', 'vähemmän', 'vähän', 'yhtä', 'yhtään', 'yksi', 'yleensä',
-        'yli', 'myöskin'
-    }
-    
-    sanat = re.sub(r'[^\w\s]', '', otsikko).split()
-    potentiaaliset_sanat = {
-        s.lower() for s in sanat
-        if s.lower() not in stop_words and len(s) > 2 and s and s[0].isupper()
-    }
-    tehostettavat_sanat = {sana for sana in potentiaaliset_sanat if sana in raamattu_sanasto}
+    # --- AVainsana-logiikka ---
+    tehostettavat_sanat = set()
+    if valitut_tehostesanat is None:
+        # Automaattinen tunnistus, jos käyttäjä ei ole manuaalisesti valinnut
+        viite_pattern = r'((?:[1-3]\.\s)?[A-ZÅÄÖa-zåäö]+\.?\s\d+:\d+(?:-\d+)?)'
+        puhdistettu_otsikko = re.sub(viite_pattern, '', otsikko)
+        puhdistettu_otsikko = re.sub(r'[^\w\s]', '', puhdistettu_otsikko)
+        
+        stop_words = { 'ja', 'on', 'ei', 'mutta', 'myös' } # Lyhennetty esimerkki
+        sanat = puhdistettu_otsikko.split()
+        potentiaaliset_sanat = {
+            s.lower() for s in sanat
+            if s.lower() not in stop_words and len(s) > 2 and s and s[0].isupper()
+        }
+        tehostettavat_sanat = {sana for sana in potentiaaliset_sanat if sana in raamattu_sanasto}
+    else:
+        # Käytetään käyttäjän dialogissa vahvistamia sanoja
+        tehostettavat_sanat = valitut_tehostesanat
 
     if tehostettavat_sanat:
         logging.info(f"Avainsana-Tehostin aktivoitu sanoille: {tehostettavat_sanat}")
@@ -287,7 +270,25 @@ def etsi_merkityksen_mukaan(kysely: str, otsikko: str, top_k: int = 15,
                             logging.info(f"  -> Tehostettiin jaetta {jae['viite']} sanoilla: {found_words}")
 
                 alyhaun_tulokset = sorted(ehdokkaat, key=lambda x: x['pisteet'], reverse=True)[:top_k]
-    return alyhaun_tulokset
+    
+    # Palautetaan myös tunnistetut/valitut sanat dialogia varten
+    return alyhaun_tulokset, tehostettavat_sanat
+
+
+def etsi_puhtaalla_haulla(kysely: str, top_k: int = 15) -> list[dict]:
+    """Suorittaa TILA D -hätähaun käyttäen vain alkuperäistä kyselyvektoria."""
+    logging.info("--- TILA D: KÄYNNISTETÄÄN VIIMEINEN OLJENKORSI (PUHDAS HAKU) ---")
+    resurssit = lataa_resurssit()
+    if not all(resurssit):
+        return []
+    model, _, paaindeksi, paakartta, jae_haku_kartta, _ = resurssit
+
+    kysely_vektori = model.encode([f"query: {kysely}"])
+    _, indeksit = paaindeksi.search(np.array(kysely_vektori, dtype=np.float32), top_k * 5) # Haetaan laajempi otos
+    
+    ehdokkaat = [{'viite': v, 'teksti': jae_haku_kartta.get(v, "")} for i in indeksit[0] if (v := paakartta.get(str(i)))]
+    
+    return ehdokkaat[:top_k]
 
 
 def arvioi_tulokset(aihe: str, tulokset: list, malli_nimi: str = ARVIOINTI_MALLI_ENSISIJAINEN) -> dict:
