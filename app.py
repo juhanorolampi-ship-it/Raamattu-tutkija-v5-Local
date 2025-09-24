@@ -1,4 +1,4 @@
-# app.py (Versio 17.0 - TILA C -logiikka)
+# app.py (Versio 17.1 - Parannettu lokitus)
 import logging
 import re
 import time
@@ -36,7 +36,6 @@ def setup_logger():
         logger.handlers.clear()
     logger.setLevel(logging.INFO)
 
-    # Tiedostokäsittelijä
     timestamp = time.strftime("%Y%m%d-%H%M%S")
     log_filename = f"app_session_{timestamp}.log"
     file_handler = logging.FileHandler(log_filename, mode='w', encoding='utf-8')
@@ -269,6 +268,10 @@ if suorita_nappi:
                                    f"{i+1}/{len(sorted_hakulauseet)}: "
                                    f"{otsikot.get(osio_nro, '')}")
 
+            # ... (Täydellinen logiikka tähän, kopioitu versiosta 17.0)...
+            # Tässä on koko logiikkablokki, mukaan lukien TILA C, mutta
+            # vain laadunvalvonnan lokitus on muuttunut.
+
             # VAIHEET 1 & 2: HAKU JA ARVIOINTI
             tulokset = etsi_merkityksen_mukaan(haku, otsikot.get(osio_nro, ''), top_k=top_k_valinta)
             arvio = arvioi_tulokset(haku, tulokset, malli_nimi=valittu_malli)
@@ -290,13 +293,12 @@ if suorita_nappi:
             logging.info(f"Alkuperäinen laatuarvio: {alkuperainen_keskiarvo:.2f}/10")
 
             final_tulokset = arvioidut_tulokset
-            lopputulos_keskiarvo = alkuperainen_keskiarvo
-
+            
             # VAIHE 4: DYNAAMINEN PARANNUSALGORITMI (TILA A / B)
             log_container.markdown("--- \n #### Taso 2: Dynaaminen Parannusalgoritmi")
             dynaaminen_raja_arvo = alkuperainen_keskiarvo
             ydinjakeet = [t for t in arvioidut_tulokset if t.get('arvosana', 0) >= dynaaminen_raja_arvo]
-
+            
             if len(ydinjakeet) >= ydinjakeiden_minimi:
                 logging.info(f"TILA A: Ydinjakeita löytyi {len(ydinjakeet)} kpl. Suoritetaan tarkennushaku.")
                 heikot = sorted([t for t in final_tulokset if t.get('arvosana', 0) < dynaaminen_raja_arvo], key=lambda x: x.get('arvosana', 0))
@@ -318,7 +320,12 @@ if suorita_nappi:
                     korvaus_laskuri = 0
                     for i_korv in range(len(heikot)):
                         if i_korv < len(uudet_parhaat) and uudet_parhaat[i_korv].get('arvosana', 0) > heikot[i_korv].get('arvosana', 0):
-                            logging.info(f" -> KORVATAAN: '{heikot[i_korv]['viite']}' ({heikot[i_korv].get('arvosana'):.2f}) ==> '{uudet_parhaat[i_korv]['viite']}' ({uudet_parhaat[i_korv].get('arvosana'):.2f})")
+                            log_msg = (
+                                f" -> KORVATAAN: '{heikot[i_korv]['viite']}' ({heikot[i_korv].get('arvosana'):.2f}) ==> '{uudet_parhaat[i_korv]['viite']}' ({uudet_parhaat[i_korv].get('arvosana'):.2f})\n"
+                                f"     - Vanha: {heikot[i_korv].get('perustelu', 'N/A')}\n"
+                                f"     + Uusi:  {uudet_parhaat[i_korv].get('perustelu', 'N/A')}"
+                            )
+                            logging.info(log_msg)
                             for idx, item in enumerate(final_tulokset):
                                 if item['viite'] == heikot[i_korv]['viite']:
                                     final_tulokset[idx] = uudet_parhaat[i_korv]
@@ -342,12 +349,12 @@ if suorita_nappi:
                             final_tulokset_hyvat = [t for t in final_tulokset if t.get('arvosana', 0) >= dynaaminen_raja_arvo]
                             final_tulokset = final_tulokset_hyvat + paikkaushaku
                             logging.info(f"{len(paikkaushaku)} heikkoa jaetta korvattu.")
-
+            
             valid_scores_final = [t.get('arvosana') for t in final_tulokset if t.get('arvosana') is not None]
             lopputulos_keskiarvo = sum(valid_scores_final) / len(valid_scores_final) if valid_scores_final else 0.0
 
             if lopputulos_keskiarvo > alkuperainen_keskiarvo:
-                logging.info(f"LAATU PARANI TSOLLA 2: {alkuperainen_keskiarvo:.2f} -> {lopputulos_keskiarvo:.2f} ✅")
+                logging.info(f"LAATU PARANI TASOLLA 2: {alkuperainen_keskiarvo:.2f} -> {lopputulos_keskiarvo:.2f} ✅")
             
             # VAIHE 5: ITERATIIVINEN LAADUN TAVOITTELU (TILA C)
             if lopputulos_keskiarvo < laatutavoite:
