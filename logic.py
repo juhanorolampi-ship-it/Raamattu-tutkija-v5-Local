@@ -1,4 +1,4 @@
-# logic.py (Versio 37.1 - Optimoitu arviointi ja GPU-korjaukset)
+# logic.py (Versio 38.0 - Vankka virheenkäsittely ja GPU-optimointi)
 import json
 import logging
 import pprint
@@ -22,10 +22,9 @@ CROSS_ENCODER_MALLI = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 TIMANTTIJAE_MINIMI_MAARA = 3
 
 # --- MALLIMÄÄRITYKSET ---
-# Nämä ovat oletusarvoja, jotka voidaan yliajaa käyttöliittymässä
-ARVIOINTI_MALLI_ENSISIJAINEN = "llama3.1:8b"
+ARVIOINTI_MALLI_ENSISIJAINEN = "raamattu-tutkija-model:q4"
 ARVIOINTI_MALLI_VARAMALLI = "gemma:7b"
-ASIANTUNTIJA_MALLI = "llama3.1:8b"
+ASIANTUNTIJA_MALLI = "raamattu-tutkija-model:q4"
 
 # --- STRATEGIAKERROS JA KARTTA ---
 STRATEGIA_SANAKIRJA = {
@@ -65,7 +64,7 @@ STRATEGIA_SIEMENJAE_KARTTA = {
 # --- LOKITUKSEN ALUSTUS ---
 logging.basicConfig(
     level=logging.INFO,
-    format="%(asctime)s [%(levelname)s] - %(message)s",
+    format="%(asctime)s - %(message)s",
     datefmt="%H:%M:%S",
 )
 
@@ -75,7 +74,6 @@ logging.basicConfig(
 def lataa_resurssit():
     logging.info("Ladataan hakumallit, indeksi ja datatiedostot muistiin...")
     try:
-        # TÄRKEÄ KORJAUS: Poistettu device='cpu', jotta GPU:ta käytetään
         model = SentenceTransformer(EMBEDDING_MALLI)
         cross_encoder = CrossEncoder(CROSS_ENCODER_MALLI)
         paaindeksi = faiss.read_index(PAAINDESKI_TIEDOSTO)
@@ -108,6 +106,7 @@ def poimi_raamatunviitteet(teksti: str) -> list[str]:
     pattern = r'((?:[1-3]\.\s)?[A-ZÅÄÖa-zåäö]+\.?\s\d+:\d+(?:-\d+)?)'
     return re.findall(pattern, teksti)
 
+
 def hae_jakeet_viitteella(viite_str: str, jae_haku_kartta: dict) -> list[dict]:
     viite_pattern = re.compile(
         r'((?:[1-3]\.\s)?[A-ZÅÄÖa-zåäö]+\.?)'
@@ -135,8 +134,8 @@ def hae_jakeet_viitteella(viite_str: str, jae_haku_kartta: dict) -> list[dict]:
 
 
 # --- VANKKA TEKOÄLYKUTSU ITSEKORJAUKSELLA ---
-def suorita_varmistettu_json_kutsu(mallit: list, kehote: str, max_yritykset: int = 2) -> tuple[dict, str]:
-    """Suorittaa tekoälykutsun, yrittää jäsentää JSON-vastauksen ja käyttää itsekorjausta virhetilanteessa."""
+def suorita_varmistettu_json_kutsu(mallit: list, kehote: str, required_keys: list = None, max_yritykset: int = 2) -> tuple[dict, str]:
+    """Suorittaa tekoälykutsun, varmistaa JSON-muodon ja vaadittujen avainten olemassaolon."""
     vastaus_teksti = ""
     for malli in mallit:
         logging.info(f"Käytetään mallia: {malli}")
@@ -147,7 +146,12 @@ def suorita_varmistettu_json_kutsu(mallit: list, kehote: str, max_yritykset: int
                 response = ollama.chat(model=malli, messages=messages, format='json')
                 vastaus_teksti = response['message']['content']
                 data = json.loads(vastaus_teksti)
-                logging.info("Vastaus jäsennelty onnistuneesti.")
+
+                if required_keys and not all(key in data for key in required_keys):
+                    logging.warning(f"Mallin {malli} vastaus oli validi, mutta siitä puuttui avaimet: {required_keys}. Yritetään uudelleen/seuraavaa mallia.")
+                    continue
+
+                logging.info("Vastaus jäsennelty onnistuneesti ja sisältää vaaditut avaimet.")
                 return data, malli
             except (json.JSONDecodeError, KeyError) as e:
                 logging.warning(f"Virhe mallin {malli} kanssa (yritys {yritys + 1}): {e}. Käynnistetään itsekorjaus...")
@@ -158,17 +162,18 @@ def suorita_varmistettu_json_kutsu(mallit: list, kehote: str, max_yritykset: int
                 )
                 try:
                     korjaus_messages = [{'role': 'user', 'content': korjaus_kehote}]
-                    logging.info(f"Lähetetään itsekorjauspyyntö mallille {malli}...")
                     korjaus_response = ollama.chat(model=malli, messages=korjaus_messages, format='json')
-                    korjattu_teksti = korjaus_response['message']['content']
-                    data = json.loads(korjattu_teksti)
+                    data = json.loads(korjaus_response['message']['content'])
+                    if required_keys and not all(key in data for key in required_keys):
+                        logging.warning("Myös korjattu vastaus oli validi, mutta siitä puuttui avaimet.")
+                        continue
                     logging.info("Itsekorjaus onnistui ja vastaus jäsenneltiin.")
                     return data, malli
                 except (json.JSONDecodeError, KeyError) as e_korjaus:
                     logging.error(f"Itsekorjaus epäonnistui mallilla {malli}. Virhe: {e_korjaus}.")
                     if yritys < max_yritykset - 1:
-                         logging.info("Yritetään alkuperäistä pyyntöä uudelleen...")
-                    continue # Yritetään uudelleen alusta
+                        logging.info("Yritetään alkuperäistä pyyntöä uudelleen...")
+                    continue
     logging.error(f"Kaikki mallit ({mallit}) epäonnistuivat. Palautetaan virhe.")
     return {"virhe": "JSON-vastausta ei saatu malleilta."}, "Tuntematon"
 
@@ -181,7 +186,11 @@ def onko_strategia_relevantti(kysely: str, selite: str) -> bool:
               f"- Strategia: \"{selite}\"\n"
               f"VASTAA AINOASTAAN JSON-MUODOSSA: {{\"sovellu\": true}} TAI {{\"sovellu\": false}}")
     logging.info("Suoritetaan strategian relevanssin esianalyysi...")
-    data, _ = suorita_varmistettu_json_kutsu([ARVIOINTI_MALLI_ENSISIJAINEN, ARVIOINTI_MALLI_VARAMALLI], kehote)
+    data, _ = suorita_varmistettu_json_kutsu(
+        [ARVIOINTI_MALLI_ENSISIJAINEN, ARVIOINTI_MALLI_VARAMALLI],
+        kehote,
+        required_keys=['sovellu']
+    )
     relevanssi = data.get("sovellu", False)
     logging.info(f"Esianalyysin tulos: Soveltuuko strategia? {'Kyllä' if relevanssi else 'Ei'}.")
     return relevanssi
@@ -195,7 +204,7 @@ def etsi_merkityksen_mukaan(kysely: str, otsikko: str, top_k: int = 15,
     if not all(resurssit):
         return [], set()
     model_encoder, cross_encoder, paaindeksi, paakartta, jae_haku_kartta, raamattu_sanasto = resurssit
-
+    
     viite_str_lista = poimi_raamatunviitteet(kysely)
     pakolliset_jakeet = []
     loytyneet_viitteet = set()
@@ -211,7 +220,7 @@ def etsi_merkityksen_mukaan(kysely: str, otsikko: str, top_k: int = 15,
     laajennettu_kysely = kysely
     pien_kysely = kysely.lower()
     tehostettavat_sanat = set()
-
+    
     if valitut_tehostesanat is None:
         viite_pattern = r'((?:[1-3]\.\s)?[A-ZÅÄÖa-zåäö]+\.?\s\d+:\d+(?:-\d+)?)'
         puhdistettu_otsikko = re.sub(viite_pattern, '', otsikko)
@@ -265,7 +274,7 @@ def etsi_merkityksen_mukaan(kysely: str, otsikko: str, top_k: int = 15,
                 break
             else:
                 logging.info(f"Strategia '{avainsana}' hylättiin epärelevanttina.")
-
+    
     alyhaun_tulokset = []
     if top_k > 0:
         alyhaun_koko = max(0, top_k - len(pakolliset_jakeet))
@@ -304,10 +313,6 @@ def etsi_puhtaalla_haulla(kysely: str, top_k: int = 15) -> list[dict]:
 
 
 def arvioi_tulokset(aihe: str, tulokset: list, malli_nimi: str = ARVIOINTI_MALLI_ENSISIJAINEN) -> dict:
-    """
-    Arvioi jakeet yksitellen, jotta vältetään suuri CPU-kuorma pitkän
-    syötteen käsittelyssä. Sisältää aikalaskurin jokaiselle kutsulle.
-    """
     if not tulokset:
         return {"kokonaisarvosana": 0.0, "jae_arviot": []}
 
@@ -316,8 +321,7 @@ def arvioi_tulokset(aihe: str, tulokset: list, malli_nimi: str = ARVIOINTI_MALLI
     logging.info(f"Aloitetaan {len(tulokset)} jakeen yksittäisarviointi...")
 
     for i, jae in enumerate(tulokset):
-        start_time = time.time()  # AIKA ALKAA
-
+        start_time = time.time()
         logging.info(f"  - Arvioidaan jae {i+1}/{len(tulokset)}: {jae['viite']}...")
         
         kehote = (
@@ -331,19 +335,23 @@ def arvioi_tulokset(aihe: str, tulokset: list, malli_nimi: str = ARVIOINTI_MALLI
             f"Sinun vastauksesi:"
         )
         
-        data, malli = suorita_varmistettu_json_kutsu([malli_nimi, ARVIOINTI_MALLI_VARAMALLI], kehote)
+        data, malli = suorita_varmistettu_json_kutsu(
+            [malli_nimi, ARVIOINTI_MALLI_VARAMALLI],
+            kehote,
+            required_keys=['arvosana', 'perustelu']
+        )
         
-        end_time = time.time()  # AIKA PÄÄTTYY
+        end_time = time.time()
         kesto = end_time - start_time
         yhteiskesto += kesto
         logging.info(f"    -> Kesto: {kesto:.2f} sekuntia.")
 
-        if "virhe" not in data and 'arvosana' in data and 'perustelu' in data:
+        if "virhe" not in data:
             data['viite'] = jae['viite']
             data['mallin_nimi'] = malli
             kaikki_jae_arviot.append(data)
         else:
-            logging.warning(f"Jae {jae['viite']} arviointi epäonnistui tai palautti virheellistä dataa.")
+            logging.warning(f"Jae {jae['viite']} arviointi epäonnistui kaikilla malleilla.")
 
     if not kaikki_jae_arviot:
         return {"kokonaisarvosana": 0.0, "jae_arviot": []}
@@ -372,13 +380,22 @@ def suorita_tarkennushaku(ydinjakeet: list, vanhat_tulokset_viitteet: set, haett
     ydinjakeiden_tekstit = [j['teksti'] for j in ydinjakeet]
     ydin_vektorit = model.encode(ydinjakeiden_tekstit)
     keskipiste_vektori = np.mean(ydin_vektorit, axis=0)
-    _, indeksit = paaindeksi.search(np.array([keskipiste_vektori], dtype=np.float32), haettava_maara * 2)
+    
+    # Haetaan hieman enemmän, jotta on varaa suodattaa pois jo nähdyt
+    laajennettu_haku_maara = haettava_maara + len(vanhat_tulokset_viitteet)
+    laajennettu_haku_maara = min(laajennettu_haku_maara, paaindeksi.ntotal)
+    
+    _, indeksit = paaindeksi.search(np.array([keskipiste_vektori], dtype=np.float32), laajennettu_haku_maara)
+    
     uudet_ehdokkaat = []
     for i in indeksit[0]:
         viite = paakartta.get(str(i))
         if viite and viite not in vanhat_tulokset_viitteet:
             uudet_ehdokkaat.append({'viite': viite, 'teksti': jae_haku_kartta.get(viite, "")})
-    return uudet_ehdokkaat[:haettava_maara]
+        if len(uudet_ehdokkaat) >= haettava_maara:
+            break
+            
+    return uudet_ehdokkaat
 
 
 def ehdota_uutta_strategiaa(aihe: str, arvio: dict, edellinen_ehdotus: dict = None) -> dict:
@@ -407,7 +424,11 @@ def ehdota_uutta_strategiaa(aihe: str, arvio: dict, edellinen_ehdotus: dict = No
         f"{analyysi_kehote}\n"
         f"VASTAUKSEN MUOTO: JSON: {{\"selite\": \"Uusi, paranneltu selite...\"}}"
     )
-    strategi_data, _ = suorita_varmistettu_json_kutsu([ASIANTUNTIJA_MALLI], kehote_strategi)
+    strategi_data, _ = suorita_varmistettu_json_kutsu(
+        [ASIANTUNTIJA_MALLI],
+        kehote_strategi,
+        required_keys=['selite']
+    )
 
     if "virhe" in strategi_data or not (selite := strategi_data.get("selite", "")):
         return {"virhe": "Strategi ei tuottanut selitettä."}
@@ -429,7 +450,11 @@ def luo_avainsana_selitteen_pohjalta(selite: str) -> list:
         f"SELITE: \"{selite}\"\n"
         f"VASTAUKSEN MUOTO: JSON: {{\"avainsanat\": [\"sana1\", \"sana2\"]}}"
     )
-    data, _ = suorita_varmistettu_json_kutsu([ASIANTUNTIJA_MALLI], kehote)
+    data, _ = suorita_varmistettu_json_kutsu(
+        [ASIANTUNTIJA_MALLI],
+        kehote,
+        required_keys=['avainsanat']
+    )
     return data.get("avainsanat", [])
 
 
@@ -477,5 +502,9 @@ def luo_kontekstisidonnainen_avainsana(sana: str, selite: str) -> str:
         f"Käytä muotoa 'pääsana-tarkenne'.\n"
         f"VASTAUKSEN MUOTO: JSON: {{\"uusi_avainsana\": \"ehdotuksesi tähän\"}}"
     )
-    data, _ = suorita_varmistettu_json_kutsu([ASIANTUNTIJA_MALLI], kehote)
+    data, _ = suorita_varmistettu_json_kutsu(
+        [ASIANTUNTIJA_MALLI],
+        kehote,
+        required_keys=['uusi_avainsana']
+    )
     return data.get("uusi_avainsana", f"{sana}_konteksti_{int(time.time())}")
