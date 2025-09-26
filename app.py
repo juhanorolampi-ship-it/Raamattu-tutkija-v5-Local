@@ -1,4 +1,4 @@
-# app.py (Versio 21.0 - Täydellinen ja korjattu)
+# app.py (Versio 23.0 - Parannettu aggressiivinen TILA C ja dynaaminen puskuri)
 import logging
 import re
 import time
@@ -244,12 +244,11 @@ with col2:
     )
     with st.expander("Asiantuntija-asetukset"):
         asennetut_mallit = hae_asennetut_mallit()
-        
-        # Oletusmallin älykkäämpi valinta
+
         default_model = "raamattu-tutkija-model:q4"
         if asennetut_mallit and default_model not in asennetut_mallit:
             default_model = asennetut_mallit[0] if asennetut_mallit else None
-        
+
         valittu_malli = st.selectbox(
             "Valitse arviointimalli:",
             options=asennetut_mallit,
@@ -269,9 +268,11 @@ with col2:
             min_value=1, max_value=10, value=3,
             help="Kuinka monta uutta ehdokasta haetaan per heikko jae (esim. 3x)."
         )
+        # KORJATTU: Maksimiarvo laskettu 9.50:een
         laatutavoite = st.slider(
             "Laatutavoite (TILA C):",
-            min_value=7.0, max_value=9.8, value=8.5, step=0.1,
+            min_value=7.0, max_value=9.5, value=8.5, step=0.1,
+            key='laatutavoite_slider',
             help=(
                 "Jos osion laatu jää tämän alle, käynnistetään iteratiivinen "
                 "parannus."
@@ -279,17 +280,17 @@ with col2:
         )
         maksimi_iteraatiot = st.number_input(
             "Maksimi-iteraatiot (TILA C):",
-            min_value=1, max_value=5, value=3, step=1,
+            min_value=1, max_value=10, value=5, step=1,
             help="Kuinka monta kertaa TILA C yrittää saavuttaa laatutavoitteen."
         )
-        st.checkbox(
-            "Pakota TILA C jatkamaan (aggressiivinen parannus)",
-            key='pakota_tila_c',
+        pakota_tila_c = st.checkbox(
+            "Pakota aggressiivinen parannus (TILA C)",
+            key='pakota_tila_c_checkbox',
             value=False,
             help=(
-                "Ohittaa ydinjakeiden minimimäärän tarkistuksen TILA C:ssä "
-                "ja yrittää parantaa tuloksia tavoitteeseen asti, "
-                "vaikka pohja olisi heikko."
+                "Jos valittuna, ohjelma ohittaa 'Maksimi-iteraatiot'-rajan ja "
+                "jatkaa parantamista, kunnes tavoite saavutetaan tai laatu ei "
+                "enää parane. Myös TILA B ohitetaan tarvittaessa."
             )
         )
 
@@ -385,16 +386,18 @@ if suorita_nappi:
                 key=lambda item: [int(p) for p in item[0].split('.')]
             )
 
+            ui_laatutavoite = st.session_state.get('laatutavoite_slider', 8.5)
+            ui_pakota_tila_c = st.session_state.get('pakota_tila_c_checkbox', False)
+            ui_maksimi_iteraatiot = maksimi_iteraatiot
+
             for i, (osio_nro, haku) in enumerate(sorted_hakulauseet):
                 log_container.markdown(
                     f"--- \n ### Käsitellään osiota "
                     f"{i+1}/{len(sorted_hakulauseet)}: "
                     f"{otsikot.get(osio_nro, '')}"
                 )
-                
-                # KORJAUS: "Musta lista" jo nähdyille jakeille
-                musta_lista_viitteet = set()
 
+                musta_lista_viitteet = set()
                 log_performance_stats(perf_writer, perf_file)
 
                 valitut_tehostesanat_osiolle = (
@@ -406,10 +409,8 @@ if suorita_nappi:
                     top_k=top_k_valinta,
                     valitut_tehostesanat=valitut_tehostesanat_osiolle
                 )
-                
-                # KORJAUS: Lisätään ensimmäisen haun tulokset mustalle listalle
+
                 musta_lista_viitteet.update(t['viite'] for t in tulokset)
-                
                 log_performance_stats(perf_writer, perf_file)
 
                 arvio = arvioi_tulokset(
@@ -419,23 +420,16 @@ if suorita_nappi:
 
                 if not arvio.get("jae_arviot"):
                     logging.error(
-                        "KRIITTINEN: Ensisijainen ja varamalli epäonnistuivat "
-                        "arvioinnissa. Suoritetaan puhdas haku."
+                        "KRIITTINEN: Arviointi epäonnistui. Suoritetaan puhdas haku."
                     )
                     final_tulokset = etsi_puhtaalla_haulla(
                         haku, top_k=top_k_valinta
                     )
-                    arvio = arvioi_tulokset(
-                        haku, final_tulokset, malli_nimi=valittu_malli
-                    )
-                    valid_scores = [
-                        a.get('arvosana') for a in arvio.get("jae_arviot", [])
-                        if a.get('arvosana') is not None
-                    ]
-                    lopputulos_keskiarvo = (
-                        sum(valid_scores) / len(valid_scores)
-                        if valid_scores else 0.0
-                    )
+                    arvio = arvioi_tulokset(haku, final_tulokset, malli_nimi=valittu_malli)
+                    for jae in final_tulokset:
+                        vastaava = next((a for a in arvio.get("jae_arviot", []) if a.get('viite') == jae['viite']), None)
+                        if vastaava:
+                            jae.update(vastaava)
                 else:
                     arvioidut_tulokset = []
                     for jae in tulokset:
@@ -446,218 +440,147 @@ if suorita_nappi:
                         if vastaava:
                             jae.update(vastaava)
                             arvioidut_tulokset.append(jae)
-
-                    valid_scores = [
-                        t.get('arvosana') for t in arvioidut_tulokset
-                        if t.get('arvosana') is not None
-                    ]
-                    alkuperainen_keskiarvo = (
-                        sum(valid_scores) / len(valid_scores)
-                        if valid_scores else 0.0
-                    )
-                    logging.info(
-                        f"Alkuperäinen laatuarvio: "
-                        f"{alkuperainen_keskiarvo:.2f}/10"
-                    )
                     final_tulokset = arvioidut_tulokset
-                    lopputulos_keskiarvo = alkuperainen_keskiarvo
 
-                    log_container.markdown(
-                        "--- \n #### Taso 2: Dynaaminen Parannusalgoritmi"
-                    )
-                    dynaaminen_raja_arvo = alkuperainen_keskiarvo
-                    ydinjakeet = [
-                        t for t in arvioidut_tulokset
-                        if t.get('arvosana', 0) >= dynaaminen_raja_arvo
-                    ]
+                valid_scores = [t.get('arvosana') for t in final_tulokset if t.get('arvosana') is not None]
+                alkuperainen_keskiarvo = sum(valid_scores) / len(valid_scores) if valid_scores else 0.0
+                lopputulos_keskiarvo = alkuperainen_keskiarvo
+                logging.info(f"Alkuperäinen laatuarvio: {alkuperainen_keskiarvo:.2f}/10")
 
-                    if len(ydinjakeet) >= ydinjakeiden_minimi:
-                        logging.info(
-                            f"TILA A: Ydinjakeita löytyi {len(ydinjakeet)} "
-                            f"kpl. Suoritetaan tarkennushaku."
-                        )
-                        heikot = sorted(
-                            [t for t in final_tulokset if t.get(
-                                'arvosana', 0
-                            ) < dynaaminen_raja_arvo],
-                            key=lambda x: x.get('arvosana', 0)
-                        )
-                        haettava_maara = max(
-                            10, min(50, len(heikot) * aggressiivisuus_kerroin)
-                        )
-                        # KORJAUS: Käytetään mustaa listaa
-                        uudet_ehdokkaat = suorita_tarkennushaku(
-                            ydinjakeet, musta_lista_viitteet, haettava_maara
-                        )
-                        if uudet_ehdokkaat:
-                            # KORJAUS: Lisätään uudet mustalle listalle
-                            musta_lista_viitteet.update(t['viite'] for t in uudet_ehdokkaat)
-                            uudet_arviot = arvioi_tulokset(
-                                haku, uudet_ehdokkaat,
-                                malli_nimi=valittu_malli
-                            ).get("jae_arviot", [])
-                            for jae in uudet_ehdokkaat:
-                                vastaava = next(
-                                    (a for a in uudet_arviot
-                                     if a.get('viite') == jae['viite']), None
-                                )
-                                if vastaava:
-                                    jae.update(vastaava)
-                            uudet_parhaat = sorted(
-                                [j for j in uudet_ehdokkaat if 'arvosana' in j],
-                                key=lambda x: x.get('arvosana', 0),
-                                reverse=True
-                            )
-                            korvaus_laskuri = 0
-                            for i_korv in range(len(heikot)):
-                                if (i_korv < len(uudet_parhaat) and
-                                        uudet_parhaat[i_korv].get(
-                                            'arvosana', 0
-                                        ) > heikot[i_korv].get('arvosana', 0)):
+                log_container.markdown("--- \n #### Taso 2: Dynaaminen Parannusalgoritmi")
+
+                dynaaminen_raja_arvo = alkuperainen_keskiarvo
+                ydinjakeet = [t for t in final_tulokset if t.get('arvosana', 0) >= dynaaminen_raja_arvo]
+
+                tila_a_ehdot_taynna = len(ydinjakeet) >= ydinjakeiden_minimi
+
+                if tila_a_ehdot_taynna and not ui_pakota_tila_c:
+                    logging.info(f"TILA A: Ydinjakeita löytyi {len(ydinjakeet)} kpl. Suoritetaan tarkennushaku.")
+                    heikot = sorted([t for t in final_tulokset if t.get('arvosana', 0) < dynaaminen_raja_arvo], key=lambda x: x.get('arvosana', 0))
+                    haettava_maara = max(10, min(50, len(heikot) * aggressiivisuus_kerroin))
+                    uudet_ehdokkaat = suorita_tarkennushaku(ydinjakeet, musta_lista_viitteet, haettava_maara)
+                    if uudet_ehdokkaat:
+                        musta_lista_viitteet.update(t['viite'] for t in uudet_ehdokkaat)
+                        uudet_arviot = arvioi_tulokset(haku, uudet_ehdokkaat, malli_nimi=valittu_malli).get("jae_arviot", [])
+                        for jae in uudet_ehdokkaat:
+                            vastaava = next((a for a in uudet_arviot if a.get('viite') == jae['viite']), None)
+                            if vastaava:
+                                jae.update(vastaava)
+                        
+                        uudet_parhaat = sorted([j for j in uudet_ehdokkaat if 'arvosana' in j], key=lambda x: x.get('arvosana', 0), reverse=True)
+                        korvaus_laskuri = 0
+                        for i_korv in range(len(heikot)):
+                            if i_korv < len(uudet_parhaat) and uudet_parhaat[i_korv].get('arvosana', 0) > heikot[i_korv].get('arvosana', 0):
+                                for idx, item in enumerate(final_tulokset):
+                                    if item['viite'] == heikot[i_korv]['viite']:
+                                        final_tulokset[idx] = uudet_parhaat[i_korv]
+                                        break
+                                korvaus_laskuri += 1
+                        logging.info(f"Laadunvalvonta valmis. {korvaus_laskuri} jaetta korvattu.")
+
+                elif not tila_a_ehdot_taynna and not ui_pakota_tila_c:
+                    logging.warning(f"TILA B: Ydinjakeita ei tarpeeksi ({len(ydinjakeet)}/{ydinjakeiden_minimi}). Siirrytään strategian parannukseen.")
+                    arvio_obj = {"kokonaisarvosana": alkuperainen_keskiarvo, "jae_arviot": final_tulokset}
+                    ehdotus = ehdota_uutta_strategiaa(haku, arvio_obj)
+                    if "virhe" not in ehdotus and ehdotus.get("selite"):
+                        avainsanat, selite = ehdotus.get('avainsanat', []), ehdotus.get('selite', '')
+                        if oppiminen_paalla:
+                            uniikit_sanat = [luo_kontekstisidonnainen_avainsana(s, selite) if s.lower() in STRATEGIA_SANAKIRJA else s for s in avainsanat]
+                            tallenna_uusi_strategia(uniikit_sanat, selite)
+                        heikot_lkm = len([t for t in final_tulokset if t.get('arvosana', 0) < dynaaminen_raja_arvo])
+                        if heikot_lkm > 0:
+                            paikkaushaku, _ = etsi_merkityksen_mukaan(haku, otsikot.get(osio_nro, ''), top_k=heikot_lkm, custom_strategiat={s.lower(): selite for s in avainsanat})
+                            if paikkaushaku:
+                                final_tulokset_hyvat = [t for t in final_tulokset if t.get('arvosana', 0) >= dynaaminen_raja_arvo]
+                                final_tulokset = final_tulokset_hyvat + paikkaushaku
+
+                valid_scores_after_ab = [t.get('arvosana') for t in final_tulokset if t.get('arvosana') is not None]
+                lopputulos_keskiarvo = sum(valid_scores_after_ab) / len(valid_scores_after_ab) if valid_scores_after_ab else 0.0
+
+                if lopputulos_keskiarvo < ui_laatutavoite or (ui_pakota_tila_c and not tila_a_ehdot_taynna):
+                    if ui_pakota_tila_c and not tila_a_ehdot_taynna:
+                        logging.warning("TILA C (PAKOTETTU): Ohitetaan TILA B ja siirrytään suoraan iteratiiviseen parannukseen.")
+                    
+                    log_container.markdown(f"--- \n #### Taso 3: Laadun Tavoittelu (Tavoite: {ui_laatutavoite:.2f})")
+                    logging.info(f"LÄHTÖTILANNE TILA C: Keskiarvo {lopputulos_keskiarvo:.2f}/{ui_laatutavoite:.2f}")
+                    
+                    # KORJATTU: Aggressiivinen tila ohittaa iteraatiorajan
+                    iteraatioraja = 100 if ui_pakota_tila_c else ui_maksimi_iteraatiot
+                    iteraatio = 0
+                    while (lopputulos_keskiarvo < ui_laatutavoite and iteraatio < iteraatioraja):
+                        iteraatio += 1
+                        logging.info(f"Käynnistetään TILA C -parannusyritys {iteraatio}...")
+
+                        edellinen_keskiarvo = lopputulos_keskiarvo
+                        
+                        nykyinen_summa = sum(t.get('arvosana', 0) for t in final_tulokset if t.get('arvosana') is not None)
+                        tarvittava_summa = ui_laatutavoite * len(final_tulokset)
+                        summan_ero = max(0, tarvittava_summa - nykyinen_summa)
+                        
+                        heikot_c = sorted([t for t in final_tulokset if t.get('arvosana', 0) < lopputulos_keskiarvo], key=lambda x: x.get('arvosana', 0))
+                        if not heikot_c:
+                            logging.warning("TILA C: Ei enää heikkoja jakeita parannettavaksi. Silmukka päättyy.")
+                            break
+                        
+                        korvattavia_lkm = 0
+                        potentiaalinen_nousu = 0
+                        for heikko_jae in heikot_c:
+                            potentiaalinen_nousu += (10.0 - heikko_jae.get('arvosana', 0))
+                            korvattavia_lkm += 1
+                            if potentiaalinen_nousu >= summan_ero:
+                                break
+                        
+                        # KORJATTU: Dynaaminen puskuri
+                        puskuri = max(3, korvattavia_lkm // 2)
+                        haettava_maara_c = korvattavia_lkm + puskuri
+                        logging.info(f"Tavoitteeseen vaaditaan {summan_ero:.2f}p. Yritetään korvata {korvattavia_lkm} jaetta hakemalla {haettava_maara_c} uutta ehdokasta.")
+                        
+                        ydinjakeet_c = [t for t in final_tulokset if t.get('arvosana', 0) >= lopputulos_keskiarvo]
+                        if not ydinjakeet_c:
+                            ydinjakeet_c = sorted(final_tulokset, key=lambda x: x.get('arvosana', 0), reverse=True)[:5]
+
+                        uudet_ehdokkaat_c = suorita_tarkennushaku(ydinjakeet_c, musta_lista_viitteet, haettava_maara_c)
+                        if not uudet_ehdokkaat_c:
+                            logging.warning("TILA C: Tarkennushaku ei löytänyt enempää uniikkeja jakeita. Silmukka päättyy.")
+                            break
+                        musta_lista_viitteet.update(t['viite'] for t in uudet_ehdokkaat_c)
+
+                        logging.info(f"Arvioidaan {len(uudet_ehdokkaat_c)} uutta ehdokasta kerralla...")
+                        uudet_arviot_c = arvioi_tulokset(haku, uudet_ehdokkaat_c, malli_nimi=valittu_malli).get("jae_arviot", [])
+                        for jae in uudet_ehdokkaat_c:
+                            vastaava = next((a for a in uudet_arviot_c if a.get('viite') == jae['viite']), None)
+                            if vastaava:
+                                jae.update(vastaava)
+
+                        uudet_parhaat_c = sorted([j for j in uudet_ehdokkaat_c if 'arvosana' in j], key=lambda x: x.get('arvosana', 0), reverse=True)
+                        
+                        korvaus_laskuri_c = 0
+                        heikot_c_uudelleen = sorted([t for t in final_tulokset if t.get('arvosana', 0) < edellinen_keskiarvo], key=lambda x: x.get('arvosana', 0))
+
+                        for i_korv in range(len(heikot_c_uudelleen)):
+                            if i_korv < len(uudet_parhaat_c):
+                                vanha_jae = heikot_c_uudelleen[i_korv]
+                                uusi_jae = uudet_parhaat_c[i_korv]
+                                if uusi_jae.get('arvosana', 0) > vanha_jae.get('arvosana', 0):
                                     for idx, item in enumerate(final_tulokset):
-                                        if item['viite'] == heikot[i_korv]['viite']:
-                                            final_tulokset[idx] = uudet_parhaat[i_korv]
+                                        if item['viite'] == vanha_jae['viite']:
+                                            final_tulokset[idx] = uusi_jae
+                                            korvaus_laskuri_c += 1
                                             break
-                                    korvaus_laskuri += 1
-                            logging.info(
-                                f"Laadunvalvonta valmis. "
-                                f"{korvaus_laskuri} jaetta korvattu."
-                            )
-                    else:
-                        logging.warning(
-                            f"TILA B: Ydinjakeita ei tarpeeksi "
-                            f"({len(ydinjakeet)}/{ydinjakeiden_minimi}). "
-                            f"Siirrytään strategian parannukseen."
-                        )
-                        ehdotus = ehdota_uutta_strategiaa(haku, arvio)
-                        if "virhe" not in ehdotus and ehdotus.get("selite"):
-                            avainsanat, selite = (
-                                ehdotus.get('avainsanat', []),
-                                ehdotus.get('selite', '')
-                            )
-                            if oppiminen_paalla:
-                                uniikit_sanat = [
-                                    luo_kontekstisidonnainen_avainsana(s, selite)
-                                    if s.lower() in STRATEGIA_SANAKIRJA else s
-                                    for s in avainsanat
-                                ]
-                                tallenna_uusi_strategia(uniikit_sanat, selite)
-                            heikot_lkm = len([
-                                t for t in final_tulokset
-                                if t.get('arvosana', 0) < dynaaminen_raja_arvo
-                            ])
-                            if heikot_lkm > 0:
-                                paikkaushaku, _ = etsi_merkityksen_mukaan(
-                                    haku, otsikot.get(osio_nro, ''),
-                                    top_k=heikot_lkm,
-                                    custom_strategiat={
-                                        s.lower(): selite for s in avainsanat
-                                    }
-                                )
-                                if paikkaushaku:
-                                    final_tulokset_hyvat = [
-                                        t for t in final_tulokset if t.get(
-                                            'arvosana', 0
-                                        ) >= dynaaminen_raja_arvo
-                                    ]
-                                    final_tulokset = (
-                                        final_tulokset_hyvat + paikkaushaku
-                                    )
+                        
+                        valid_scores_now = [t.get('arvosana') for t in final_tulokset if t.get('arvosana') is not None]
+                        lopputulos_keskiarvo = sum(valid_scores_now) / len(valid_scores_now) if valid_scores_now else 0.0
 
-                    valid_scores_final = [
-                        t.get('arvosana') for t in final_tulokset
-                        if t.get('arvosana') is not None
-                    ]
-                    lopputulos_keskiarvo = (
-                        sum(valid_scores_final) / len(valid_scores_final)
-                        if valid_scores_final else 0.0
-                    )
-
-                    if lopputulos_keskiarvo > alkuperainen_keskiarvo:
-                        logging.info(
-                            f"LAATU PARANI TASOLLA 2: "
-                            f"{alkuperainen_keskiarvo:.2f} -> "
-                            f"{lopputulos_keskiarvo:.2f} ✅"
-                        )
-
-                    if lopputulos_keskiarvo < laatutavoite:
-                        log_container.markdown(
-                            f"--- \n #### Taso 3: Laadun Tavoittelu (Tavoite: {laatutavoite:.1f})"
-                        )
-                        iteraatio = 0
-                        while (lopputulos_keskiarvo < laatutavoite and iteraatio < maksimi_iteraatiot):
-                            iteraatio += 1
-                            logging.info(f"Käynnistetään TILA C -parannusyritys {iteraatio}/{maksimi_iteraatiot}...")
-
-                            nykyinen_summa = sum(t.get('arvosana', 0) for t in final_tulokset if t.get('arvosana') is not None)
-                            tarvittava_summa = laatutavoite * len(final_tulokset)
-                            summan_ero = max(0, tarvittava_summa - nykyinen_summa)
-
-                            heikot_c = sorted([t for t in final_tulokset if t.get('arvosana', 0) < lopputulos_keskiarvo], key=lambda x: x.get('arvosana', 0))
-
-                            if not heikot_c:
-                                logging.warning("TILA C: Ei enää heikkoja jakeita parannettavaksi. Silmukka päättyy.")
-                                break
-
-                            korvattavia_lkm = 0
-                            potentiaalinen_nousu = 0
-                            for heikko_jae in heikot_c:
-                                potentiaalinen_nousu += (10.0 - heikko_jae.get('arvosana', 0))
-                                korvattavia_lkm += 1
-                                if potentiaalinen_nousu >= summan_ero:
-                                    break
-
-                            haettava_maara_c = korvattavia_lkm + 3
-                            logging.info(f"Tavoitteeseen vaaditaan {summan_ero:.2f} pisteen parannus. Yritetään korvata {korvattavia_lkm} jaetta hakemalla {haettava_maara_c} uutta ehdokasta.")
-
-                            ydinjakeet_c = [t for t in final_tulokset if t.get('arvosana', 0) >= lopputulos_keskiarvo]
-                            uudet_ehdokkaat_c = suorita_tarkennushaku(ydinjakeet_c, musta_lista_viitteet, haettava_maara_c)
-
-                            if not uudet_ehdokkaat_c:
-                                logging.warning("TILA C: Tarkennushaku ei löytänyt enempää uniikkeja jakeita. Silmukka päättyy.")
-                                break
-
-                            musta_lista_viitteet.update(t['viite'] for t in uudet_ehdokkaat_c)
-
-                            uudet_arvioidut_c = []
-                            for uusi_jae in uudet_ehdokkaat_c:
-                                arvio_jae = arvioi_tulokset(haku, [uusi_jae], malli_nimi=valittu_malli).get("jae_arviot", [])
-                                if arvio_jae:
-                                    uusi_jae.update(arvio_jae[0])
-                                    uudet_arvioidut_c.append(uusi_jae)
-
-                            uudet_parhaat_c = sorted([j for j in uudet_arvioidut_c if 'arvosana' in j], key=lambda x: x.get('arvosana', 0), reverse=True)
-
-                            korvaus_laskuri_c = 0
-                            edellinen_keskiarvo = lopputulos_keskiarvo
-
-                            heikot_c = sorted([t for t in final_tulokset if t.get('arvosana', 0) < lopputulos_keskiarvo], key=lambda x: x.get('arvosana', 0))
-
-                            for i_korv in range(len(heikot_c)):
-                                if i_korv < len(uudet_parhaat_c):
-                                    vanha_jae = heikot_c[i_korv]
-                                    uusi_jae = uudet_parhaat_c[i_korv]
-                                    if uusi_jae.get('arvosana', 0) > vanha_jae.get('arvosana', 0):
-                                        for idx, item in enumerate(final_tulokset):
-                                            if item['viite'] == vanha_jae['viite']:
-                                                final_tulokset[idx] = uusi_jae
-                                                korvaus_laskuri_c += 1
-                                                break
-
-                                    valid_scores_now = [t.get('arvosana') for t in final_tulokset if t.get('arvosana') is not None]
-                                    lopputulos_keskiarvo = sum(valid_scores_now) / len(valid_scores_now)
-                                    if lopputulos_keskiarvo >= laatutavoite:
-                                        logging.info(f"TILA C: Laatutavoite saavutettu {korvaus_laskuri_c} korvauksella.")
-                                        break 
-
-                            logging.info(f"TILA C: Kierros valmis. {korvaus_laskuri_c} jaetta korvattu.")
-
-                            if lopputulos_keskiarvo > edellinen_keskiarvo:
-                                logging.info(f"TILA C: LAATU PARANI: {edellinen_keskiarvo:.2f} -> {lopputulos_keskiarvo:.2f} ✅")
-                            else:
-                                logging.warning("TILA C: Laatu ei parantunut tällä kierroksella. Silmukka päättyy.")
-                                lopputulos_keskiarvo = edellinen_keskiarvo
-                                break
+                        logging.info(f"TILA C: Kierros {iteraatio} valmis. {korvaus_laskuri_c} jaetta korvattu.")
+                        if lopputulos_keskiarvo > edellinen_keskiarvo:
+                            logging.info(f"TILA C: LAATU PARANI: {edellinen_keskiarvo:.2f} -> {lopputulos_keskiarvo:.2f} ✅")
+                        else:
+                            logging.warning("TILA C: Laatu ei parantunut tällä kierroksella. Silmukka päättyy.")
+                            lopputulos_keskiarvo = edellinen_keskiarvo
+                            break
+                    
+                    if lopputulos_keskiarvo < ui_laatutavoite:
+                        logging.warning(f"TILA C: Laatutavoitetta ({ui_laatutavoite:.2f}) ei saavutettu. Lopullinen laatu: {lopputulos_keskiarvo:.2f}/10.")
 
                 jae_kartta[osio_nro]["jakeet"] = sorted(
                     final_tulokset, key=lambda x: x.get('arvosana', 0),
