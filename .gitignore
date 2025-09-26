@@ -17,6 +17,7 @@ syote.txt
 *diagnostiikka*.txt
 *log.txt
 *.log
+*_log_*.csv
 
 # Estä generoidut JSON-logit
 *log*.json
